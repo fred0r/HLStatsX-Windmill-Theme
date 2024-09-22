@@ -1,0 +1,30 @@
+name: Increment value test
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'web/assets/theme_version.txt'
+      - '.github/**'
+      - 'assets/**'
+      - '**.md'
+      - '.gitignore'
+jobs:
+  test:
+    name: Increment value test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+          token: ${{ secrets.PAT }}
+      - name: Increment value
+        uses: yoichiro/gh-action-increment-value@main
+        with:
+          target_directory: 'web/assets'
+          target_file: 'theme_version.txt'
+          prefix: '** '
+          suffix: ' **'
+          commit_message: 'Theme version updated to 0.0.'
