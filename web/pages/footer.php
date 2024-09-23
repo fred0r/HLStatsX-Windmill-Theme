@@ -87,5 +87,30 @@ All images are copyrighted by their respective owners.
 		printMap();
 	}
 ?>
+
+
+<!-- Start footer bar -->
+<div
+    class="flex items-center justify-between p-4 mb-4 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+    <div class="flex items-center">
+        <span>
+            <a class="font-semibold" href="https://sbpp.github.io/" target="_blank">SourceBans++</a> 
+            Powered by <a class="font-semibold" href="https://www.sourcemod.net" target="_blank">SourceMod</a>
+        </span>
+    </div>
+    <div class="flex items-center">
+        <span align="right">
+            <a class="font-semibold" href="https://github.com/DNA-styx/sbpp-windmill-dashboard" target="_blank">Theme
+                ()</a>
+                based on <a class="font-semibold" href="https://github.com/estevanmaito/windmill-dashboard"
+                target="_blank">Windmill</a> with code from <a class="font-semibold" href="https://sbpp.github.io/"
+                target="_blank">SourceBans++</a>
+        </span>
+    </div>
+</div>
+<!-- end footer bar -->
+
+
+
 </body>
 </html>
