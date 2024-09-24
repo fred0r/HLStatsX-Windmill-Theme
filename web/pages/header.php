@@ -367,121 +367,156 @@ For support and installation notes visit http://www.hlxcommunity.com
         <div class="py-4 text-gray-500 dark:text-gray-400">
           <a
             class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
-            href="#"
+            href="/"
           >
         	<?php echo $g_options['sitename']; ?>
           </a>
 
+
 <?php		  if ($game != '') { ?>
 
-		  <ul class="mt-6">
-            <li class="relative px-6 py-3">
-              <a
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="<?php echo $g_options['scripturl']  . "?game=$game";  ?>"
-              >
-                <span class="ml-4">- Servers</span>
-              </a>
-            </li>
-          </ul>
+<ul class="mt-6">
+	<li class="relative px-6 py-3">
+		<a
+		class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+		href="<?php echo $g_options['scripturl']  . "?game=$game";  ?>"
+		>
+		<span class="ml-4">- Servers</span>
+		</a>
+	</li>
 
-  
-
-
-
-
-
-		  <?php
+<?php
 	if ($g_options['nav_globalchat']==1) {
 ?>
 
-<ul class="mt-6">
-            <li class="relative px-6 py-3">
-              <a
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="<?php echo $g_options['scripturl']  . "?mode=chat&amp;game=$game";  ?>"
-              >
-                <span class="ml-4">- Chat</span>
-              </a>
-            </li>
-          </ul>	
+<li class="relative px-6 py-3">
+	<a
+	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+	href="<?php echo $g_options['scripturl']  . "?mode=chat&amp;game=$game";  ?>"
+	>
+	<span class="ml-4">- Chat</span>
+	</a>
+</li>
 
 <?php
 	}
 ?>
 
-	<ul class="mt-6">
-            <li class="relative px-6 py-3">
-              <a
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="<?php echo $g_options['scripturl'] . "?mode=players&amp;game=$game"; ?>"
-              >
-                <span class="ml-4">- Players</span>
-              </a>
-            </li>
-          </ul>	
+<li class="relative px-6 py-3">
+	<a
+	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+	href="<?php echo $g_options['scripturl'] . "?mode=players&amp;game=$game"; ?>"
+	>
+	<span class="ml-4">- Players</span>
+	</a>
+</li>
 
-		  <ul class="mt-6">
-            <li class="relative px-6 py-3">
-              <a
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="<?php echo $g_options['scripturl'] . "?mode=clans&amp;game=$game"; ?>"
-              >
-                <span class="ml-4">- Clans</span>
-              </a>
-            </li>
-          </ul>	
+<li class="relative px-6 py-3">
+	<a
+	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+	href="<?php echo $g_options['scripturl'] . "?mode=clans&amp;game=$game"; ?>"
+	>
+	<span class="ml-4">- Clans</span>
+	</a>
+</li>
 
 
 
 <?php
 	if ($g_options["countrydata"]==1) {
 ?>
-			<li><a href="<?php echo $g_options['scripturl']  . "?mode=countryclans&amp;game=$game&amp;sort=nummembers";  ?>" class="fHeading">Countries</a></li>
+<li class="relative px-6 py-3">
+	<a
+	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+	href="<?php echo $g_options['scripturl']  . "?mode=countryclans&amp;game=$game&amp;sort=nummembers";  ?>"
+	>
+	<span class="ml-4">- Countries</span>
+	</a>
+</li>
 <?php
 	}
 ?>
-			<li><a href="<?php echo $g_options['scripturl'] . "?mode=awards&amp;game=$game"; ?>" class="fHeading">Awards</a></li>
+
+<li class="relative px-6 py-3">
+	<a
+	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+	href="<?php echo $g_options['scripturl'] . "?mode=awards&amp;game=$game"; ?>"
+	>
+	<span class="ml-4">- Awards</span>
+	</a>
+</li>
+
 <?php
 	// look for actions
 	$db->query("SELECT game FROM hlstats_Actions WHERE game='".$game."' LIMIT 1");
 	if ($db->num_rows()>0) {
 ?> 
-			<li><a href="<?php echo $g_options['scripturl'] . "?mode=actions&amp;game=$game"; ?>" class="fHeading">Actions</a></li>
+
+<li class="relative px-6 py-3">
+	<a
+	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+	href="<?php echo $g_options['scripturl'] . "?mode=actions&amp;game=$game"; ?>"
+	>
+	<span class="ml-4">- Actions</span>
+	</a>
+</li>
+
 <?php
 	}
 ?>
-			<li><a href="<?php echo $g_options['scripturl'] . "?mode=weapons&amp;game=$game"; ?>" class="fHeading">Weapons</a></li>
-			<li><a href="<?php echo $g_options['scripturl'] . "?mode=maps&amp;game=$game"; ?>" class="fHeading">Maps</a></li>
+
+<li class="relative px-6 py-3">
+	<a
+	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+	href="<?php echo $g_options['scripturl'] . "?mode=weapons&amp;game=$game"; ?>"
+	>
+	<span class="ml-4">- Weapons</span>
+	</a>
+</li>
+
+<li class="relative px-6 py-3">
+	<a
+	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+	href="<?php echo $g_options['scripturl'] . "?mode=maps&amp;game=$game"; ?>"
+	>
+	<span class="ml-4">- Maps</span>
+	</a>
+</li>
+
 <?php
 	$result = $db->query("SELECT game from hlstats_Roles WHERE game='$game' AND hidden = '0'");
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0) {
 ?>
-			<li><a href="<?php echo $g_options['scripturl'] . "?mode=roles&amp;game=$game"; ?>" class="fHeading">Roles</a></li>
+
+<li class="relative px-6 py-3">
+	<a
+	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+	href="<?php echo $g_options['scripturl'] . "?mode=roles&amp;game=$game"; ?>"
+	>
+	<span class="ml-4">- Roles</span>
+	</a>
+</li>
+
 <?php
 	}
 	if ($g_options['nav_cheaters'] == 1) {
 ?>
-			<li><a href="<?php echo $g_options['scripturl'] . "?mode=bans&amp;game=$game"; ?>" class="fHeading">Bans</a></li>
+
+<li class="relative px-6 py-3">
+	<a
+	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+	href="<?php echo $g_options['scripturl'] . "?mode=bans&amp;game=$game"; ?>"
+	>
+	<span class="ml-4">- Bans</span>
+	</a>
+</li>
+
 <?php
 	} 
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</ul>
 
 <?php } ?>
 
