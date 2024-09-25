@@ -187,7 +187,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$table->numperpage
 	");
 ?>
-
+<!-- start bans.php -->
 <main class="h-full pb-16 overflow-y-auto">
 <div class="container grid px-6 mx-auto">
 
@@ -401,3 +401,4 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 </div>
 </main>
+<!-- end bans.php -->
