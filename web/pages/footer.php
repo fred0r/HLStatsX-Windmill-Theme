@@ -54,8 +54,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		echo 'You are currently viewing the basic version of this page, please enable JavaScript and reload the page to access full functionality.<br />';
 	}
 ?>
-
-
 </div>
 </div>
 <?php
@@ -67,7 +65,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 ?>
 -->
-
 
 <!-- Start footer bar -->
 <div
@@ -92,9 +89,6 @@ For support and installation notes visit http://www.hlxcommunity.com
     </div>
 </div>
 <!-- end footer bar -->
-
-
-
 
 </div>
 
