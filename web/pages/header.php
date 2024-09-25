@@ -558,53 +558,25 @@ if ($game != '') {
                     class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:text-gray-300 dark:border-gray-700 dark:bg-gray-700"
                     aria-label="submenu"
                   >
-
-
-				  <li class="flex">
-                      <a
-                        class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                        href="<?php echo $g_options['scripturl'] ?>?mode=search"
-                      >
-                        <span>Search</span>
-                      </a>
-                    </li>
-
-
 <?php
+
+	display_links("Search", $g_options['scripturl'] . "?mode=search");
+
 	if ($g_options['sourcebans_address']) {
-?>
-				  <li class="flex">
-                      <a
-                        class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                        href="<?php echo $g_options['sourcebans_address'] ?>"
-                      >
-                        <span>SourceBans</span>
-                      </a>
-                    </li>
-<?php
-}
+
+		display_links("SourceBans", $g_options['sourcebans_address']);
+
+	}
                 
 	if ($g_options['forum_address']) {
-?>
-				<li class="flex">
-                      <a
-                        class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                        href="<?php echo $g_options['forum_address'] ?>"
-                      >
-                        <span>Forum</span>
-                      </a>
-                    </li>
-<?php
-}
+
+		display_links("Forum",$g_options['forum_address']);
+
+	}
+
+	display_links("Help", $g_options['scripturl'] . "?mode=help");
+
 ?> 
-				<li class="flex">
-                      <a
-                        class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                        href="<?php echo $g_options['scripturl'] ?>?mode=help"
-                      >
-                        <span>Help</span>
-                      </a>
-                    </li>
                   </ul>
                 </template>
               </li>
