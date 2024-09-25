@@ -98,4 +98,3 @@ You can make an action map-specific by prepending the map name and an underscore
 	<td align="center"><input type="submit" value="  Apply  " class="submit"></td>
 </tr>
 </table>
-
