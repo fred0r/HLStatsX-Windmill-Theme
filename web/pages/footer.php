@@ -44,40 +44,18 @@ For support and installation notes visit http://www.hlxcommunity.com
 	global $scripttime, $db;
 	$scripttime = round(microtime(true) - $scripttime, 4);
 ?>
+<!-- Start footer.php -->
 <!-- 
 <div style="clear:both;"></div>
-<br />
-<br />
-	<div id="footer">
-			<a href="http://www.hlxce.com" target="_blank"><img src="<?php echo IMAGE_PATH; ?>/footer-small.png" alt="HLstatsX Community Edition" border="0" /></a>
-	</div>
 <br />
 <div class="fSmall" style="text-align:center;">
 <?php
 	if (isset($_SESSION['nojs']) && $_SESSION['nojs'] == 1) {
 		echo 'You are currently viewing the basic version of this page, please enable JavaScript and reload the page to access full functionality.<br />';
 	}
-
-	echo 'Generated in real-time by <a href="http://www.hlxce.com" target="_blank">HLstatsX Community Edition '.$g_options['version'].'</a>';
-
-	if ($g_options['showqueries'] == 1) {
-		echo '
-			<br />
-			Executed '.$db->querycount." queries, generated this page in $scripttime Seconds\n";
-	}
 ?>
-<br />
-All images are copyrighted by their respective owners.
 
-<?php
-	echo '<br /><br />[<a href="'.$g_options['scripturl']."?mode=admin\">Admin</a>]";
 
-	if (isset($_SESSION['loggedin'])) {
-
-		echo '&nbsp;[<a href="hlstats.php?logout=1">Logout</a>]';
-
-	}
-?>
 </div>
 </div>
 <?php
@@ -96,17 +74,20 @@ All images are copyrighted by their respective owners.
     class="flex items-center justify-between p-4 mb-4 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800 text-gray-600 dark:text-gray-400">
     <div class="flex items-center">
         <span>
-            <a class="font-semibold" href="https://sbpp.github.io/" target="_blank">SourceBans++</a>
-            Powered by <a class="font-semibold" href="https://www.sourcemod.net" target="_blank">SourceMod</a>
+            <a class="font-semibold" href="https://github.com/startersclan/hlstatsx-community-edition" target="_blank">HLstatsX Community Edition v<?php echo $g_options['version'] ?></a>
+<?php
+	if ($g_options['showqueries'] == 1) {
+		echo 'Stats: '.$db->querycount." queries in $scripttime Secs\n";
+	}
+?>
         </span>
     </div>
     <div class="flex items-center">
         <span align="right">
-            <a class="font-semibold" href="https://github.com/DNA-styx/sbpp-windmill-dashboard" target="_blank">Theme
-                (<?php include "assets/theme_version.txt" ?></a>
+            <a class="font-semibold" href="https://github.com/DNA-styx/hlstatsx-windmill-theme" target="_blank">Theme
+                <?php include "assets/theme_version.txt" ?></a>
                 based on <a class="font-semibold" href="https://github.com/estevanmaito/windmill-dashboard"
-                target="_blank">Windmill</a> with code from <a class="font-semibold" href="https://sbpp.github.io/"
-                target="_blank">SourceBans++</a>
+                target="_blank">Windmill</a>
         </span>
     </div>
 </div>
@@ -114,8 +95,9 @@ All images are copyrighted by their respective owners.
 
 
 
-</div>
+
 </div>
 
 </body>
 </html>
+<!-- end footer.php -->
