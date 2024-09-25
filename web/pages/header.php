@@ -96,7 +96,12 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$iconpath = $iconpath . "/" . $style;
 	}
 	
+
+// include custom windmill functions 
+include 'inc_functions.php';
 ?>
+
+
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 <head>
@@ -373,152 +378,67 @@ For support and installation notes visit http://www.hlxcommunity.com
           </a>
 
 
-<?php		  if ($game != '') { ?>
-
-<ul class="mt-6">
-	<li class="relative px-6 py-3">
-		<a
-		class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-		href="<?php echo $g_options['scripturl']  . "?game=$game";  ?>"
-		>
-		<span class="ml-4">- Servers</span>
-		</a>
-	</li>
-
-<?php
+<?php		  
+if ($game != '') { 
+	
+	echo "<ul class=\"mt-6\">\r\n";
+	
+	display_menu_item("Servers", "?game=$game");
+	
 	if ($g_options['nav_globalchat']==1) {
-?>
-
-<li class="relative px-6 py-3">
-	<a
-	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-	href="<?php echo $g_options['scripturl']  . "?mode=chat&amp;game=$game";  ?>"
-	>
-	<span class="ml-4">- Chat</span>
-	</a>
-</li>
-
-<?php
+		display_menu_item("Chat", "?mode=chat&amp;game=$game");
 	}
-?>
 
-<li class="relative px-6 py-3">
-	<a
-	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-	href="<?php echo $g_options['scripturl'] . "?mode=players&amp;game=$game"; ?>"
-	>
-	<span class="ml-4">- Players</span>
-	</a>
-</li>
+	display_menu_item("Players", "?mode=players&amp;game=$game");
 
-<li class="relative px-6 py-3">
-	<a
-	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-	href="<?php echo $g_options['scripturl'] . "?mode=clans&amp;game=$game"; ?>"
-	>
-	<span class="ml-4">- Clans</span>
-	</a>
-</li>
+	display_menu_item("Clans", "?mode=clans&amp;game=$game");
 
-
-
-<?php
 	if ($g_options["countrydata"]==1) {
-?>
-<li class="relative px-6 py-3">
-	<a
-	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-	href="<?php echo $g_options['scripturl']  . "?mode=countryclans&amp;game=$game&amp;sort=nummembers";  ?>"
-	>
-	<span class="ml-4">- Countries</span>
-	</a>
-</li>
-<?php
+		display_menu_item("Countries", "?mode=countryclans&amp;game=$game&amp;sort=nummembers");
 	}
-?>
 
-<li class="relative px-6 py-3">
-	<a
-	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-	href="<?php echo $g_options['scripturl'] . "?mode=awards&amp;game=$game"; ?>"
-	>
-	<span class="ml-4">- Awards</span>
-	</a>
-</li>
+	display_menu_item("Awards", "?mode=awards&amp;game=$game");
 
-<?php
 	// look for actions
 	$db->query("SELECT game FROM hlstats_Actions WHERE game='".$game."' LIMIT 1");
 	if ($db->num_rows()>0) {
-?> 
 
-<li class="relative px-6 py-3">
-	<a
-	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-	href="<?php echo $g_options['scripturl'] . "?mode=actions&amp;game=$game"; ?>"
-	>
-	<span class="ml-4">- Actions</span>
-	</a>
-</li>
+		display_menu_item("Actions", "?mode=actions&amp;game=$game");
 
-<?php
 	}
-?>
 
-<li class="relative px-6 py-3">
-	<a
-	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-	href="<?php echo $g_options['scripturl'] . "?mode=weapons&amp;game=$game"; ?>"
-	>
-	<span class="ml-4">- Weapons</span>
-	</a>
-</li>
+	display_menu_item("Weapons", "?mode=weapons&amp;game=$game");
 
-<li class="relative px-6 py-3">
-	<a
-	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-	href="<?php echo $g_options['scripturl'] . "?mode=maps&amp;game=$game"; ?>"
-	>
-	<span class="ml-4">- Maps</span>
-	</a>
-</li>
+	display_menu_item("Maps", "?mode=maps&amp;game=$game");
 
-<?php
 	$result = $db->query("SELECT game from hlstats_Roles WHERE game='$game' AND hidden = '0'");
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0) {
-?>
 
-<li class="relative px-6 py-3">
-	<a
-	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-	href="<?php echo $g_options['scripturl'] . "?mode=roles&amp;game=$game"; ?>"
-	>
-	<span class="ml-4">- Roles</span>
-	</a>
-</li>
-
-<?php
+		display_menu_item("Roles", "?mode=roles&amp;game=$game");
 	}
+
 	if ($g_options['nav_cheaters'] == 1) {
-?>
 
-<li class="relative px-6 py-3">
-	<a
-	class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-	href="<?php echo $g_options['scripturl'] . "?mode=bans&amp;game=$game"; ?>"
-	>
-	<span class="ml-4">- Bans</span>
-	</a>
-</li>
-
-<?php
+		display_menu_item("Bans", "?mode=bans&amp;game=$game");
+		
 	} 
 
-?>
-</ul>
+	if (isset($_SESSION['loggedin'])) {
 
-<?php } ?>
+		display_menu_item("Admin Panel", "?mode=admin");
+
+		display_menu_item("Logout", "?hlstats.php?logout=1");
+
+	} else {
+
+		display_menu_item("Admin Login", "?mode=admin");
+
+	}
+
+	echo "</ul>\r\n";
+
+} ?>
 
 <!--
 
@@ -925,7 +845,7 @@ For support and installation notes visit http://www.hlxcommunity.com
                 <input
                   class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
                   type="text"
-                  placeholder="Search for projects"
+                  placeholder="Player Search..."
                   aria-label="Search"
                 />
               </div>
