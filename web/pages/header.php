@@ -211,15 +211,6 @@ include 'inc_functions.php';
 <?php	
 		}
 ?>
-		<div class="headertabs">
-			<ul>
-				<li><a href="<?php echo $g_options['scripturl'] ?>"><img src="<?php echo $iconpath; ?>/title-contents.png" alt="Contents" /></a></li>
-				<li><a href="<?php echo $g_options['scripturl'] ?>?mode=search"><img src="<?php echo $iconpath; ?>/title-search.png" alt="Search" /></a></li>
-				<?php if ($extratabs) { print $extratabs; } ?>				
-				<li><a href="<?php echo $g_options['scripturl'] ?>?mode=help"><img src="<?php echo $iconpath; ?>/title-help.png" alt="Help" /></a></li>
-			</ul>
-
-		</div>
 	</div>
 	<div class="location" style="clear:both;width:100%;">
 		<ul class="fNormal" style="float:left">
@@ -546,7 +537,7 @@ if ($game != '') {
                   </template>
                 </button>
               </li>
-              <!-- Notifications menu -->
+              <!-- Links menu -->
               <li class="relative">
                 <button
                   class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple"
@@ -568,6 +559,15 @@ if ($game != '') {
                     aria-label="submenu"
                   >
 
+
+				  <li class="flex">
+                      <a
+                        class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                        href="<?php echo $g_options['scripturl'] ?>?mode=search"
+                      >
+                        <span>Search</span>
+                      </a>
+                    </li>
 
 
 <?php
@@ -597,6 +597,14 @@ if ($game != '') {
 <?php
 }
 ?> 
+				<li class="flex">
+                      <a
+                        class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                        href="<?php echo $g_options['scripturl'] ?>?mode=help"
+                      >
+                        <span>Help</span>
+                      </a>
+                    </li>
                   </ul>
                 </template>
               </li>
