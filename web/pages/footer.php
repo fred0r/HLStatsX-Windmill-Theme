@@ -66,6 +66,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 ?>
 -->
 
+
 <!-- Start footer bar -->
 <div
     class="flex items-center justify-between p-4 mb-4 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800 text-gray-600 dark:text-gray-400">
@@ -90,6 +91,14 @@ For support and installation notes visit http://www.hlxcommunity.com
 </div>
 <!-- end footer bar -->
 
+<!-- close body divs from header.php -->
+</div>
+</main>
+
+
+
+<!-- below two divs are the first two in header.php -->
+</div>
 </div>
 
 </body>

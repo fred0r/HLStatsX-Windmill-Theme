@@ -287,6 +287,7 @@ include 'inc_functions.php';
 
 
 <!-- start Windmill Header -->
+<!-- this div closes in the footer -->
 <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen}">
@@ -450,7 +451,8 @@ if ($game != '') {
 } ?>
 		</div>
       </aside>
-      <div class="flex flex-col flex-1 w-full">
+      <!-- this div closes in the footer -->
+	  <div class="flex flex-col flex-1 w-full">
         <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
           <div
             class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300"
@@ -558,29 +560,35 @@ if ($game != '') {
                     class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:text-gray-300 dark:border-gray-700 dark:bg-gray-700"
                     aria-label="submenu"
                   >
-<?php
+					<?php
 
-	display_links("Search", $g_options['scripturl'] . "?mode=search");
+						display_links("Search", $g_options['scripturl'] . "?mode=search");
 
-	if ($g_options['sourcebans_address']) {
+						if ($g_options['sourcebans_address']) {
 
-		display_links("SourceBans", $g_options['sourcebans_address']);
+							display_links("SourceBans", $g_options['sourcebans_address']);
 
-	}
-                
-	if ($g_options['forum_address']) {
+						}
+									
+						if ($g_options['forum_address']) {
 
-		display_links("Forum",$g_options['forum_address']);
+							display_links("Forum",$g_options['forum_address']);
 
-	}
+						}
 
-	display_links("Help", $g_options['scripturl'] . "?mode=help");
+						display_links("Help", $g_options['scripturl'] . "?mode=help");
 
-?> 
+					?> 
                   </ul>
                 </template>
               </li>
             </ul>
           </div>
         </header>
+
+<!-- start body divs -->
+<!-- these get closed in footer.php -->
+		<main class="h-full pb-16 overflow-y-auto">
+		<div class="container grid px-6 mx-auto">
+
 <!-- end header.php -->
