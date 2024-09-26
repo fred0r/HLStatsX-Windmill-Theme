@@ -65,8 +65,11 @@ For support and installation notes visit http://www.hlxcommunity.com
 	);
 ?>
 
+<?php display_page_title('Questions'); ?>
+
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+
 <div class="block">
-	<?php printSectionTitle('Questions'); ?>
 	<ol>
 		<li>
 			<a href="#players">How are players tracked? Or, why is my name listed more than once?</a><br />
@@ -321,4 +324,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 			Say <b>/hlx_hideranking</b> while playing on a participating game server. This will toggle you between being visible on the Player Rankings and being invisible.<br /><br />
 			<strong>Note:</strong> You will still be tracked and you can still view your Player Details page. Use the <a href="<?php echo $g_options['scripturl']; ?>?mode=search">Search</a> page to find yourself.
 	</div>
+</div>
+
 </div>
