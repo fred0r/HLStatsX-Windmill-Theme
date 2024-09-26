@@ -78,8 +78,11 @@ For support and installation notes visit http://www.hlxcommunity.com
 // Autocomplete function below implemented by KingJ. Heavy modified to use HTML request instead of JSON.
 ?>
 
+<?php display_page_title('Players'); ?>
+
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+
 <div class="block">
-	<?php printSectionTitle('Player Rankings');	?>
 	<div class="subblock">
 		<div style="float:left;">
 			<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/Observer.js"></script>
@@ -423,4 +426,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 			Go to: <a href="<?php echo $g_options["scripturl"] . "?mode=clans&amp;game=$game"; ?>">Clan Rankings</a>
 		</div>	
 	</div>
+</div>
+
 </div>
