@@ -179,24 +179,25 @@ class Table
 		$numpages = ceil($numitems / $this->numperpage);
 ?>
 
-<div class="subblock" style="text-align:<?php echo $align; ?>;">
+<div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+<div class="w-full overflow-x-auto">
 
-<table class="data-table">
-
-		<tr class="data-table-head">
+<table class="data-table w-full whitespace-no-wrap">
+	<thead>
+		<tr class="data-table-head text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 <?php
 		$totalwidth = 0;
 
 		if ($this->showranking)
 		{
 			$totalwidth += 5;
-			echo "<td style=\"width:5%;text-align=:right;\" class=\"fSmall\">Rank</td>\n";
+			echo "<td style=\"width:5%;text-align=:right;\" class=\"fSmall px-4 py-3\">Rank</td>\n";
 		}
 
 		foreach ($this->columns as $col)
 		{
 			$totalwidth += $col->width;
-			echo "<td style=\"width:$col->width%;text-align:$col->align;\" class=\"fSmall\">";
+			echo "<td style=\"width:$col->width%;text-align:$col->align;\" class=\"fSmall px-4 py-3\">";
 			if ($col->sort != 'no')
 			{
 				echo getSortArrow($this->sort, $this->sortorder, $col->name,
@@ -211,7 +212,8 @@ class Table
 		}
 ?>
 		</tr>
-
+	</thead>
+	<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
 <?php
 		if ($totalwidth != 100)
 		{
@@ -222,14 +224,14 @@ class Table
 
 		while ($rowdata = $db->fetch_array($result))
 		{
-			echo "<tr>\n";
+			echo "			<tr class=\"text-gray-700 dark:text-gray-400\">\n";
 			$i = 0;
 
 			if ($this->showranking)
 			{
 				$c = ($i % 2) + 1;
 				$i++;
-				echo "<td style=\"text-align:right;\" class=\"bg$c\">$rank</td>\n";
+				echo "				<td style=\"text-align:right;\" class=\"bg$c\">$rank</td>\n";
 			}
 
 			foreach ($this->columns as $col)
@@ -406,25 +408,43 @@ class Table
 							. "/t2.gif\" alt=\"".$rowdata['last_skill_change']." Points\" />";
 				}
 				
-				echo "<td$colalign class=\"$class\">"
+				echo "				<td$colalign class=\"$class px-4 py-3\">"
 						. $cellbody
 						. "</td>\n";
 				$i++;
 			}
 
-			echo "</tr>\n\n";
+			echo "			</tr>\n\n";
 
 			$rank++;
 		}
 ?>
-		</table>
-</div><br /><br />
+</tbody>
+</table>
+</div>
+
+
+
+
+
 <?php
 		if ($numpages > 1)
 		{
 ?>
-<div class="subblock" style="text-align:right;">
-	<span style="text-align:right;">
+
+
+<div
+                class="grid px-4 py-3 tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
+              >
+                <span class="flex items-center col-span-3">
+                  Showing 21-30 of 100
+                </span>
+                <span class="col-span-2"></span>
+                <!-- Pagination -->
+                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                  <nav aria-label="Table navigation">
+                    <ul class="inline-flex items-center">
+						<li>
 <?php
 			echo 'Page: ';
 
@@ -468,8 +488,14 @@ class Table
 				}
 			}
 		?>
-	</span>
-</div><br /><br />
+
+</li>
+                    </ul>
+                  </nav>
+                </span>
+              </div>
+
+		</div>
 <?php
 		}
 	}
