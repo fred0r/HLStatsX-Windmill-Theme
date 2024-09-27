@@ -97,15 +97,15 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 ?>
 
-<div class="block">
-	<?php printSectionTitle("$gamename $servername Server Chat Log (Last ".$g_options['DeleteDays'].' Days)'); ?>
-	<div class="subblock">
-		<div style="float:left;">
-			<span>
+<!-- Start chat.php -->
+<?php display_page_title("$gamename $servername Server Chat Log (Last ".$g_options['DeleteDays'].' Days)'); ?>
+
+<div class="flex items-center justify-center p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
+
 			<form method="get" action="<?php echo $g_options['scripturl']; ?>" style="margin:0px;padding:0px;">
 				<input type="hidden" name="mode" value="chat" />
 				<input type="hidden" name="game" value="<?php echo $game; ?>" />
-				<strong>&#8226;</strong> Show Chat from
+				<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Show Chat from
 				<?php
 /*
 					$result = $db->query
@@ -148,7 +148,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 							50
 					");
 
-					echo '<select name="server_id"><option value="0">All Servers</option>';
+					echo '</span>';
+					echo '<select class="mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" name="server_id"><option value="0">All Servers</option>';
 					$dates = array ();
 					$serverids = array();
 					while ($rowdata = $db->fetch_array())
@@ -163,14 +164,15 @@ For support and installation notes visit http://www.hlxcommunity.com
 					echo '</select>';
 					$filter=isset($_REQUEST['filter'])?$_REQUEST['filter']:"";
 				?>
-				Filter: <input type="text" name="filter" value="<?php echo htmlentities($filter); ?>" /> 
-				<input type="submit" value="View" class="smallsubmit" />
+				Filter: <input type="text" name="filter" value="<?php echo htmlentities($filter); ?>" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" /> 
+				<input type="submit" value="View" class="windmill-button px-4 py-2 mt-4 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
 			</form>
-			</span>
 		</div>
-	</div>
-	<div style="clear:both;padding-top:20px;"></div>
-		<?php
+
+	
+<!-- start table -->		
+
+	<?php
 			if ($showserver == 0)
 			{
 				$table = new Table(
@@ -327,10 +329,17 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$db->free_result();	
 
 			$table->draw($result, $numitems, 95);
-		?><br /><br />
+		?>
+
+<!-- end table -->
+		
+		
+		<br /><br />
 	<div class="subblock">
 		<div style="float:right;">
 			Go to: <a href="<?php echo $g_options["scripturl"] . "?game=$game"; ?>"><?php echo $gamename; ?></a>
 		</div>
 	</div>
 </div>
+
+<!-- end chat.php -->
