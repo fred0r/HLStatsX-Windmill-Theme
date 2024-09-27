@@ -17,9 +17,8 @@ function display_links($name, $link){
     echo "                      <li class=\"flex\">\r\n";
     echo "                          <a\r\n";
     echo "                              class=\"inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200\"\r\n";
-    echo "                              href=\"" . $link . "\"\r\n";
-    echo "                          >\r\n";
-    echo "                             <span>" . $name ."</span>\r\n";
+    echo "                              href=\"" . $link . "\">\r\n";
+    echo "                                  <span>" . $name ."</span>\r\n";
     echo "                          </a>\r\n";
     echo "                      </li>\r\n";
 }
