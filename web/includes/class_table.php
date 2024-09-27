@@ -141,13 +141,13 @@ class Table
 		if ($this->showranking)
 		{
 			$totalwidth += 5;
-			echo "<td style=\"width:5%;text-align:right;\" class=\"fSmall\">Rank</td>\n";
+			echo "<td style=\"width:5%;text-align:right;\" class=\"text-xs\">Rank</td>\n";
 		}
 
 		foreach ($this->columns as $col)
 		{
 			$totalwidth += $col->width;
-			echo "<td style=\"width:$col->width%;text-align:$col->align;\" class=\"fSmall\">";
+			echo "<td style=\"width:$col->width%;text-align:$col->align;\" class=\"text-xs\">";
 			if ($col->sort != 'no')
 			{
 				echo getSortArrow($this->sort, $this->sortorder, $col->name,
@@ -184,20 +184,20 @@ class Table
 
 <table class="data-table w-full whitespace-no-wrap">
 	<thead>
-		<tr class="data-table-head text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+		<tr class="data-table-head text-xxs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 <?php
 		$totalwidth = 0;
 
 		if ($this->showranking)
 		{
 			$totalwidth += 5;
-			echo "<td style=\"width:5%;text-align=:right;\" class=\"fSmall px-4 py-3\">Rank</td>\n";
+			echo "<td style=\"text-align=:right;\" class=\"text-xs px-4 py-3\">Rank</td>\n";
 		}
 
 		foreach ($this->columns as $col)
 		{
 			$totalwidth += $col->width;
-			echo "<td style=\"width:$col->width%;text-align:$col->align;\" class=\"fSmall px-4 py-3\">";
+			echo "<td style=\"width:$col->width%;text-align:$col->align;\" class=\"text-xs px-4 py-3\">";
 			if ($col->sort != 'no')
 			{
 				echo getSortArrow($this->sort, $this->sortorder, $col->name,

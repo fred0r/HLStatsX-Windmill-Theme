@@ -164,7 +164,10 @@ For support and installation notes visit http://www.hlxcommunity.com
 					echo '</select>';
 					$filter=isset($_REQUEST['filter'])?$_REQUEST['filter']:"";
 				?>
-				Filter: <input type="text" name="filter" value="<?php echo htmlentities($filter); ?>" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" /> 
+				<span class="font-semibold text-center text-gray-700 dark:text-gray-400">
+				Filter:
+				</span>
+				<input type="text" name="filter" value="<?php echo htmlentities($filter); ?>" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" /> 
 				<input type="submit" value="View" class="windmill-button px-4 py-2 mt-4 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
 			</form>
 		</div>
@@ -182,31 +185,31 @@ For support and installation notes visit http://www.hlxcommunity.com
 						(
 							'eventTime',
 							'Date',
-							'width=16'
+							''
 						),
 						new TableColumn
 						(
 							'lastName',
 							'Player',
-							'width=17&sort=no&flag=1&link=' . urlencode('mode=playerinfo&amp;player=%k')
+							'sort=no&flag=1&link=' . urlencode('mode=playerinfo&amp;player=%k')
 						),
 						new TableColumn
 						(
 							'message',
 							'Message',
-							'width=34&sort=no&embedlink=yes'
+							'sort=no&embedlink=yes'
 						),
 						new TableColumn
 						(
 							'serverName',
 							'Server',
-							'width=23&sort=no'
+							'sort=no'
 						),
 						new TableColumn
 						(
 							'map',
 							'Map',
-							'width=10&sort=no'
+							'sort=no'
 						)
 					),
 					'playerId',
@@ -228,25 +231,25 @@ For support and installation notes visit http://www.hlxcommunity.com
 						(
 							'eventTime',
 							'Date',
-							'width=16'
+							''
 						),
 						new TableColumn
 						(
 							'lastName',
 							'Player',
-							'width=24&sort=no&flag=1&link=' . urlencode('mode=playerinfo&amp;player=%k')
+							'sort=no&flag=1&link=' . urlencode('mode=playerinfo&amp;player=%k')
 						),
 						new TableColumn
 						(
 							'message',
 							'Message',
-							'width=44&sort=no&embedlink=yes'
+							'sort=no&embedlink=yes'
 						),
 						new TableColumn
 						(
 							'map',
 							'Map',
-							'width=16&sort=no'
+							'sort=no'
 						)
 					),
 					'playerId',
@@ -340,6 +343,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 			Go to: <a href="<?php echo $g_options["scripturl"] . "?game=$game"; ?>"><?php echo $gamename; ?></a>
 		</div>
 	</div>
-</div>
+
 
 <!-- end chat.php -->
