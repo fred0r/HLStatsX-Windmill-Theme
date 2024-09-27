@@ -119,8 +119,8 @@ include 'inc_functions.php';
       defer
     ></script>
     <script src="./assets/js/init-alpine.js"></script>
-
-
+	<link rel="stylesheet" type="text/css" href="./assets/css/windmill.css" />
+	<link rel="stylesheet" type="text/css" href="./assets/css/windmill-purple.css" />
 <!-- 
 	<link rel="stylesheet" type="text/css" href="hlstats.css" />
 	<link rel="stylesheet" type="text/css" href="styles/<?php echo $selectedStyle; ?>" />
@@ -134,7 +134,8 @@ include 'inc_functions.php';
 		echo "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"css/Autocompleter.css\" />\n";
 	}
 ?>
-	<link rel="SHORTCUT ICON" href="favicon.ico" />
+
+<link rel="SHORTCUT ICON" href="favicon.ico" />
 	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/mootools.js"></script>
 	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/SqueezeBox.js"></script>
 	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/heatmap.js"></script>
