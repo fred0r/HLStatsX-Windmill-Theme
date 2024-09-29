@@ -297,7 +297,7 @@ function getSortArrow($sort, $sortorder, $name, $longname, $var_sort = 'sort', $
 	if ($sort == $name)
 	{
 		$arrowstring .= '&nbsp;<img src="' . IMAGE_PATH . "/$sortimg\"" .
-			" style=\"padding-left:4px;padding-right:4px;\" alt=\"$sortimg\" />";
+			" style=\"float:left;\" alt=\"$sortimg\" />";
 	}
 
 
