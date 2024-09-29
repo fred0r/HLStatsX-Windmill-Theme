@@ -184,20 +184,22 @@ class Table
 
 <table class="data-table w-full whitespace-no-wrap">
 	<thead>
-		<tr class="data-table-head text-xxs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+		<tr class="data-table-head text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 <?php
 		$totalwidth = 0;
 
 		if ($this->showranking)
 		{
 			$totalwidth += 5;
-			echo "<td style=\"text-align=:right;\" class=\"text-xs px-4 py-3\">Rank</td>\n";
+			echo "		<td style=\"text-align=:right;\">Rank</td>\n";
 		}
 
 		foreach ($this->columns as $col)
 		{
 			$totalwidth += $col->width;
-			echo "<td style=\"width:$col->width%;text-align:$col->align;\" class=\"text-xs px-4 py-3\">";
+			// disable width
+			// echo "<td style=\"width:$col->width%;text-align:$col->align;\" class=\"text-xs px-4 py-3\">";
+			echo "			<td style=\"text-align:$col->align;\">";
 			if ($col->sort != 'no')
 			{
 				echo getSortArrow($this->sort, $this->sortorder, $col->name,
@@ -224,14 +226,14 @@ class Table
 
 		while ($rowdata = $db->fetch_array($result))
 		{
-			echo "			<tr class=\"text-gray-700 dark:text-gray-400\">\n";
+			echo "			<tr class=\"text-xs text-gray-700 dark:text-gray-400\">\n";
 			$i = 0;
 
 			if ($this->showranking)
 			{
 				$c = ($i % 2) + 1;
 				$i++;
-				echo "				<td style=\"text-align:right;\" class=\"bg$c\">$rank</td>\n";
+				echo "				<td style=\"text-xs text-align:right;\" class=\"bg$c\">$rank</td>\n";
 			}
 
 			foreach ($this->columns as $col)
@@ -278,7 +280,7 @@ class Table
 					$image = getImage("/$col->icon");
 					if ($image)
 					{
-						$cellbody .= '<img src="'.$image['url']. "\" class=\"tableicon\" alt=\"$col->icon\" />";
+						$cellbody .= '<img src="'.$image['url']. "\" class=\"tableicon\" style=\"float:left;\" alt=\"$col->icon\" />";
 					}
 				}
 				elseif ($col->flag)
@@ -292,12 +294,12 @@ class Table
 							$alt_text        = ucfirst(strtolower($rowdata['country']));
 						}
 
-						$cellbody .= '<img src="' . getFlag($rowdata['flag'])."\" class=\"tableicon\" alt=\"$alt_text\" title=\"$alt_text\" />";
+						$cellbody .= '<img src="' . getFlag($rowdata['flag'])."\" class=\"tableicon\" style=\"float:left;\" alt=\"$alt_text\" title=\"$alt_text\" />";
 					}
 					else
 					{
 						$col->flag = 'player';
-						$cellbody .= '<img src="' . IMAGE_PATH 	. "/$col->flag.gif\" class=\"tableicon\" alt=\"$col->icon.gif\" />";
+						$cellbody .= '<img src="' . IMAGE_PATH 	. "/$col->flag.gif\" class=\"tableicon\" style=\"float:left;\" alt=\"$col->icon.gif\" />";
 					}                
 				}  
 				
@@ -408,7 +410,7 @@ class Table
 							. "/t2.gif\" alt=\"".$rowdata['last_skill_change']." Points\" />";
 				}
 				
-				echo "				<td$colalign class=\"$class px-4 py-3\">"
+				echo "				<td$colalign class=\"$class\">"
 						. $cellbody
 						. "</td>\n";
 				$i++;
@@ -434,7 +436,7 @@ class Table
 
 
 <div
-                class="grid px-4 py-3 tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
+                class="grid tracking-wide text-xs text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
               >
                 <span class="flex items-center col-span-3">
                   Showing 21-30 of 100
@@ -472,7 +474,7 @@ class Table
 			{
 				if ($i == $this->page)
 				{
-					echo "<b>$i</b> ";
+					echo "<b>>$i<</b> ";
 				}
 				else
 				{
