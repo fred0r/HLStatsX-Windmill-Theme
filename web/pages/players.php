@@ -100,16 +100,19 @@ For support and installation notes visit http://www.hlxcommunity.com
 				<input type="hidden" name="mode" value="search" />
 				<input type="hidden" name="game" value="<?php echo $game; ?>" />
 				<input type="hidden" name="st" value="player" />
-				<strong>&#8226;</strong> Find a player:
-				<input type="text" name="q" size="20" maxlength="64" class="textbox" id="playersearch" />
-				<input type="submit" value="Search" class="smallsubmit" />
+				<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Find a player: </span>
+				<input type="text" name="q" size="20" maxlength="64" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" id="playersearch" />
+				<input type="submit" value="Search" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
 			</form>
 		</div>
+
+
+
 		<div style="float:right;">
 			<form method="get" action="<?php echo $g_options['scripturl']; ?>" style="margin:0px;padding:0px;">
 				<input type="hidden" name="mode" value="players" />
 				<input type="hidden" name="game" value="<?php echo $game; ?>" />
-				<strong>&#8226;</strong> Ranking View
+				<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Ranking View </span>
 				<?php
 					$result = $db->query
 					("
@@ -125,26 +128,26 @@ For support and installation notes visit http://www.hlxcommunity.com
 							0,
 							50
 					");
-					echo '<select name="rank_type"><option value="0">Total Ranking</option>';
-					echo '<option value="-1">Last Week</option>';
-					echo '<option value="-2">Last Month</option>';
+					echo '<select name="rank_type" class="mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">';
+					echo '	<option value="0">Total Ranking</option>';
+					echo '	<option value="-1">Last Week</option>';
+					echo '	<option value="-2">Last Month</option>';
 					$i = 1;
 					$dates = array ();
 					while ($rowdata = $db->fetch_array())
 					{
 						$dates[] = $rowdata; 
 						if ($rank_type == $i) 
-							echo '<option value="'.$i.'" selected>'.$rowdata['eventTime'].'</option>';
+							echo '	<option value="'.$i.'" selected>'.$rowdata['eventTime'].'</option>';
 						else
-							echo '<option value="'.$i.'">'.$rowdata['eventTime'].'</option>';
+							echo '	<option value="'.$i.'">'.$rowdata['eventTime'].'</option>';
 						$i++;
 					}
 					echo '</select>';
 				?>
-				<input type="submit" value="View" class="smallsubmit" />
+				<input type="submit" value="View" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
 			</form>
 		</div>
-		<div style="clear:both;"></div><br /><br />
 	</div>
 	<?php
 		if ($g_options['rankingtype']!='kills')

@@ -26,7 +26,7 @@ function display_links($name, $link){
 function display_page_title($title){
 
     echo "              <div\r\n";
-    echo "                      class=\"flex items-center justify-between p-4 mt-8 mb-8 text-xl font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple\"\r\n";
+    echo "                      class=\"flex items-center justify-between p-4 mt-8 mb-8 text-l font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple\"\r\n";
     echo "                >\r\n";
     echo "                  " . $title . "\r\n" ;
     echo "              </div>\r\n";
