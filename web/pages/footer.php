@@ -85,7 +85,7 @@ For support and installation notes visit http://www.hlxcommunity.com
             <a class="font-semibold" href="https://github.com/DNA-styx/hlstatsx-windmill-theme" target="_blank">Theme
                 <?php 
                 $theme_version = file_get_contents("assets/theme_version.txt");
-                echo str_replace("**", "", $theme_version);
+                echo str_replace(" ", "",str_replace("**", "", $theme_version));
                 ?></a>
                 based on <a class="font-semibold" href="https://github.com/estevanmaito/windmill-dashboard"
                 target="_blank">Windmill</a>
