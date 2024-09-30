@@ -430,12 +430,11 @@ class Table
 
 
 <?php
+		/* Display table footer */
 		if ($numpages > 1)
 		{
 ?>
-
-
-<div
+			<div
                 class="grid tracking-wide text-xs text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
               >
                 <span class="flex items-center col-span-3">
@@ -491,7 +490,7 @@ class Table
 			}
 		?>
 
-</li>
+					</li>
                     </ul>
                   </nav>
                 </span>
@@ -499,7 +498,12 @@ class Table
 
 		</div>
 <?php
+		} else {
+		/* Display empty footer */
+		echo "		<div class=\"border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">&nbsp;</div>";
+
 		}
+
 	}
 
 	function _echoPageNumber ($number, $label, $prefix='', $postfix='')
