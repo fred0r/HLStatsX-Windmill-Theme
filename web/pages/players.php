@@ -77,79 +77,76 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 // Autocomplete function below implemented by KingJ. Heavy modified to use HTML request instead of JSON.
 ?>
-
+<!-- start players.php -->
 <?php display_page_title('Players'); ?>
 
-<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+<div class="flex items-center justify-between p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
-<div class="block">
-	<div class="subblock">
-		<div style="float:left;">
-			<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/Observer.js"></script>
-			<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/Autocompleter.js"></script>
-			<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/Autocompleter.Request.js"></script>
-			<script type="text/javascript">
-				document.addEvent('domready', function() {
-					new Autocompleter.Request.HTML('playersearch', 'autocomplete.php?game=<?php echo $game; ?>', {
-						'indicatorClass': 'autocompleter-loading'
-					});
+	<div class="flex items-center">
+		<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/Observer.js"></script>
+		<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/Autocompleter.js"></script>
+		<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/Autocompleter.Request.js"></script>
+		<script type="text/javascript">
+			document.addEvent('domready', function() {
+				new Autocompleter.Request.HTML('playersearch', 'autocomplete.php?game=<?php echo $game; ?>', {
+					'indicatorClass': 'autocompleter-loading'
 				});
-			</script>
+			});
+		</script>
 
-			<form method="get" action="<?php echo $g_options['scripturl']; ?>" style="margin:0px;padding:0px;">
-				<input type="hidden" name="mode" value="search" />
-				<input type="hidden" name="game" value="<?php echo $game; ?>" />
-				<input type="hidden" name="st" value="player" />
-				<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Find a player: </span>
-				<input type="text" name="q" size="20" maxlength="64" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" id="playersearch" />
-				<input type="submit" value="Search" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
-			</form>
-		</div>
-
-
-
-		<div style="float:right;">
-			<form method="get" action="<?php echo $g_options['scripturl']; ?>" style="margin:0px;padding:0px;">
-				<input type="hidden" name="mode" value="players" />
-				<input type="hidden" name="game" value="<?php echo $game; ?>" />
-				<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Ranking View </span>
-				<?php
-					$result = $db->query
-					("
-						SELECT
-							hlstats_Players_History.eventTime
-						FROM
-							hlstats_Players_History
-						GROUP BY
-							hlstats_Players_History.eventTime
-						ORDER BY
-							hlstats_Players_History.eventTime DESC
-						LIMIT
-							0,
-							50
-					");
-					echo '<select name="rank_type" class="mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">';
-					echo '	<option value="0">Total Ranking</option>';
-					echo '	<option value="-1">Last Week</option>';
-					echo '	<option value="-2">Last Month</option>';
-					$i = 1;
-					$dates = array ();
-					while ($rowdata = $db->fetch_array())
-					{
-						$dates[] = $rowdata; 
-						if ($rank_type == $i) 
-							echo '	<option value="'.$i.'" selected>'.$rowdata['eventTime'].'</option>';
-						else
-							echo '	<option value="'.$i.'">'.$rowdata['eventTime'].'</option>';
-						$i++;
-					}
-					echo '</select>';
-				?>
-				<input type="submit" value="View" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
-			</form>
-		</div>
+		<form method="get" action="<?php echo $g_options['scripturl']; ?>">
+			<input type="hidden" name="mode" value="search">
+			<input type="hidden" name="game" value="<?php echo $game; ?>">
+			<input type="hidden" name="st" value="player">
+			<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Find a player: </span>
+			<input type="text" name="q" size="20" maxlength="64" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" id="playersearch" />
+			<input type="submit" value="Search" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
+		</form>
 	</div>
-	<?php
+	<div class="flex items-center">
+		<form method="get" action="<?php echo $g_options['scripturl']; ?>" style="margin:0px;padding:0px;">
+			<input type="hidden" name="mode" value="players" />
+			<input type="hidden" name="game" value="<?php echo $game; ?>" />
+			<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Ranking View </span>
+			<?php
+				$result = $db->query
+				("
+					SELECT
+						hlstats_Players_History.eventTime
+					FROM
+						hlstats_Players_History
+					GROUP BY
+						hlstats_Players_History.eventTime
+					ORDER BY
+						hlstats_Players_History.eventTime DESC
+					LIMIT
+						0,
+						50
+				");
+				echo '<select name="rank_type" class="mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">';
+				echo '	<option value="0">Total Ranking</option>';
+				echo '	<option value="-1">Last Week</option>';
+				echo '	<option value="-2">Last Month</option>';
+				$i = 1;
+				$dates = array ();
+				while ($rowdata = $db->fetch_array())
+				{
+					$dates[] = $rowdata; 
+					if ($rank_type == $i) 
+						echo '	<option value="'.$i.'" selected>'.$rowdata['eventTime'].'</option>';
+					else
+						echo '	<option value="'.$i.'">'.$rowdata['eventTime'].'</option>';
+					$i++;
+				}
+				echo '</select>';
+			?>
+			<input type="submit" value="View" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
+		</form>
+	</div>
+</div>
+
+<!-- Start Table -->
+<?php
 		if ($g_options['rankingtype']!='kills')
 		{
 			$table = new Table
@@ -407,7 +404,10 @@ For support and installation notes visit http://www.hlxcommunity.com
 			list($numitems) = $db->fetch_row($resultCount);
 		}
 		$table->draw($result, $numitems, 95);
-	?><br /><br />
+	?>
+<!-- end table -->
+<!--	
+	<br /><br />
 	<div class="subblock">
 		<div style="float:left;">
 			<form method="get" action="<?php echo $g_options['scripturl']; ?>">
@@ -428,7 +428,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 		<div style="float:right;">
 			Go to: <a href="<?php echo $g_options["scripturl"] . "?mode=clans&amp;game=$game"; ?>">Clan Rankings</a>
 		</div>	
-	</div>
-</div>
 
+	</div>
+-->
 </div>
+<!-- end players.php -->
