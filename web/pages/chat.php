@@ -100,7 +100,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 <!-- Start chat.php -->
 <?php display_page_title("$gamename $servername Server Chat Log (Last ".$g_options['DeleteDays'].' Days)'); ?>
 
-<div class="flex items-center justify-center p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
+	<div class="flex items-center justify-center p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
 			<form method="get" action="<?php echo $g_options['scripturl']; ?>">
 				<input type="hidden" name="mode" value="chat" />
@@ -336,13 +336,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 <!-- end table -->
 		
-		
+<!--		
 		<br /><br />
 	<div class="subblock">
 		<div style="float:right;">
 			Go to: <a href="<?php echo $g_options["scripturl"] . "?game=$game"; ?>"><?php echo $gamename; ?></a>
 		</div>
 	</div>
-
+-->
 
 <!-- end chat.php -->
