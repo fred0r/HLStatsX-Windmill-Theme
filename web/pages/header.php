@@ -127,7 +127,7 @@ include 'inc_functions.php';
 	<link rel="stylesheet" type="text/css" href="css/SqueezeBox.css" />
 -->
 	<!-- U R A SMACKHEAD -->
-<!--
+
 <?php
 	if ($mode == 'players')
 	{
@@ -136,9 +136,11 @@ include 'inc_functions.php';
 ?>
 
 <link rel="SHORTCUT ICON" href="favicon.ico" />
-	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/mootools.js"></script>
+<!--
 	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/SqueezeBox.js"></script>
 	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/heatmap.js"></script>
+	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/mootools.js"></script>
+
 <?php
 	if ($g_options['playerinfo_tabs'] == '1') {
 ?>
@@ -147,7 +149,7 @@ include 'inc_functions.php';
 	}
 ?>
 -->
-	<title>DEV 
+<title>DEV 
 <?php
 	echo $g_options['sitename']; 
 	foreach ($title as $t)
