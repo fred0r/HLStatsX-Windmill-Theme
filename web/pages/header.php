@@ -395,7 +395,7 @@ if ($game != '') {
 if ($game != '') { 
 	
 	echo "		<ul class=\"mt-6\">\r\n";
-	
+
 	display_menu_item("Servers", "?game=$game");
 	
 	if ($g_options['nav_globalchat']==1) {
@@ -481,30 +481,12 @@ if ($game != '') {
             </button>
             <!-- Search input -->
             <div class="flex justify-center flex-1 lg:mr-32">
-              <div
-                class="relative w-full max-w-xl mr-6 focus-within:text-purple-500"
-              >
-                <div class="absolute inset-y-0 flex items-center pl-2">
-                  <svg
-                    class="w-4 h-4"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
-                  type="text"
-                  placeholder="Player Search..."
-                  aria-label="Search"
-                />
-              </div>
+
+
+
+
+
+
             </div>
             <ul class="flex items-center flex-shrink-0 space-x-6">
               <!-- Theme toggler -->
@@ -542,7 +524,52 @@ if ($game != '') {
                   </template>
                 </button>
               </li>
-              <!-- Links menu -->
+
+<?php
+		// Grab count of active games -- if 1, we won't show the games list icons
+		$resultGames = $db->query("
+			SELECT
+				COUNT(code)
+			FROM
+				hlstats_Games
+			WHERE
+				hidden='0'
+		");
+		
+		list($num_games) = $db->fetch_row($resultGames);
+		
+		if ($num_games > 1 && $g_options['display_gamelist'] == 1) {
+?>
+              <!-- Games menu -->
+              <li class="relative">
+                <button
+                  class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
+                  @click="toggleProfileMenu"
+                  @keydown.escape="closeProfileMenu"
+                  aria-label="Account"
+                  aria-haspopup="true"
+                >
+                  Games
+                </button>
+                <template x-if="isProfileMenuOpen">
+                  <ul
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    @click.away="closeProfileMenu"
+                    @keydown.escape="closeProfileMenu"
+                    class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
+                    aria-label="submenu"
+                  >
+<?php @include(PAGE_PATH .'/gameslist.php'); ?>
+                  </ul>
+                </template>
+              </li>
+<?php	
+		}
+?>
+
+			  <!-- Links menu -->
               <li class="relative">
                 <button
                   class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple"

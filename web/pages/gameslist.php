@@ -55,7 +55,6 @@ global $game;
 	");
 
 	?>
-<ul id="header_gameslist">
 <?php        
 		// Iterate over array of game names and codes
 		while ($gamedata = $db->fetch_row($resultGames))
@@ -67,11 +66,14 @@ global $game;
 				} else {
 					$img_id = '';
 				}
-				echo "\t\t\t<li>\n";
-				echo "\t\t\t\t<a href=\"" . $g_options['scripturl'] . "?game=$gamedata[0]\">" . 
-						"<img src=\"" .$image['url'] ."\" style=\"margin-left: 2px; margin-right: 2px;\" alt=\"" . strtoupper($gamedata[0]) ."\" title=\"" . $gamedata[1] ."\" $img_id /></a>";
-				echo "\n\t\t\t</li>\n";
+				echo "				<li class=\"flex\">\n";
+				echo "					<a\n";
+				echo "						class=\"inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200\"\n";
+				echo "						href=\"" . $g_options['scripturl'] . "?game=$gamedata[0]\">\n";
+				echo "							<img class=\"w-6 h-6 mr-3\" src=\"" .$image['url'] ."\" alt=\"" . strtoupper($gamedata[0]) ."\" title=\"" . $gamedata[1] ."\" $img_id />\n";
+				echo "							<span>" . $gamedata[1] . "</span>\n";
+				echo "					</a>\n";
+			  	echo "				</li>\n";
 			}
 		}
 ?>
-		</ul>
