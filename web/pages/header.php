@@ -288,8 +288,6 @@ include 'inc_functions.php';
 */
 ?>        
 
-
-
 <!-- start Windmill Header -->
 <!-- this div closes in the footer -->
 <div
@@ -300,7 +298,6 @@ include 'inc_functions.php';
         class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block">
         <div class="py-4 text-gray-500 dark:text-gray-400">
           <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="/"><?php echo $g_options['sitename']; ?></a>
-
 
 <?php		  
 if ($game != '') { 
@@ -361,7 +358,6 @@ if ($game != '') {
 	}
 
 	echo "		</ul>\r\n";
-
 } ?>
         </div>
       </aside>
