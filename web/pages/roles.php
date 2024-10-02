@@ -192,7 +192,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$tblRoles->sort2 $tblRoles->sortorder
 	");
 ?>
+<!-- start roles.php -->
+<?php display_page_title('Role Statistics'); ?>
 
+<?php $tblRoles->draw($result, $db->num_rows($result), 95); ?>
+
+<?php
+/*
 <div class="block">
 	<?php printSectionTitle('Role Statistics'); ?>
 	<div class="subblock">
@@ -206,3 +212,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</div>
 	</div>
 </div>
+*/
+?>
+<!-- end roles.php -->

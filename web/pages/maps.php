@@ -161,6 +161,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 ?>
 
+<!-- start maps.php -->
+<?php display_page_title('Map Statistics'); ?>
+
+<?php $tblMaps->draw($result, $db->num_rows($result), 95); ?>
+
+<?php
+/*
 <div class="block">
 	<?php printSectionTitle('Map Statistics'); ?>
 	<div class="subblock">
@@ -177,3 +184,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</div>
 	</div>
 </div>
+*/
+?>
+<!-- end maps.php -->
