@@ -160,9 +160,9 @@ include 'inc_functions.php';
 	</title>
 </head>
 <body> 
-<!--
 <?php
-	//JS Check
+/*
+//JS Check
 
 	if (isset($_POST['js']) && $_POST['js']) {
 		$_SESSION['nojs'] = 0;
@@ -285,8 +285,9 @@ include 'inc_functions.php';
 	</div>
 <?php
 	}
+*/
 ?>        
--->
+
 
 
 <!-- start Windmill Header -->
