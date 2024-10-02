@@ -186,7 +186,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 			AND COUNT(hlstats_Players.playerId) >= $minmembers
 	");
 ?>
+<!-- start country clans --> 
+<?php display_page_title('Players'); ?>
 
+<?php $table->draw($result, $db->num_rows($resultCount), 95); ?>
+
+<?php 
+/*
 <div class="block">
 <?php
 	printSectionTitle('Country Rankings');
@@ -230,3 +236,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		<div style="clear:both;"></div>
 	</div>
 </div>
+*/
+?>
+<!-- end country clans --> 
