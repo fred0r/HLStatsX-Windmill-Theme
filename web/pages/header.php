@@ -495,11 +495,10 @@ WHERE
 
 if ($db->num_rows() < 1) {
 	$gamename = "All";
+} else {
+	list($gamename) = $db->fetch_row();
+	echo "<a href=\"./hlstats.php?game=$game\">Viewing: " . $gamename . "</a>";
 }
-
-list($gamename) = $db->fetch_row();
-
-echo "Viewing: " . $gamename ;
 
 ?>
             </div>
