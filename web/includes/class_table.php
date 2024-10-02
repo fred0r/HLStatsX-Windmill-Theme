@@ -280,7 +280,7 @@ class Table
 					$image = getImage("/$col->icon");
 					if ($image)
 					{
-						$cellbody .= '<img src="'.$image['url']. "\" class=\"tableicon\" style=\"float:left;\" alt=\"$col->icon\" />";
+						$cellbody .= '<img src="'.$image['url']. "\" class=\"tableicon\" style=\"float:left;\" alt=\"$col->icon\">";
 					}
 				}
 				elseif ($col->flag)
@@ -294,12 +294,12 @@ class Table
 							$alt_text        = ucfirst(strtolower($rowdata['country']));
 						}
 
-						$cellbody .= '<img src="' . getFlag($rowdata['flag'])."\" class=\"tableicon\" style=\"float:left;\" alt=\"$alt_text\" title=\"$alt_text\" />";
+						$cellbody .= '<img src="' . getFlag($rowdata['flag'])."\" class=\"tableicon\" style=\"float:left;\" alt=\"$alt_text\" title=\"$alt_text\">";
 					}
 					else
 					{
 						$col->flag = 'player';
-						$cellbody .= '<img src="' . IMAGE_PATH 	. "/$col->flag.gif\" class=\"tableicon\" style=\"float:left;\" alt=\"$col->icon.gif\" />";
+						$cellbody .= '<img src="' . IMAGE_PATH 	. "/$col->flag.gif\" class=\"tableicon\" style=\"float:left;\" alt=\"$col->icon.gif\">";
 					}                
 				}  
 				
@@ -309,7 +309,7 @@ class Table
                               $colval = '0';
                         }
 
-						$cellbody = '<img src="' . IMAGE_PATH  . "/mmranks/" . $colval . ".png\" class=\"tableicon\" alt=\"elorank\" style=\"height:20px;width:50px;\" />";
+						$cellbody = '<img src="' . IMAGE_PATH  . "/mmranks/" . $colval . ".png\" class=\"tableicon\" alt=\"elorank\" style=\"height:20px;width:50px;\">";
 						break;
 					case 'timestamp':
 						$cellbody  = timestamp_to_str($colval);
@@ -320,11 +320,11 @@ class Table
 						// check if image exists for game -- otherwise check realgame
 						if ($image)
 						{
-							$cellbody .= '<img src="' . $image['url'] . '" alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '" />&nbsp;';
+							$cellbody .= '<img src="' . $image['url'] . '" alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '">&nbsp;';
 						}
 						elseif ($image = getImage("/games/$realgame/roles/" . $colval_lower))
 						{
-							$cellbody .= '<img src="' . $image['url'] . '" alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '" />&nbsp;';
+							$cellbody .= '<img src="' . $image['url'] . '" alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '">&nbsp;';
 						}
 						
 						if (!empty($col->fname[$colval_lower]))
@@ -343,11 +343,11 @@ class Table
 						$image = getImage("/games/$realgame/weapons/" . $colval_lower);
 						if ($image)
 						{
-							$cellbody .= '<img src="' . $image['url'] . '" ' . $image['size'] . ' alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '" />';
+							$cellbody .= '<img src="' . $image['url'] . '" ' . $image['size'] . ' alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '">';
 						}
 						elseif ($image = getImage("/games/$realgame/weapons/" . $colval_lower))
 						{
-							$cellbody .= '<img src="' . $image['url'] . '" ' . $image['size'] . ' alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '" />';
+							$cellbody .= '<img src="' . $image['url'] . '" ' . $image['size'] . ' alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '">';
 						}
 						else
 						{
@@ -363,7 +363,7 @@ class Table
 						$heatmapthumb = getImage("/games/$game/heatmaps/$colval-kill-thumb");
 
 						if ($heatmap) {
-							$cellbody .= "<span style=\"text-align: center;\"><a href=\"" . $heatmap['url'] . "\" rel=\"boxed\"><img width=\"20\" height=\"16\" src=\"" . $heatmapthumb['url'] . "\" /></a></span>";
+							$cellbody .= "<span style=\"text-align: center;\"><a href=\"" . $heatmap['url'] . "\" rel=\"boxed\"><img width=\"20\" height=\"16\" src=\"" . $heatmapthumb['url'] . "\"></a></span>";
 						} else {
 							$cellbody .= "&nbsp;";
 						}
@@ -401,13 +401,13 @@ class Table
 						$rowdata['last_skill_change'] = 0;
 					if ($rowdata['last_skill_change'] == 0)
 						$cellbody .= "&nbsp;<img src=\"" . IMAGE_PATH
-							. "/t1.gif\" alt=\"".$rowdata['last_skill_change']." Points\" />";
+							. "/t1.gif\" alt=\"".$rowdata['last_skill_change']." Points\">";
 					elseif ($rowdata['last_skill_change'] > 0)
 						$cellbody .= "&nbsp;<img src=\"" . IMAGE_PATH
-							. "/t0.gif\" alt=\"".$rowdata['last_skill_change']." Points\" />";
+							. "/t0.gif\" alt=\"".$rowdata['last_skill_change']." Points\">";
 					elseif ($rowdata['last_skill_change'] < 0)
 						$cellbody .= "&nbsp;<img src=\"" . IMAGE_PATH
-							. "/t2.gif\" alt=\"".$rowdata['last_skill_change']." Points\" />";
+							. "/t2.gif\" alt=\"".$rowdata['last_skill_change']." Points\">";
 				}
 				
 				echo "				<td$colalign class=\"$class\">"
@@ -473,7 +473,7 @@ class Table
 			{
 				if ($i == $this->page)
 				{
-					echo "<b>>$i<</b> ";
+					echo "<b>&gt;$i&lt;</b> ";
 				}
 				else
 				{
