@@ -479,11 +479,31 @@ if ($game != '') {
                 ></path>
               </svg>
             </button>
-            <!-- Start Search input -->
+            <!-- Start Game Title -->
             <div class="flex justify-center flex-1 lg:mr-32">
 
+<?php
+
+$db->query("
+SELECT
+	hlstats_Games.name
+FROM
+	hlstats_Games
+WHERE
+	hlstats_Games.code = '$game'
+");
+
+if ($db->num_rows() < 1) {
+	$gamename = "All";
+}
+
+list($gamename) = $db->fetch_row();
+
+echo "Viewing: " . $gamename ;
+
+?>
             </div>
-			<!-- End Search input -->
+			<!-- End Game Title -->
 
 			<!-- start header drop downs -->
             <ul class="flex items-center flex-shrink-0 space-x-6">
@@ -513,7 +533,7 @@ if ($game != '') {
                   aria-label="Account"
                   aria-haspopup="true"
                 >
-                  Games
+                  Switch Game
                 </button>
                 <template x-if="isProfileMenuOpen">
                   <ul
