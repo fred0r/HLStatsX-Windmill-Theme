@@ -135,7 +135,7 @@ include 'inc_functions.php';
 	}
 ?>
 
-<link rel="SHORTCUT ICON" href="favicon.ico" />
+	<link rel="SHORTCUT ICON" href="favicon.ico" />
 <!--
 	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/SqueezeBox.js"></script>
 	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/heatmap.js"></script>
@@ -149,7 +149,7 @@ include 'inc_functions.php';
 	}
 ?>
 -->
-<title>DEV 
+	<title>DEV 
 <?php
 	echo $g_options['sitename']; 
 	foreach ($title as $t)
@@ -157,6 +157,7 @@ include 'inc_functions.php';
 		echo " - $t";
 	}
 ?>
+
 	</title>
 </head>
 <body> 
@@ -287,7 +288,6 @@ include 'inc_functions.php';
 	}
 */
 ?>        
-
 <!-- start Windmill Header -->
 <!-- this div closes in the footer -->
 <div
@@ -478,7 +478,6 @@ if ($game != '') {
             </button>
             <!-- Start Game Title -->
             <div class="flex justify-center flex-1 lg:mr-32">
-
 <?php
 
 $db->query("
@@ -494,7 +493,7 @@ if ($db->num_rows() < 1) {
 	$gamename = "All";
 } else {
 	list($gamename) = $db->fetch_row();
-	echo "<a href=\"./hlstats.php?game=$game\">Viewing: " . $gamename . "</a>";
+	echo "				<a href=\"./hlstats.php?game=$game\">Viewing: " . $gamename . "</a>\n";
 }
 
 ?>
