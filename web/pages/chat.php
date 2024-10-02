@@ -335,14 +335,5 @@ For support and installation notes visit http://www.hlxcommunity.com
 		?>
 
 <!-- end table -->
-		
-<!--		
-		<br /><br />
-	<div class="subblock">
-		<div style="float:right;">
-			Go to: <a href="<?php echo $g_options["scripturl"] . "?game=$game"; ?>"><?php echo $gamename; ?></a>
-		</div>
-	</div>
--->
 
 <!-- end chat.php -->
