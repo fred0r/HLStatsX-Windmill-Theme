@@ -116,6 +116,14 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$tblPlayerActions->sort2 $tblPlayerActions->sortorder
 	");
 ?>
+
+<!-- start actions.php -->
+<?php display_page_title('Action Statistics'); ?>
+
+<?php $tblPlayerActions->draw($result, $db->num_rows($result), 95); ?>
+
+<?php
+/*
 <div class="block">
 	<?php printSectionTitle('Action Statistics'); ?>
 	<div class="subblock">
@@ -141,3 +149,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</div>
 	</div>
 </div>
+*/
+?>
+<!-- end actions.php -->
