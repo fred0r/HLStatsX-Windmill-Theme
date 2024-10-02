@@ -507,8 +507,6 @@ if ($db->num_rows() < 1) {
 
 			<!-- start header drop downs -->
             <ul class="flex items-center flex-shrink-0 space-x-6">
-
-
 <?php
 		// Grab count of active games -- if 1, we won't show the games list icons
 		$resultGames = $db->query("
