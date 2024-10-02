@@ -149,7 +149,7 @@ include 'inc_functions.php';
 	}
 ?>
 -->
-	<title>DEV 
+	<title> 
 <?php
 	echo $g_options['sitename']; 
 	foreach ($title as $t)
