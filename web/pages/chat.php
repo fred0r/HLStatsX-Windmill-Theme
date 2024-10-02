@@ -185,31 +185,31 @@ For support and installation notes visit http://www.hlxcommunity.com
 						(
 							'eventTime',
 							'Date',
-							''
+							'width=16'
 						),
 						new TableColumn
 						(
 							'lastName',
 							'Player',
-							'sort=no&flag=1&link=' . urlencode('mode=playerinfo&amp;player=%k')
+							'width=17&sort=no&flag=1&link=' . urlencode('mode=playerinfo&amp;player=%k')
 						),
 						new TableColumn
 						(
 							'message',
 							'Message',
-							'sort=no&embedlink=yes'
+							'width=34&sort=no&embedlink=yes'
 						),
 						new TableColumn
 						(
 							'serverName',
 							'Server',
-							'sort=no'
+							'width=23&sort=no'
 						),
 						new TableColumn
 						(
 							'map',
 							'Map',
-							'sort=no'
+							'width=10&sort=no'
 						)
 					),
 					'playerId',
@@ -231,25 +231,25 @@ For support and installation notes visit http://www.hlxcommunity.com
 						(
 							'eventTime',
 							'Date',
-							''
+							'width=16'
 						),
 						new TableColumn
 						(
 							'lastName',
 							'Player',
-							'sort=no&flag=1&link=' . urlencode('mode=playerinfo&amp;player=%k')
+							'width=24&sort=no&flag=1&link=' . urlencode('mode=playerinfo&amp;player=%k')
 						),
 						new TableColumn
 						(
 							'message',
 							'Message',
-							'sort=no&embedlink=yes'
+							'width=44&sort=no&embedlink=yes'
 						),
 						new TableColumn
 						(
 							'map',
 							'Map',
-							'sort=no'
+							'width=16&sort=no'
 						)
 					),
 					'playerId',
