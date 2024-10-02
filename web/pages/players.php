@@ -105,9 +105,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 	</div>
 	<div class="flex items-center">
 		<form method="get" action="<?php echo $g_options['scripturl']; ?>" style="margin:0px;padding:0px;">
-			<input type="hidden" name="mode" value="players" />
-			<input type="hidden" name="game" value="<?php echo $game; ?>" />
-			<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Ranking View </span>
+			<input type="hidden" name="mode" value="players">
+			<input type="hidden" name="game" value="<?php echo $game; ?>">
+			<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Ranking View: </span>
 			<?php
 				$result = $db->query
 				("
@@ -123,24 +123,25 @@ For support and installation notes visit http://www.hlxcommunity.com
 						0,
 						50
 				");
-				echo '<select name="rank_type" class="mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">';
-				echo '	<option value="0">Total Ranking</option>';
-				echo '	<option value="-1">Last Week</option>';
-				echo '	<option value="-2">Last Month</option>';
+				echo "	<select name=\"rank_type\" class=\"mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray\">\n";
+				echo "					<option value=\"0\">Total Ranking</option>\n";
+				echo "					<option value=\"-1\">Last Week</option>\n";
+				echo "					<option value=\"-2\">Last Month</option>\n";
 				$i = 1;
 				$dates = array ();
 				while ($rowdata = $db->fetch_array())
 				{
 					$dates[] = $rowdata; 
 					if ($rank_type == $i) 
-						echo '	<option value="'.$i.'" selected>'.$rowdata['eventTime'].'</option>';
+						echo "					<option value=\"".$i."\" selected>".$rowdata['eventTime']."</option>\n";
 					else
-						echo '	<option value="'.$i.'">'.$rowdata['eventTime'].'</option>';
+						echo "					<option value=\"".$i."\">".$rowdata['eventTime']."</option>\n";
 					$i++;
 				}
-				echo '</select>';
+				
+				echo "				</select>\n";
 			?>
-			<input type="submit" value="View" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
+			<input type="submit" value="View" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn">
 		</form>
 	</div>
 </div>
