@@ -406,6 +406,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 		$table->draw($result, $numitems, 95);
 	?>
 <!-- end table -->
+<?php 
+/*
 <!--	
 	<br /><br />
 	<div class="subblock">
@@ -431,5 +433,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	</div>
 -->
+*/
+?>
 </div>
 <!-- end players.php -->
