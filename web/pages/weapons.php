@@ -177,6 +177,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 ?>
 
+<!-- start weapons.php -->
+<?php display_page_title('Weapon Statistics'); ?>
+
+<?php $tblWeapons->draw($result, $db->num_rows($result), 95); ?>
+
+<?php
+/*
 <div class="block">
 	<?php printSectionTitle('Weapon Statistics'); ?>
 	<div class="subblock">
@@ -190,3 +197,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</div>
 	</div>
 </div>
+*/
+?>
+<!-- end weapons.php -->
