@@ -421,33 +421,29 @@ class Table
 			$rank++;
 		}
 ?>
-</tbody>
-</table>
-</div>
-
-
-
-
+			</tbody>
+		</table>
+	</div>
 
 <?php
 		/* Display table footer */
 		if ($numpages > 1)
 		{
 ?>
-			<div
-                class="grid tracking-wide text-xs text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
-              >
-                <span class="flex items-center col-span-3">
-                  Showing 21-30 of 100
-                </span>
-                <span class="col-span-2"></span>
-                <!-- Pagination -->
-                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                  <nav aria-label="Table navigation">
-                    <ul class="inline-flex items-center">
-						<li>
+	<div
+		class="grid tracking-wide text-xs text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
+		>
+		<span class="flex items-center col-span-3">
+			&nbsp;
+		</span>
+		<span class="col-span-2"></span>
+		<!-- Pagination -->
+		<span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+			<nav aria-label="Table navigation">
+				<ul class="inline-flex items-center">
+					<li>
 <?php
-			echo 'Page: ';
+			echo "						Page: \n";
 
 			$start = $this->page - intval($this->maxpagenumbers / 2);
 			if ($start < 1) $start=1;
@@ -473,11 +469,13 @@ class Table
 			{
 				if ($i == $this->page)
 				{
-					echo "<b>&gt;$i&lt;</b> ";
+					// echo "<b>&gt;$i&lt;</b> ";
+					echo "							<button class=\"windmill-button px-3 py-1 text-white transition-colors duration-150 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple\">" . $i. "</button>\n ";
+
 				}
 				else
 				{
-					$this->_echoPageNumber($i, $i);
+					$this->_echoPageNumber($i, "							<button class=\"px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple\">" . $i . "</button>\n");
 				}
 
 				if ($i == $end && $i < $numpages)
@@ -489,14 +487,12 @@ class Table
 				}
 			}
 		?>
-
 					</li>
-                    </ul>
-                  </nav>
-                </span>
-              </div>
-
-		</div>
+                </ul>
+              </nav>
+            </span>
+          </div>
+	</div>
 <?php
 		} else {
 		/* Display empty footer */
@@ -510,14 +506,14 @@ class Table
 	{
 		global $g_options;
 
-		echo "$prefix<a href=\"" . $g_options['scripturl'] . '?'
+		echo "$prefix						<a href=\"" . $g_options['scripturl'] . '?'
 			. makeQueryString($this->var_page, $number);
 		if ($this->sorthash)
 			echo "#$this->sorthash";
 		
 		if ($this->ajax)
 			echo "\" onclick=\"Tabs.refreshTab({'" . $this->var_page . "': " . $number . "}); return false;";
-		echo "\">$label</a>$postfix ";
+		echo "\">\n$label						</a>\n$postfix ";
 	}
 }
 
