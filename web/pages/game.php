@@ -143,10 +143,42 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$db->free_result();
 ?>
 
+<?php display_page_title('Participating Servers'); ?>
+
+<div class="flex items-center justify-between p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
+					<div class="flex items-center">
+							<span class="font-semibold text-center text-gray-700 dark:text-gray-400"><?php
+		if ($total_kills > 0)
+			$hpk = sprintf("%.2f", ($total_headshots / $total_kills) * 100);
+		else
+			$hpk = sprintf("%.2f", 0);
+		if ($players_last_day > -1)
+			echo "Tracking <b>" . number_format($total_players) . "</b> players (<b>+" . number_format($players_last_day) . "</b> new players last 24h) with <b>" . number_format($total_kills) . "</b> kills (<b>+" . number_format($kills_last_day) . "</b> last 24h) and <b>" . number_format($total_headshots) . "</b> headshots (<b>$hpk%</b>) on <b>" . number_format($total_servers) . "</b> servers";
+		else
+			echo "Tracking <b>" . number_format($total_players) . "</b> players with <b>" . number_format($total_kills) . "</b> kills and <b>" . number_format($total_headshots) . "</b> headshots (<b>$hpk%</b>) on <b>" . number_format($total_servers) . "</b> servers";
+?></span>
+					</div>
+				</div>
+
+
+<?php
+if ($g_options['show_server_load_image'] == 1) {
+?>
+	<div class="flex items-center justify-between p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
+			<img src="show_graph.php?type=1&amp;game=<?php echo $game ?>&amp;width=870&amp;height=200&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>" 
+				alt="Server Load Graph" 
+				title="serverLoadGraph">
+	</div>
+<?php
+		}
+?>
+
+
+<hr>
+
 <div class="block">
 
-<?php	printSectionTitle('Participating Servers'); ?>
-		<div class="subblock">
+<div class="subblock">
 <?php
 	if (count($servers) == 1)
 	{
@@ -450,7 +482,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 ?>
 </div></div>
+<
 <?php
+/*
 	if ($g_options['gamehome_show_awards'] == 1) {
 		$resultAwards = $db->query("
 			SELECT
@@ -548,4 +582,5 @@ For support and installation notes visit http://www.hlxcommunity.com
 <?php
 		}
 	}
+*/
 ?>
