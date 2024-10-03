@@ -104,7 +104,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 			<form method="get" action="<?php echo $g_options['scripturl']; ?>">
 				<input type="hidden" name="mode" value="chat" />
-				<input type="hidden" name="game" value="<?php echo $game; ?>" />
+				<input type="hidden" name="game" value="<?php echo $game; ?>">
 				<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Show Chat from
 				<?php
 /*
@@ -164,11 +164,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 					echo '</select>';
 					$filter=isset($_REQUEST['filter'])?$_REQUEST['filter']:"";
 				?>
-				<span class="font-semibold text-center text-gray-700 dark:text-gray-400">
-				Filter:
-				</span>
-				<input type="text" name="filter" value="<?php echo htmlentities($filter); ?>" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" /> 
-				<input type="submit" value="View" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
+				<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Filter: </span>
+				<input type="text" name="filter" value="<?php echo htmlentities($filter); ?>" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"> 
+				<input type="submit" value="View" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn">
 			</form>
 		</div>
 
