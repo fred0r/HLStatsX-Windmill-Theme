@@ -91,7 +91,7 @@ For support and installation notes visit http://www.hlxcommunity.com
                 echo str_replace(" ", "",str_replace("**", "", $theme_version));
                 ?></a>
                 based on <a class="font-semibold" href="https://github.com/estevanmaito/windmill-dashboard"
-                target="_blank">Windmill</a>
+                target="_blank">Windmill Dashboard</a>
         </span>
     </div>
 </div>
