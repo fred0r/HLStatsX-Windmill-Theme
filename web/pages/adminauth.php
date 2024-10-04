@@ -42,16 +42,44 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	pageHeader(array('Admin'), array('Admin' => ''));
 ?>
+
+<?php display_page_title('Admin Login'); ?>
+
+<!-- Start log in Page -->
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+        <div class="w-full">
+<?php
+	if ($this->error)
+	{
+		echo "<span class=\"text-xs text-red-600 dark:text-red-400\">$this->error</span>";
+	}
+?>
+ 			<form method="post" name="auth">
+                <label class="block text-sm">
+                    <span class="text-gray-700 dark:text-gray-400">Username</span>
+                    <input type="text" name="authusername" size="20" maxlength="16" value="<?php echo $this->username; ?>" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                </label>
+
+                <label class="block mt-4 text-sm">
+                    <span class="text-gray-700 dark:text-gray-400">Password</span>
+						<input type="password" name="authpassword" size="20" maxlength="16" value="<?php echo $this->password; ?>" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                </label>
+
+				<input type="submit" value=" Login " id="authsubmit" class="windmill-button block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none">
+			</form>
+        </div>
+    </div>
+</div>
+<?php
+/*
 <div class="block">
 	<?php printSectionTitle('Authorization Required'); ?>
 	<div class="subblock">
 	<?php
 	if ($this->error)
 	{
-?>
-	<img src="<?php echo IMAGE_PATH; ?>/warning.gif" style="padding-right:5px;">
-	<?php
-		echo "<span class=\"fTitle\" style=\"font-weight:bold;\">$this->error</span><br /><br />";
+		echo "<span class=\"fTitle\" style=\"font-weight:bold;\">$this->error</span>";
 	}
 ?>
 		<div style="float:left;margin-left:40px;">
@@ -79,4 +107,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</div>
 	</div>
 </div>
-
+*/
+?>
+<!-- End log in Page -->
