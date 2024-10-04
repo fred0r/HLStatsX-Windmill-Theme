@@ -180,18 +180,18 @@ class Table
 ?>
 
 <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
-<div class="w-full overflow-x-auto">
+	<div class="w-full overflow-x-auto">
 
-<table class="data-table w-full whitespace-no-wrap">
-	<thead>
-		<tr class="data-table-head text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+		<table class="data-table w-full whitespace-no-wrap">
+			<thead>
+				<tr class="data-table-head text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 <?php
 		$totalwidth = 0;
 
 		if ($this->showranking)
 		{
 			$totalwidth += 5;
-			echo "		<td style=\"text-align=:right;\">Rank</td>\n";
+			echo "					<td style=\"text-align=:right;\">Rank</td>\n";
 		}
 
 		foreach ($this->columns as $col)
@@ -199,7 +199,7 @@ class Table
 			$totalwidth += $col->width;
 			// disable width
 			// echo "<td style=\"width:$col->width%;text-align:$col->align;\" class=\"text-xs px-4 py-3\">";
-			echo "			<td style=\"text-align:$col->align;\">";
+			echo "					<td style=\"text-align:$col->align;\">";
 			if ($col->sort != 'no')
 			{
 				echo getSortArrow($this->sort, $this->sortorder, $col->name,
@@ -213,9 +213,9 @@ class Table
 			echo "</td>\n";
 		}
 ?>
-		</tr>
-	</thead>
-	<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+				</tr>
+			</thead>
+			<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
 <?php
 		if ($totalwidth != 100)
 		{
@@ -494,8 +494,8 @@ class Table
 <?php
 		} else {
 		/* Display empty footer */
-		echo "		<div class=\"rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">&nbsp;</div>\n";
-		echo "	</div>\n";
+		echo "	<div class=\"rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">&nbsp;</div>\n";
+		echo "</div>\n";
 		}
 
 	}
