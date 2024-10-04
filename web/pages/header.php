@@ -118,13 +118,15 @@ include 'includes/inc_functions.php';
     <script src="./assets/js/init-alpine.js"></script>
 	<link rel="stylesheet" type="text/css" href="./assets/css/windmill.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/windmill-purple.css">
-<!-- 
+
+<?php
+/*
+
 	<link rel="stylesheet" type="text/css" href="hlstats.css" />
 	<link rel="stylesheet" type="text/css" href="styles/<?php echo $selectedStyle; ?>" />
 	<link rel="stylesheet" type="text/css" href="css/SqueezeBox.css" />
--->
 	<!-- U R A SMACKHEAD -->
-<!--
+
 <?php
 	if ($mode == 'players')
 	{
@@ -144,18 +146,15 @@ include 'includes/inc_functions.php';
 	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/tabs.js"></script>
 <?php
 	}
+*/
 ?>
--->
-	<title> 
-<?php
+	<title><?php
 	echo $g_options['sitename']; 
 	foreach ($title as $t)
 	{
 		echo " - $t";
 	}
-?>
-
-	</title>
+?></title>
 </head>
 <body> 
 <?php
