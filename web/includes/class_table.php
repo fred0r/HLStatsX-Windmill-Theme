@@ -494,8 +494,8 @@ class Table
 <?php
 		} else {
 		/* Display empty footer */
-		echo "		<div class=\"rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">&nbsp;</div>";
-		echo "</div>";
+		echo "		<div class=\"rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">&nbsp;</div>\n";
+		echo "	</div>\n";
 		}
 
 	}
