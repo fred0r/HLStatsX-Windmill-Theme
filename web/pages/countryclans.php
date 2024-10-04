@@ -187,7 +187,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 ?>
 <!-- start country clans --> 
-<?php display_page_title('Players'); ?>
+<?php display_page_title('Country Rankings'); ?>
 
 <?php $table->draw($result, $db->num_rows($resultCount), 95); ?>
 
