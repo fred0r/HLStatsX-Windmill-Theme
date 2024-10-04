@@ -489,7 +489,13 @@ if ($db->num_rows() < 1) {
 	$gamename = "All";
 } else {
 	list($gamename) = $db->fetch_row();
-	echo "				<a href=\"./hlstats.php?game=$game\">Viewing: " . $gamename . "</a>\n";
+	echo "				<div class=\"hidden md:block\">\n";
+	echo "					<a href=\"./hlstats.php?game=$game\">Viewing: " . $gamename . "</a>\n";
+	echo "				</div>\n";
+	// echo "				<div class=\"lg:hidden uppercase\">\n";
+	// echo "					<a href=\"./hlstats.php?game=$game\">View: " . $game . "</a>\n";
+	// echo "				</div>\n";
+
 }
 
 ?>
@@ -522,7 +528,7 @@ if ($db->num_rows() < 1) {
                   aria-label="Account"
                   aria-haspopup="true"
                 >
-                  Switch Game
+                  Games
                 </button>
                 <template x-if="isProfileMenuOpen">
                   <ul
