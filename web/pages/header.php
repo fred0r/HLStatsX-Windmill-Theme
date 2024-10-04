@@ -98,14 +98,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 	
 
 // include custom windmill functions 
-include 'inc_functions.php';
+include 'includes/inc_functions.php';
 ?>
 <!-- start header.php -->
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 <head>
 
-<!-- DNA.styx -->
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
