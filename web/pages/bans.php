@@ -187,12 +187,29 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$table->numperpage
 	");
 ?>
-<!-- start bans.php -->
 
+<!-- start bans.php -->
             
 <?php display_page_title('Cheaters &amp; Banned Players'); ?>
 
+<div class="flex items-center justify-between p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
+	<div class="flex items-center">
+		<form method="get" action="<?php echo $g_options['scripturl']; ?>">
+			<input type="hidden" name="mode" value="search" />
+			<input type="hidden" name="game" value="<?php echo $game; ?>">
+			<input type="hidden" name="st" value="player">
+			<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Find a player: </span>
+			<input type="text" name="q" size="20" maxlength="64" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+			<input type="submit" value="Search" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn">
+		</form>
+	</div>
+</div>
+
+<?php $table->draw($result, $numitems, 95); ?>
+
+<?php
+/*
 <div class="block">
 		<div class="subblock">
 			<div style="float:left;">
@@ -231,4 +248,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 			</div>
 	</div>
 </div>
+*/
+?>
 <!-- end bans.php -->
