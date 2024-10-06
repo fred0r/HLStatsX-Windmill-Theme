@@ -545,7 +545,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 <div class="block">
 <?php
-	printSectionTitle('Player Event History (Last '.$g_options['DeleteDays'].' Days)');
+	display_page_subtitle('Player Event History (Last '.$g_options['DeleteDays'].' Days)');
+	// printSectionTitle('Player Event History (Last '.$g_options['DeleteDays'].' Days)');
 	if ($numitems > 0)
 	{
 		$table->draw($result, $numitems, 95);

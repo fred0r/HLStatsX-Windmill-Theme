@@ -158,7 +158,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 <div style="clear:both;padding-top:24px;"></div>
 <?php
-		printSectionTitle('Aliases');
+		display_page_subtitle('Aliases');
+		//printSectionTitle('Aliases');
 		if ($numitems > 0)
 		{
 			$tblAliases->draw($result, $numitems, 95);

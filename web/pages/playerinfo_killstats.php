@@ -248,7 +248,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 	if ($numitems > 0)
 	{
-		printSectionTitle('Player Kill Statistics *');
+		display_page_subtitle('Player Kill Statistics *');
+		// printSectionTitle('Player Kill Statistics *');
 		$tblPlayerKillStats->draw($result, $numitems, 95); ?>
 	<br /><br />
 	<div class="subblock">

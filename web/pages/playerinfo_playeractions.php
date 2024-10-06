@@ -122,7 +122,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 ?>
 		<div style="clear:both;padding-top:20px;"></div>
 <?php
-		printSectionTitle('Player Actions *');
+		display_page_subtitle('Player Actions *');
+		//printSectionTitle('Player Actions *');
 		$tblPlayerActions->draw($result, $numitems, 95);
 ?>
 		<br /><br />
@@ -193,8 +194,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 		<div style="clear:both;padding-top:20px;"></div>
 <?php
 		}
-		
-		printSectionTitle('Victims of Player-Player Actions *');
+		display_page_subtitle('Victims of Player-Player Actions *');
+		//printSectionTitle('Victims of Player-Player Actions *');
 		$tblPlayerPlayerActionsV->draw($result, $numitems, 95);
 ?>
 		<br /><br />

@@ -33,6 +33,12 @@ function display_page_title($title){
 
 }
 
+function display_page_subtitle($title){
+
+	echo "<h4 class=\"mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300\">" . $title . "</h4>";
+
+}
+
 /**
  * getWindmillSortArrow()
  * 

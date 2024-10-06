@@ -162,7 +162,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0) {
-		printSectionTitle('Weapon Usage *');
+		display_page_subtitle('Weapon Usage *');
+		//printSectionTitle('Weapon Usage *');
 		$tblWeapons->draw($result, $numitems, 95); ?>
 		<br /><br />
 <?php
@@ -279,7 +280,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0) {
-		printSectionTitle('Weapon Statistics *');
+		display_page_subtitle('Weapon Statistics *');
+		// printSectionTitle('Weapon Statistics *');
 		$tblWeaponstats->draw($result, $numitems, 95); ?>
 		<br /><br />
 <!-- End of StatsMe Addon 1.0 by JustinHoMi@aol.com -->
@@ -465,7 +467,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$result = $db->query($query);
 	if ($db->num_rows($result) != 0)
 	{
-		printSectionTitle('Weapon Targets *');
+		display_page_subtitle('Weapon Targets *');
+		//printSectionTitle('Weapon Targets *');
 		if ($g_options['show_weapon_target_flash'] == 1)
 		{
 ?>

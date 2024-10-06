@@ -40,8 +40,8 @@ For support and installation notes visit http://www.hlxcommunity.com
         die('Do not access this file directly.');
     }
 ?>
-
-	<?php printSectionTitle('Player Information'); ?>
+	<?php display_page_title('Player Information for ' . htmlspecialchars($playerdata['lastName'], ENT_COMPAT)); ?>
+	<?php // printSectionTitle('Player Information'); ?>
 	<div class="subblock">
 		<div style="float:left;vertical-align:top;width:48.5%;">
 			<table class="data-table">

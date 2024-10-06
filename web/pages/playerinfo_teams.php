@@ -127,7 +127,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0)
 	{
-		printSectionTitle('Team Selection *');
+		display_page_subtitle('Team Selection *');
+		// printSectionTitle('Team Selection *');
 		$tblTeams->draw($result, $numitems, 95);
 ?>
 	<br /><br />
@@ -341,7 +342,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0)
 	{
-		printSectionTitle('Role Selection *');
+		display_page_subtitle('Role Selection *');
+		// printSectionTitle('Role Selection *');
 		$tblRoles->draw($result, $numitems, 95);
 ?>
 	<br /><br />
