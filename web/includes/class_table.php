@@ -202,7 +202,7 @@ class Table
 			echo "					<td style=\"text-align:$col->align;\">";
 			if ($col->sort != 'no')
 			{
-				echo getSortArrow($this->sort, $this->sortorder, $col->name,
+				echo getWindmillSortArrow($this->sort, $this->sortorder, $col->name,
 					$col->title, $this->var_sort, $this->var_sortorder,
 					$this->sorthash, $this->ajax);
 			}
