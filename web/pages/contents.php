@@ -70,20 +70,24 @@ For support and installation notes visit http://www.hlxcommunity.com
 		
 		pageHeader(array('Contents'), array('Contents' => ''));
 		include(PAGE_PATH . '/voicecomm_serverlist.php');
-		printSectionTitle('Games');
+		display_page_title($g_options['sitename'] . ' Player Stats');
 	?>
 
-		<div class="subblock">
-		
-			<table class="data-table">
-			
-				<tr class="data-table-head">
-					<td class="fSmall" width="60%" align="left">&nbsp;Game</td>
-					<td class="fSmall" width="10%" align="center">&nbsp;Players</td>
-					<td class="fSmall" width="20%" align="center">&nbsp;Top Player</td>
-					<td class="fSmall" width="10%" align="center">&nbsp;Top Clan</td>
+<div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+	<div class="w-full overflow-x-auto">
+
+	<h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Games</h4>
+
+		<table class="data-table w-full whitespace-no-wrap">
+			<thead>
+				<tr class="data-table-head text-l font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+					<td class="fSmall" width="60%" style="text-align:left;">&nbsp;</td>
+					<td class="fSmall" width="10%" style="text-align:center;">&nbsp;Current Players</td>
+					<td class="fSmall" width="20%" style="text-align:center;">&nbsp;Top Player</td>
+					<td class="fSmall" width="10%" style="text-align:center;">&nbsp;Top Clan</td>
 				</tr>
-				
+			</thead>
+			<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
 <?php
         $nonhiddengamestring = "(";
 		while ($gamedata = $db->fetch_row($resultGames))
@@ -166,27 +170,27 @@ For support and installation notes visit http://www.hlxcommunity.com
 			else
 				$player_string = $numplayers['act_players'].'/'.$numplayers['max_players'];
 ?>				
-				<tr class="game-table-row">
-					<td class="game-table-cell" style="height:30px">
-						<div style="float:left;line-height:30px;" class="fHeading">&nbsp;<a href="<?php echo $g_options['scripturl'] . "?game=$gamedata[0]"; ?>"><img src="<?php
+				<tr class="text-l text-gray-700 dark:text-gray-400">
+					<td style="height:30px">
+						<div class="flex items-center">&nbsp;<a href="<?php echo $g_options['scripturl'] . "?game=$gamedata[0]"; ?>"><img src="<?php
 			$image = getImage("/games/$gamedata[0]/game");
 			if ($image)
 				echo $image['url'];
 			else
 				echo IMAGE_PATH . '/game.gif';
-               ?>"  style="margin-left: 3px; margin-right: 4px;" alt="Game" /></a><a href="<?php echo $g_options['scripturl'] . "?game=$gamedata[0]"; ?>"><?php echo $gamedata[1]; ?></a>
+               ?>"  style="margin-left: 3px; margin-right: 4px;" alt="Game"></a><a href="<?php echo $g_options['scripturl'] . "?game=$gamedata[0]"; ?>"><?php echo $gamedata[1]; ?></a>
 						</div>
 						<div style="float:right;">
-							<div style="margin-left: 3px; margin-right: 4px; vertical-align:top; text-align:center;"><a href="<?php echo $g_options['scripturl'] . "?mode=clans&amp;game=$gamedata[0]"; ?>"><img src="<?php echo IMAGE_PATH; ?>/clan.gif" alt="Clan Rankings" /></a></div>
+							<div style="margin-left: 3px; margin-right: 4px; vertical-align:top; text-align:center;"><a href="<?php echo $g_options['scripturl'] . "?mode=clans&amp;game=$gamedata[0]"; ?>"><i class="fas fa-users"></i></a></div>
 							<div style="vertical-align:bottom; text-align:left;">&nbsp;<a href="<?php echo $g_options['scripturl'] . "?mode=clans&amp;game=$gamedata[0]"; ?>" class="fSmall">Clans</a>&nbsp;&nbsp;</div>
 						</div>
 							
 						<div style="float:right;">
-							<div style="margin-left: 3px; margin-right: 4px; vertical-align:top; text-align:center;"><a href="<?php echo $g_options['scripturl'] . "?mode=players&amp;game=$gamedata[0]"; ?>"><img src="<?php echo IMAGE_PATH; ?>/player.gif" alt="Player Rankings" /></a></div>
+							<div style="margin-left: 3px; margin-right: 4px; vertical-align:top; text-align:center;"><a href="<?php echo $g_options['scripturl'] . "?mode=players&amp;game=$gamedata[0]"; ?>"><i class="fas fa-user"></i></a></div>
 							<div style="vertical-align:bottom; text-align:left;">&nbsp;<a href="<?php echo $g_options['scripturl'] . "?mode=players&amp;game=$gamedata[0]"; ?>" class="fSmall">Players</a>&nbsp;&nbsp;</div>
 						</div>
 					</td>
-					<td class="game-table-cell" style="text-align:center;"><?php 
+					<td style="text-align:center;"><?php 
 			if ($numplayers)
 			{
 				echo $player_string;
@@ -195,9 +199,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 			{
 				echo '-';
 			}
-					?>
-					</td>
-					<td class="game-table-cell" style="text-align:center;"><?php
+					?></td>
+					<td style="text-align:center;"><?php
 			if ($topplayer)
 			{
 				echo '<a href="' . $g_options['scripturl'] . '?mode=playerinfo&amp;player='
@@ -208,7 +211,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				echo '-';
 			}
 					?></td>
-					<td class="game-table-cell" style="text-align:center;"><?php
+					<td style="text-align:center;"><?php
 			if ($topclan)
 			{
 				echo '<a href="' . $g_options['scripturl'] . '?mode=claninfo&amp;clan='
@@ -223,13 +226,15 @@ For support and installation notes visit http://www.hlxcommunity.com
 <?php
 		}
 ?>	
-				</table>
+			</tbody>
+		</table>
+	</div>
 		
-		</div><br /><br />
-		<br />
+<?php // Empty footer		
+		echo "	<div class=\"rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">&nbsp;</div>\n";
+		echo "</div>\n";
 		
-<?php
-		
+		// vars for cards
 		$nonhiddengamestring = preg_replace('/,$/', ')', $nonhiddengamestring);
 		
 		$result = $db->query("SELECT COUNT(playerId) FROM hlstats_Players WHERE game IN $nonhiddengamestring");
@@ -258,300 +263,101 @@ For support and installation notes visit http://www.hlxcommunity.com
 			LIMIT 1
 		");
 		list($lastevent) = $db->fetch_row($result);
-/*
 ?>
-
-		<div class="subblock">
-		
-			<ul>
-				<li><?php
-					echo "<strong>$num_players</strong> players and <strong>$num_clans</strong> clans "
-						. "ranked in <strong>$num_games</strong> games on <strong>$num_servers</strong>"
-						. " servers with <strong>$num_kills</strong> kills."; ?></li>
-<?php
-		if ($lastevent)
-		{
-			echo "\t\t\t\t<li>Last Kill <strong> " . date('g:i:s A, D. M. d, Y', strtotime($lastevent)) . "</strong></li>";
-		}
-?>
-				<li>All statistics are generated in real-time. Event history data expires after <strong><?php echo $g_options['DeleteDays']; ?></strong> days.</li>
-			</ul>
-		</div>
-<?php
-	}
-*/
-?>
-
-<!--
-<div class="grid gap-6 mb-8 md:grid-cols-2">
-	<div
-	class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-	>
-		<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
-			Revenue
-		</h4>
-		<p class="text-gray-600 dark:text-gray-400">
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-			Fuga, cum commodi a omnis numquam quod? Totam exercitationem
-			quos hic ipsam at qui cum numquam, sed amet ratione! Ratione,
-			nihil dolorum.
-		</p>
-	</div>
-	<div
-	class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-	>
-		<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
-			Colored card
-		</h4>
-		<p class="text-gray-600 dark:text-gray-400">
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-			Fuga, cum commodi a omnis numquam quod? Totam exercitationem
-			quos hic ipsam at qui cum numquam, sed amet ratione! Ratione,
-			nihil dolorum.
-		</p>
-	</div>
-</div>
-
-	-->
-
-            <!-- Responsive cards -->
-            <h4
-              class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
-            >
-				General Statistics
-            </h4>
+            <!-- Start Card Section -->
+            <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">General Statistics</h4>
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
               <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
-                    ></path>
-                  </svg>
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+				&nbsp;<i class="fas fa-user"></i>&nbsp;
                 </div>
                 <div>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    Total Players
-                  </p>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
-				  <?php echo $num_players ?>
-                  </p>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Players</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_players ?></p>
                 </div>
               </div>
               <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fill-rule="evenodd"
-                      d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+					<i class="fas fa-users"></i>
                 </div>
                 <div>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    Total Clans
-                  </p>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
-				  	<?php echo $num_clans ?>
-                  </p>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Clans</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_clans ?></p>
                 </div>
               </div>
               <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
-                    ></path>
-                  </svg>
-                </div>
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+					&nbsp;<i class="fas fa-book-dead"></i>&nbsp;
+				</div>
                 <div>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    Total Games
-                  </p>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
-                    <?php echo $num_games ?>
-                  </p>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Games</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_games ?></p>
                 </div>
               </div>
               <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fill-rule="evenodd"
-                      d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
+					<i class="fas fa-server"></i>                
+				</div>
                 <div>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    Total Servers
-                  </p>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
-                    <?php echo $num_servers ?>
-                  </p>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Servers</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_servers ?></p>
                 </div>
               </div>
 
               <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
-                    ></path>
-                  </svg>
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+					&nbsp;<i class="fas fa-skull-crossbones"></i>&nbsp;
                 </div>
                 <div>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    Total Kills
-                  </p>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
-				  <?php echo $num_kills ?>
-                  </p>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Kills</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_kills ?></p>
                 </div>
               </div>
 
               <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fill-rule="evenodd"
-                      d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+					&nbsp;<i class="fas fa-history"></i>&nbsp;
+				</div>
                 <div>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    Player Data Expires
-                  </p>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
-				  <?php echo $g_options['DeleteDays']; ?> Days
-                  </p>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Player Data Expires</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $g_options['DeleteDays']; ?> Days</p>
                 </div>
               </div>
-
 <?php
 		if ($lastevent)
 		{
 ?>
               <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
-                    ></path>
-                  </svg>
-                </div>
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+					&nbsp;<i class="fas fa-bolt"></i>&nbsp;
+				</div>
                 <div>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    Last Kill
-                  </p>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
-                    <?php echo date('g:i:s A, D. M. d', strtotime($lastevent)) ?>
-                  </p>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Last Kill</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo date('H:i, D. d M.', strtotime($lastevent)) ?></p>
                 </div>
               </div>
 <?php
 			}
 ?>
-
              <!-- Card -->
-			 <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fill-rule="evenodd"
-                      d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
+			<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
+					&nbsp;<i class="fas fa-stopwatch"></i>&nbsp;
+				</div>
                 <div>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    Real Time Stats
-                  </p>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
-                    Enabled
-                  </p>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Real Time Stats</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">Enabled</p>
                 </div>
-              </div>
-
+            </div>
 			</div>
-
+			<!-- end Card Section -->
 <?php
 	}
-
 ?>
