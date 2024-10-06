@@ -301,56 +301,56 @@ if ($game != '') {
 	
 	echo "		<ul class=\"mt-6\">\r\n";
 	
-	display_menu_item("Servers", "?game=$game");
+	display_menu_item("Servers", "?game=$game", "server");
 	
 	if ($g_options['nav_globalchat']==1) {
-		display_menu_item("Chat", "?mode=chat&amp;game=$game");
+		display_menu_item("Chat", "?mode=chat&amp;game=$game","comments");
 	}
 
-	display_menu_item("Players", "?mode=players&amp;game=$game");
+	display_menu_item("Players", "?mode=players&amp;game=$game","user");
 
-	display_menu_item("Clans", "?mode=clans&amp;game=$game");
+	display_menu_item("Clans", "?mode=clans&amp;game=$game","users");
 
 	if ($g_options["countrydata"]==1) {
-		display_menu_item("Countries", "?mode=countryclans&amp;game=$game&amp;sort=nummembers");
+		display_menu_item("Countries", "?mode=countryclans&amp;game=$game&amp;sort=nummembers","globe");
 	}
 
-	display_menu_item("Awards", "?mode=awards&amp;game=$game");
+	display_menu_item("Awards", "?mode=awards&amp;game=$game","trophy");
 
 	// look for actions
 	$db->query("SELECT game FROM hlstats_Actions WHERE game='".$game."' LIMIT 1");
 	if ($db->num_rows()>0) {
 
-		display_menu_item("Actions", "?mode=actions&amp;game=$game");
+		display_menu_item("Actions", "?mode=actions&amp;game=$game","bolt");
 
 	}
 
-	display_menu_item("Weapons", "?mode=weapons&amp;game=$game");
+	display_menu_item("Weapons", "?mode=weapons&amp;game=$game","crosshairs");
 
-	display_menu_item("Maps", "?mode=maps&amp;game=$game");
+	display_menu_item("Maps", "?mode=maps&amp;game=$game","route");
 
 	$result = $db->query("SELECT game from hlstats_Roles WHERE game='$game' AND hidden = '0'");
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0) {
 
-		display_menu_item("Roles", "?mode=roles&amp;game=$game");
+		display_menu_item("Roles", "?mode=roles&amp;game=$game","user-tag");
 	}
 
 	if ($g_options['nav_cheaters'] == 1) {
 
-		display_menu_item("Bans", "?mode=bans&amp;game=$game");
+		display_menu_item("Bans", "?mode=bans&amp;game=$game","ban");
 		
 	} 
 
 	if (isset($_SESSION['loggedin'])) {
 
-		display_menu_item("Admin Panel", "?mode=admin");
+		display_menu_item("Admin Panel", "?mode=admin","cog");
 
-		display_menu_item("Logout", "?hlstats.php?logout=1");
+		display_menu_item("Logout", "?hlstats.php?logout=1","sign-out-alt");
 
 	} else {
 
-		display_menu_item("Admin Login", "?mode=admin");
+		display_menu_item("Admin Login", "?mode=admin","sign-in-alt");
 
 	}
 
@@ -390,56 +390,56 @@ if ($game != '') {
 	
 	echo "		<ul class=\"mt-6\">\r\n";
 
-	display_menu_item("Servers", "?game=$game");
+	display_menu_item("Servers", "?game=$game","server");
 	
 	if ($g_options['nav_globalchat']==1) {
-		display_menu_item("Chat", "?mode=chat&amp;game=$game");
+		display_menu_item("Chat", "?mode=chat&amp;game=$game","comments");
 	}
 
-	display_menu_item("Players", "?mode=players&amp;game=$game");
+	display_menu_item("Players", "?mode=players&amp;game=$game","user");
 
-	display_menu_item("Clans", "?mode=clans&amp;game=$game");
+	display_menu_item("Clans", "?mode=clans&amp;game=$game","users");
 
 	if ($g_options["countrydata"]==1) {
-		display_menu_item("Countries", "?mode=countryclans&amp;game=$game&amp;sort=nummembers");
+		display_menu_item("Countries", "?mode=countryclans&amp;game=$game&amp;sort=nummembers","globe");
 	}
 
-	display_menu_item("Awards", "?mode=awards&amp;game=$game");
+	display_menu_item("Awards", "?mode=awards&amp;game=$game","trophy");
 
 	// look for actions
 	$db->query("SELECT game FROM hlstats_Actions WHERE game='".$game."' LIMIT 1");
 	if ($db->num_rows()>0) {
 
-		display_menu_item("Actions", "?mode=actions&amp;game=$game");
+		display_menu_item("Actions", "?mode=actions&amp;game=$game","bolt");
 
 	}
 
-	display_menu_item("Weapons", "?mode=weapons&amp;game=$game");
+	display_menu_item("Weapons", "?mode=weapons&amp;game=$game","crosshairs");
 
-	display_menu_item("Maps", "?mode=maps&amp;game=$game");
+	display_menu_item("Maps", "?mode=maps&amp;game=$game","route");
 
 	$result = $db->query("SELECT game from hlstats_Roles WHERE game='$game' AND hidden = '0'");
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0) {
 
-		display_menu_item("Roles", "?mode=roles&amp;game=$game");
+		display_menu_item("Roles", "?mode=roles&amp;game=$game","user-tag");
 	}
 
 	if ($g_options['nav_cheaters'] == 1) {
 
-		display_menu_item("Bans", "?mode=bans&amp;game=$game");
+		display_menu_item("Bans", "?mode=bans&amp;game=$game","ban");
 		
 	} 
 
 	if (isset($_SESSION['loggedin'])) {
 
-		display_menu_item("Admin Panel", "?mode=admin");
+		display_menu_item("Admin Panel", "?mode=admin","cog");
 
-		display_menu_item("Logout", "?hlstats.php?logout=1");
+		display_menu_item("Logout", "?hlstats.php?logout=1","sign-out-alt");
 
 	} else {
 
-		display_menu_item("Admin Login", "?mode=admin");
+		display_menu_item("Admin Login", "?mode=admin","sign-in-atl");
 
 	}
 
@@ -573,21 +573,21 @@ if ($db->num_rows() < 1) {
                   >
 <?php
 
-						display_links("Search", $g_options['scripturl'] . "?mode=search");
+						display_links("Search", $g_options['scripturl'] . "?mode=search","search");
 
 						if ($g_options['sourcebans_address']) {
 
-							display_links("SourceBans", $g_options['sourcebans_address']);
+							display_links("SourceBans", $g_options['sourcebans_address'],"ban");
 
 						}
 									
 						if ($g_options['forum_address']) {
 
-							display_links("Forum",$g_options['forum_address']);
+							display_links("Forum",$g_options['forum_address'],"comments");
 
 						}
 
-						display_links("Help", $g_options['scripturl'] . "?mode=help");
+						display_links("Help", $g_options['scripturl'] . "?mode=help","question-circle");
 
 ?> 
                   </ul>
