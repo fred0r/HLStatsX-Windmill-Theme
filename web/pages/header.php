@@ -98,7 +98,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	
 
 // include custom windmill functions 
-include 'includes/inc_functions.php';
+include 'includes/inc_windmill_functions.php';
 ?>
 <!-- start header.php -->
 <!DOCTYPE html>
