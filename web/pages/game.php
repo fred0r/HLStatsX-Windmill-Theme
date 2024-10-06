@@ -144,22 +144,56 @@ For support and installation notes visit http://www.hlxcommunity.com
 ?>
 
 <?php display_page_title('Participating Servers'); ?>
-
-<div class="flex items-center justify-between p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
-					<div class="flex items-center">
-							<span class="font-semibold text-center text-gray-700 dark:text-gray-400"><?php
-		if ($total_kills > 0)
+<?php
+if ($total_kills > 0)
 			$hpk = sprintf("%.2f", ($total_headshots / $total_kills) * 100);
 		else
 			$hpk = sprintf("%.2f", 0);
-		if ($players_last_day > -1)
-			echo "Tracking <b>" . number_format($total_players) . "</b> players (<b>+" . number_format($players_last_day) . "</b> new players last 24h) with <b>" . number_format($total_kills) . "</b> kills (<b>+" . number_format($kills_last_day) . "</b> last 24h) and <b>" . number_format($total_headshots) . "</b> headshots (<b>$hpk%</b>) on <b>" . number_format($total_servers) . "</b> servers";
-		else
-			echo "Tracking <b>" . number_format($total_players) . "</b> players with <b>" . number_format($total_kills) . "</b> kills and <b>" . number_format($total_headshots) . "</b> headshots (<b>$hpk%</b>) on <b>" . number_format($total_servers) . "</b> servers";
-?></span>
-					</div>
-				</div>
+?>
 
+<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+              <!-- Card -->
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+				&nbsp;<i class="fas fa-server"></i>&nbsp;
+                </div>
+                <div>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Servers</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_servers) ?></p>
+                </div>
+              </div>
+              <!-- Card -->
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+					&nbsp;<i class="fas fa-user"></i>&nbsp;
+                </div>
+                <div>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Players</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_players) ?></p>
+                </div>
+              </div>
+              <!-- Card -->
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+					&nbsp;<i class="fas fa-skull-crossbones"></i>&nbsp;
+				</div>
+                <div>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Kills</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_kills) ?></p>
+                </div>
+              </div>
+              <!-- Card -->
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
+					<i class="fas fa-crosshairs"></i>                
+				</div>
+                <div>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Headshots</p>
+                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_headshots) . " ($hpk%)" ?></p>
+                </div>
+              </div>
+			</div>
+			<!-- end Card Section -->
 
 <?php
 if ($g_options['show_server_load_image'] == 1) {
