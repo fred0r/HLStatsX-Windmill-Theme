@@ -395,21 +395,19 @@ class Table
 				{
 					$cellbody .= $col->append;
 				}
-				
+
 				if ($col->skill_change) {
 					if ($rowdata['last_skill_change'] == '')
 						$rowdata['last_skill_change'] = 0;
 					if ($rowdata['last_skill_change'] == 0)
-						$cellbody .= "&nbsp;<img src=\"" . IMAGE_PATH
-							. "/t1.gif\" alt=\"".$rowdata['last_skill_change']." Points\">";
+						$cellbody .= "&nbsp;<i class=\"fas fa-circle\"></i>&nbsp;";
 					elseif ($rowdata['last_skill_change'] > 0)
-						$cellbody .= "&nbsp;<img src=\"" . IMAGE_PATH
-							. "/t0.gif\" alt=\"".$rowdata['last_skill_change']." Points\">";
+						$cellbody .= "&nbsp;<span class=\"text-green-600\"><i class=\"fas fa-arrow-up\"></i></span>&nbsp;";
 					elseif ($rowdata['last_skill_change'] < 0)
-						$cellbody .= "&nbsp;<img src=\"" . IMAGE_PATH
-							. "/t2.gif\" alt=\"".$rowdata['last_skill_change']." Points\">";
+						$cellbody .= "&nbsp;<span class=\"text-red-600\"><i class=\"fas fa-arrow-down\"></i></span>&nbsp;";
 				}
-				
+
+
 				echo "				<td$colalign class=\"$class\">"
 						. $cellbody
 						. "</td>\n";
