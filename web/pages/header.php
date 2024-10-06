@@ -542,13 +542,13 @@ if ($db->num_rows() < 1) {
                     aria-label="submenu"
                   >
 <?php @include(PAGE_PATH .'/gameslist.php'); ?>
-                  </ul>
-                </template>
-              </li>
+			</ul>
+			</template>
+			</li>
 <?php	
 		}
 ?>
-              <!-- End Games menu -->
+            <!-- End Games menu -->
 
 			  <!-- Start Links menu -->
               <li class="relative">
@@ -571,7 +571,7 @@ if ($db->num_rows() < 1) {
                     class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:text-gray-300 dark:border-gray-700 dark:bg-gray-700"
                     aria-label="submenu"
                   >
-					<?php
+<?php
 
 						display_links("Search", $g_options['scripturl'] . "?mode=search");
 
@@ -589,7 +589,7 @@ if ($db->num_rows() < 1) {
 
 						display_links("Help", $g_options['scripturl'] . "?mode=help");
 
-					?> 
+?> 
                   </ul>
                 </template>
               </li>
