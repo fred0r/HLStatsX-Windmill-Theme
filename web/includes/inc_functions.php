@@ -33,4 +33,71 @@ function display_page_title($title){
 
 }
 
+/**
+ * getWindmillSortArrow()
+ * 
+ * @param mixed $sort
+ * @param mixed $sortorder
+ * @param mixed $name
+ * @param mixed $longname
+ * @param string $var_sort
+ * @param string $var_sortorder
+ * @param string $sorthash
+ * @return string Returns the code for a sort arrow <IMG> tag.
+ */
+function getWindmillSortArrow($sort, $sortorder, $name, $longname, $var_sort = 'sort', $var_sortorder =
+	'sortorder', $sorthash = '', $ajax = false)
+{
+	global $g_options;
+
+	if ($sortorder == 'asc')
+	{
+		$sortimg = 'fas fa-sort-amount-down';
+		$othersortorder = 'desc';
+	}
+	else
+	{
+		$sortimg = 'fas fa-sort-amount-up';
+		$othersortorder = 'asc';
+	}
+	
+	$arrowstring = '<a href="' . $g_options['scripturl'] . '?' . makeQueryString($var_sort, $name,
+		array($var_sortorder));
+
+	if ($sort == $name)
+	{
+		$arrowstring .= "&amp;$var_sortorder=$othersortorder";
+		$jsarrow = "'" . $var_sortorder . "': '" . $othersortorder . "'";
+	}
+	else
+	{
+		$arrowstring .= "&amp;$var_sortorder=$sortorder";
+		$jsarrow = "'" . $var_sortorder . "': '" . $sortorder . "'";
+	}
+
+	if ($sorthash)
+	{
+		$arrowstring .= "#$sorthash";
+	}
+
+	$arrowstring .= '" class="head"';
+	
+	if ( $ajax )
+	{
+		$arrowstring .= " onclick=\"Tabs.refreshTab({'$var_sort': '$name', $jsarrow}); return false;\"";
+	}
+	
+	$arrowstring .= ' title="Change sorting order">' . "$longname</a>";
+
+	if ($sort == $name)
+	{
+		$arrowstring .= '&nbsp;<i class="' . $sortimg . '"></i>';
+	}
+
+
+	return $arrowstring;
+}
+
+
+
 ?>
