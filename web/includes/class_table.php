@@ -320,20 +320,20 @@ class Table
 						// check if image exists for game -- otherwise check realgame
 						if ($image)
 						{
-							$cellbody .= '<img src="' . $image['url'] . '" alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '">&nbsp;';
+							$cellbody .= '<span class="flex items-center"><img src="' . $image['url'] . '" alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '">&nbsp;';
 						}
 						elseif ($image = getImage("/games/$realgame/roles/" . $colval_lower))
 						{
-							$cellbody .= '<img src="' . $image['url'] . '" alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '">&nbsp;';
+							$cellbody .= '<span class="flex items-center"><img src="' . $image['url'] . '" alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '">&nbsp;';
 						}
 						
 						if (!empty($col->fname[$colval_lower]))
 						{
-							$cellbody .= '<b>' . $col->fname[$colval_lower] . '</b>';
+							$cellbody .= '<b>' . $col->fname[$colval_lower] . '</b></span>';
 						}
 						else
 						{
-							$cellbody .= '<b>' . ucwords(preg_replace('/_/', ' ', $colval)) . '</b>';
+							$cellbody .= '<b>' . ucwords(preg_replace('/_/', ' ', $colval)) . '</b></span>';
 						}
 
 						break;
