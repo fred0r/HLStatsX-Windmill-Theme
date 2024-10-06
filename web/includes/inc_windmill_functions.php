@@ -91,7 +91,7 @@ function getWindmillSortArrow($sort, $sortorder, $name, $longname, $var_sort = '
 
 	if ($sort == $name)
 	{
-		$arrowstring .= '&nbsp;<i class="' . $sortimg . '"></i>';
+		$arrowstring .= '&nbsp;<i class="' . $sortimg . '"></i>&nbsp;';
 	}
 
 
