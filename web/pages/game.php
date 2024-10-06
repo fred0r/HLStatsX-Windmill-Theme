@@ -143,7 +143,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$db->free_result();
 ?>
 
-<?php display_page_title('Participating Servers'); ?>
+<?php display_page_title('Servers'); ?>
 <?php
 if ($total_kills > 0)
 			$hpk = sprintf("%.2f", ($total_headshots / $total_kills) * 100);
