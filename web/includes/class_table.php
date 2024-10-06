@@ -233,7 +233,7 @@ class Table
 			{
 				$c = ($i % 2) + 1;
 				$i++;
-				echo "				<td style=\"text-xs text-align:right;\" class=\"bg$c\">$rank</td>\n";
+				echo "				<td style=\"text-align:center;\" class=\"bg$c\">$rank</td>\n";
 			}
 
 			foreach ($this->columns as $col)
