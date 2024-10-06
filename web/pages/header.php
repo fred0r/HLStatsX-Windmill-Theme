@@ -115,7 +115,8 @@ include 'includes/inc_functions.php';
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer>
 	</script>
-    <script src="./assets/js/init-alpine.js"></script>
+  	<script src="./assets/js/fontawesome-all.min.js"></script>
+	<script src="./assets/js/init-alpine.js"></script>
 	<link rel="stylesheet" type="text/css" href="./assets/css/windmill.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/windmill-purple.css">
 
@@ -638,7 +639,7 @@ if ($db->num_rows() < 1) {
 
 <!-- start body divs -->
 <!-- these get closed in footer.php -->
-		<main class="h-full pb-16 overflow-y-auto">
+		<main class="h-full pb-8 overflow-y-auto">
 		<div class="container grid px-6 mx-auto">
 
 <!-- end header.php -->
