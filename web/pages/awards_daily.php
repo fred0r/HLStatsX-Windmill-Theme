@@ -90,6 +90,71 @@ For support and installation notes visit http://www.hlxcommunity.com
 	list($awards_d_date, $awards_s_date) = $db->fetch_row($result);
 
 ?>
+<?php display_page_title((($awards_numdays == 1) ? 'Daily' : $awards_numdays.'Day')." Awards ($awards_d_date)"); ?>
+
+<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+
+<?php
+while ($r = $db->fetch_array($resultAwards))
+	{
+
+		if ($image = getImage("/games/$game/dawards/".strtolower($r['awardType'].'_'.$r['code'])))
+		{
+			$img = $image['url'];
+		}
+		elseif ($image = getImage("/games/$realgame/dawards/".strtolower($r['awardType'].'_'.$r['code'])))
+		{
+			$img = $image['url'];
+		}
+		else
+		{
+			$img = IMAGE_PATH.'/award.png';
+		}
+		$weapon = '<a href="hlstats.php?mode=dailyawardinfo&amp;award='.$r['awardId']."&amp;game=$game\"><img src=\"$img\" alt=\"".$r['code'].'"></a>';
+		if ($r['d_winner_id'] > 0) {
+			if ($g_options['countrydata'] == 1)	{
+				$imagestring = '<img src="'.getFlag($r['flag']).'" alt="'.$r['flag'].'">&nbsp;&nbsp;';
+			} else {
+				$imagestring = '';
+			}
+			$winnerstring = '<strong>'.htmlspecialchars($r['d_winner_name'], ENT_COMPAT).'</strong>';
+			$achvd = "{$imagestring} <a href=\"hlstats.php?mode=playerinfo&amp;player={$r['d_winner_id']}&amp;game={$game}\">{$winnerstring}</a>";
+			$wincount = $r['d_winner_count'];
+		} else {
+			$achvd = "<em>No Award Winner</em>";
+			$wincount= "0";
+		}
+?>
+	<!-- Card -->
+	<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+		<div class="p-3 mr-4 rounded-full">
+			<?php echo $weapon ?>
+		</div>
+		<div>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<?php echo $r['name'] ?>
+			</p>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<span class="flex items-center">
+					<?php echo $achvd ?>
+				</span>
+			</p>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<?php echo $wincount. ' ' . htmlspecialchars($r['verb']) ?>
+			</p>
+		</div>
+	</div>
+
+<?php
+	}
+
+?>
+</div>			  
+<?php
+/*
+
+<hr>
+
 <div class="block">
 	<?php printSectionTitle((($awards_numdays == 1) ? 'Daily' : $awards_numdays.'Day')." Awards ($awards_d_date)"); ?>
 	<div class="subblock">
@@ -164,3 +229,5 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</table>
 	</div>
 </div>
+*/
+?>
