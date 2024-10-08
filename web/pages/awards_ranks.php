@@ -84,7 +84,72 @@ For support and installation notes visit http://www.hlxcommunity.com
 			minKills
 	");
 ?>
+<!-- end awards_ranks.php -->
+<?php display_page_title("Ranks"); ?>
 
+<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+<?php 
+
+
+
+while ($r = $db->fetch_array())
+{
+
+	$image = getImage('/ranks/'.$r['image'].'_small');
+	$link = '<a href="hlstats.php?mode=rankinfo&amp;rank='.$r['rankId']."&amp;game=$game\">";
+	if ($image)
+	{
+		$imagestring = '<img src="'.$image['url'].'" alt="'.$r['image'].'">';
+	}
+	else
+	{
+		$imagestring = 'Player List';
+	}
+	$achvd = '';
+	if ($ranks[$r['rankId']] > 0)
+	{
+		$imagestring = "$link$imagestring</a>";
+		$achvd = 'Achieved by '.$ranks[$r['rankId']].' Players';
+	}  
+	else
+	{
+		$achvd = "&nbsp;";
+	}  
+   
+?>
+
+	<!-- Card -->
+	<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+		<div class="p-3 mr-4 rounded-full">
+			<?php echo $imagestring . "\n"  ?>
+		</div>
+		<div>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<?php echo $r['rankName'] . "\n" ?>
+			</p>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<span class="flex items-center">
+					<?php echo "(" . $r['minKills']."-".$r['maxKills']. "&nbsp;kills" . ")\n" ?>
+				</span>
+			</p>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<?php echo $achvd . "\n"  ?>
+			</p>
+		</div>
+	</div>
+
+
+<?php
+
+	}
+
+?>
+</div>
+
+
+
+<?php
+/*
 <div class="block">
 	<?php printSectionTitle('Ranks'); ?>
 	<div class="subblock">
@@ -148,3 +213,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</table>
 	</div>
 </div>
+*/
+?>
+<!-- end awards_ranks.php -->

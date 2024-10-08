@@ -110,7 +110,7 @@ while ($r = $db->fetch_array($resultAwards))
 		{
 			$img = IMAGE_PATH.'/award.png';
 		}
-		$weapon = '<a href="hlstats.php?mode=dailyawardinfo&amp;award='.$r['awardId']."&amp;game=$game\"><img src=\"$img\" alt=\"".$r['code'].'"></a>';
+		$weapon = "<a href=\"hlstats.php?mode=dailyawardinfo&amp;award=" . $r['awardId'] . "&amp;game=$game\">\n				<img src=\"$img\" alt=\"" . $r['code'] . "\">\n			</a>";
 		if ($r['d_winner_id'] > 0) {
 			if ($g_options['countrydata'] == 1)	{
 				$imagestring = '<img src="'.getFlag($r['flag']).'" alt="'.$r['flag'].'">&nbsp;&nbsp;';
@@ -118,7 +118,7 @@ while ($r = $db->fetch_array($resultAwards))
 				$imagestring = '';
 			}
 			$winnerstring = '<strong>'.htmlspecialchars($r['d_winner_name'], ENT_COMPAT).'</strong>';
-			$achvd = "{$imagestring} <a href=\"hlstats.php?mode=playerinfo&amp;player={$r['d_winner_id']}&amp;game={$game}\">{$winnerstring}</a>";
+			$achvd = "{$imagestring} \n		<a href=\"hlstats.php?mode=playerinfo&amp;player={$r['d_winner_id']}&amp;game={$game}\">{$winnerstring}\n</a>";
 			$wincount = $r['d_winner_count'];
 		} else {
 			$achvd = "<em>No Award Winner</em>";
@@ -128,19 +128,19 @@ while ($r = $db->fetch_array($resultAwards))
 	<!-- Card -->
 	<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
 		<div class="p-3 mr-4 rounded-full">
-			<?php echo $weapon ?>
+			<?php echo $weapon . "\n"  ?>
 		</div>
 		<div>
 			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-				<?php echo $r['name'] ?>
+				<?php echo $r['name']  . "\n" ?>
 			</p>
 			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
 				<span class="flex items-center">
-					<?php echo $achvd ?>
+					<?php echo $achvd . "\n" ?>
 				</span>
 			</p>
 			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-				<?php echo $wincount. ' ' . htmlspecialchars($r['verb']) ?>
+				<?php echo $wincount. ' ' . htmlspecialchars($r['verb']) . "\n"  ?>
 			</p>
 		</div>
 	</div>

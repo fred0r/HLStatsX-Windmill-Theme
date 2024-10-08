@@ -74,7 +74,73 @@ For support and installation notes visit http://www.hlxcommunity.com
 			awardCode
 	");
 ?>
+<!-- end awards_Ribbons.php -->
+<?php display_page_title("Ribbons"); ?>
 
+<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+<?php 
+
+	// draw the rank info table (5 columns)
+	$i1 = 0;
+	$cnt = -1;
+ 
+	$cols = $g_options['awardribbonscols'];
+	
+	while ($r = $db->fetch_array())
+	{
+		if ($cnt != $r['awardCount'])
+		{
+			$cnt = $r['awardCount'];
+			$i1++;
+			echo "<tr class=\"head\"><td colspan=\"5\"><strong>Ribbon Class #$i1 ($cnt awards required)</strong></td></tr>";
+		}
+
+   
+		$link = '<a href="hlstats.php?mode=ribboninfo&amp;ribbon='.$r['ribbonId']."&amp;game=$game\">";
+		if (file_exists(IMAGE_PATH."/games/$game/ribbons/".$r['image']))
+		{
+			$image = IMAGE_PATH."/games/$game/ribbons/".$r['image'];
+		}
+		elseif (file_exists(IMAGE_PATH."/games/$realgame/ribbons/".$r['image']))
+		{
+			$image = IMAGE_PATH."/games/$realgame/ribbons/".$r['image'];
+		}
+		else
+		{
+			$image = IMAGE_PATH."/award.png";
+		}
+		$image = '<img src="'.$image.'" alt="'.$r['ribbonName'].'">';
+		$achvd = '';
+		if ($r['achievedcount'] > 0)
+		{
+			$image = "$link$image</a>";
+			$achvd = 'Achieved by '.$r['achievedcount'].' players';
+		}
+
+?>
+	<!-- Card -->
+	<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+		<div class="p-3 mr-4 rounded-full">
+			<?php echo $image . "\n"  ?>
+		</div>
+		<div>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<?php echo $r['ribbonName'] . "\n" ?>
+			</p>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<?php echo $achvd . "\n"  ?>
+			</p>
+		</div>
+	</div>
+<?php
+}
+
+?>
+
+</div>
+
+<?php 
+/*
 <div class="block">
 	<?php printSectionTitle('Ribbons'); ?>
 	<div class="subblock">
@@ -155,3 +221,5 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</table>
 	</div>
 </div>
+*/
+?>

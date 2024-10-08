@@ -61,7 +61,68 @@ For support and installation notes visit http://www.hlxcommunity.com
 			hlstats_Awards.name
 	");
 ?>
+<!-- start awards_global.php -->
+<?php display_page_title("Global Awards"); ?>
 
+<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+<?php 
+
+while ($r = $db->fetch_array($resultAwards))
+{
+
+	if ($image = getImage("/games/$game/gawards/".strtolower($r['awardType'].'_'.$r['code'])))
+	{
+		$img = $image['url'];
+	}
+	elseif ($image = getImage("/games/$realgame/gawards/".strtolower($r['awardType'].'_'.$r['code'])))
+	{
+		$img = $image['url'];
+	}
+	else
+	{
+		$img = IMAGE_PATH.'/award.png';
+	}
+	$weapon = "<img src=\"$img\" alt=\"".$r['code'].'">';
+	if ($r['g_winner_id'] > 0)
+	{
+		if ($g_options['countrydata'] == 1) {
+			$imagestring = '<img src="'.getFlag($r['flag']).'" alt="'.$r['country'].'">&nbsp;&nbsp;';
+		} else {
+			$imagestring = '';
+		}
+		$winnerstring = '<strong>'.htmlspecialchars($r['g_winner_name'], ENT_COMPAT).'</strong>';
+		$achvd = "{$imagestring} \n					<a href=\"hlstats.php?mode=playerinfo&amp;player={$r['g_winner_id']}&amp;game={$game}\">\n						{$winnerstring}\n					</a>";
+		$wincount = $r['g_winner_count'];			
+	} else {
+		$achvd = "<em>No Award Winner</em>";
+		$wincount= "0";
+	}			
+  ?> 
+	<!-- Card -->
+	<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+		<div class="p-3 mr-4 rounded-full">
+			<?php echo $weapon . "\n"  ?>
+		</div>
+		<div>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<?php echo $r['name'] . "\n" ?>
+			</p>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<span class="flex items-center">
+					<?php echo $achvd . "\n" ?>
+				</span>
+			</p>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<?php echo $wincount . ' ' . htmlspecialchars($r['verb']) . "\n"  ?>
+			</p>
+		</div>
+	</div>
+<?php
+	}
+?>
+</div>
+<?php 
+/*
 <div class="block">
 	<?php printSectionTitle('Global Awards'); ?>
 	<div class="subblock">
@@ -134,3 +195,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</table>
 	</div>
 </div>
+*/
+?>
+<!-- end awards_global.php -->
