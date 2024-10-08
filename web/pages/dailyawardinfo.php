@@ -141,6 +141,31 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 ?>
 
+<?php display_page_title("Daily Award Details"); ?>
+
+<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+
+	<!-- Card -->
+	<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+		<div class="p-3 mr-4 rounded-full">
+		<?php
+	$img = IMAGE_PATH."/games/$game/dawards/".strtolower($awardtype).'_'.strtolower($awardcode).'.png';
+	if (!is_file($img))
+	{
+		$img = IMAGE_PATH.'/award.png';
+	}
+	echo "<img src=\"$img\" alt=\"$awardcode\">";  ?>
+		</div>
+		<div>
+			<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+				<?php echo $awardname ?>
+			</p>
+		</div>
+	</div>
+</div>
+<?php echo $table->draw($result, $numitems, 95, 'center'); ?>
+<?php
+/*
 <div class="block">
 	<?php printSectionTitle('Daily Award Details'); ?>
 	<div class="subblock">
@@ -160,3 +185,5 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$table->draw($result, $numitems, 95, 'center');
 ?>
 </div>
+*/
+?>
