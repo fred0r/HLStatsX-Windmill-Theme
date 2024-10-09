@@ -40,13 +40,19 @@ For support and installation notes visit http://www.hlxcommunity.com
         die('Do not access this file directly.');
     }
 ?>
-	<?php display_page_title('Player Information for ' . htmlspecialchars($playerdata['lastName'], ENT_COMPAT)); ?>
-	<?php // printSectionTitle('Player Information'); ?>
-	<div class="subblock">
-		<div style="float:left;vertical-align:top;width:48.5%;">
+<!-- start playerinfo_general.php -->
+<?php display_page_title('Player Information for ' . htmlspecialchars($playerdata['lastName'], ENT_COMPAT)); ?>
+	
+<!-- Start large cards -->
+<div class="grid gap-6 mb-8 md:grid-cols-2">
+<!-- Start left card -->
+	<div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+    	<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Player Profile</h4>
+    	<p class="text-gray-600 dark:text-gray-400">
+
 			<table class="data-table">
-			<tr class="data-table-head">
-					<td style="vertical-align:top;">Player Profile<br /><br /></td>
+			<tr>
+					<td style="vertical-align:top;"> </td>
 					<td style="text-align:center; vertical-align:middle;" rowspan="7" id="player_avatar">
 						<?php
 							$db->query
@@ -86,19 +92,19 @@ For support and installation notes visit http://www.hlxcommunity.com
 								$avatar_full = $xmlDoc->avatarFull;
 							}
 						
-							echo("<img src=\"$avatar_full\" style=\"height:158px;width:158px;\" alt=\"Steam Community Avatar\" />");
+							echo("<img src=\"$avatar_full\" style=\"height:158px;width:158px;\" alt=\"Steam Community Avatar\">");
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm font-semibold tracking-wide text-left text-gray-500 uppercase bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>
 						<?php
-							echo '<img src="'.getFlag($playerdata['flag']).'" alt="'.$playerdata['country'].'" title="'.$playerdata['country'].'" />&nbsp;';
-							echo '<strong>' . htmlspecialchars($playerdata['lastName'], ENT_COMPAT) . ' </strong>';
+							echo '<span class="flex items-center"><img src="'.getFlag($playerdata['flag']).'" alt="'.$playerdata['country'].'" title="'.$playerdata['country'].'" />&nbsp;';
+							echo '<strong>' . htmlspecialchars($playerdata['lastName'], ENT_COMPAT) . ' </strong></span>';
 						?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>
 						<?php
 							if ($playerdata['country'])
@@ -116,7 +122,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>
 						<?php 
 							$prefix = ((!preg_match('/^BOT/i',$uqid)) && $g_options['Mode'] == 'Normal') ? 'STEAM_0:' : '';
@@ -124,18 +130,18 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Status: <strong><?php echo $status; ?></strong></td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>
 						<a href="steam://friends/add/<?php echo($coid); ?>" target="_blank">Click here to add as friend</a>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td><?php echo "Karma: $statusmsg"; ?></td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:50%;">Member of Clan:</td>
 					<td style="width:50%;">
 						<?php
@@ -148,7 +154,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Real Name:</td>
 					<td>
 						<?php
@@ -161,7 +167,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>E-mail Address:</td>
 					<td>
 						<?php
@@ -174,7 +180,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Home Page:</td>
 					<td>
 						<?php
@@ -187,20 +193,20 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                                         <td>MM Rank:</td>
                                         <td>
                                                 <?php
                                                         if ($playerdata['mmrank'])
                                                         {
-                                                                echo '<img src=hlstatsimg/mmranks/' . $playerdata['mmrank'] . '.png alt="rank" style=\"height:20px;width:50px; />';
+                                                                echo '<img src=hlstatsimg/mmranks/' . $playerdata['mmrank'] . '.png alt="rank" style=\"height:20px;width:50px;>';
                                                         }
                                                         else
-								echo '<img src=hlstatsimg/mmranks/0.png alt="rank" style=\"height:20px;width:50px; />';
+								echo '<img src=hlstatsimg/mmranks/0.png alt="rank" style=\"height:20px;width:50px;>';
                                                 ?>
                                         </td>
                                 </tr>
-				<tr class="bg1">
+				<tr  class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Last Connect:*</td>
 					<td>
 						<?php
@@ -225,13 +231,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Total Connection Time:</td>
 					<td>
 						<?php echo timestamp_to_str($playerdata['connection_time']); ?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Average Ping:*</td>
 					<td>
 						<?php
@@ -253,7 +259,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Favorite Server:*</td>
 					<td>
 						<?php
@@ -284,7 +290,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Favorite Map:*</td>
 					<td>
 						<?php
@@ -309,7 +315,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Favorite Weapon:*</td>
 						<?php
 							$result = $db->query("
@@ -352,7 +358,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 							$weaponlink = "<a href=\"hlstats.php?mode=weaponinfo&amp;weapon=$fav_weapon&amp;game=$game\">";
 							if ($image)
 							{
-								$cellbody = "\t\t\t\t\t<td style=\"text-align: center\">$weaponlink<img src=\"" . $image['url'] . "\" alt=\"$weap_name\" title=\"$weap_name\" />";
+								$cellbody = "\t\t\t\t\t<td style=\"text-align: center\">$weaponlink<img src=\"" . $image['url'] . "\" alt=\"$weap_name\" title=\"$weap_name\">";
 							}
 							else
 							{
@@ -363,23 +369,29 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-			</table><br />
-		</div>
+			</table>
+		</p>
+	</div>
+<!-- end left card -->
 
-		<div style="float:right;vertical-align:top;width:48.5%;">
-			<table class="data-table">
-				<tr class="data-table-head">
-					<td style="vertical-align:top;" colspan="3">Statistics Summary<br /><br /></td>
+<!-- start right card -->
+	<div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800" >
+	<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Statistics Summary</h4>
+            <p class="text-gray-600 dark:text-gray-400">
+
+			<table>
+				<tr>
+					<td style="vertical-align:top;" colspan="3"> </td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:50%;">Activity:</td>
 					<td style="width:35%;">
-	                                <meter min="0" max="100" low="25" high="50" optimum="75" value="<?php
+	                    <meter min="0" max="100" low="25" high="50" optimum="75" value="<?php
                                         echo $playerdata['activity'] ?>"></meter>
 					</td>
 					<td style="width:15%;"><?php echo $playerdata['activity'].'%'; ?></td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Points:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -387,7 +399,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Rank:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -421,7 +433,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Kills per Minute:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -436,7 +448,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Kills per Death:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -458,7 +470,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Headshots per Kill:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -477,7 +489,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Shots per Kill:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -505,7 +517,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Weapon Accuracy:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -514,7 +526,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Headshots:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -526,7 +538,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Kills:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -535,7 +547,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Deaths:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -544,7 +556,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Longest Kill Streak:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -562,7 +574,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Longest Death Streak:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -580,13 +592,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-				<tr class="bg2">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Suicides:</td>
 					<td style="width:55%;" colspan="2">
 						<?php echo number_format($playerdata['suicides']); ?>
 					</td>
 				</tr>
-				<tr class="bg1">
+				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td style="width:45%;">Teammate Kills:</td>
 					<td style="width:55%;" colspan="2">
 						<?php
@@ -595,7 +607,16 @@ For support and installation notes visit http://www.hlxcommunity.com
 						?>
 					</td>
 				</tr>
-			</table><br />
+			</table>
+			<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Player Trend</h4>
+			<?php echo "<img src=\"trend_graph.php?bgcolor=".$g_options['graphbg_trend'].'&amp;color='.$g_options['graphtxt_trend']."&amp;player=$player\" alt=\"Player Trend Graph\" />"; ?>			
+		</p>
+	</div>
+<!-- end right card -->
+</div>		
+<!-- end large cards -->			
+
+<!--
 			<?php
 				echo '&nbsp;&nbsp;<img src="' . IMAGE_PATH . '/history.gif" style="padding-left:3px;padding-right:3px;" alt="History" />&nbsp;<b>'
 					. htmlspecialchars($playerdata['lastName'], ENT_COMPAT) . '</b>\'s History:<br />';
@@ -620,79 +641,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 			<br />&nbsp;&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=search&amp;st=player&amp;q=<?php echo $pl_urlname; ?>"><img src="<?php echo IMAGE_PATH; ?>/search.gif" style="margin-left:3px;margin-right:3px;" alt="Search" />&nbsp;Find other players with the same name</a>
 		</div>
 	</div>
-	<br /><br />
-	<div style="clear:both;padding-top:24px;"></div>
-	<?php printSectionTitle('Miscellaneous Statistics'); ?>
-	<div class="subblock">
-		<div style="float:left;vertical-align:top;width:48.5%;">
-			<table class="data-table">
-				<tr class="data-table-head">
-					<td>Player Trend</td>
-				</tr>
-				<tr class="bg1">
-					<td style="text-align:center;">
-						<?php echo "<img src=\"trend_graph.php?bgcolor=".$g_options['graphbg_trend'].'&amp;color='.$g_options['graphtxt_trend']."&amp;player=$player\" alt=\"Player Trend Graph\" />"; ?>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div style="float:right;vertical-align:top;width:48.5%;">
-			<table class="data-table">
-				<tr class="data-table-head">
-					<td colspan="2">Forum Signature</td>
-				</tr>
-				<tr class="bg1">
-					<td style="text-align:center;">
-						<br /><br />
-						<?php
-							if ($g_options['modrewrite'] == 0)
-							{
-								$imglink = $siteurlneo.'sig.php?player_id='.$player.'&amp;background='.$g_options['sigbackground'];
-								$jimglink = $siteurlneo.'sig.php?player_id='.$player.'&background='.$g_options['sigbackground'];
-							}
-							else
-							{
-								$imglink = $siteurlneo.'sig-'.$player.'-'.$g_options['sigbackground'].'.png';
-								$jimglink = $imglink;
-							}
-							
-							echo "<img src=\"$imglink\" title=\"Copy &amp; Paste the whole URL below in your forum signature\" alt=\"forum sig image\"/>";
-							$script_path = (isset($_SERVER['SSL']) || (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on")) ? 'https://' : 'http://';
-							$script_path .= $_SERVER['HTTP_HOST'];
-							$script_path .= str_replace('\\','/',dirname($_SERVER['PHP_SELF']));
-							$script_path = preg_replace('/\/$/','',$script_path);
-						?>
-						<br /><br />
-						<script type="text/javascript">
-							/* <![CDATA[ */
-							function setForumText(val)
-							{
-								var txtArea = document.getElementById('siglink');
-								switch(val)
-								{
-									case 0:
-										<?php echo "txtArea.value = '$jimglink'\n"; ?>
-										break;	
-									case 1:
-										<?php echo "txtArea.value = '[url=$script_path/hlstats.php?mode=playerinfo&player=$player"."][img]$jimglink"."[/img][/url]'\n"; ?>
-										break;
-									case 2:
-										<?php echo "txtArea.value = '[url=\"$script_path/hlstats.php?mode=playerinfo&player=$player\"][img]$jimglink"."[/img][/url]'\n"; ?>
-										break;
-								}
-							}
-							/* ]]> */
-						</script>
-						<a href="" onclick="setForumText(1);return false">
-							bbCode 1 (phpBB, SMF)</a>&nbsp;|&nbsp;<a href="" onclick="setForumText(2);return false">bbCode 2 (IPB)</a>&nbsp;|&nbsp;<a href="" onclick="setForumText(0);return false">Direct Image
-						</a>
-						<?php echo '<textarea style="width: 95%; height: 50px;" rows="2" cols="70" id="siglink" readonly="readonly" onclick="document.getElementById(\'siglink\').select();">[url='."$script_path/hlstats.php?mode=playerinfo&amp;player=$player"."][img]$imglink".'[/img][/url]</textarea>'; ?>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	<br /><br />
+-->
+
 <?php
 // Current rank & rank history
 	$db->query
@@ -762,49 +712,61 @@ For support and installation notes visit http://www.hlxcommunity.com
 		$result = $db->fetch_array();
 
 		$histimage = getImage('/ranks/' . $result['image'] . '_small');
-		$rankHistory .= '<img src="' . $histimage['url'] . '" title="' . $result['rankName'] . '" alt="' . $result['rankName'] . '" /> ';
+		$rankHistory .= '<img src="' . $histimage['url'] . '" title="' . $result['rankName'] . '" alt="' . $result['rankName'] . '"> ';
 	} 
 ?>
 
-	<div style="clear:both;padding-top:24px;"></div>
-	<?php printSectionTitle('Ranks'); ?>
-	<div class="subblock">
-		<div style="float:left;vertical-align:top;width:48.5%;">
-			<table class="data-table">
-				<tr class="data-table-head">
-					<td colspan="2">
-						Current rank: <b><?php echo htmlspecialchars($rankName, ENT_COMPAT); ?></b>
-					</td>
-				</tr>
-				<tr class="bg1">
-					<td style="text-align:center;" colspan="2">
-						<?php echo '<img src="'.$rankimage['url']."\" alt=\"$rankName\" title=\"$rankName\" />"; ?>
-					</td>
-				</tr>
-				<tr class="data-table-head">
-					<td style="width:60%;">
-						<meter min="0" max="100" low="25" high="50" optimum="75" value="<?php
-                                        echo $rankPercent ?>"></meter>
-					
-					</td>
-					<td style="width:40%;">
-						Kills needed: <b><?php echo "$rankKillsNeeded (".number_format($rankPercent, 0, '.', '');?>%)</b>
-					</td>
-				</tr>
-			</table>
+	<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">	
+
+		<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+			<div class="p-3 mr-4 rounded-full">
+			<?php echo '<img src="'.$rankimage['url']."\" alt=\"$rankName\" title=\"$rankName\">"; ?>
+			</div>
+			<div>
+				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+					Current rank: <b><?php echo htmlspecialchars($rankName, ENT_COMPAT); ?></b>
+				</p>
+				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+					<span class="flex items-center">
+						<meter min="0" max="100" low="25" high="50" optimum="75" value="<?php echo $rankPercent ?>"></meter>
+					</span>
+				</p>
+				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+					Next rank: <?php echo "$rankKillsNeeded kills (".number_format($rankPercent, 0, '.', '');?>%)
+				</p>
+			</div>
 		</div>
-		<div style="float:right;vertical-align:top;width:48.5%;">
-			<table class="data-table">
-				<tr class="data-table-head">
-					<td>Rank history</td>
-				</tr>
-				<tr class="bg1">
-					<td style="text-align:center;"><?php echo $rankHistory; ?></td>
-				</tr>
-			</table>
+
+
+
+		<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+			<div class="p-3 mr-4 rounded-full">
+				<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Player History</h4>
+				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+					<?php echo '<a href="' . $g_options['scripturl'] . "?mode=playerhistory&amp;player=$player\">Events</a>"; ?>
+				</p>
+				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+					<?php echo '<a href="' . $g_options['scripturl'] . "?mode=playersessions&amp;player=$player\">Sessions</a>"; ?>
+				</p>
+<?php				if ($g_options["nav_globalchat"] == 1)
+				{
+					echo "<p class=\"mb-2 text-sm font-medium text-gray-600 dark:text-gray-400\">";
+					echo "<a href=\"" . $g_options['scripturl'] . "?mode=chathistory&amp;player=$player\">Chat</a>";
+					echo "				</p>";
+				}
+?>
+				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+					<a href="<?php echo $g_options['scripturl']; ?>?mode=search&amp;st=player&amp;q=<?php echo $pl_urlname; ?>">Find other players with the same name</a>
+				</p>
+
+			</div>
 		</div>
+
+
+		
 	</div>
-	<br /><br />
+
+
 
 <?php
 // Awards
@@ -892,7 +854,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			{
 				$image = IMAGE_PATH."/award.png";
 			}		
-			$ribbonList .= '<img src="'.$image.'" style="border:0px;" alt="'.$result['ribbonName'].'" title="'.$result["ribbonName"].'" /> ';
+			$ribbonList .= '<img src="'.$image.'" style="border:0px;" alt="'.$result['ribbonName'].'" title="'.$result["ribbonName"].'"> ';
 			$awards_done[$ribbonCode]=$ribbonCode;
 		}
 	}
@@ -948,37 +910,27 @@ For support and installation notes visit http://www.hlxcommunity.com
 		{
 			$image = IMAGE_PATH."/award.png";
 		}		
-		$GlobalAwardsList .= "<img src=\"$image\" alt=\"$a->ribbonName\" title=\"$a->ribbonName\" /> ";
+		$GlobalAwardsList .= "<img src=\"$image\" alt=\"$a->ribbonName\" title=\"$a->ribbonName\"> ";
 	}
 	if ($ribbonList != '' || $GlobalAwardsList != '')
 	{
 ?>
 
-	<div style="clear:both;padding-top:24px;"></div>
-	<?php printSectionTitle('Awards (hover over image to see name)'); ?>
-	<div class="subblock">
-		<div style="float:left;vertical-align:top;width:68.5%;">
-			<table class="data-table">
-				<tr class="data-table-head">
-					<td>Ribbons</td>
-				</tr>
-				<tr class="bg1">
-					<td style="text-align:center;"><?php echo $ribbonList; ?></td>
-				</tr>
-			</table>
-		</div>
-		<div style="float:right;vertical-align:top;width:28.5%;">
-			<table class="data-table">
-				<tr class="data-table-head">
-					<td colspan="2">Global Awards</td>
-				</tr>
-				<tr class="bg1">
-					<td style="text-align:center;"><?php echo $GlobalAwardsList; ?></td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	<br /><br />
+<h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Ribbons</h4>
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+	<p class="flex flex-wrap px-4 py-3 items-center text-sm text-gray-600 dark:text-gray-400">
+		<?php echo $ribbonList; ?>
+	</p>
+</div>
+
+<h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Global Awards</h4>
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+	<p class="flex flex-wrap px-4 py-3 items-center text-sm text-gray-600 dark:text-gray-400">
+		<?php echo $GlobalAwardsList; ?>
+	</p>
+</div>
+
 <?php
 	}
 ?> 
+<!-- end playerinfo_general.php -->
