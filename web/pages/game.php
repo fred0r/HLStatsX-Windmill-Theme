@@ -150,54 +150,57 @@ if ($total_kills > 0)
 		else
 			$hpk = sprintf("%.2f", 0);
 ?>
-
+<!-- start game.php -->
+<!-- start card section -->
 <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-              <!-- Card -->
-              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
-				&nbsp;<i class="fas fa-server"></i>&nbsp;
-                </div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Servers</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_servers) ?></p>
-                </div>
-              </div>
-              <!-- Card -->
-              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
-					&nbsp;<i class="fas fa-user"></i>&nbsp;
-                </div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Players</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_players) ?></p>
-                </div>
-              </div>
-              <!-- Card -->
-              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-					&nbsp;<i class="fas fa-skull-crossbones"></i>&nbsp;
-				</div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Kills</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_kills) ?></p>
-                </div>
-              </div>
-              <!-- Card -->
-              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
-				&nbsp;<i class="fas fa-crosshairs"></i>&nbsp;                
-				</div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Headshots</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_headshots) . " ($hpk%)" ?></p>
-                </div>
-              </div>
-			</div>
-			<!-- end Card Section -->
+	<!-- Card -->
+	<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+	<div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+	&nbsp;<i class="fas fa-server"></i>&nbsp;
+	</div>
+	<div>
+		<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Servers</p>
+		<p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_servers) ?></p>
+	</div>
+	</div>
+	<!-- Card -->
+	<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+	<div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+		&nbsp;<i class="fas fa-user"></i>&nbsp;
+	</div>
+	<div>
+		<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Players</p>
+		<p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_players) ?></p>
+	</div>
+	</div>
+	<!-- Card -->
+	<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+	<div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+		&nbsp;<i class="fas fa-skull-crossbones"></i>&nbsp;
+	</div>
+	<div>
+		<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Kills</p>
+		<p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_kills) ?></p>
+	</div>
+	</div>
+	<!-- Card -->
+	<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+	<div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
+	&nbsp;<i class="fas fa-crosshairs"></i>&nbsp;                
+	</div>
+	<div>
+		<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Headshots</p>
+		<p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo number_format($total_headshots) . " ($hpk%)" ?></p>
+	</div>
+	</div>
+</div>
+<!-- end Card Section -->
 
 <?php
+/*
 if ($g_options['show_server_load_image'] == 1) {
 ?>
+	<?php echo display_page_subtitle('Global Graph') ?>
 	<div class="flex items-center justify-between p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
 			<img src="show_graph.php?type=1&amp;game=<?php echo $game ?>&amp;width=870&amp;height=200&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>" 
 				alt="Server Load Graph" 
@@ -205,10 +208,92 @@ if ($g_options['show_server_load_image'] == 1) {
 	</div>
 <?php
 		}
+*/
+		?>
+
+
+<div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+	<div class="w-full overflow-x-auto">
+
+		<table class=" w-full whitespace-no-wrap">
+			<thead>
+				<tr class="text-sm font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+					<td colspan="5" style="width:37%;">&nbsp;Server</td>
+					<td style="width:7%;text-align:center;">&nbsp;Map</td>
+					<td style="width:7%;text-align:center;">&nbsp;Played</td>
+					<td style="width:10%;text-align:center;">&nbsp;Players</td>
+					<td style="width:7%;text-align:center;">&nbsp;Kills</td>
+					<td style="width:7%;text-align:center;">&nbsp;Headshots</td>
+					<td style="width:6%;text-align:center;">&nbsp;HS:K</td>
+				</tr>
+			</thead>
+			<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+
+<?php
+
+		$i = 0;
+		for ($i = 0; $i < count($servers); $i++)
+		{
+			$rowdata = $servers[$i];
+			$server_id = $rowdata['serverId'];
+			$c = ($i % 2) + 1;
+
+			$addr = $rowdata['addr'];
+			$kills = $rowdata['kills'];
+			$headshots = $rowdata['headshots'];
+			$player_string = $rowdata['act_players'] . '/' . $rowdata['max_players'];
+			$map_teama_wins = $rowdata['map_ct_wins'];
+			$map_teamb_wins = $rowdata['map_ts_wins'];
+
+
+?>
+			<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
+			<td colspan="5">&nbsp;&nbsp;<?php
+			echo $rowdata['name'] . " (<a href=\"steam://connect/$addr\">Join</a>)";
+?></td>
+            <td style="text-align:center;"><?php
+			echo $rowdata['act_map'];
+?></td>
+            <td style="text-align:center;"><?php
+			$stamp = $rowdata['map_started']==0?0:time() - $rowdata['map_started'];
+			$hours = sprintf("%02d", floor($stamp / 3600));
+			$min = sprintf("%02d", floor(($stamp % 3600) / 60));
+			$sec = sprintf("%02d", floor($stamp % 60));
+			echo $hours . ":" . $min . ":" . $sec;
+?></td>
+            <td style="text-align:center;"><?php
+			echo $player_string;
+?></td>
+            <td style="text-align:center;"><?php
+			echo number_format($kills);
+?></td>
+            <td style="text-align:center;"><?php
+			echo number_format($headshots);
+?></td>
+            <td style="text-align:center;"><?php
+			if ($kills > 0)
+				echo sprintf("%.2f", ($headshots / $kills));
+			else
+				echo sprintf("%.2f", 0);
+?></td>
+        </tr>
+<?php
+
+ printserverstats($server_id);
+
+ echo "</tbody>";
+ echo "</table>";
+
+		}
+
 ?>
 
 
-<hr>
+</div>
+
+	</div>
+<!--
+	<hr>
 
 <div class="block">
 
@@ -260,14 +345,14 @@ if ($g_options['show_server_load_image'] == 1) {
 ?></td>
       </tr>
       <tr class="data-table-head">
-		<td class="fSmall" style="width:37%;">&nbsp;Server</td>
-		<td class="fSmall" style="width:19%;">&nbsp;Address</td>
-		<td class="fSmall" style="width:7%;text-align:center;">&nbsp;Map</td>
-		<td class="fSmall" style="width:7%;text-align:center;">&nbsp;Played</td>
-		<td class="fSmall" style="width:10%;text-align:center;">&nbsp;Players</td>
-		<td class="fSmall" style="width:7%;text-align:center;">&nbsp;Kills</td>
-		<td class="fSmall" style="width:7%;text-align:center;">&nbsp;Headshots</td>
-		<td class="fSmall" style="width:6%;text-align:center;">&nbsp;HS:K</td>
+		<td style="width:37%;">&nbsp;Server</td>
+		<td style="width:19%;">&nbsp;Address</td>
+		<td style="width:7%;text-align:center;">&nbsp;Map</td>
+		<td style="width:7%;text-align:center;">&nbsp;Played</td>
+		<td style="width:10%;text-align:center;">&nbsp;Players</td>
+		<td style="width:7%;text-align:center;">&nbsp;Kills</td>
+		<td style="width:7%;text-align:center;">&nbsp;Headshots</td>
+		<td style="width:6%;text-align:center;">&nbsp;HS:K</td>
       </tr>
 
 <?php
@@ -285,19 +370,7 @@ if ($g_options['show_server_load_image'] == 1) {
 			$player_string = $rowdata['act_players'] . '/' . $rowdata['max_players'];
 			$map_teama_wins = $rowdata['map_ct_wins'];
 			$map_teamb_wins = $rowdata['map_ts_wins'];
-?>
-<?php
-			if ($g_options['slider'] == 1) {
-?>
-	<tr class="game-table-row toggler" style="cursor: pointer;" onmouseover="this.setAttribute('class', 'game-table-row-hover');" onmouseout="this.setAttribute('class', 'game-table-row toggler');">
-            <td class="game-table-cell">
-<?php
-			} else {
-?>
-        <tr class="game-table-row">
-            <td class="game-table-cell">
-<?php
-			}
+
 			$image = getImage("/games/$game/game");
 			echo '<img src="';
 			if ($image)
@@ -310,26 +383,26 @@ if ($g_options['show_server_load_image'] == 1) {
             <td class="game-table-cell"><?php
 			echo "$addr (<a href=\"steam://connect/$addr\">Join</a>)";
 ?></td>
-            <td class="game-table-cell" style="text-align:center;"><?php
+            <td style="text-align:center;"><?php
 			echo $rowdata['act_map'];
 ?></td>
-            <td class="game-table-cell" style="text-align:center;"><?php
+            <td style="text-align:center;"><?php
 			$stamp = $rowdata['map_started']==0?0:time() - $rowdata['map_started'];
 			$hours = sprintf("%02d", floor($stamp / 3600));
 			$min = sprintf("%02d", floor(($stamp % 3600) / 60));
 			$sec = sprintf("%02d", floor($stamp % 60));
 			echo $hours . ":" . $min . ":" . $sec;
 ?></td>
-            <td class="game-table-cell" style="text-align:center;"><?php
+            <td style="text-align:center;"><?php
 			echo $player_string;
 ?></td>
-            <td class="game-table-cell" style="text-align:center;"><?php
+            <td style="text-align:center;"><?php
 			echo number_format($kills);
 ?></td>
-            <td class="game-table-cell" style="text-align:center;"><?php
+            <td style="text-align:center;"><?php
 			echo number_format($headshots);
 ?></td>
-            <td class="game-table-cell" style="text-align:center;"><?php
+            <td style="text-align:center;"><?php
 			if ($kills > 0)
 				echo sprintf("%.2f", ($headshots / $kills));
 			else
@@ -450,14 +523,14 @@ if ($g_options['show_server_load_image'] == 1) {
 ?>
 		  <table class="data-table">
 					<tr class="data-table-head">
-						<td class="fSmall" style="width:37%;">&nbsp;Server</td>
-						<td class="fSmall" style="width:19%;">&nbsp;Address</td>
-						<td class="fSmall" style="width:7%;text-align:center;">&nbsp;Map</td>
-						<td class="fSmall" style="width:7%;text-align:center;">&nbsp;Played</td>
-						<td class="fSmall" style="width:10%;text-align:center;">&nbsp;Players</td>
-						<td class="fSmall" style="width:7%;text-align:center;">&nbsp;Kills</td>
-						<td class="fSmall" style="width:7%;text-align:center;">&nbsp;Headshots</td>
-						<td class="fSmall" style="width:6%;text-align:center;">&nbsp;HS:K</td>
+						<td style="width:37%;">&nbsp;Server</td>
+						<td style="width:19%;">&nbsp;Address</td>
+						<td style="width:7%;text-align:center;">&nbsp;Map</td>
+						<td style="width:7%;text-align:center;">&nbsp;Played</td>
+						<td style="width:10%;text-align:center;">&nbsp;Players</td>
+						<td style="width:7%;text-align:center;">&nbsp;Kills</td>
+						<td style="width:7%;text-align:center;">&nbsp;Headshots</td>
+						<td style="width:6%;text-align:center;">&nbsp;HS:K</td>
 					</tr>
 					<tr class="game-table-row">
 						<td class="game-table-cell"><?php
@@ -473,26 +546,26 @@ if ($g_options['show_server_load_image'] == 1) {
 						<td class="game-table-cell"><?php
 			echo "$addr <a href=\"steam://connect/$addr\" style=\"color:black\">(Join)</a>";
 	?></td>
-						<td class="game-table-cell" style="text-align:center;"><?php
+						<td style="text-align:center;"><?php
 			echo $rowdata['act_map'];
 	?></td>
-						<td class="game-table-cell" style="text-align:center;"><?php
+						<td style="text-align:center;"><?php
 			$stamp = $rowdata['map_started']==0?0:time() - $rowdata['map_started'];
 			$hours = sprintf('%02d', floor($stamp / 3600));
 			$min = sprintf('%02d', floor(($stamp % 3600) / 60));
 			$sec = sprintf('%02d', floor($stamp % 60));
 			echo $hours . ':' . $min . ':' . $sec;
 	?></td>
-						<td class="game-table-cell" style="text-align:center;"><?php
+						<td style="text-align:center;"><?php
 			echo $player_string;
 	?></td>
-						<td class="game-table-cell" style="text-align:center;"><?php
+						<td style="text-align:center;"><?php
 			echo number_format($kills);
 	?></td>
-						<td class="game-table-cell" style="text-align:center;"><?php
+						<td style="text-align:center;"><?php
 			echo number_format($headshots);
 	?></td>
-						<td class="game-table-cell" style="text-align:center;"><?php
+						<td style="text-align:center;"><?php
 			if ($kills > 0)
 				echo sprintf('%.4f', ($headshots / $kills));
 			else
@@ -516,9 +589,10 @@ if ($g_options['show_server_load_image'] == 1) {
 	}
 ?>
 </div></div>
-<
+-->
 <?php
 /*
+// Awards section
 	if ($g_options['gamehome_show_awards'] == 1) {
 		$resultAwards = $db->query("
 			SELECT
@@ -618,4 +692,5 @@ if ($g_options['show_server_load_image'] == 1) {
 	}
 */
 ?>
+
 <!-- end game.php -->
