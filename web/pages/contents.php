@@ -78,13 +78,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	<h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Games</h4>
 
-		<table class="data-table w-full whitespace-no-wrap">
+		<table class="w-full whitespace-no-wrap">
 			<thead>
-				<tr class="data-table-head text-l font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-					<td class="fSmall" width="60%" style="text-align:left;">&nbsp;</td>
-					<td class="fSmall" width="10%" style="text-align:center;">&nbsp;Current Players</td>
-					<td class="fSmall" width="20%" style="text-align:center;">&nbsp;Top Player</td>
-					<td class="fSmall" width="10%" style="text-align:center;">&nbsp;Top Clan</td>
+				<tr class="text-l font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+					<td width="60%" style="text-align:left;">&nbsp;</td>
+					<td width="10%" style="text-align:center;">&nbsp;Current Players</td>
+					<td width="20%" style="text-align:center;">&nbsp;Top Player</td>
+					<td width="10%" style="text-align:center;">&nbsp;Top Clan</td>
 				</tr>
 			</thead>
 			<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
