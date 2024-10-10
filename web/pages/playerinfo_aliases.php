@@ -154,19 +154,11 @@ For support and installation notes visit http://www.hlxcommunity.com
 	list($numitems) = $db->fetch_row($resultCount);
 	if ($numitems > 1)
 	{
-?>
-
-<div style="clear:both;padding-top:24px;"></div>
-<?php
 		display_page_subtitle('Aliases');
 		//printSectionTitle('Aliases');
 		if ($numitems > 0)
 		{
 			$tblAliases->draw($result, $numitems, 95);
 		}
-?>
-<br /><br />
-
-<?php
 	}
 ?>

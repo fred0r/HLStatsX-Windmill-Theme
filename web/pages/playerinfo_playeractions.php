@@ -119,15 +119,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0)
 	{
-?>
-		<div style="clear:both;padding-top:20px;"></div>
-<?php
 		display_page_subtitle('Player Actions *');
 		//printSectionTitle('Player Actions *');
 		$tblPlayerActions->draw($result, $numitems, 95);
-?>
-		<br /><br />
-<?php
 	}
 	$tblPlayerPlayerActionsV = new Table
 	(
@@ -197,8 +191,5 @@ For support and installation notes visit http://www.hlxcommunity.com
 		display_page_subtitle('Victims of Player-Player Actions *');
 		//printSectionTitle('Victims of Player-Player Actions *');
 		$tblPlayerPlayerActionsV->draw($result, $numitems, 95);
-?>
-		<br /><br />
-<?php
 	}
 ?>

@@ -737,8 +737,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 			</div>
 		</div>
 
-
-
 		<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
 			<div class="p-3 mr-4 rounded-full">
 				<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Player History</h4>
@@ -758,12 +756,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
 					<a href="<?php echo $g_options['scripturl']; ?>?mode=search&amp;st=player&amp;q=<?php echo $pl_urlname; ?>">Find other players with the same name</a>
 				</p>
-
 			</div>
 		</div>
-
-
-		
+	
 	</div>
 
 

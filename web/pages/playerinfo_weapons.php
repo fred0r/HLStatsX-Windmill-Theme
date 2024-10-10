@@ -283,7 +283,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		display_page_subtitle('Weapon Statistics *');
 		// printSectionTitle('Weapon Statistics *');
 		$tblWeaponstats->draw($result, $numitems, 95); ?>
-		<br /><br />
 <!-- End of StatsMe Addon 1.0 by JustinHoMi@aol.com -->
 
 <?php
@@ -686,9 +685,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		{
 			$tblWeaponstats2->draw($result, $db->num_rows($result), 95);
 		}
-?>
-	<br /><br />
 
-<?php
 	}
 ?>

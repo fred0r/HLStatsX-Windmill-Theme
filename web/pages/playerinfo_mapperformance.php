@@ -155,15 +155,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0)
 	{
-?>
-<div style="clear:both;padding-top:20px;"></div>
-<?php
 		display_page_subtitle('Map Performance *');
 		// printSectionTitle('Map Performance *');
 		$tblMaps->draw($result, $numitems, 95);
-?>
-<br /><br />
-
-<?php
 	}
 ?>

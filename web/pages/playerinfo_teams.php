@@ -345,9 +345,5 @@ For support and installation notes visit http://www.hlxcommunity.com
 		display_page_subtitle('Role Selection *');
 		// printSectionTitle('Role Selection *');
 		$tblRoles->draw($result, $numitems, 95);
-?>
-	<br /><br />
-
-<?php
 	}
 ?>

@@ -149,8 +149,5 @@ For support and installation notes visit http://www.hlxcommunity.com
 		display_page_subtitle('Server Activity *');
 		//printSectionTitle('Server Activity *');
 		$tblServers->draw($result, $numitems, 95);
-?>
-	<br /><br />
-<?php
 	}
 ?>
