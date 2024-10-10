@@ -172,7 +172,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 ?>				
 				<tr class="text-l text-gray-700 dark:text-gray-400">
 					<td style="height:30px">
-						<div class="flex items-center">&nbsp;<a href="<?php echo $g_options['scripturl'] . "?game=$gamedata[0]"; ?>"><img src="<?php
+						<div style="float:left;" class="flex items-center">&nbsp;<a href="<?php echo $g_options['scripturl'] . "?game=$gamedata[0]"; ?>"><img src="<?php
 			$image = getImage("/games/$gamedata[0]/game");
 			if ($image)
 				echo $image['url'];
