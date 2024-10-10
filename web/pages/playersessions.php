@@ -223,22 +223,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			hlstats_Players_History.playerId = $player
 	");
 	list($numitems) = $db->fetch_row($resultCount);
-?>
 
-<div class="block">
-<?php
-	printSectionTitle('Player Session History');
-	if ($numitems > 0)
-	{
-		$table->draw($result, $numitems, 95);
-	}
-?><br /><br />
-	<div class="subblock">
-		<div style="float:left;">
-			Items above are generated from the last <?php echo $g_options['DeleteDays']; ?> days.
-		</div>
-		<div style="float:right;">
-<?php 
 	$db->query
 	("
 		SELECT
@@ -249,8 +234,15 @@ For support and installation notes visit http://www.hlxcommunity.com
 			hlstats_Players.playerId = '$player'
 	");
 	list($lastName) = $db->fetch_row();
+
 ?>
-			Go to: <a href="<?php echo $g_options['scripturl'] . "?mode=playerinfo&amp;player=$player"; ?>"><?php echo $lastName; ?>'s Statistics</a>
-		</div>
-	</div>
-</div>
+<!-- start playersessions.php -->
+
+<?php
+	display_page_title($lastName .' Event History (Last '.$g_options['DeleteDays'].' Days)');
+	if ($numitems > 0)
+	{
+		$table->draw($result, $numitems, 95);
+	}
+?>
+<!-- end playersessions.php -->
