@@ -542,19 +542,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 	list($numitems) = $db->fetch_row($resultCount);
 ?>
+<!-- start playerhistory.php -->
+<?php 
+display_page_title($pl_name .' Event History (Last '.$g_options['DeleteDays'].' Days)'); 
 
-<div class="block">
-<?php
-	display_page_subtitle('Player Event History (Last '.$g_options['DeleteDays'].' Days)');
-	// printSectionTitle('Player Event History (Last '.$g_options['DeleteDays'].' Days)');
 	if ($numitems > 0)
 	{
 		$table->draw($result, $numitems, 95);
 	}
-?><br /><br />
-	<div class="subblock">
-		<div style="float:right;">
-			Go to: <a href="<?php echo $g_options['scripturl'] . "?mode=playerinfo&amp;player=$player"; ?>"><?php echo $pl_name; ?>'s Statistics</a>
-		</div>
-	</div>
-</div>
+?>
+<!-- end playerhistory.php -->
