@@ -237,22 +237,12 @@ For support and installation notes visit http://www.hlxcommunity.com
 		list($numitems, $totalact) = $db->fetch_row($resultCount);    
 	}
 ?>
-<div class="block">
-	<?php printSectionTitle('Action Details'); ?>
+<!-- start actioninfo.php -->
 
-	<div class="subblock">
-		<div style="float:left;">
-			<strong><?php echo $act_name; ?></strong> from a total of <strong><?php echo number_format(intval($totalact)); ?></strong> achievements (Last <?php echo $g_options['DeleteDays']; ?> Days)
-		</div>
-		<div style="float:right;">
-			Back to <a href="<?php echo $g_options['scripturl'] . "?mode=actions&amp;game=$game"; ?>">Action Statistics</a>
-		</div>
-	</div>
-	<div style="clear:both;padding:2px;"></div>
-</div>
+<?php echo display_page_title('Action: ' . $act_name); ?>
+<?php echo $table->draw($result, $numitems, 95, 'center'); ?>
+
 <?php
-	$table->draw($result, $numitems, 95, 'center');
-
 	if ($actiondata['for_PlayerPlayerActions'] == 1)
 	{
 		$table = new Table(
@@ -320,17 +310,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 	
 		list($numitems, $totalact) = $db->fetch_row($resultCount);
 ?>
-<div class="block">
-	<a name="victims"><?php printSectionTitle("Action Victim Details"); ?></a>
-	<div class="subblock">
-		<div style="float:left;">
-			<strong>Victims of <?php echo $act_name; ?></strong> (Last <?php echo $g_options['DeleteDays']; ?> Days)
-		</div>
-	</div>
-	<div style="clear:both;padding:2px;"></div>
-</div>
-<?php		
-		$table->draw($result, $numitems, 95, 'center');
+<?php echo display_page_title('Action Victims: ' . $act_name); ?>
+<?php $table->draw($result, $numitems, 95, 'center'); ?>
+<?php 
 	}
 ?>
-</div>
+<!-- end actioninfo.php -->

@@ -132,20 +132,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 	
 	list($numitems, $totalkills) = $db->fetch_row($resultCount);
 ?>
+<!-- start mapinfo.php -->
+<?php echo display_page_title('Map: ' . $map); ?>
 
-<div class="block">
-	<?php printSectionTitle('Map Details'); ?>
-	<div class="subblock">
-		<div style="float:left;">
-			<strong><?php echo $map; ?></strong>: From a total of <strong><?php echo number_format(intval($totalkills)); ?></strong> kills (Last <?php echo $g_options['DeleteDays']; ?> Days)
-		</div>
-		<div style="float:right;">
-			Back to <a href="<?php echo $g_options['scripturl'] . "?mode=maps&amp;game=$game"; ?>">Map Statistics</a>
-		</div>
-		<div style="clear:both;"></div>
-	</div>
-</div>
-<br /><br />
 <div class="block">
 <?php // figure out URL and absolute path of image
 	if ($mapimg = getImage("/games/$game/maps/$map"))
@@ -190,7 +179,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 			if ($heatmap)
 			{
-				echo "<a href=\"" . $heatmap['url'] . "\" rel=\"boxed\" title=\"Heatmap: $map\"><br /><img src=\"" . $heatmapthumb['url'] . "\" alt=\"$map\" /></a>";
+				echo "<a href=\"" . $heatmap['url'] . "\" rel=\"boxed\" title=\"Heatmap: $map\"><br /><img src=\"" . $heatmapthumb['url'] . "\" alt=\"$map\"></a>";
 			}
 ?>
 		</div>
