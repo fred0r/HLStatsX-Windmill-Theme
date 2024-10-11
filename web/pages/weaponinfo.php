@@ -153,30 +153,19 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 	
 	list($numitems, $totalkills, $totalheadshots) = $db->fetch_row($resultCount);
-?>
 
-<div class="block">
-	<?php printSectionTitle('Weapon Details'); ?>
-    <div class="subblock">
-	<?php // figure out URL and absolute path of image
-		$image = getImage("/games/$game/weapons/$weapon");
-		if ($image)
-		{
-			$wep_content = '<img src="' . $image['url'] . "\"  alt=\"$weapon\" />";   
-		}
-		else
-		{
-			$wep_content = "<strong>$wep_name</strong>: ";
-		}
+	// figure out URL and absolute path of image
+	$image = getImage("/games/$game/weapons/$weapon");
+	if ($image)
+	{
+		$wep_content = '<img src="' . $image['url'] . "\"  alt=\"$weapon\">";   
+	}
+	else
+	{
+		$wep_content = "<strong>$wep_name</strong>: ";
+	}
 ?>
-		<div style="float:left;">
-			<?php echo $wep_content ?>&nbsp;From a total of <b><?php echo number_format(intval($totalkills)); ?></b> kills with <b><?php echo number_format($totalheadshots); ?></b> headshots (Last <?php echo $g_options['DeleteDays']; ?> Days)
-		</div>
-		<div style="float:right;">
-			Back to <a href="<?php echo $g_options['scripturl']. "?mode=weapons&amp;game=$game"; ?>">Weapon Statistics</a>
-		</div>
-		<div style="clear:both;padding:2px;"></div>
-	</div>
-	<br /><br />
-	<?php $table->draw($result, $numitems, 95, 'center'); ?>
-</div>
+<!-- start weaponinfo.php -->
+<?php display_page_title('Weapon: ' . $wep_name . ' (Last ' . $g_options['DeleteDays'] . ' Days)' ); ?>
+<?php $table->draw($result, $numitems, 95, 'center'); ?>
+<!-- end weaponinfo.php -->
