@@ -250,22 +250,12 @@ $db->query("
 
 ?>
 
-<!--
-<div class="block" style="clear:both;padding-top:12px;">
-	<div class="subblock">
-		<div style="float:left;">
-			Items marked "*" above are generated from the last <?php echo $g_options['DeleteDays']; ?> days.
-		</div>
-		<div style="float:right;">
-			<?php
+<?php
 				if (isset($_SESSION['loggedin']))
 				{
-					echo 'Admin Options: <a href="'.$g_options['scripturl']."?mode=admin&amp;task=tools_editdetails_player&amp;id=$player\">Edit Player Details</a><br />";
+					echo '<div class="text-xs text-gray-600 dark:text-gray-400">';
+					echo 'Admin Options: <a href="'.$g_options['scripturl']."?mode=admin&amp;task=tools_editdetails_player&amp;id=$player\">Edit Player Details</a>";
+					echo '</div>';
 				}
-			?>
-			Go to: <a href="<?php echo $g_options['scripturl'] . "?mode=players&amp;game=$game"; ?>">Player Rankings</a>
-		</div>
-	</div>
-</div>
--->
+?>
 <!-- end playerinfo.php -->
