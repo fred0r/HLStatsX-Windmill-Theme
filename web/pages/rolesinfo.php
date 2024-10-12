@@ -140,7 +140,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 	
 	list($numitems, $totalkills, $totalheadshots) = $db->fetch_row($resultCount);
 ?>
-
+<?php echo display_page_title('Role: ' . htmlspecialchars($role_name)); ?>
+<?php $table->draw($result, $numitems, 95, 'center'); ?>
+<!--
 <div class="block">
 	<?php printSectionTitle('Role Details'); ?>
 	<div class="subblock">
@@ -173,3 +175,4 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 </td></tr>
 </table>
+			-->
