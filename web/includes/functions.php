@@ -317,7 +317,7 @@ function getSortArrow($sort, $sortorder, $name, $longname, $var_sort = 'sort', $
  */
 function getSelect($name, $values, $currentvalue = '')
 {
-	$select = "<select name=\"$name\" style=\"width:300px;\">\n";
+	$select = "<select name=\"$name\" class=\"mt-1 w-full text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray\">\n";
 
 	$gotcval = false;
 

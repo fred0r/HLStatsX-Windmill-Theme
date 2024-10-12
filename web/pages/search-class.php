@@ -77,34 +77,37 @@ For support and installation notes visit http://www.hlxcommunity.com
 			}
 ?>
 
-<div class="block">
-	<?php printSectionTitle('Find a Player or Clan'); ?>
-	<div class="subblock">
-		<form method="get" action="<?php echo $g_options['scripturl']; ?>">
+<?php echo display_page_title('Find a Player or Clan'); ?>
+
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+        <div class="w-full">
+
+<form method="get" action="<?php echo $g_options['scripturl']; ?>">
 			<?php
 				foreach ($getvars as $var=>$value)
 				{
 					echo '<input type="hidden" name="'.htmlspecialchars($var, ENT_QUOTES).'" value="'.htmlspecialchars($value, ENT_QUOTES)."\" />\n";
 				}
 			?>
-					<table class="data-table" style="width:30%;">
-						<tr style="vertical-align:middle;" class="bg1">
-							<td nowrap="nowrap" style="width:30%;">Search For:</td>
-							<td style="width:70%;">
-								<input type="text" name="q" size="20" maxlength="128" value="<?php echo htmlspecialchars($this->query, ENT_QUOTES); ?>" style="width:300px;" />
+					<table class="w-full whitespace-no-wrap">
+						<tr class="text-l font-semibold tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+							<td>Search For:&nbsp;</td>
+							<td>
+								<input type="text" name="q" size="20" maxlength="128" value="<?php echo htmlspecialchars($this->query, ENT_QUOTES); ?>" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
 							</td>
 						</tr>
-						<tr style="vertical-align:middle;" class="bg1">
-							<td nowrap="nowrap" style="width:30%;">In:</td>
-							<td style="width:70%;">
+						<tr class="text-l font-semibold tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+							<td>In:&nbsp;</td>
+							<td>
 								<?php
 									echo getSelect('st', $searchtypes, $this->type);
 								?>
 							</td>
 						</tr>
-						<tr style="vertical-align:middle" class="bg1">
-							<td nowrap="nowrap" style="width:30%;">Game:</td>
-							<td style="width:70%;">
+						<tr class="text-l font-semibold tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+							<td>Game:</td>
+							<td>
 								<?php
 									$games = array ();
 									$games[''] = '(All)';
@@ -127,15 +130,17 @@ For support and installation notes visit http://www.hlxcommunity.com
 								?>
 							</td>
 						</tr>
-						<tr class="bg1">
-							<td colspan="3" style="text-align:center;">
-								<input type="submit" value=" Find Now " class="submit" />
+						<tr>
+							<td colspan="3">
+								<input type="submit" value=" Find Now " class="windmill-button block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none">
 							</td> 
 						</tr>
 					</table>
 		</form>
-	</div>
-</div><br /><br />
+
+        </div>
+    </div>
+</div>
 
 <?php
 		}
@@ -145,11 +150,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 			if ($link_player == -1) $link_player = "mode=playerinfo&amp;player=%k";
 			if ($link_clan == -1) $link_clan = "mode=claninfo&amp;clan=%k";
 ?>
-
-<div class="block">
-	<a id="results"></a>
-	<?php printSectionTitle('Search Results'); ?>
-	<br /><br />
 
 <?php
 			$sr_query = preg_replace('/^STEAM_\d+?\:/i','',$this->query);
@@ -244,6 +244,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						$andgame
 				");
 				list($numitems) = $db->fetch_row($resultCount);
+				echo display_page_subtitle('Player Search: ' . $numitems . ' Results');
 				$table->draw($result, $numitems, 95);
 			}
 			elseif ($this->type == 'uniqueid')
@@ -337,6 +338,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						$andgame
 				");
 				list($numitems) = $db->fetch_row($resultCount);
+				echo display_page_subtitle('Unique ID Search: ' . $numitems . ' Results');
 				$table->draw($result, $numitems, 95);
 			}
 			elseif ($this->type == 'ip')
@@ -449,6 +451,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 						$andgame
 				");
 				list($numitems) = $db->fetch_row($resultCount);
+				echo display_page_subtitle('IP Address Search: ' . $numitems . ' Results');
 				$table->draw($result, $numitems, 95);
 			}
 			elseif ($this->type == 'clan')
@@ -534,15 +537,10 @@ For support and installation notes visit http://www.hlxcommunity.com
 						$andgame
 				");
 				list($numitems) = $db->fetch_row($resultCount);
+
+				echo display_page_subtitle('Clan Search: ' . $numitems . ' Results');
 				$table->draw($result, $numitems, 95);
 			}
-?>
-	<br /><br />
-	<div class="subblock" style="text-align:center;">
-		Search results: <strong><?php echo $numitems; ?></strong> items matching
-	</div>
-</div>
-<?php
 		}
 	}
 ?>
