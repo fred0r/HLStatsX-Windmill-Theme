@@ -196,7 +196,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	<div class="flex items-center">
 		<form method="get" action="<?php echo $g_options['scripturl']; ?>">
-			<input type="hidden" name="mode" value="search" />
+			<input type="hidden" name="mode" value="search">
 			<input type="hidden" name="game" value="<?php echo $game; ?>">
 			<input type="hidden" name="st" value="player">
 			<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Find a player: </span>
@@ -208,46 +208,4 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 <?php $table->draw($result, $numitems, 95); ?>
 
-<?php
-/*
-<div class="block">
-		<div class="subblock">
-			<div style="float:left;">
-				<form method="get" action="<?php echo $g_options['scripturl']; ?>">
-					<input type="hidden" name="mode" value="search" />
-					<input type="hidden" name="game" value="<?php echo $game; ?>" />
-					<input type="hidden" name="st" value="player" />
-					<strong>&#8226;</strong> Find a player:
-					<input type="text" name="q" size="20" maxlength="64" class="textbox" />
-					<input type="submit" value="Search" class="smallsubmit" />
-				</form>
-			</div>
-		</div><br /><br />
-		<div style="clear:both;padding-top:4px;"></div>
-		<?php $table->draw($result, $numitems, 95); ?><br /><br />
-		<div class="subblock">
-			<div style="float:left;">
-				<form method="get" action="<?php echo $g_options['scripturl']; ?>">
-					<?php
-						foreach ($_GET as $k=>$v)
-						{
-							$v = valid_request($v, false);
-							if ($k != "minkills")
-							{
-								echo "<input type=\"hidden\" name=\"" . htmlspecialchars($k) . "\" value=\"" . htmlspecialchars($v) . "\" />\n";
-							}
-						}
-					?>
-					<strong>&#8226;</strong> Show only players with
-					<input type="text" name="minkills" size="4" maxlength="2" value="<?php echo $minkills; ?>" class="textbox" /> or more kills from a total <strong><?php echo number_format($numitems); ?></strong> banned players
-					<input type="submit" value="Apply" class="smallsubmit" />
-				</form>
-			</div>
-			<div style="float:right;">
-				Go to: <a href="<?php echo $g_options["scripturl"] . "?game=$game"; ?>"><?php echo $gamename; ?></a>
-			</div>
-	</div>
-</div>
-*/
-?>
 <!-- end bans.php -->
