@@ -102,8 +102,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 			<input type="hidden" name="game" value="<?php echo $game; ?>">
 			<input type="hidden" name="st" value="player">
 			<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Find a player: </span>
-			<input type="text" name="q" size="20" maxlength="64" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" id="playersearch" />
-			<input type="submit" value="Search" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
+			<input type="text" name="q" size="20" maxlength="64" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" id="playersearch">
+			<input type="submit" value="Search" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn">
 		</form>
 	</div>
 	<div class="flex items-center">
@@ -410,34 +410,4 @@ For support and installation notes visit http://www.hlxcommunity.com
 		$table->draw($result, $numitems, 95);
 	?>
 <!-- end table -->
-<?php 
-/*
-<!--	
-	<br /><br />
-	<div class="subblock">
-		<div style="float:left;">
-			<form method="get" action="<?php echo $g_options['scripturl']; ?>">
-				<?php					
-					foreach ($_GET as $k=>$v) {
-						$v = valid_request($v, false);
-
-                        if ($k != 'minkills') {
-							echo "<input type=\"hidden\" name=\"" . htmlspecialchars($k) . "\" value=\"" . htmlspecialchars($v) . "\" />\n";
-						}
-					}
-				?>
-				<strong>&#8226;</strong> Only show players with
-					<input type="text" name="minkills" size="4" maxlength="2" value="<?php echo $minkills; ?>" class="textbox" /> or more kills.
-					<input type="submit" value="Apply" class="smallsubmit" />
-			</form>
-		</div>
-		<div style="float:right;">
-			Go to: <a href="<?php echo $g_options["scripturl"] . "?mode=clans&amp;game=$game"; ?>">Clan Rankings</a>
-		</div>	
-
-	</div>
--->
-*/
-?>
-
 <!-- end players.php -->
