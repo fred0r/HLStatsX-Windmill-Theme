@@ -87,7 +87,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			<?php
 				foreach ($getvars as $var=>$value)
 				{
-					echo '<input type="hidden" name="'.htmlspecialchars($var, ENT_QUOTES).'" value="'.htmlspecialchars($value, ENT_QUOTES)."\" />\n";
+					echo '<input type="hidden" name="'.htmlspecialchars($var, ENT_QUOTES).'" value="'.htmlspecialchars($value, ENT_QUOTES)."\">\n";
 				}
 			?>
 					<table class="w-full whitespace-no-wrap">
