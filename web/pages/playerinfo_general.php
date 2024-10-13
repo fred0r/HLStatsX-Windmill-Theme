@@ -99,7 +99,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				<tr class="text-sm font-semibold tracking-wide text-left text-gray-500 uppercase bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>
 						<?php
-							echo '<span class="flex items-center"><img src="'.getFlag($playerdata['flag']).'" alt="'.$playerdata['country'].'" title="'.$playerdata['country'].'" />&nbsp;';
+							echo '<span class="flex items-center"><img src="'.getFlag($playerdata['flag']).'" alt="'.$playerdata['country'].'" title="'.$playerdata['country'].'">&nbsp;';
 							echo '<strong>' . htmlspecialchars($playerdata['lastName'], ENT_COMPAT) . ' </strong></span>';
 						?>
 					</td>
@@ -608,7 +608,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				</tr>
 			</table>
 			<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Player Trend</h4>
-			<?php echo "<img src=\"trend_graph.php?bgcolor=".$g_options['graphbg_trend'].'&amp;color='.$g_options['graphtxt_trend']."&amp;player=$player\" alt=\"Player Trend Graph\" />"; ?>			
+			<?php echo "<img src=\"trend_graph.php?bgcolor=".$g_options['graphbg_trend'].'&amp;color='.$g_options['graphtxt_trend']."&amp;player=$player\" alt=\"Player Trend Graph\">"; ?>			
 		</p>
 	</div>
 <!-- end right card -->
