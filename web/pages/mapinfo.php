@@ -164,7 +164,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 <?php
 			if ($mapimg)
 			{
-				echo "<img src=\"$mapimg\" alt=\"$map\" />";
+				echo "<img src=\"$mapimg\" alt=\"$map\">";
 			}
 
 			if ($g_options['map_dlurl'])
@@ -179,7 +179,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 			if ($heatmap)
 			{
-				echo "<a href=\"" . $heatmap['url'] . "\" rel=\"boxed\" title=\"Heatmap: $map\"><br /><img src=\"" . $heatmapthumb['url'] . "\" alt=\"$map\"></a>";
+				echo "<a href=\"" . $heatmap['url'] . "\" rel=\"boxed\" title=\"Heatmap: $map\"><br><img src=\"" . $heatmapthumb['url'] . "\" alt=\"$map\"></a>";
 			}
 ?>
 		</div>
