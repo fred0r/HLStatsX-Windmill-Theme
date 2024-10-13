@@ -130,9 +130,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		display_page_subtitle('Team Selection *');
 		// printSectionTitle('Team Selection *');
 		$tblTeams->draw($result, $numitems, 95);
-?>
-	<br /><br />
-<?php
 	}
 	flush();
 	$result = $db->query

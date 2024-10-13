@@ -164,9 +164,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	if ($numitems > 0) {
 		display_page_subtitle('Weapon Usage *');
 		//printSectionTitle('Weapon Usage *');
-		$tblWeapons->draw($result, $numitems, 95); ?>
-		<br /><br />
-<?php
+		$tblWeapons->draw($result, $numitems, 95); 
 	}
 ?>
 

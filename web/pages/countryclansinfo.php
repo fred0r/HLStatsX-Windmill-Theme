@@ -104,27 +104,22 @@ For support and installation notes visit http://www.hlxcommunity.com
 	);
 ?>
 
-<div class="block">
-	<?php printSectionTitle('Country Information'); ?>
+<?php display_page_title('Country Information: ' . $clandata['name']); ?>
 
-	<div class="subblock">
+<?php display_page_subtitle('Statistics Summary'); ?>
+
+<div
+	class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+>
+	<p class="text-sm text-gray-600 dark:text-gray-400">
+
 		<div style="float:left;width:48.5%;">
 			<table class="data-table">
-				<tr class="data-table-head">
-					<td colspan="3">Statistics Summary</td>
-				</tr>
-				<tr class="bg1">
-					<td>Country:</td>
-					<td colspan="2"><?php
-						echo '<img src="'.getFlag($clandata['flag']).'" alt="'.strtolower($playerdata['country']).'" title="'.strtolower($playerdata['country']).'" />&nbsp;'; 
-						echo '<strong>' . $clandata['name'] . '</strong>';
-					?></td>
-				</tr>
 				<tr class="bg2">
 					<td style="width:45%;"><?php
 						echo 'Activity:';
 					?></td>
-					<td align="left" width="40%">
+					<td width="40%">
 		                                <meter min="0" max="100" low="25" high="50" optimum="75" value="<?php
                                         echo $clandata['activity'] ?>"></meter>
 					</td>
@@ -136,7 +131,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 					<td>Members:</td>
 					<td colspan="2">
 						<strong><?php echo $clandata['nummembers']; ?></strong>
-						<em>active members</em>
+						active members
 					</td>
 				</tr>
 	
@@ -221,8 +216,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			}
 ?>
 		</div>
-		<div style="clear:both;"></div>
-	</div>
+	</p>
 </div>
 
 <?php
@@ -343,6 +337,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 ?>
 <div class="block" style="padding-top:10px;">
 <?php
-	printSectionTitle('Members');
+	display_page_subtitle('Members');
 	$tblMembers->draw($result, $numitems, 95);
 ?></div>

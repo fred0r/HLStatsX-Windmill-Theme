@@ -250,24 +250,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 	{
 		display_page_subtitle('Player Kill Statistics *');
 		// printSectionTitle('Player Kill Statistics *');
-		$tblPlayerKillStats->draw($result, $numitems, 95); ?>
-	<form method="get" action="<?php echo $g_options['scripturl']; ?>">
-		Show only victims this person has killed
-		<select name="killLimit" onchange="Tabs.refreshTab({'killLimit': this.options[this.selectedIndex].value, 'playerkills_page': 1})">
-			<?php
-				for($j = 0; $j < 16; $j++)
-				{
-					echo "<option value=\"$j\"";
-					if ($killLimit == $j)
-					{
-						echo ' selected="selected"';
-					}
-					echo ">$j</option>";
-				}
-			?>
-		</select>
-		or more times
-	</form>
-<?php
+		$tblPlayerKillStats->draw($result, $numitems, 95); 
 	}
 ?>
