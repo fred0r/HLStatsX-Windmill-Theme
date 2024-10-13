@@ -197,73 +197,16 @@ For support and installation notes visit http://www.hlxcommunity.com
 				<div class="flex items-center justify-between p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
 					<div class="flex items-center">
 						<form method="get" action="<?php echo $g_options['scripturl']; ?>">
-							<input type="hidden" name="mode" value="search" />
-							<input type="hidden" name="game" value="<?php echo $game; ?>" />
-							<input type="hidden" name="st" value="clan" />
+							<input type="hidden" name="mode" value="search">
+							<input type="hidden" name="game" value="<?php echo $game; ?>">
+							<input type="hidden" name="st" value="clan">
 							<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Find a clan: </span>
-							<input type="text" name="q" size="20" maxlength="64" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
-							<input type="submit" value="Search" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn" />
+							<input type="text" name="q" size="20" maxlength="64" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+							<input type="submit" value="Search" class="windmill-button px-4 py-2 mb-2 text-sm font-medium leading-5 text-center border border-transparent rounded-lg btn">
 						</form>
 					</div>
 				</div>
 
 <?php $table->draw($result, $db->num_rows($resultCount), 95); ?>
-<?php 
-/*
-<!--
-<div class="block">
-	<?php printSectionTitle('Clan Rankings');	?>
-	<div class="subblock">
-		<div style="float:left;">
-			<form method="get" action="<?php echo $g_options['scripturl']; ?>">
-				<input type="hidden" name="mode" value="search" />
-				<input type="hidden" name="game" value="<?php echo $game; ?>" />
-				<input type="hidden" name="st" value="clan" />
-				<strong>&#8226;</strong> Find a clan:
-				<input type="text" name="q" size="20" maxlength="64" class="textbox" />
-				<input type="submit" value="Search" class="smallsubmit" />
-			</form>
-		</div>
-		<div style="clear:both;"></div>
-	</div>
-	<br /><br />
-	<?php $table->draw($result, $db->num_rows($resultCount), 95); ?><br /><br />
-	<div class="subblock">
-		<div style="float:left;">
-			<form method="get" action="<?php echo $g_options['scripturl']; ?>">
-				<?php
-					$db->query
-					("
-						SELECT
-							COUNT(*) AS total_clans
-						FROM
-							hlstats_Clans
-						WHERE
-							hlstats_Clans.game = '$game'
-					");
-
-                    list($total_clans) = $db->fetch_row();
-							
-					foreach ($_GET as $k=>$v) {
-						$v = valid_request($v, false);
-
-                        if ($k != "minmembers") {
-							echo "<input type=\"hidden\" name=\"" . htmlspecialchars($k) . "\" value=\"" . htmlspecialchars($v) . "\" />\n";
-						}
-					}
-				?>
-				<strong>&#8226;</strong> Show only clans with
-					<input type="text" name="minmembers" size="4" maxlength="2" value="<?php echo $minmembers; ?>" class="textbox" /> or more members from a total of <strong><?php echo number_format($total_clans); ?></strong> clans
-					<input type="submit" value="Apply" class="smallsubmit" />
-			</form>
-		</div>
-		<div style="float:right;">
-			Go to: <a href="<?php echo $g_options["scripturl"] . "?mode=players&amp;game=$game"; ?>">Player Rankings</a>
-		</div>
-	</div>
-</div>
--->
-*/
-?>
 
 <!-- end clans.php -->
