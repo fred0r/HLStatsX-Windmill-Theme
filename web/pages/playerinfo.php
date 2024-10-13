@@ -248,14 +248,11 @@ $db->query("
 			require_once PAGE_PATH.'/playerinfo_servers.php';
 			require_once PAGE_PATH.'/playerinfo_killstats.php';
 
-?>
-
-<?php
-				if (isset($_SESSION['loggedin']))
-				{
-					echo '<div class="text-xs text-gray-600 dark:text-gray-400">';
-					echo 'Admin Options: <a href="'.$g_options['scripturl']."?mode=admin&amp;task=tools_editdetails_player&amp;id=$player\">Edit Player Details</a>";
-					echo '</div>';
-				}
+			if (isset($_SESSION['loggedin']))
+			{
+				echo '<div class="text-xs text-red-600 dark:text-red-400">';
+				echo 'Admin Options: <a href="'.$g_options['scripturl']."?mode=admin&amp;task=tools_editdetails_player&amp;id=$player\">Edit Player Details</a>";
+				echo '</div>';
+			}
 ?>
 <!-- end playerinfo.php -->
