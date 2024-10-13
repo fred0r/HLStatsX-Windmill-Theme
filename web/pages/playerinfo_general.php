@@ -194,18 +194,16 @@ For support and installation notes visit http://www.hlxcommunity.com
 					</td>
 				</tr>
 				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                                        <td>MM Rank:</td>
-                                        <td>
-                                                <?php
-                                                        if ($playerdata['mmrank'])
-                                                        {
-                                                                echo '<img src=hlstatsimg/mmranks/' . $playerdata['mmrank'] . '.png alt="rank" style=\"height:20px;width:50px;>';
-                                                        }
-                                                        else
-								echo '<img src=hlstatsimg/mmranks/0.png alt="rank" style=\"height:20px;width:50px;>';
-                                                ?>
-                                        </td>
-                                </tr>
+                            <td>MM Rank:</td>
+                            <td><?php
+												if ($playerdata['mmrank'])
+												{
+														echo '<img src=hlstatsimg/mmranks/' . $playerdata['mmrank'] . '.png alt="rank" style="height:20px;width:50px;">' . "\n";
+												}
+												else
+						echo '<img src=hlstatsimg/mmranks/0.png alt="rank" style="height:20px;width:50px;">';
+										?></td>
+				</tr>
 				<tr  class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Last Connect:*</td>
 					<td>
