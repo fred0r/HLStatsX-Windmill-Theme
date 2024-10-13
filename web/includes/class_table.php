@@ -191,7 +191,7 @@ class Table
 		if ($this->showranking)
 		{
 			$totalwidth += 5;
-			echo "					<td style=\"text-align=:right;\">Rank</td>\n";
+			echo "					<td style=\"text-align:right;\">Rank</td>\n";
 		}
 
 		foreach ($this->columns as $col)
@@ -466,7 +466,7 @@ class Table
 				if ($i == $this->page)
 				{
 					// echo "<b>&gt;$i&lt;</b> ";
-					echo "							<button class=\"windmill-button px-3 py-1 text-white transition-colors duration-150 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple\">" . $i. "</button>\n ";
+					echo "							<span class=\"windmill-button px-3 py-1 text-white transition-colors duration-150 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple\">" . $i. "</span>\n ";
 
 				}
 				else
