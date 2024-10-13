@@ -116,49 +116,49 @@ For support and installation notes visit http://www.hlxcommunity.com
 		<div style="float:left;width:48.5%;">
 			<table class="data-table">
 				<tr class="bg2">
-					<td style="width:45%;"><?php
+					<td style="width:45%;" class="text-gray-700 dark:text-gray-400"><?php
 						echo 'Activity:';
 					?></td>
 					<td width="40%">
 		                                <meter min="0" max="100" low="25" high="50" optimum="75" value="<?php
                                         echo $clandata['activity'] ?>"></meter>
 					</td>
-					<td style="width:15%;"><?php
+					<td style="width:15%;" class="text-gray-700 dark:text-gray-400"><?php
 						echo sprintf('%0.2f', $clandata['activity']).'%';
 					?></td>
 				</tr>
 				<tr class="bg1">
-					<td>Members:</td>
-					<td colspan="2">
+					<td class="text-gray-700 dark:text-gray-400">Members:</td>
+					<td colspan="2" class="text-gray-700 dark:text-gray-400">
 						<strong><?php echo $clandata['nummembers']; ?></strong>
 						active members
 					</td>
 				</tr>
 	
 				<tr class="bg2">
-					<td>Total Kills:</td>
-					<td colspan="2"><?php
+					<td class="text-gray-700 dark:text-gray-400">Total Kills:</td>
+					<td colspan="2" class="text-gray-700 dark:text-gray-400"><?php
 						echo number_format($clandata['kills']);
 					?></td>
 				</tr>
 				
 				<tr class="bg1">
-					<td>Total Deaths:</td>
-					<td colspan="2"><?php
+					<td class="text-gray-700 dark:text-gray-400">Total Deaths:</td>
+					<td colspan="2" class="text-gray-700 dark:text-gray-400"><?php
 						echo number_format($clandata['deaths']);
 					?></td>
 				</tr>
             
 				<tr class="bg2">
-					<td>Avg. Kills:</td>
-					<td colspan="2"><?php
+					<td class="text-gray-700 dark:text-gray-400">Avg. Kills:</td>
+					<td colspan="2" class="text-gray-700 dark:text-gray-400"><?php
 						echo number_format($clandata['kills'] / ($clandata['nummembers']));
 					?></td>
 				</tr>
 				
 				<tr class="bg1">
-					<td>Kills per Death:</td>
-					<td colspan="2"><?php
+					<td class="text-gray-700 dark:text-gray-400">Kills per Death:</td>
+					<td colspan="2" class="text-gray-700 dark:text-gray-400"><?php
 						if ($clandata['deaths'] != 0)
 						{
 							printf('<strong>' . '%0.2f', $clandata['kills'] / $clandata['deaths']) . '</strong>';
@@ -171,8 +171,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 				</tr>
         
 				<tr class="bg2">
-					<td style="width:45%;">Kills per Minute:</td>
-					<td colspan="2" style="width:55%;"><?php
+					<td style="width:45%;" class="text-gray-700 dark:text-gray-400">Kills per Minute:</td>
+					<td colspan="2" style="width:55%;" class="text-gray-700 dark:text-gray-400"><?php
 						if ($clandata['connection_time'] > 0) {
 							echo sprintf('%.2f', ($clandata['kills'] / ($clandata['connection_time'] / 60)));
 						} else {
@@ -182,15 +182,15 @@ For support and installation notes visit http://www.hlxcommunity.com
 				</tr>
 
 				<tr class="bg1">
-					<td>Avg. Member Points:</td>
-					<td colspan="2"><?php
+					<td class="text-gray-700 dark:text-gray-400">Avg. Member Points:</td>
+					<td colspan="2" class="text-gray-700 dark:text-gray-400"><?php
 						echo '<strong>' . number_format($clandata['avgskill']) . '</strong>';
 					?></td>
 				</tr>
 
 				<tr class="bg2">
-					<td >Avg. Connection Time:</td>
-					<td  colspan="2"><?php
+					<td class="text-gray-700 dark:text-gray-400">Avg. Connection Time:</td>
+					<td  colspan="2" class="text-gray-700 dark:text-gray-400"><?php
 						if ($clandata['connection_time'] > 0) {
 							echo timestamp_to_str($clandata['connection_time'] / ($clandata['nummembers']));
 					} else {
@@ -200,8 +200,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 				</tr>
                     
 				<tr class="bg1">
-					<td>Total Connection Time:</td>
-					<td colspan="2"><?php
+					<td class="text-gray-700 dark:text-gray-400">Total Connection Time:</td>
+					<td colspan="2" class="text-gray-700 dark:text-gray-400"><?php
 						echo timestamp_to_str($clandata['connection_time']);
 					?></td>
 				</tr>
