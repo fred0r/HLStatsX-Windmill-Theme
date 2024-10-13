@@ -439,7 +439,7 @@ if ($game != '') {
 
 	} else {
 
-		display_menu_item("Admin Login", "?mode=admin","sign-in-atl");
+		display_menu_item("Admin Login", "?mode=admin","sign-in-alt");
 
 	}
 
