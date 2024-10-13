@@ -103,7 +103,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	<div class="flex items-center justify-center p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
 			<form method="get" action="<?php echo $g_options['scripturl']; ?>">
-				<input type="hidden" name="mode" value="chat" />
+				<input type="hidden" name="mode" value="chat">
 				<input type="hidden" name="game" value="<?php echo $game; ?>">
 				<span class="font-semibold text-center text-gray-700 dark:text-gray-400">Show Chat from
 				<?php
