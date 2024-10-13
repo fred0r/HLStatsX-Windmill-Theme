@@ -158,16 +158,16 @@ For support and installation notes visit http://www.hlxcommunity.com
 				
 				<tr class="bg1">
 					<td class="text-gray-700 dark:text-gray-400">Kills per Death:</td>
-					<td colspan="2" class="text-gray-700 dark:text-gray-400"><?php
+					<td colspan="2" class="text-gray-700 dark:text-gray-400"><strong><?php
 						if ($clandata['deaths'] != 0)
 						{
-							printf('<strong>' . '%0.2f', $clandata['kills'] / $clandata['deaths']) . '</strong>';
+							printf('%0.2f', $clandata['kills'] / $clandata['deaths']);
 						}
 						else
 						{
 							echo '-';
 						}
-					?></td>
+					?></strong></td>
 				</tr>
         
 				<tr class="bg2">
@@ -210,7 +210,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		<div style="float:right;width:48.5%;text-align:center;padding-top:50px;">
 <?php
 			if (file_exists(IMAGE_PATH.'/flags/'.strtolower($flag).'_large.png')) {
-				echo '<img src="'.IMAGE_PATH.'/flags/'.strtolower($flag).'_large.png" style="border:0px;" alt="'.$flag.'" />';
+				echo '<img src="'.IMAGE_PATH.'/flags/'.strtolower($flag).'_large.png" style="border:0px;" alt="'.$flag.'">';
 			} else {
 				echo '<img src="'.IMAGE_PATH.'/countryclanlogos/NA.png" style="border:0px;" alt="" />';
 			}
