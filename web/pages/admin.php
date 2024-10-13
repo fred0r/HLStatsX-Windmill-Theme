@@ -1082,7 +1082,8 @@ if (!empty($admintasks[$selTask]) && ($admintasks[$selTask]->type == 'tool' || $
 
 	$code = $selTask;
 ?>
-&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin">Tools</a></b><br />
+<!-- &nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin">Tools</a></b><br /> -->
+<?php display_page_title('Admin Tools'); ?>
 <img src="<?php echo IMAGE_PATH; ?>/spacer.gif" width="1" height="8" border="0" alt="" /><br />
 
 <?php
@@ -1093,7 +1094,8 @@ else
 	// General Settings
 
 ?>
-&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;General Settings</b><br /><br />
+<!-- &nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;General Settings</b><br /><br /> -->
+<?php display_page_title('General Settings'); ?>
 <?php
 	foreach ($admintasks as $code => $task)
 	{
@@ -1198,7 +1200,9 @@ if (!$selTask || !$admintasks[$selTask])
 {
 	echo '<td width="50%">';
 ?>
-&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;Tools</b>
+<!-- &nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;Tools</b> -->
+
+<?php display_page_title('Tools'); ?>
 
 <ul>
 <?php

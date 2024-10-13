@@ -49,7 +49,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		$id = valid_request($_GET['id'], true);
 	}
 ?>
-
+<!-- start tools_editdetails_player.php -->
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" class="imageformat" alt="" /><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=tools_editdetails">Edit Player or Clan Details</a></b><br />
 
 <img src="<?php echo IMAGE_PATH; ?>/spacer.gif" width="1" height="8" border="0" alt=""><br />
@@ -163,3 +163,4 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$tblIps->draw($result, 50, 50);
 ?>
 </div><br /><br />
+<!-- end tools_editdetails_player.php -->
