@@ -137,9 +137,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 					}
 			?>
 			<span class="text-gray-700 dark:text-gray-400">
-				A player may have more than one name. On the Player Rankings pages, players are shown with the most recent name they used in the game. If you click on a player's name, the Player Details page will show you a list of all other names that this player uses, if any, under the Aliases section (if the player has not used any other names, the Aliases section will not be displayed).<br /><br />
-				Your name may be listed more than once if somebody else (with a different <?php echo $uniqueid; ?>) uses the same name.<br /><br />
-				You can use the <a href="<?php echo $g_options['scripturl']; ?>?mode=search">Search</a> function to find a player by name or <?php echo $uniqueid; ?>.<br /><br />
+				A player may have more than one name. On the Player Rankings pages, players are shown with the most recent name they used in the game. If you click on a player's name, the Player Details page will show you a list of all other names that this player uses, if any, under the Aliases section (if the player has not used any other names, the Aliases section will not be displayed).<br><br>
+				Your name may be listed more than once if somebody else (with a different <?php echo $uniqueid; ?>) uses the same name.<br><br>
+				You can use the <a href="<?php echo $g_options['scripturl']; ?>?mode=search">Search</a> function to find a player by name or <?php echo $uniqueid; ?>.<br><br>
 				</span>
 			<?php
 				}
@@ -151,16 +151,16 @@ For support and installation notes visit http://www.hlxcommunity.com
 	<p>
 		<h1 class="text-gray-700 dark:text-gray-400"><a name="points"><i class="fas fa-calculator"></i> How is the "points" rating calculated?</a></h1><br>
 			<span class="text-gray-700 dark:text-gray-400">
-			A new player has 1000 points. Every time you make a kill, you gain a certain amount of points depending on a) the victim's points rating, and b) the weapon you used. If you kill someone with a higher points rating than you, then you gain more points than if you kill someone with a lower points rating than you. Therefore, killing newbies will not get you as far as killing the #1 player. And if you kill someone with your knife, you gain more points than if you kill them with a rifle, for example.<br /><br />
-			When you are killed, you lose a certain amount of points, which again depends on the points rating of your killer and the weapon they used (you don't lose as many points for being killed by the #1 player with a rifle than you do for being killed by a low ranked player with a knife). This makes moving up the rankings easier, but makes staying in the top spots harder.<br /><br />
-			Specifically, the equations are:<br /><br />
+			A new player has 1000 points. Every time you make a kill, you gain a certain amount of points depending on a) the victim's points rating, and b) the weapon you used. If you kill someone with a higher points rating than you, then you gain more points than if you kill someone with a lower points rating than you. Therefore, killing newbies will not get you as far as killing the #1 player. And if you kill someone with your knife, you gain more points than if you kill them with a rifle, for example.<br><br>
+			When you are killed, you lose a certain amount of points, which again depends on the points rating of your killer and the weapon they used (you don't lose as many points for being killed by the #1 player with a rifle than you do for being killed by a low ranked player with a knife). This makes moving up the rankings easier, but makes staying in the top spots harder.<br><br>
+			Specifically, the equations are:<br><br>
 			<pre> Killer Points = Killer Points + (Victim Points / Killer Points)
 				 &times; Weapon Modifier &times; 5
 
  Victim Points = Victim Points - (Victim Points / Killer Points)
-				 &times; Weapon Modifier &times; 5</pre><br /><br />
-			Plus, the following point bonuses are available for completing objectives in some games:<br /><br />
-			<a name="actions" />
+				 &times; Weapon Modifier &times; 5</pre><br><br>
+			Plus, the following point bonuses are available for completing objectives in some games:<br><br>
+			<a name="actions">
 			<?php
 				$tblActions = new Table
 				(
@@ -269,7 +269,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 			<h1 class="text-gray-700 dark:text-gray-400"><a name="weaponmods"><i class="fas fa-drafting-compass"></i> What are all the weapon points modifiers?</a></h1><br>
 			<span class="text-gray-700 dark:text-gray-400">
-			Weapon points modifiers are used to determine how many points you should gain or lose when you make a kill or are killed by another player. Higher modifiers indicate that more points will be gained when killing with that weapon (and similarly, more points will be lost when being killed <em>by</em> that weapon). Modifiers generally range from 0.00 to 2.00.<br /><br />
+			Weapon points modifiers are used to determine how many points you should gain or lose when you make a kill or are killed by another player. Higher modifiers indicate that more points will be gained when killing with that weapon (and similarly, more points will be lost when being killed <em>by</em> that weapon). Modifiers generally range from 0.00 to 2.00.<br><br>
 			<a name="weapons"></a>
 			<?php
 				$tblWeapons = new Table
