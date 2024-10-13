@@ -349,6 +349,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 							if ($fav_weapon == '') {
 								$fav_weapon = 'Unknown';
+								$weap_name = 'Unknown';
                             }
 
 							$image = getImage("/games/$game/weapons/$fav_weapon");
@@ -360,7 +361,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 							}
 							else
 							{
-								$cellbody = "\t\t\t\t\t<td><strong> $weaponlink$weap_name</strong>";
+								$cellbody = "\t\t\t\t\t<td>$weaponlink<strong>$weap_name</strong>";
 							}
 							$cellbody .= "</a>";
 							echo $cellbody;
