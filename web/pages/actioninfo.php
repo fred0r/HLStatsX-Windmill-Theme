@@ -172,7 +172,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 				hlstats_Events_PlayerPlayerActions.actionId = hlstats_Actions.id AND
 				hlstats_Players.hideranking = '0'
 			GROUP BY
-				hlstats_Events_PlayerPlayerActions.playerId
+				hlstats_Events_PlayerPlayerActions.playerId,
+				hlstats_Actions.reward_player
 			ORDER BY
 				$table->sort $table->sortorder,
 				$table->sort2 $table->sortorder
@@ -287,7 +288,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 				hlstats_Events_PlayerPlayerActions.actionId = hlstats_Actions.id AND
 				hlstats_Players.hideranking = '0'
 			GROUP BY
-				hlstats_Events_PlayerPlayerActions.victimId
+				hlstats_Events_PlayerPlayerActions.victimId,
+				hlstats_Actions.reward_player
 			ORDER BY
 				$table->sort $table->sortorder,
 				$table->sort2 $table->sortorder

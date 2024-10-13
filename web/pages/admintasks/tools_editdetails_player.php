@@ -151,7 +151,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 		WHERE
 			playerId = $playerId
 		GROUP BY
-			ipAddress
+			ipAddress,
+			eventTime
 		ORDER BY
 			eventTime DESC
 	");
