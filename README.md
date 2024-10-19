@@ -4,7 +4,10 @@
 
 
 <!-- PROJECT LOGO -->
-![image](https://github.com/user-attachments/assets/97f78929-755e-4fe9-a2d9-2d61d49e8b2b)
+<div align="center">
+  <a href="https://github.com/DNA-styx/sbpp-windmill-dashboard">
+    <img src="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/blob/main/assets/hlstatsxce-windmill-dashboard-logo.png" alt="Sourcebans++ Windmill Dashboard Theme Logo" width="390" height="149">
+  </a>
 
 <h3 align="center">HLStatsx:CE Windmill Dashboard Theme</h3>
 
