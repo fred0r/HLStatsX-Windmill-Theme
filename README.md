@@ -130,7 +130,8 @@ Don't forget to give the project a star! Thanks again!
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [StartersClan HLStatsX:CE](https://github.com/startersclan/hlstatsx-community-edition) for the underlying css design code
+* [Estevanmaito's Windmill Dashboard](https://github.com/estevanmaito/windmill-dashboard) for the underlying css design code
+* [StartersClan HLStatsX:CE](https://github.com/startersclan/hlstatsx-community-edition) for the page code
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
