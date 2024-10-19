@@ -69,42 +69,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		array($gamename, 'Awards Info'),
 		array($gamename=>"%s?game=$game", 'Awards Info'=>'')
 	);
-?>
-
-<?php if ($g_options['playerinfo_tabs']=='1') { ?>
-
-<div id="main">
-	<ul class="subsection_tabs" id="tabs_submenu">
-		<li><a href="#" id="tab_daily">Daily&nbsp;Awards</a></li>
-		<li><a href="#" id="tab_global">Global&nbsp;Awards</a></li>
-		<li><a href="#" id="tab_ranks">Ranks</a></li>
-		<li><a href="#" id="tab_ribbons">Ribbons</a></li>
-	</ul>
-<br />
-<div id="main_content"></div>
-<?php
-if ($tab)
-{
-	$defaulttab = $tab;
-}
-else
-{
-	$defaulttab = 'daily';
-}
-echo "<script type=\"text/javascript\">
-	new Tabs($('main_content'), $$('#main ul.subsection_tabs a'), {
-		'mode': 'awards',
-		'game': '$game',
-		'loadingImage': '".IMAGE_PATH."/ajax.gif',
-		'defaultTab': '$defaulttab'
-	});"
-?>
-</script>
-
-</div>
-
-
-<?php } else {
 
 	echo "\n<div id=\"daily\">\n";
 	include PAGE_PATH.'/awards_daily.php';
@@ -122,5 +86,4 @@ echo "<script type=\"text/javascript\">
 	include PAGE_PATH.'/awards_ribbons.php';
 	echo "\n</div>\n";
 
-}
 ?>
