@@ -118,7 +118,7 @@ include 'includes/inc_windmill_functions.php';
   	<script src="./assets/js/fontawesome-all.min.js"></script>
 	<script src="./assets/js/init-alpine.js"></script>
 	<link rel="stylesheet" type="text/css" href="./assets/css/windmill.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/windmill-purple.css">
+	<link rel="stylesheet" type="text/css" href="./styles/windmill-purple.css">
 
 <?php
 /*
