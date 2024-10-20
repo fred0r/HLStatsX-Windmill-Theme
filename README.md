@@ -31,11 +31,13 @@
 
 HLStatsx:CE Theme built using StarterClan v1.11.3 fork with Windmill Dashboard CSS applied on top. 
 
+Some default HLStatsx:CE features have been remvoed to simplify the interface and make it small screen friendly.
+
 Features:
-* Dark and light theme switcher.
-* Responsive design works well on small screens.
-* Custom colours (soon)
-* Links menu.
+* Dark and light theme switcher
+* Responsive design works well on small screens
+* Custom CSS colour (soon)
+* Links menu
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
