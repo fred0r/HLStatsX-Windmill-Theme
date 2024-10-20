@@ -215,7 +215,7 @@ if ($g_options['show_server_load_image'] == 1) {
 <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
 	<div class="w-full overflow-x-auto">
 
-		<table class=" w-full whitespace-no-wrap">
+		<table class="w-full whitespace-no-wrap">
 			<thead>
 				<tr class="text-sm font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td colspan="5" style="width:37%;">&nbsp;Server</td>
@@ -281,13 +281,12 @@ if ($g_options['show_server_load_image'] == 1) {
 
  printserverstats($server_id);
 
- echo "</tbody>";
- echo "</table>";
-
 		}
 
-?>
+echo "</tbody>";
+echo "</table>";
 
+?>
 
 </div>
 
