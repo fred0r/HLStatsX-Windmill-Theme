@@ -525,11 +525,11 @@ function printserverstats($server_id)
 		if (count($teamdata) == 0)
 		{
 ?>
-	<tr>
-		<td style="background:#EFEFEF;color:black"><?php 
+	<tr class="text-sm text-gray-700 dark:text-gray-400">
+		<td><?php 
 			echo '&nbsp;';  
 ?>		</td>
-		<td colspan="11" style="text-align:left;background:#EFEFEF;color:black"><?php 
+		<td colspan="11"><?php 
 			echo "No Players";  
 ?>		</td>
 	</tr>
