@@ -48,20 +48,42 @@ For support and installation notes visit http://www.hlxcommunity.com
 	 */
 Header ('Cache-Control: no-cache');
 $lastpage = isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:"";
+
+// include custom windmill functions 
+include 'includes/inc_windmill_functions.php';
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- 
 	<link rel="stylesheet" type="text/css" href="hlstats.css">
 	<link rel="stylesheet" type="text/css" href="styles/<?php echo $g_options['style']; ?>">
+-->
+	<link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/tailwind.output.css">
 	<title>HLstatsX</title>
 </head>
-<body style="margin:0px;padding:0px;" id="ingame"> 
+<body> 
     
-<div style="width:100%;height:50px;" class="headerblock">
-	<img src="<?php echo IMAGE_PATH; ?>/icons/title.png" alt="HLstats" />
+<div>
+
+<?php
+	global $mode;
+	if ($g_options['bannerdisplay'] != 0 && ($mode == 'contents' || $g_options['bannerdisplay']==1)) {
+?>    
+	<div class="flex justify-center items-center">
+		<img src="<?php echo $g_options['siteurl'] . ((strncmp($g_options['bannerfile'], 'http:/', 6) == 0)?$g_options['bannerfile']:IMAGE_PATH.'/'.$g_options['bannerfile']); ?>" alt="Banner">
+	</div>
+<?php
+	}
+
+?> 
+
 	<?php 
 	if ($lastpage) {
 		?>
