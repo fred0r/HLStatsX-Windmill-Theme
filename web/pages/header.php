@@ -646,4 +646,15 @@ if ($db->num_rows() < 1) {
 		<main class="h-full pb-8 overflow-y-auto">
 		<div class="container grid px-6 mx-auto">
 
+<?php
+	global $mode;
+	if ($g_options['bannerdisplay'] != 0 && ($mode == 'contents' || $g_options['bannerdisplay']==1)) {
+?>    
+	<div class="mt-8 flex justify-center items-center">
+		<img src="<?php echo ((strncmp($g_options['bannerfile'], 'http:/', 6) == 0)?$g_options['bannerfile']:IMAGE_PATH.'/'.$g_options['bannerfile']); ?>" alt="Banner">
+	</div>
+<?php
+	}
+?>       
+
 <!-- end header.php -->
