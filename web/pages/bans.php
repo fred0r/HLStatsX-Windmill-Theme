@@ -190,7 +190,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 <!-- start bans.php -->
             
-<?php display_page_title('Cheaters &amp; Banned Players'); ?>
+<?php display_page_title('Cheaters &amp; Banned Players (' . $numitems . ')'); ?>
 
 <div class="flex items-center justify-between p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
