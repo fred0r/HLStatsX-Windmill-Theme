@@ -77,15 +77,13 @@ or Download all files from repository (Code -> Download zip) - For latest featur
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## Upgrade
 
-Download and overwrite all files in the sbpp-windmill-dashboard folder on your web server.
+Download and overwrite all files in the web folder on your web server.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-## Return to default
+## Return to default theme
 
 (soon)
 
