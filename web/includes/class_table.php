@@ -429,9 +429,9 @@ class Table
 		{
 ?>
 	<div
-		class="grid tracking-wide text-xs text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
+		class="grid tracking-wide text-xs text-gray-500 border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
 		>
-		<span class="flex items-center col-span-3">&nbsp;</span>
+		<span class="flex items-center col-span-3"><?php echo display_table_filter(htmlspecialchars($_GET["mode"])) ?></span>
 		<span class="col-span-2"></span>
 		<!-- Pagination -->
 		<span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
@@ -466,12 +466,12 @@ class Table
 				if ($i == $this->page)
 				{
 					// echo "<b>&gt;$i&lt;</b> ";
-					echo "							<button class=\"windmill-button px-3 py-1 text-white transition-colors duration-150 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple\">" . $i. "</button>\n ";
+					echo "							<button class=\"windmill-button px-2 text-white transition-colors duration-150 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple\">" . $i. "</button>\n ";
 
 				}
 				else
 				{
-					$this->_echoPageNumber($i, "							<button class=\"px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple\">" . $i . "</button>\n");
+					$this->_echoPageNumber($i, "							<button class=\"px-2 rounded-md focus:outline-none focus:shadow-outline-purple\">" . $i . "</button>\n");
 				}
 
 				if ($i == $end && $i < $numpages)
@@ -492,7 +492,9 @@ class Table
 <?php
 		} else {
 		/* Display empty footer */
-		echo "	<div class=\"rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">&nbsp;</div>\n";
+		echo "	<div class=\"rounded-b-lg border-t text-xs dark:border-gray-700 text-gray-600 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">\n";
+		echo display_table_filter(htmlspecialchars($_GET["mode"]));
+		echo "	</div>\n";
 		echo "</div>\n";
 		}
 

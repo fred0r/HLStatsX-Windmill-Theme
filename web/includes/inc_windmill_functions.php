@@ -39,6 +39,56 @@ function display_page_subtitle($title){
 
 }
 
+function display_table_filter($page){
+
+	switch ($page) {
+		case "clans":
+			$form_query ="minmembers";
+			$form_quantity = $_GET["minmembers"];
+			$form_text1 = "clans";
+			$form_text2 = "members";
+			break;
+		case "countryclans":
+			$form_query ="minmembers";
+			$form_quantity = $_GET["minmembers"];
+			$form_text1 = "countries";
+			$form_text2 = "players";
+			break;
+		case "bans":
+			$form_query ="minkills";
+			$form_quantity = $_GET["minkills"];
+			$form_text1 = "banned players";
+			$form_text2 = "kills";
+			break;
+		case "players":
+			$form_query ="minkills";
+			$form_quantity = $_GET["minkills"];
+			$form_text1 = "players";
+			$form_text2 = "kills";
+			break;
+		/* Otherwise return nothing */
+		default:
+			echo "&nbsp;";
+			return;
+		}
+
+	echo "		<form method=\"get\" action=\"" . $g_options['scripturl'] . "\">\n";
+	foreach ($_GET as $k=>$v) {
+		$v = valid_request($v, false);
+
+		if ($k != $form_quantity ) {
+			echo "		<input type=\"hidden\" name=\"" . htmlspecialchars($k) . "\" value=\"" . htmlspecialchars($v) . "\" />\n";
+		}
+	}
+	echo "		&nbsp;&nbsp;&nbsp;&nbsp;Only show " . $form_text1 . " with ";
+	echo "<input type=\"text\" name=\"" . $form_query . "\" size=\"4\" maxlength=\"2\" value=\"" . $form_quantity . "\" class=\"textbox\"> or more " . $form_text2 . "\n";
+	echo "		<input type=\"submit\" value=\"Apply\" class=\"windmill-button px-2 text-xs text-center border border-transparent rounded-lg\">\n";
+	echo "		</form>\n";
+
+
+}
+
+
 /**
  * getWindmillSortArrow()
  * 
