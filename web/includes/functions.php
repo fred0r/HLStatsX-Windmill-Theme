@@ -223,7 +223,12 @@ function pageHeader($title = '', $location = '')
 	global $db, $g_options;
 	if ( defined('PAGE') && PAGE == 'HLSTATS' )
 		include (PAGE_PATH . '/header.php');
-}
+	if ( defined('PAGE') && PAGE == 'INGAME' )
+		include (PAGE_PATH . '/ingame/header.php');
+
+
+
+} 
 
 
 //
