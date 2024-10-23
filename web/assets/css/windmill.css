@@ -7,7 +7,10 @@ main {
     scrollbar-gutter: stable;
 }
 
-
+/* Server page accordion */
+table#servers tbody tr:not(.handle) td{
+    display:none
+}
 
 
 /*

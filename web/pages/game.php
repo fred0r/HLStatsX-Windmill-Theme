@@ -215,10 +215,10 @@ if ($g_options['show_server_load_image'] == 1) {
 <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
 	<div class="w-full overflow-x-auto">
 
-		<table class="w-full whitespace-no-wrap">
+		<table id="servers" class="w-full whitespace-no-wrap">
 			<thead>
 				<tr class="text-sm font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-					<td colspan="5" style="width:37%;">&nbsp;Server</td>
+					<td colspan="5" style="width:37%;">&nbsp;Server Name</td>
 					<td style="width:7%;text-align:center;">&nbsp;Map</td>
 					<td style="width:7%;text-align:center;">&nbsp;Played</td>
 					<td style="width:10%;text-align:center;">&nbsp;Players</td>
@@ -247,7 +247,7 @@ if ($g_options['show_server_load_image'] == 1) {
 
 
 ?>
-			<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
+			<tr style="cursor: pointer;" class="handle text-sm font-semibold text-gray-700 dark:text-gray-400">
 			<td colspan="5">&nbsp;&nbsp;<?php
 			echo $rowdata['name'] . " (<a href=\"steam://connect/$addr\">Join</a>)";
 ?></td>
@@ -291,6 +291,19 @@ echo "</table>";
 </div>
 
 	</div>
+<script>
+
+$(document).ready(function(){
+	$(".handle").click(function(){
+		$(this)
+			.toggleClass('open')
+				.nextUntil(".handle")
+					.children()
+					.slideToggle('fast');
+	});
+});
+</script>
+
 <!--
 	<hr>
 

@@ -117,6 +117,10 @@ include 'includes/inc_windmill_functions.php';
 	</script>
   	<script src="./assets/js/fontawesome-all.min.js"></script>
 	<script src="./assets/js/init-alpine.js"></script>
+
+	<!-- JQuery used for server list accordion --> 
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
 	<link rel="stylesheet" type="text/css" href="./assets/css/windmill.css">
 	<link rel="stylesheet" type="text/css" href="./styles/windmill-purple.css">
 
