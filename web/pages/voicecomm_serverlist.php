@@ -21,18 +21,22 @@
         ");
   
 	if ($db->num_rows($result) >= 1) {
-		printSectionTitle('Voice Server');
 ?>
-	<div class="subblock">
-		<table class="data-table">
-			<tr class="data-table-head">
-				<td class="fSmall">Server Name</td>
+
+<div class="w-full mt-8 overflow-hidden rounded-lg shadow-xs">
+	<div class="w-full overflow-x-auto">
+
+
+		<table class="w-full whitespace-no-wrap">
+			<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+				<td class="fSmall">Voice Server Name</td>
 				<td class="fSmall">Server Address</td>
 				<td class="fSmall">Password</td>
 				<td class="fSmall" style="text-align:right;">Channels</td>
 				<td class="fSmall" style="text-align:right;">Slots&nbsp;used</td>
 				<td class="fSmall">Notes</td>
 			</tr> 
+			<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
 <?php
 		$i = 0;
 		$j = 0;
@@ -126,17 +130,18 @@
 					$ve_slots = $ve_info->m_clientcount.'/'.$ve_info->m_maxclients;
 			//	}
 		?>  
-			<tr class="bg1">
-				<td class="fHeading">
-					<img src="<?php echo IMAGE_PATH; ?>/ventrilo/ventrilo.png" alt="venticon" />
+			<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
+				<td class="flex items-center">
+					<img src="<?php echo IMAGE_PATH; ?>/ventrilo/ventrilo.png" alt="venticon">
 					&nbsp;<a href="<?php echo $g_options['scripturl'] . "?mode=ventrilo&amp;game=$game&amp;veId=".$vent_server['serverId']; ?>"><?php echo $vent_server['name']; ?></a>
 				</td>
 				<td>
 					<a href="ventrilo://<?php echo $vent_server['addr'].':'.$vent_server['queryPort'] ?>/servername=<?php echo $ve_info->m_name; ?>">
 					<?php echo $vent_server['addr'].':'.$vent_server['queryPort']; ?>
-					</a></td>
+					</a>
+				</td>
 				<td>
-					<?php echo $vent_server['password']; ?>
+					<?php echo $vent_server['password']; ?>				
 				</td>
 				<td style="text-align:right;">
 					<?php echo $ve_channels; ?>
@@ -166,7 +171,7 @@
 			//echo $tsstatus->render(); 
 
 		?>  
-			<tr class="bg1">
+			<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td class="fHeading">
 					<img src="<?php echo IMAGE_PATH; ?>/teamspeak3/ts3.png" alt="tsicon" />
 					&nbsp;<a href="<?php echo $g_options['scripturl'] . "?mode=teamspeak&amp;game=$game&amp;tsId=".$ts3_server['serverId']; ?>"><?php echo $tsstatus->ts3name(); ?></a>
@@ -193,9 +198,10 @@
 			}
 		}
 ?>
-    </table>
+		</tbody>
+	</table>
 	</div>
-<br /><br />
+	</div>
 <?php
 	}
 	// VOICECOMM MODULE END
