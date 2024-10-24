@@ -39,16 +39,13 @@ For support and installation notes visit http://www.hlxcommunity.com
     if (!defined('IN_HLSTATS')) {
         die('Do not access this file directly.');
     }
-
-printSectionTitle('Clan Information');
 ?>
-<div class="subblock">
-	<div style="float:left;vertical-align:top;width:48.5%;">
+<div
+	class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+>
+	<p class="text-sm text-gray-600 dark:text-gray-400">
 		<table class="data-table">
 		
-			<tr class="data-table-head">
-				<td colspan="3">Statistics Summary</td>
-			</tr>
 			
 			<tr class="bg1">
 				<td>Clan:</td>
@@ -277,20 +274,8 @@ printSectionTitle('Clan Information');
                ?></td>
             </tr>
 		</table>
-	</div>
-	<div style="float:right;vertical-align:top;width:48.5%;">
-		<table class="data-table">
-			<tr class="data-table-head">
-				<td colspan="3">Player Locations</td>
-			</tr>
-			<tr class="bg1">
-				<td>
-					<div id="map" style="margin:10px auto;width: 430px; height: 290px;"></div>
-				</td>
-			</tr>
-		</table>
-	</div>
-</div><br />
+	</p>
+</div>		
 
 <?php
 	flush();
@@ -400,17 +385,7 @@ printSectionTitle('Clan Information');
 	");
 	
 	list($numitems) = $db->fetch_row($resultCount);
-?>
 
-<div style="clear:both;padding-top:20px;"></div>
-<?php 
-	printSectionTitle('Members');
+	display_page_subtitle('Clan Members');
 	$tblMembers->draw($result, $numitems, 95);
-?>
-<br /><br />
-<?php
-	if ( $g_options['show_google_map'] == 1 ) {
-		include(INCLUDE_PATH . '/google_maps.php');
-		printMap('clan');
-	}
 ?>

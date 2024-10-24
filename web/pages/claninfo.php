@@ -131,49 +131,19 @@
 		$clandata['name']
 	);
 
-	if ($g_options['show_google_map'] == 1) {
-		echo ('<script src="http://maps.google.com/maps/api/js?callback=Function.prototype&key=' . GOOGLE_MAPS_API_KEY . '" type="text/javascript"></script>');
-	}
-
     $members_page = (empty($_GET['members_page'])) ? "Unknown" : valid_request($_GET['members_page'], true);
 ?>
 
-<div class="block" id="main">
-
+<?php display_page_title('Clan Information: ' . $clandata['name']) ?>
 <?php
-
-		echo "\n<div id=\"tabgeneral\">\n";
 		require_once PAGE_PATH.'/claninfo_general.php';
-		echo '</div>';
-	
-		echo "\n<div id=\"tabteams\">\n";
 		require_once PAGE_PATH.'/claninfo_actions.php';
 		require_once PAGE_PATH.'/claninfo_teams.php';
-		echo '</div>';
-
-		echo "\n<div id=\"tabweapons\">\n";
 		require_once PAGE_PATH.'/claninfo_weapons.php';
-		echo '</div>';
- 
-		echo "\n<div id=\"tabmaps\">\n";
 		require_once PAGE_PATH.'/claninfo_mapperformance.php';
-		echo '</div>';
 
+	if (isset($_SESSION['loggedin']))
+	{
+		echo 'Admin Options: <a href="'.$g_options['scripturl']."?mode=admin&amp;task=tools_editdetails_clan&amp;id=$clan\">Edit Clan Details</a>";
+	}
 ?>
-
-<div class="block" style="clear:both;padding-top:12px;">
-	<div class="subblock">
-		<div style="float:left;">
-			Items marked "*" above are generated from the last <?php echo $g_options['DeleteDays']; ?> days.
-		</div>
-		<div style="float:right;">
-			<?php
-				if (isset($_SESSION['loggedin']))
-				{
-					echo 'Admin Options: <a href="'.$g_options['scripturl']."?mode=admin&amp;task=tools_editdetails_clan&amp;id=$clan\">Edit Clan Details</a><br />";
-				}
-			?>
-			Go to: <a href="<?php echo $g_options['scripturl'] . "?mode=players&amp;game=$game"; ?>">Clan Rankings</a>
-		</div>
-	</div>
-</div>
