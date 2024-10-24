@@ -69,7 +69,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		unset($_SESSION['game']);
 		
 		pageHeader(array('Contents'), array('Contents' => ''));
-		include(PAGE_PATH . '/voicecomm_serverlist.php');
 		display_page_title($g_options['sitename'] . ' Player Stats');
 	?>
 
@@ -233,7 +232,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 <?php // Empty footer		
 		echo "	<div class=\"rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">&nbsp;</div>\n";
 		echo "</div>\n";
-		
+
+		include(PAGE_PATH . '/voicecomm_serverlist.php');
+
 		// vars for cards
 		$nonhiddengamestring = preg_replace('/,$/', ')', $nonhiddengamestring);
 		
