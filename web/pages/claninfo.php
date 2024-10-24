@@ -144,6 +144,9 @@
 
 	if (isset($_SESSION['loggedin']))
 	{
+		echo '<div class="text-xs text-red-600 dark:text-red-400">';
 		echo 'Admin Options: <a href="'.$g_options['scripturl']."?mode=admin&amp;task=tools_editdetails_clan&amp;id=$clan\">Edit Clan Details</a>";
+		echo '</div>';
 	}
+
 ?>
