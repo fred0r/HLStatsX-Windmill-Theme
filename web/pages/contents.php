@@ -75,7 +75,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
 	<div class="w-full overflow-x-auto">
 
-	<h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Games</h4>
+	<h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Game Servers</h4>
 
 		<table class="w-full whitespace-no-wrap">
 			<thead>
@@ -232,7 +232,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 <?php // Empty footer		
 		echo "	<div class=\"rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">&nbsp;</div>\n";
 		echo "</div>\n";
-
+?>
+		<h4 class="text-lg font-semibold text-gray-600 dark:text-gray-300">Voice Servers</h4>
+<?php
 		include(PAGE_PATH . '/voicecomm_serverlist.php');
 
 		// vars for cards
@@ -266,7 +268,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		list($lastevent) = $db->fetch_row($result);
 ?>
             <!-- Start Card Section -->
-            <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">General Statistics</h4>
+            <h4 class="mt-4 mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">General Statistics</h4>
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
               <!-- Card -->
               <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">

@@ -201,7 +201,8 @@
 		</tbody>
 	</table>
 	</div>
-	</div>
+<?php	echo "	<div class=\"rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">&nbsp;</div>\n"; ?>
+</div>
 <?php
 	}
 	// VOICECOMM MODULE END
