@@ -36,24 +36,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 For support and installation notes visit http://www.hlxcommunity.com
 */
 
-    if (!defined('IN_HLSTATS')) {
-        die('Do not access this file directly.');
-    }
+	if ( !defined('IN_HLSTATS') ) { die('Do not access this file directly.'); }
+	if ($auth->userdata['acclevel'] < 80) die ('Access denied!');
 
-	if ($auth->userdata['acclevel'] < 80) {
-        die ('Access denied!');
-	}
-
-	$edlist = new EditList('serverId', 'hlstats_Servers_VoiceComm', '', false);
+	$edlist = new EditList('serverId', 'hlstats_Servers_VoiceComm', '');
 	$edlist->columns[] = new EditListColumn('name', 'Server Name', 45, true, 'text', '', 64);
 	$edlist->columns[] = new EditListColumn('addr', 'Server IP or Hostname', 20, true, 'text', '', 64);
 	$edlist->columns[] = new EditListColumn('password', 'Password', 20, false, 'text', '', 64);
-	$edlist->columns[] = new EditListColumn('UDPPort', 'UDP Port (TS only)', 6, false, 'text', '8767', 64);
-	$edlist->columns[] = new EditListColumn('queryPort', 'Query Port (TS)/Connect Port (Vent)', 6, true, 'text', '51234', 64);
+	$edlist->columns[] = new EditListColumn('UDPPort', 'UDP Port (TS only or TS3 Server-ID)', 6, false, 'text', '8767', 64);
+	$edlist->columns[] = new EditListColumn('queryPort', 'Query Port (TS/TS3)/Connect Port (Vent)', 6, true, 'text', '51234/10011', 64);
 	$edlist->columns[] = new EditListColumn('descr', 'Notes', 40, false, 'text', '', 64);
-	$edlist->columns[] = new EditListColumn('serverType', 'Server Type', 20, true, 'select', '0/Teamspeak;1/Ventrilo');
+	$edlist->columns[] = new EditListColumn('serverType', 'Server Type', 20, true, 'select', '0/Teamspeak;1/Ventrilo;2/Teamspeak3');
 	
-	if ($_POST) {
+	if ($_POST)
+	{
 		if ($edlist->update())
 			message('success', 'Operation successful.');
 		else
