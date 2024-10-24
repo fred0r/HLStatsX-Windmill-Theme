@@ -325,7 +325,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 			AND (hidden <>'1' OR hidden IS NULL)
 			AND hlstats_Roles.game = '$game'
 		GROUP BY
-			hlstats_Events_ChangeRole.role
+			hlstats_Events_ChangeRole.role,
+			killsTotal,
+			deathsTotal
 		ORDER BY
 			$tblRoles->sort $tblRoles->sortorder,
 			$tblRoles->sort2 $tblRoles->sortorder
