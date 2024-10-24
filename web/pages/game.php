@@ -51,8 +51,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	pageHeader(array($gamename), array($gamename => ''));
 
-	include (PAGE_PATH . '/voicecomm_serverlist.php');
-
 	$query = "
 			SELECT
 				count(*)
@@ -285,6 +283,8 @@ if ($g_options['show_server_load_image'] == 1) {
 
 echo "</tbody>";
 echo "</table>";
+
+include (PAGE_PATH . '/voicecomm_serverlist.php');
 
 ?>
 
