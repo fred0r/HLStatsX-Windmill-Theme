@@ -141,39 +141,7 @@
 <div class="block" id="main">
 
 <?php
-	// insert details pages here
-	if ($g_options['playerinfo_tabs'] == '1')
-	{
-?>
-	<ul class="subsection_tabs" id="tabs_claninfo">
-		<li>
-			<a href="#" id="tab_general" id="general">General</a>
-		</li>
-		<li>
-			<a href="#" id="tab_actions|teams">Teams &amp; Actions</a>
-		</li>
-		<li>
-			<a href="#" id="tab_weapons">Weapons</a>
-		</li>
-		<li>
-			<a href="#" id="tab_mapperformance">Maps</a>
-		</li>
-	</ul><br />
-	<div id="main_content"></div>
-	<script type="text/javascript">
-	var Tabs = new Tabs($('main_content'), $$('#main ul.subsection_tabs a'), {
-		'mode': 'claninfo',
-		'game': '<?=$game;?>',
-		'loadingImage': '<?=IMAGE_PATH;?>/ajax.gif',
-		'defaultTab': 'general',
-		'extra': {
-            'clan': '<?=$clan;?>',
-            'members_page': '<?=$members_page;?>'
-        }
-	});
-	</script>
-<?php
-	} else {
+
 		echo "\n<div id=\"tabgeneral\">\n";
 		require_once PAGE_PATH.'/claninfo_general.php';
 		echo '</div>';
@@ -190,7 +158,7 @@
 		echo "\n<div id=\"tabmaps\">\n";
 		require_once PAGE_PATH.'/claninfo_mapperformance.php';
 		echo '</div>';
-	}
+
 ?>
 
 <div class="block" style="clear:both;padding-top:12px;">
