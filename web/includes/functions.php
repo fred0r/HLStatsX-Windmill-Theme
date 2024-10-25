@@ -223,11 +223,8 @@ function pageHeader($title = '', $location = '')
 	global $db, $g_options;
 	if ( defined('PAGE') && PAGE == 'HLSTATS' )
 		include (PAGE_PATH . '/header.php');
-	if ( defined('PAGE') && PAGE == 'INGAME' )
+	elseif ( defined('PAGE') && PAGE == 'INGAME' )
 		include (PAGE_PATH . '/ingame/header.php');
-
-
-
 } 
 
 
@@ -247,6 +244,8 @@ function pageFooter()
 	global $g_options;
 	if ( defined('PAGE') && PAGE == 'HLSTATS' )
 		include (PAGE_PATH . '/footer.php');
+	elseif ( defined('PAGE') && PAGE == 'INGAME' )
+		include (PAGE_PATH . '/ingame/footer.php');
 }
 
 /**
