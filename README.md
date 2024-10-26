@@ -44,7 +44,7 @@ Features:
 
 <!-- Screen shots -->
 ## Screenshots
-(soon)
+<a href="https://stats.dnagames.site/hlstats.php?mode=players&game=dods">View Live Demo</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
