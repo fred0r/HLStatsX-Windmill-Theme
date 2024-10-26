@@ -124,66 +124,64 @@ For support and installation notes visit http://www.hlxcommunity.com
 		$map_teama_wins = $rowdata['map_ct_wins'];
 		$map_teamb_wins = $rowdata['map_ts_wins'];
 ?>
-
+<!-- start servers.php -->
 <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
-<div class="w-full overflow-x-auto">
+	<div class="w-full overflow-x-auto">
+		<table class="w-full whitespace-no-wrap">
+			<thead>
+				<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+					<td rowspan="2" class="px-4 py-3">&nbsp;Name</td>
+					<td class="px-4 py-3" style="text-align:center;">&nbsp;Map</td>
+					<td class="px-4 py-3" style="text-align:center;">&nbsp;Played</td>
+					<td class="px-4 py-3" style="text-align:center;">&nbsp;Players</td>
+					<td class="px-4 py-3" style="text-align:center;">&nbsp;Kills</td>
+					<td class="px-4 py-3" style="text-align:center;">&nbsp;Headshots</td>
+					<td class="px-4 py-3" style="text-align:center;">&nbsp;Hpk</td>
+				</tr>
+			</thead>
+			<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+				<tr class="text-gray-700 dark:text-gray-400">
+					<td rowspan="2" class="flex px-4 py-3 items-center">
+						<?php
+				$image = getImage("/games/$game/game");
+				echo '<img src="';
+				if ($image)
+					echo $image['url'];
+				else
+					echo IMAGE_PATH . '/game.gif';
+				echo "\" alt=\"$game\">\n				";
+				echo htmlspecialchars($rowdata['name']) . "<a href=\"steam://connect/$addr\">(Join)</a>\n";
+								?>
+					</td>
+					<td class="px-4 py-3" style="text-align:center;"><?php echo $rowdata['act_map']; ?></td>
+					<td class="px-4 py-3" style="text-align:center;"><?php
+				$stamp = $rowdata['map_started']==0?0:time() - $rowdata['map_started'];
+				$hours = sprintf("%02d", floor($stamp / 3600));
+				$min   = sprintf("%02d", floor(($stamp % 3600) / 60));
+				$sec   = sprintf("%02d", floor($stamp % 60)); 
+				echo $hours.":".$min.":".$sec;
+							?></td>
+					<td class="px-4 py-3" style="text-align:center;"><?php echo $player_string; ?></td>
+					<td class="px-4 py-3" style="text-align:center;"><?php echo number_format($kills); ?></td>
+					<td class="px-4 py-3" style="text-align:center;"><?php echo number_format($headshots); ?></td>
+					<td class="px-4 py-3" style="text-align:center;"><?php
+				if ($kills>0)
+					echo sprintf("%.4f", ($headshots/$kills));
+				else  
+					echo sprintf("%.4f", 0);
+							?></td>
+				</tr>
+			</tbody>
+		</table>       
 
-
-<table class="w-full whitespace-no-wrap">
-	<thead>
-		<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-			<td colspan="5" class="px-4 py-3">&nbsp;Name</td>
-			<td class="px-4 py-3" style="text-align:center;">&nbsp;Map</td>
-			<td class="px-4 py-3" style="text-align:center;">&nbsp;Played</td>
-			<td class="px-4 py-3" style="text-align:center;">&nbsp;Players</td>
-			<td class="px-4 py-3" style="text-align:center;">&nbsp;Kills</td>
-			<td class="px-4 py-3" style="text-align:center;">&nbsp;Headshots</td>
-			<td class="px-4 py-3" style="text-align:center;">&nbsp;Hpk</td>
-		</tr>
-	</thead>
-	<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-		<tr class="text-gray-700 dark:text-gray-400">
-			<td colspan="" class="flex px-4 py-3 items-center">
-				<?php
-		$image = getImage("/games/$game/game");
-		echo '<img src="';
-		if ($image)
-			echo $image['url'];
-		else
-			echo IMAGE_PATH . '/game.gif';
-		echo "\" alt=\"$game\">\n				";
-		echo htmlspecialchars($rowdata['name']) . "<a href=\"steam://connect/$addr\">(Join)</a>\n";
-                        ?>
-			</td>
-			<td class="px-4 py-3" style="text-align:center;"><?php echo $rowdata['act_map']; ?></td>
-			<td class="px-4 py-3" style="text-align:center;"><?php
-		$stamp = $rowdata['map_started']==0?0:time() - $rowdata['map_started'];
-		$hours = sprintf("%02d", floor($stamp / 3600));
-		$min   = sprintf("%02d", floor(($stamp % 3600) / 60));
-		$sec   = sprintf("%02d", floor($stamp % 60)); 
-		echo $hours.":".$min.":".$sec;
-                    ?></td>
-			<td class="px-4 py-3" style="text-align:center;"><?php echo $player_string; ?></td>
-			<td class="px-4 py-3" style="text-align:center;"><?php echo number_format($kills); ?></td>
-			<td class="px-4 py-3" style="text-align:center;"><?php echo number_format($headshots); ?></td>
-			<td class="px-4 py-3" style="text-align:center;"><?php
-		if ($kills>0)
-			echo sprintf("%.4f", ($headshots/$kills));
-		else  
-			echo sprintf("%.4f", 0);
-                    ?></td>
-	</tr>
-       
+		<table class="w-full whitespace-no-wrap">       
 <?php
 		printserverstats($server_id);
 	}  //for servers
 ?>
-	</tbody>
-	</table> 
-	</div>
+		</table>       
+ 	</div>
 </div>
-<div class="rounded-b-lg mb-8 border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">&nbsp;</div>
-
 
 <!--
 	<div
@@ -261,3 +259,4 @@ For support and installation notes visit http://www.hlxcommunity.com
         <img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=4" alt="Last Year">
     </div>
 </div>
+<!-- end servers.php -->
