@@ -121,7 +121,7 @@ function printserverstats($server_id)
 ?>
 
 
-<tr class="text-sm text-gray-700 dark:text-gray-400">
+<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 		<td style="width:42%;text-align:left;">&nbsp;#&nbsp;Player</td>
 		<td colspan="3" style="width:5%;text-align:center;">&nbsp;Kills</td>
 		<td style="width:4%;">&nbsp;Hs</td>
@@ -525,7 +525,7 @@ function printserverstats($server_id)
 		if (count($teamdata) == 0)
 		{
 ?>
-			<tr class="text-sm text-gray-700 dark:text-gray-400">
+			<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td>&nbsp;</td>
 				<td colspan="11">No Players</td>
 			</tr>
@@ -534,5 +534,10 @@ function printserverstats($server_id)
 		}
 			  	
 	}  // for servers
+?>
+	<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+				<td colspan="11">&nbsp;</td>
+			</tr>
+<?php
 }
 ?>
