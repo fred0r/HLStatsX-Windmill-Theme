@@ -112,11 +112,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$servers   = array();
 	$servers[] = $db->fetch_array();
         
-?>
-
-<div class="block">
-<?php
-	printSectionTitle('Server Live View');
+	
+	display_page_title('Server Live View');
 	$i=0;
 	for ($i=0; $i<count($servers); $i++)
 	{
@@ -135,7 +132,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	<div class="subblock">
 		<table class="data-table">
 			<tr class="data-table-head">
-				<td class="fSmall" style="width:37%;">&nbsp;Server</td>
+				<td class="fSmall" style="width:37%;">&nbsp;Name</td>
 				<td class="fSmall" style="width:23%;">&nbsp;Address</td>
 				<td class="fSmall" style="width:6%;text-align:center;">&nbsp;Map</td>
 				<td class="fSmall" style="width:6%;text-align:center;">&nbsp;Played</td>
@@ -189,10 +186,17 @@ For support and installation notes visit http://www.hlxcommunity.com
 		printserverstats($server_id);
 	}  //for servers
 ?>	</div>
-</div>
-<div class="block">
-	<?php printSectionTitle('Server Load History'); ?>
-	<div class="subblock">
+<?php // Empty footer		
+		echo "	<div class=\"rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800\">&nbsp;</div>\n";
+?>
+<br><br><br>
+
+<!--
+	<div
+              class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+            >
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+
 		<table class="data-table">
 			<tr class="data-table-head">
 				<td class="fSmall">&nbsp;24h View</td>
@@ -232,9 +236,34 @@ For support and installation notes visit http://www.hlxcommunity.com
 			</tr>
 			<tr class="data-table-row">
 				<td style="text-align:center; height: 200px; vertical-align:middle;">
-					<img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=4" alt="Last Year" />
+				<img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=4" alt="Last Year" />
 				</td>
 			</tr>
 		</table>
+</p>
+</div>
+<br><br><br><br>
+-->
+<?php display_page_subtitle('Server Load History'); ?>
+
+<div class="grid gap-6 mb-8 md:grid-cols-2">
+	<div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+		<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">24h View</h4>
+		<img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=1" alt="24h View">
 	</div>
+	<div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+        <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Last Week</h4>
+        <img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=2" alt="Last Week">
+    </div>
+</div>
+
+<div class="grid gap-6 mb-8 md:grid-cols-2">
+	<div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+	<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Last Month</h4>
+	<img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=3" alt="Last Month">
+	</div>
+	<div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+        <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Last Year</h4>
+        <img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=4" alt="Last Year">
+    </div>
 </div>
