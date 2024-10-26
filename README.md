@@ -69,7 +69,7 @@ See the [open issues](https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/issues
 
 1. Download the [latest release](https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/releases) - (soon)
    
-or Download all files from repository (Code -> Download zip) - For latest features/bug fixes but may contain other issues
+or Download all files from repository (Code -> Download zip) - Not recommended until first beta release as files will contain bugs and code base/file structure may change regularly.
 
 3. (soon)
 4. (soon)
@@ -131,7 +131,7 @@ Don't forget to give the project a star! Thanks again!
 ## Acknowledgments
 
 * [Estevanmaito's Windmill Dashboard](https://github.com/estevanmaito/windmill-dashboard) for the underlying css design code
-* [StartersClan HLStatsX:CE](https://github.com/startersclan/hlstatsx-community-edition) for the page code
+* [StartersClan HLStatsX:CE](https://github.com/startersclan/hlstatsx-community-edition) for the base page code
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
