@@ -29,15 +29,24 @@
 
 ![image](https://github.com/user-attachments/assets/64f28a29-bde3-4cf6-9b81-50c2bde87e6a)
 
-HLStatsx:CE Theme built using StarterClan v1.11.3 fork with Windmill Dashboard CSS applied on top. 
+HLStatsx:CE Theme built using StarterClan v1.11.3 fork with [Windmill Dashboard CSS](https://github.com/estevanmaito/windmill-dashboard) applied on top. 
 
-Some default HLStatsx:CE features have been remvoed to simplify the interface and make it small screen friendly.
+Some default HLStatsx:CE features have been removed to simplify the interface and make it small screen friendly.
 
-Features:
+Features enabled
 * Dark and light theme switcher
-* Responsive design works well on small screens
-* Custom CSS colour (soon)
+* Responsive design for small and large screens
+* Custom CSS colours use the defaults or create your own
 * Links menu
+* TeamSpeak3 server status using serverquery
+* Top of page Banners
+
+Features not/still to be Enabled
+* TeamSpeak1 & Ventrillo server status
+* Hitbox graphs
+* Forum signatures
+* Most server load graphs
+* Player page tabs
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -51,7 +60,7 @@ Features:
 
 ### Prerequisites
 
-* Working HLStatsX:CE by (StarterClan v1.11.3)[https://github.com/startersclan/hlstatsx-community-edition] recommended. 
+* Working HLStatsX:CE by (StarterClan v1.11.3)[https://github.com/startersclan/hlstatsx-community-edition]. May work with others. 
 * FTP or cpanel access to upload files to the web server running Sourcebans++
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -79,7 +88,7 @@ or Download all files from repository (Code -> Download zip) - Not recommended u
 
 ## Upgrade
 
-Download and overwrite all files in the web folder on your web server.
+Download and overwrite all files in the `web` folder on your web server.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -93,14 +102,14 @@ Download and overwrite all files in the web folder on your web server.
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Public pages
-  - [ ] Basic theme applied 
-  - [ ] Usable on desktop 
-  - [ ] Usable on mobile
+- [X] Public pages
+  - [X] Basic theme applied 
+  - [X] Usable on large screen 
+  - [X] Usable on small screen
 - [ ] Admin pages 
   - [ ] Basic theme applied 
-  - [ ] Usable on desktop 
-  - [ ] Usable on mobile
+  - [ ] Usable on large screen  
+  - [ ] Usable on small screen
 - [ ] Beta release 
 - [ ] Fully themed and old code replaced 
 - [ ] Remove all old/unused CSS, js and files
