@@ -183,59 +183,6 @@ For support and installation notes visit http://www.hlxcommunity.com
  	</div>
 </div>
 
-<!--
-	<div
-              class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
-            >
-              <p class="text-sm text-gray-600 dark:text-gray-400">
-
-		<table class="data-table">
-			<tr class="data-table-head">
-				<td class="fSmall">&nbsp;24h View</td>
-			</tr>
-			<tr class="data-table-row">
-				<td style="text-align:center; height: 200px; vertical-align:middle;">
-					<img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=1" alt="24h View" />
-				</td>
-			</tr>
-		</table>
-		<br /><br />
-		<table class="data-table">
-			<tr class="data-table-head">
-				<td class="fSmall">&nbsp;Last Week</td>
-			</tr>
-			<tr class="data-table-row">
-				<td style="text-align:center; height: 200px; vertical-align:middle;">
-					<img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=2" alt="Last Week" />
-				</td>
-			</tr>
-		</table>
-		<br /><br />
-		<table class="data-table">
-			<tr class="data-table-head">
-				<td class="fSmall">&nbsp;Last Month</td>
-			</tr>
-			<tr class="data-table-row">
-				<td style="text-align:center; height: 200px; vertical-align:middle;">
-					<img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=3" alt="Last Month" />
-				</td>
-			</tr>
-		</table>
-		<br /><br />
-		<table class="data-table">
-			<tr class="data-table-head">
-				<td class="fSmall">&nbsp;Last Year</td>
-			</tr>
-			<tr class="data-table-row">
-				<td style="text-align:center; height: 200px; vertical-align:middle;">
-				<img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=4" alt="Last Year" />
-				</td>
-			</tr>
-		</table>
-</p>
-</div>
-<br><br><br><br>
--->
 <?php display_page_subtitle('Server Load History'); ?>
 
 <div class="grid gap-6 mb-8 md:grid-cols-2">
