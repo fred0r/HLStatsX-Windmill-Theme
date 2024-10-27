@@ -208,7 +208,7 @@
 						}
 					}else{
 						$ts3q_server_id = '0';
-						$ts3q_server_name = '-';
+						$ts3q_server_name = $ts3_server['name'];
 						$ts3q_server_port = '-';
 						$ts3q_server_clients = '-';
 						$ts3q_server_status = 'offline';
