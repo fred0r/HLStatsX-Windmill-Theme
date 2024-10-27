@@ -342,7 +342,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 					&nbsp;&nbsp;<i class="fas fa-bolt"></i>&nbsp;
 				</div>
                 <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Last Kill</p>
+                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Last Kill Logged</p>
                   <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo date('H:i, D. d M.', strtotime($lastevent)) ?></p>
                 </div>
               </div>
