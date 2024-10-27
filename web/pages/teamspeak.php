@@ -4,6 +4,8 @@
 		array('Teamspeak viewer' => '')
 	);
   include_once (PAGE_PATH.'/voicecomm_serverlist.php');
+  die(); 
+ 
   include_once (PAGE_PATH.'/teamspeak_query.php');
   include_once (PAGE_PATH.'/teamspeak3_query.php');
 
