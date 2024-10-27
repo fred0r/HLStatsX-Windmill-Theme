@@ -47,6 +47,7 @@ Features not/still to be Enabled
 * Forum signatures
 * Most server load graphs
 * Player page tabs
+* Style selector
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
