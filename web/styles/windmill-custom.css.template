@@ -2,7 +2,7 @@
 
 /*  Rename this file to windmill-custom.css
     ,update it with your custom colors
-    and uncomment it out in header.tpl      */
+    and select it using your HLStatsX Admin Page      */
 
 .windmill-title-bar {
     color: #EDE9FE; 
