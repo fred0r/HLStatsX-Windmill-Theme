@@ -77,7 +77,7 @@ function display_table_filter($page){
 		$v = valid_request($v, false);
 
 		if ($k != $form_quantity ) {
-			echo "		<input type=\"hidden\" name=\"" . htmlspecialchars($k) . "\" value=\"" . htmlspecialchars($v) . "\" />\n";
+			echo "		<input type=\"hidden\" name=\"" . htmlspecialchars($k) . "\" value=\"" . htmlspecialchars($v) . "\">\n";
 		}
 	}
 	echo "		&nbsp;&nbsp;&nbsp;&nbsp;Show " . $form_text1 . " with ";
