@@ -95,7 +95,8 @@ Download and overwrite all files in the `web` folder on your web server.
 
 ## Return to default theme
 
-(soon)
+The `default` folder contains original versions (as of OCT24) of all customised Windmill Theme files.
+To return to using the default HLStatsx theme copy these files to your web server overwiting the custom ones.    
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
