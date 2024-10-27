@@ -80,7 +80,7 @@ function display_table_filter($page){
 			echo "		<input type=\"hidden\" name=\"" . htmlspecialchars($k) . "\" value=\"" . htmlspecialchars($v) . "\" />\n";
 		}
 	}
-	echo "		&nbsp;&nbsp;&nbsp;&nbsp;Only show " . $form_text1 . " with ";
+	echo "		&nbsp;&nbsp;&nbsp;&nbsp;Show " . $form_text1 . " with ";
 	echo "<input type=\"text\" name=\"" . $form_query . "\" size=\"4\" maxlength=\"2\" value=\"" . $form_quantity . "\" class=\"textbox\"> or more " . $form_text2 . "\n";
 	echo "		<input type=\"submit\" value=\"Apply\" class=\"windmill-button px-2 text-xs text-center border border-transparent rounded-lg\">\n";
 	echo "		</form>\n";
