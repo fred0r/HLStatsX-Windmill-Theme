@@ -96,6 +96,14 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$iconpath = $iconpath . "/" . $style;
 	}
 	
+// Only allow windmill css files to be applied
+if (substr($g_options['style'], 0, 8) == 'windmill') {
+	$windmill_style = $g_options['style'];
+}
+ else {
+	$windmill_style = 'windmill-purple.css';
+}
+
 
 // include custom windmill functions 
 include 'includes/inc_windmill_functions.php';
@@ -122,7 +130,7 @@ include 'includes/inc_windmill_functions.php';
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" type="text/css" href="./assets/css/windmill.css">
-	<link rel="stylesheet" type="text/css" href="./styles/windmill-purple.css">
+	<link rel="stylesheet" type="text/css" href="./styles/<?php echo $windmill_style; ?>">
 
 <?php
 /*
