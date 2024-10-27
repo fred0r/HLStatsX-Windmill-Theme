@@ -116,6 +116,7 @@ include 'includes/inc_windmill_functions.php';
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<link rel="SHORTCUT ICON" href="favicon.ico">
 	<link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet">
@@ -132,35 +133,6 @@ include 'includes/inc_windmill_functions.php';
 	<link rel="stylesheet" type="text/css" href="./assets/css/windmill.css">
 	<link rel="stylesheet" type="text/css" href="./styles/<?php echo $windmill_style; ?>">
 
-<?php
-/*
-
-	<link rel="stylesheet" type="text/css" href="hlstats.css" />
-	<link rel="stylesheet" type="text/css" href="styles/<?php echo $selectedStyle; ?>" />
-	<link rel="stylesheet" type="text/css" href="css/SqueezeBox.css" />
-	<!-- U R A SMACKHEAD -->
-
-<?php
-	if ($mode == 'players')
-	{
-		echo "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"css/Autocompleter.css\">\n";
-	}
-?>
-
-	<link rel="SHORTCUT ICON" href="favicon.ico">
-
-	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/SqueezeBox.js"></script>
-	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/heatmap.js"></script>
-	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/mootools.js"></script>
-
-<?php
-	if ($g_options['playerinfo_tabs'] == '1') {
-?>
-	<script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>/js/tabs.js"></script>
-<?php
-	}
-*/
-?>
 	<title><?php
 	echo $g_options['sitename']; 
 	foreach ($title as $t)
@@ -170,133 +142,6 @@ include 'includes/inc_windmill_functions.php';
 ?></title>
 </head>
 <body> 
-<?php
-/*
-//JS Check
-
-	if (isset($_POST['js']) && $_POST['js']) {
-		$_SESSION['nojs'] = 0;
-	} else {
-		if ((!isset($_SESSION['nojs'])) or ($_SESSION['nojs'] == 1)) {
-			// Send javascript form - if they have javascript enabled it will POST the JS variable, and the code above will update their session variable
-			echo '
-			<!-- Either this is your first visit in a while, or you don\'t have javascript enabled -->
-			<form name="jsform" id="jsform" action="" method="post" style="display:none">
-			<div>
-			<input name="js" type="text" value="true" />
-			<script type="text/javascript">
-			document.jsform.submit();
-			</script>
-			</div>
-			</form>'
-			;
-			$_SESSION['nojs'] = 1;
-			$g_options['playerinfo_tabs'] = 0;
-			$g_options['show_google_map'] = 0;
-		}
-	}
-	
-?>
-<div class="block">
-	
-	<div class="headerblock">
-		<div class="title">
-			<a href="<?php echo $g_options['scripturl']; ?>"><img src="<?php echo $iconpath; ?>/title.png" alt="HLstatsX Community Edition" title="HLstatsX Community Edition" /></a>
-		</div>
-
-<?php
-
-		// Grab count of active games -- if 1, we won't show the games list icons
-		$resultGames = $db->query("
-			SELECT
-				COUNT(code)
-			FROM
-				hlstats_Games
-			WHERE
-				hidden='0'
-		");
-		
-		list($num_games) = $db->fetch_row($resultGames);
-		
-		if ($num_games > 1 && $g_options['display_gamelist'] == 1) {
-?>
-		<div class="header_gameslist"><?php @include(PAGE_PATH .'/gameslist.php'); ?></div>
-<?php	
-		}
-?>
-	</div>
-	<div class="location" style="clear:both;width:100%;">
-		<ul class="fNormal" style="float:left">
-<?php
-			if ($g_options['sitename'] && $g_options['siteurl'])
-			{
-				echo '<li><a href="http://' . preg_replace('/http:\/\//', '', $g_options['siteurl']) . '">'. $g_options['sitename'] . '</a> <span class="arrow">&raquo;</span></li>';
-			}
-			echo '<li><a href="http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '">HLstatsX</a>';
-
-
-			$i=0;
-			foreach ($location as $l=>$url)
-			{
-				$url = preg_replace('/%s/', $g_options['scripturl'], $url);
-				$url = preg_replace('/&/', '&amp;', $url);
-				echo ' <span class="arrow">&raquo;</span></li><li>';
-				if ($url) {
-					echo "<a href=\"$url\">$l</a>";
-				} else {
-					echo "<strong>$l</strong>";
-				}
-				$i++;
-		}
-?>			</li>
-		</ul>
-
-<?php 
-		if ($g_options['display_style_selector'] == 1) {
-?>
-		<div class="fNormal" style="float:right;"> 
-			<form name="style_selection" id="style_selection" action="" method="post"> Style: 
-				<select name="stylesheet" onchange="document.style_selection.submit()"> 
-				<?php 
-					$d = dir('styles'); 
-					while (false !== ($e = $d->read())) { 
-						if (is_file("styles/$e") && ($e != '.') && ($e != '..') && $e != $g_options['style']) { 
-							$ename = ucwords(strtolower(str_replace(array('_','.css'), array(' ',''), $e))); 
-							$styles[$e] = $ename; 
-						} 
-					}
-					$d->close(); 
-					asort($styles); 
-					$styles = array_merge(array($g_options['style'] => 'Default'),$styles);
-					foreach ($styles as $e => $ename) { 
-						$sel = ''; 
-						if ($e == $selectedStyle) $sel = ' selected="selected"'; 
-						echo "\t\t\t\t<option value=\"$e\"$sel>$ename</option>\n"; 
-					} ?> 
-				</select> 
-			</form> 
-		</div> 
-<?php
-		}
-?>
-	</div>
-	<div class="location_under" style="clear:both;width:100%;"></div>
-</div>
-
-<br />
-      
-<div class="content" style="clear:both;">
-<?php
-	global $mode;
-	if ($g_options['bannerdisplay'] != 0 && ($mode == 'contents' || $g_options['bannerdisplay']==1)) {
-?>    
-	<div class="block" style="text-align:center;">
-		<img src="<?php echo ((strncmp($g_options['bannerfile'], 'http:/', 6) == 0)?$g_options['bannerfile']:IMAGE_PATH.'/'.$g_options['bannerfile']); ?>" alt="Banner" />
-	</div>
-<?php
-	}
-*/
-?>        
 <!-- start Windmill Header -->
 <!-- this div closes in the footer -->
 <div
@@ -505,10 +350,6 @@ if ($db->num_rows() < 1) {
 	echo "				<div class=\"hidden md:block\">\n";
 	echo "					<a href=\"./hlstats.php?game=$game\">Viewing: " . $gamename . "</a>\n";
 	echo "				</div>\n";
-	// echo "				<div class=\"lg:hidden uppercase\">\n";
-	// echo "					<a href=\"./hlstats.php?game=$game\">View: " . $game . "</a>\n";
-	// echo "				</div>\n";
-
 }
 
 ?>
