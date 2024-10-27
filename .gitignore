@@ -3,6 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Repository-specific files
+
+# TS3 Server password file
+web/includes/inc_ts3admin_query_password.php
+
+
 # User-specific files
 *.rsuser
 *.suo
