@@ -24,7 +24,8 @@
 ?>
 
 <!-- start voicecomm_serverlist.php -->
-<div class="w-full mt-8 overflow-hidden rounded-lg shadow-xs">
+<?php echo display_page_subtitle("Voice Servers"); ?>
+<div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
 	<div class="w-full overflow-x-auto">
 		<table class="w-full whitespace-no-wrap">
 			<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
