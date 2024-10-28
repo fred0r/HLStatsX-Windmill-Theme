@@ -71,7 +71,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		pageHeader(array('Contents'), array('Contents' => ''));
 		display_page_title($g_options['sitename'] . ' Player Stats');
 	?>
-
+<!-- start contents.php -->
 <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
 	<div class="w-full overflow-x-auto">
 
@@ -364,3 +364,4 @@ For support and installation notes visit http://www.hlxcommunity.com
 <?php
 	}
 ?>
+<!-- end contents.php -->
