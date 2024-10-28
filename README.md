@@ -89,7 +89,8 @@ or Download all files from repository (Code -> Download zip) - Not recommended u
 
 ## Upgrade
 
-Download and overwrite all files in the `web` folder on your web server.
+Each release includes a copy, called default-hlstatsx-files-(release-number).zip, of all the uneditted default HLStatsX files used in this theme. 
+Download, unzip and overwrite all files from that .zip into the root of your web server.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
