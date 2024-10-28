@@ -425,23 +425,20 @@ if ($db->num_rows() < 1) {
                     aria-label="submenu"
                   >
 <?php
-
 						display_links("Search", $g_options['scripturl'] . "?mode=search","search");
-
 						if ($g_options['sourcebans_address']) {
-
 							display_links("SourceBans", $g_options['sourcebans_address'],"ban");
-
 						}
-									
 						if ($g_options['forum_address']) {
-
 							display_links("Forum",$g_options['forum_address'],"comments");
-
 						}
-
 						display_links("Help", $g_options['scripturl'] . "?mode=help","question-circle");
-
+						if (isset($_SESSION['loggedin'])) {
+							display_links("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
+							display_links("Admin Logout", $g_options['scripturl'] . "?hlstats.php?logout=1","sign-out-alt");
+						} else {
+							display_links("Admin Login", $g_options['scripturl'] . "?mode=admin","sign-in-alt");
+						}
 ?> 
                   </ul>
                 </template>
