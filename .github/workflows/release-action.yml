@@ -19,6 +19,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: default-hlstatsx-files-${{ GITHUB_REF }}.zip
+          files: default-hlstatsx-files-$GITHUB_REF.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
