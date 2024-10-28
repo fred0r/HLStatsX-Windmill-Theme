@@ -13,12 +13,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Zip Folder
-        run: zip -r ${{ github.event.repository.name }}.zip default
+        run: zip -r default-hlstatsx-files-${{github.ref_name}}.zip default
 
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: default-hlstatsx-files-$GITHUB_REF.zip
+          files: default-hlstatsx-files-${{github.ref_name}}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
