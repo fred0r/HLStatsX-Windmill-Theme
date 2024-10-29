@@ -154,6 +154,44 @@ function getWindmillSortArrow($sort, $sortorder, $name, $longname, $var_sort = '
 	return $arrowstring;
 }
 
+/**
+ * getWindmillSelect()
+ * Returns the HTML for a SELECT box, generated using the 'values' array.
+ * Each key in the array should be a OPTION VALUE, while each value in the
+ * array should be a corresponding descriptive name for the OPTION.
+ * 
+ * @param mixed $name
+ * @param mixed $values
+ * @param string $currentvalue
+ * @return The 'currentvalue' will be given the SELECTED attribute.
+ */
+function getWindmillSelect($name, $values, $currentvalue = '')
+{
+	$select = "<select name=\"$name\" class=\"mt-1 w-full text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray\">\n";
 
+	$gotcval = false;
+
+	foreach ($values as $k => $v)
+	{
+		$select .= "\t<option value=\"$k\"";
+
+		if ($k == $currentvalue)
+		{
+			$select .= ' selected="selected"';
+			$gotcval = true;
+		}
+
+		$select .= ">$v</option>\n";
+	}
+
+	if ($currentvalue && !$gotcval)
+	{
+		$select .= "\t<option value=\"$currentvalue\" selected=\"selected\">$currentvalue</option>\n";
+	}
+
+	$select .= '</select>';
+
+	return $select;
+}
 
 ?>
