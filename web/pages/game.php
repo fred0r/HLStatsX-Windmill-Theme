@@ -272,27 +272,24 @@ if ($total_kills > 0)
  printserverstats($server_id);
 
 		}
+		?>
 
-echo "</tbody>";
-echo "</table><br>";
-
-include (PAGE_PATH . '/voicecomm_serverlist.php');
-
-?>
-
+	</tbody>
+	</table>
+	</div>
 </div>
-</div>
+
+<?php include (PAGE_PATH . '/voicecomm_serverlist.php'); ?>
 
 <script>
-
-$(document).ready(function(){
-	$(".handle").click(function(){
-		$(this)
-			.toggleClass('open')
-				.nextUntil(".handle")
-					.children()
-					.slideToggle('fast');
+	$(document).ready(function(){
+		$(".handle").click(function(){
+			$(this)
+				.toggleClass('open')
+					.nextUntil(".handle")
+						.children()
+						.slideToggle('fast');
+		});
 	});
-});
 </script>
 <!-- end game.php -->
