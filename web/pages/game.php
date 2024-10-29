@@ -194,25 +194,9 @@ if ($total_kills > 0)
 </div>
 <!-- end Card Section -->
 
-<?php
-/*
-if ($g_options['show_server_load_image'] == 1) {
-?>
-	<?php echo display_page_subtitle('Global Graph') ?>
-	<div class="flex items-center justify-between p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
-			<img src="show_graph.php?type=1&amp;game=<?php echo $game ?>&amp;width=870&amp;height=200&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>" 
-				alt="Server Load Graph" 
-				title="serverLoadGraph">
-	</div>
-<?php
-		}
-*/
-		?>
-
-
-<div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
 	<div class="w-full overflow-x-auto">
-
+	<?php echo display_page_subtitle("Game Servers"); ?>
 		<table id="servers" class="w-full whitespace-no-wrap">
 			<thead>
 				<tr class="text-sm font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
@@ -282,15 +266,15 @@ if ($g_options['show_server_load_image'] == 1) {
 		}
 
 echo "</tbody>";
-echo "</table>";
+echo "</table><br>";
 
 include (PAGE_PATH . '/voicecomm_serverlist.php');
 
 ?>
 
 </div>
+</div>
 
-	</div>
 <script>
 
 $(document).ready(function(){
@@ -303,108 +287,4 @@ $(document).ready(function(){
 	});
 });
 </script>
-
-<?php
-/*
-// Awards section
-	if ($g_options['gamehome_show_awards'] == 1) {
-		$resultAwards = $db->query("
-			SELECT
-				hlstats_Awards.awardId,
-				hlstats_Awards.name,
-				hlstats_Awards.verb,
-				hlstats_Awards.d_winner_id,
-				hlstats_Awards.d_winner_count,
-				hlstats_Players.lastName AS d_winner_name,
-				hlstats_Players.flag AS flag,
-				hlstats_Players.country AS country
-			FROM
-				hlstats_Awards
-			LEFT JOIN hlstats_Players ON
-				hlstats_Players.playerId = hlstats_Awards.d_winner_id
-			WHERE
-				hlstats_Awards.game='$game'
-			ORDER BY
-				hlstats_Awards.name
-		");
-
-		$result = $db->query("
-			SELECT
-				IFNULL(value, 1)
-			FROM
-				hlstats_Options
-			WHERE
-				keyname='awards_numdays'
-		");
-
-		if ($db->num_rows($result) == 1)
-			list($awards_numdays) = $db->fetch_row($result);
-		else
-			$awards_numdays = 1;
-
-		$result = $db->query("
-			SELECT
-				DATE_FORMAT(value, '%W %e %b'),
-				DATE_FORMAT( DATE_SUB( value, INTERVAL $awards_numdays DAY ) , '%W %e %b' )
-			FROM
-				hlstats_Options
-			WHERE
-				keyname='awards_d_date'
-		");
-		list($awards_d_date, $awards_s_date) = $db->fetch_row($result);
-
-		if ($db->num_rows($resultAwards) > 0 && $awards_d_date) {
-?>
-<div class="block" style="padding-top:20px">
-
-<?php
-	printSectionTitle((($awards_numdays == 1) ? 'Daily' : "$awards_numdays Day")." Awards ($awards_d_date)");
-?>
-	<div class="subblock">
-
-		<table class="data-table">
-
-<?php
-			$c = 0;
-			while ($awarddata = $db->fetch_array($resultAwards))
-			{
-				$colour = ($c % 2) + 1;
-				$c++;
-?>
-
-<tr class="bg<?php echo $colour; ?>">
-	<td style="width:40%;"><?php
-				echo '<a href="'.$g_options['scripturl'].'?mode=dailyawardinfo&amp;award='.$awarddata['awardId']."&amp;game=$game\">".htmlspecialchars($awarddata['name']).'</a>';
-?></td>
-	<td style="width:60%;"><?php
-
-				if ($awarddata['d_winner_id']) {
-					if ($g_options['countrydata'] == 1) {
-						$flag = '0.gif';
-						$alt = 'Unknown Country';
-						if ($awarddata['flag'] != '') {
-							$alt = ucfirst(strtolower($awarddata['country']));
-						}
-						echo "<img src=\"" . getFlag($awarddata['flag']) . "\" hspace=\"4\" alt=\"$alt\" title=\"$alt\" /><a href=\"{$g_options['scripturl']}?mode=playerinfo&amp;player={$awarddata['d_winner_id']}\"><b>" . htmlspecialchars($awarddata['d_winner_name'], ENT_COMPAT) . "</b></a> ({$awarddata['d_winner_count']} " . htmlspecialchars($awarddata['verb']) . ")";
-					} else {
-						echo "<img src=\"" . IMAGE_PATH . "/player.gif\" hspace=\"4\" alt=\"Player\" /><a href=\"{$g_options['scripturl']}?mode=playerinfo&amp;player={$awarddata['d_winner_id']}\"><b>" . htmlspecialchars($awarddata['d_winner_name'], ENT_COMPAT) . "</b></a> ({$awarddata['d_winner_count']} ". htmlspecialchars($awarddata['verb']) . ")";
-					}
-				}
-				else
-				{
-					echo '&nbsp;&nbsp; <em>No Award Winner</em>';
-				}
-?></td>
-</tr>
-
-<?php
-			}
-?></table>
-</div></div>
-<?php
-		}
-	}
-*/
-?>
-
 <!-- end game.php -->
