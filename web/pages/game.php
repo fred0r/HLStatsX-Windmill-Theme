@@ -193,11 +193,18 @@ if ($total_kills > 0)
 	</div>
 </div>
 <!-- end Card Section -->
-
 <div class="w-full overflow-hidden rounded-lg shadow-xs">
 	<div class="w-full overflow-x-auto">
 	<?php echo display_page_subtitle("Game Servers"); ?>
-		<table id="servers" class="w-full whitespace-no-wrap">
+	<?php
+		/* Display the accordion if only one server */
+		if (count($servers) == 1) { 
+			$accordion_enabled = "";
+		} else {
+			$accordion_enabled = "servers";
+		}
+	?>
+		<table id="<?php echo $accordion_enabled; ?>" class="w-full whitespace-no-wrap">
 			<thead>
 				<tr class="text-sm font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td colspan="5" style="width:37%;">&nbsp;Server Name</td>
