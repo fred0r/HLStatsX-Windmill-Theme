@@ -963,7 +963,7 @@ class PropertyPage_Property
 					}
 				}
 
-				echo getSelect($this->name, $coldata, $value);
+				echo getWindmillSelect($this->name, $coldata, $value);
 				break;
 
 			default:

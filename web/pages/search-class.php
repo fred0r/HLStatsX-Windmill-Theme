@@ -101,7 +101,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 							<td>In:&nbsp;</td>
 							<td>
 								<?php
-									echo getSelect('st', $searchtypes, $this->type);
+									echo getWindmillSelect('st', $searchtypes, $this->type);
 								?>
 							</td>
 						</tr>
@@ -126,7 +126,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 									{
 										$games[$rowdata[0]] = $rowdata[1];
 									}
-									echo getSelect('game', $games, $this->game);
+									echo getWindmillSelect('game', $games, $this->game);
 								?>
 							</td>
 						</tr>

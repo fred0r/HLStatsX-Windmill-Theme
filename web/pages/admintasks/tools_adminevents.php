@@ -206,7 +206,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		$types[$k] = $k;
 	}
 	
-	echo getSelect("type", $types, $select_type);
+	echo getWindmillSelect("type", $types, $select_type);
 ?>
 <input type="submit" value="Filter" class="smallsubmit" /><br /><br />
 </form>
