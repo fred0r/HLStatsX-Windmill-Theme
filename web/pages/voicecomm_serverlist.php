@@ -199,7 +199,7 @@
 							}else{
 								$ts3q_server_clients = '-';
 							}
-							$ts3q_server_status = $server['virtualserver_status'];
+							$ts3q_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">" . $server['virtualserver_status'] . "</span";
 							if(isset($server['virtualserver_uptime'])) {
 								$ts3q_server_uptime = $tsAdmin->convertSecondsToStrTime(($server['virtualserver_uptime']));
 							}else{
@@ -211,7 +211,7 @@
 						$ts3q_server_name = $ts3_server['name'];
 						$ts3q_server_port = '-';
 						$ts3q_server_clients = '-';
-						$ts3q_server_status = 'offline';
+						$ts3q_server_status = '<span class="px-2 leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">offline</span>';
 						$ts3q_server_uptime = '-';
 					}
 
