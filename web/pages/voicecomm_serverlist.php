@@ -172,8 +172,7 @@
 		*/
 
 		foreach($ts3_servers as $ts3_server)
-		{
-					
+		{	
 					$ts3_ip = $ts3_server['addr'];
 					$ts3_queryport = $ts3_server['queryPort'];
 					$ts3_user = 'serveradmin';
@@ -230,7 +229,7 @@
 						<?php echo $ts3_server['addr'].':'.$ts3q_server_port; ?> (Join)
 					</a>
 				</td>
-				<td>-</td>
+				<td><?php echo $ts3_server['password']; ?></td>
 				<td><?php echo $ts3q_server_clients ?></td>
 				<td><?php echo $ts3q_server_uptime ?></td>
 				<td><?php echo $ts3_server['descr']; ?></td>
