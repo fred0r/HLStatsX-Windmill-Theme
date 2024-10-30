@@ -144,7 +144,9 @@ Don't forget to give the project a star! Thanks again!
 
 * [Estevanmaito's Windmill Dashboard](https://github.com/estevanmaito/windmill-dashboard) for the underlying css design code
 * [StartersClan HLStatsX:CE](https://github.com/startersclan/hlstatsx-community-edition) for the base page code
-* [ts3admin.class](https://github.com/Speckmops/ts3admin.class) for the TeamSPeak 3 server query
+* [Eska](https://forums.alliedmods.net/showpost.php?p=1854304&postcount=4) for inital TeamSpeak3 work (and @stive101 for letting me know)
+* [ts3admin.class](https://github.com/Speckmops/ts3admin.class) for the TeamSPeak 3 server query I used
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
