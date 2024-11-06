@@ -89,14 +89,14 @@ or Download all files from repository (Code -> Download zip) - Not recommended u
 
 ## Upgrade
 
-Each release includes a copy, called default-hlstatsx-files-(release-number).zip, of all the uneditted default HLStatsX files used in this theme. 
 Download, unzip and overwrite all files from that .zip into the root of your web server.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Return to default theme
 
-The `default` folder contains original versions (as of OCT24) of all customised Windmill Theme files.
+Each release includes a copy, called default-hlstatsx-files-(release-number).zip, of all the uneditted default HLStatsX files used in this theme. 
+
 To return to using the default HLStatsx theme copy these files to your web server overwiting the custom ones.    
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
