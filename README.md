@@ -5,9 +5,7 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-  <a href="https://github.com/DNA-styx/sbpp-windmill-dashboard">
     <img src="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/blob/main/assets/hlstatsxce-windmill-dashboard-logo.png" alt="Sourcebans++ Windmill Dashboard Theme Logo" width="390" height="149">
-  </a>
 
 <h3 align="center">HLStatsx:CE Windmill Dashboard Theme</h3>
 
@@ -47,7 +45,7 @@ Features not/still to be Enabled
 * Forum signatures
 * Most server load graphs
 * Player page tabs
-* Style selector
+* Style selector (use admin page to force colour change)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
