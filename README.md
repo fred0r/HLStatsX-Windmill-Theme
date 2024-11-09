@@ -36,7 +36,7 @@ Features enabled
 * Responsive design for small and large screens
 * Custom CSS colours use the defaults or create your own
 * Links menu
-* TeamSpeak3 server status using serverquery
+* TeamSpeak3 server status using serverquery [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/TeamSpeak3-Support">details</a> ]
 * Top of page Banners
 
 Features not/still to be Enabled
