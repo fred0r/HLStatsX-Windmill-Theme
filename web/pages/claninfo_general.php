@@ -46,13 +46,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	<p class="text-sm text-gray-600 dark:text-gray-400">
 		<table class="data-table">
 		
-			
-			<tr class="bg1">
-				<td>Clan:</td>
-				<td colspan="2"><strong><?php echo $clandata['name']; ?></strong></td>
-			</tr>
-
-			<tr class="bg2">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td>Home Page:</td>
 				<td colspan="2"><?php
 					if ($url = getLink($clandata['homepage']))
@@ -61,12 +55,12 @@ For support and installation notes visit http://www.hlxcommunity.com
 					}
 					else
 					{
-						echo '(Not specified.)';
+						echo 'none';
 					}
 				?></td>
 			</tr>
 
-			<tr class="bg1">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td style="width:45%;">Activity:</td>
 				<td style="width:40%;">
 				<meter min="0" max="100" low="25" high="50" optimum="75" value="<?php
@@ -77,7 +71,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				?></td>
 			</tr>
 
-			<tr class="bg2">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td>Members:</td>
 				<td colspan="2"><?php
 					echo $clandata['nummembers'].
@@ -85,35 +79,35 @@ For support and installation notes visit http://www.hlxcommunity.com
 				?></td>
 			</tr>
 
-			<tr class="bg1">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td>Avg. Member Points:</td>
 				<td colspan="2"><strong><?php
 					echo number_format($clandata['avgskill']);
 				?></strong></td>
 			</tr>
 
-			<tr class="bg2">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td>Total Kills:</td>
 				<td colspan="2"><?php
 					echo number_format($clandata['kills']);
 				?></td>
 			</tr>
 				
-			<tr class="bg1">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td>Total Deaths:</td>
 				<td colspan="2"><?php
 					echo number_format($clandata['deaths']);
 				?></td>
 			</tr>
             
-			<tr class="bg2">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td>Avg. Kills:</td>
 				<td colspan="2"><?php
 					echo number_format($clandata['kills'] / ($clandata['nummembers']));
 				?></td>
 			</tr>
 				
-			<tr class="bg1">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td>Kills per Death:</td>
 				<td colspan="2"><?php
 					if ($clandata['deaths'] != 0)
@@ -127,7 +121,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				?></td>
 			</tr>
         
-			<tr class="bg2">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 		    	<td style="width:45%;">Kills per Minute:</td>
 				<td colspan="2" style="width:55%;"><?php
 					if ($clandata['connection_time'] > 0) {
@@ -138,14 +132,14 @@ For support and installation notes visit http://www.hlxcommunity.com
 				?></td>
 			</tr>
 
-			<tr class="bg1">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td>Total Connection Time:</td>
 				<td colspan="2"><?php
 					echo timestamp_to_str($clandata['connection_time']);
 				?></td>
 			</tr>
 
-			<tr class="bg2">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td>Avg. Connection Time:</td>
 				<td colspan="2"><?php
 					if ($clandata['connection_time'] > 0) {
@@ -156,7 +150,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				?></td>
             </tr>
 
-			<tr class="bg1">
+			<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td>Favorite Server:*</td>
 				<td colspan="2"><?php
 					$db->query("
@@ -189,7 +183,7 @@ For support and installation notes visit http://www.hlxcommunity.com
     			?></td>
 		    </tr>
 
-            <tr class="bg2">
+            <tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 		    	<td>Favorite Map:*</td>
     			<td colspan="2"><?php
 					$db->query("
@@ -217,7 +211,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				?></td>
 			</tr>
 
-            <tr class="bg1">
+            <tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                 <td>Favorite Weapon:*</td>
                 <td colspan="2"><?php
 					$result = $db->query("
