@@ -45,7 +45,7 @@ Features not/still to be Enabled
 * Forum signatures
 * Most server load graphs
 * Player page tabs
-* Style selector
+* Style selector (use admin page to force colour change)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
