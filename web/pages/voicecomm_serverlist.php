@@ -158,8 +158,7 @@
 		<?php
 			}
 		}
-		
-				if (isset($ts3_servers))
+		if (isset($ts3_servers))
 		{
 			require_once(PAGE_PATH . '/ts3admin_class.php');
 			require_once('includes/inc_ts3admin_query_password.php');
@@ -219,7 +218,7 @@
 		?>
 			<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
 				<td class="flex items-center">
-					<img src="<?php echo IMAGE_PATH; ?>/teamspeak3/ts3.png" alt="tsicon">
+					<img src="<?php echo IMAGE_PATH; ?>/teamspeak3/ts3.png" alt="tsicon">&nbsp;
 						<?php echo $ts3q_server_name ."\n"; ?>
 				</td>
 				<td><?php echo $ts3q_server_status ?></td>
