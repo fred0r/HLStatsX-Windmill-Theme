@@ -220,9 +220,7 @@
 			<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
 				<td class="flex items-center">
 					<img src="<?php echo IMAGE_PATH; ?>/teamspeak3/ts3.png" alt="tsicon">
-						&nbsp;<a href="<?php echo $g_options['scripturl'] . "?mode=teamspeak&amp;game=$game&amp;tsId=" . $ts3q_server_id; ?>">
 						<?php echo $ts3q_server_name ."\n"; ?>
-					</a>
 				</td>
 				<td><?php echo $ts3q_server_status ?></td>
 				<td>
