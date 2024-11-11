@@ -30,7 +30,7 @@
 	<div class="w-full overflow-x-auto">
 		<table class="w-full whitespace-no-wrap">
 			<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-				<td>Voice Server Name</td>
+				<td>&nbsp;</td>
 				<td>Status</td>
 				<td>Server Address</td>
 				<td>Password</td>
@@ -205,6 +205,12 @@
 							}else{
 								$ts3q_server_uptime = '-';
 							}
+							$ts3q_server_link = $ts3_server['addr'] .":" . $ts3q_server_port . 
+												"&nbsp;<a href=\"ts3server://" . $ts3_server['addr']. "?" .
+												"port=" . $ts3q_server_port .
+												"&password=" . $ts3_server['password'] .
+												"&addbookmark=" . $ts3q_server_name .
+												"\">(Join)</a>";
 						}
 					}else{
 						$ts3q_server_id = '0';
@@ -213,20 +219,17 @@
 						$ts3q_server_clients = '-';
 						$ts3q_server_status = '<span class="px-2 leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">offline</span>';
 						$ts3q_server_uptime = '-';
+						$ts3q_server_link = '-';
 					}
 
 		?>
 			<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
 				<td class="flex items-center">
 					<img src="<?php echo IMAGE_PATH; ?>/teamspeak3/ts3.png" alt="tsicon">&nbsp;
-						<?php echo $ts3q_server_name ."\n"; ?>
+					<?php echo $ts3q_server_name ."\n"; ?>
 				</td>
 				<td><?php echo $ts3q_server_status ?></td>
-				<td>
-					<a href="ts3server://<?php echo $ts3_server['addr'].'?port='.$ts3q_server_port ?>&nickname=WebGuest">
-						<?php echo $ts3_server['addr'].':'.$ts3q_server_port; ?> (Join)
-					</a>
-				</td>
+				<td><?php echo $ts3q_server_link ?></td>
 				<td><?php echo $ts3_server['password']; ?></td>
 				<td><?php echo $ts3q_server_clients ?></td>
 				<td><?php echo $ts3q_server_uptime ?></td>
