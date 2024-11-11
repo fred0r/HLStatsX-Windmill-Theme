@@ -198,7 +198,7 @@ if ($total_kills > 0)
 	<div class="w-full overflow-x-auto">
 
 	<?php
-		/* Display the accordion if only one server */
+		/* Disable the accordion if only one server */
 		if (count($servers) == 1) { 
 			$accordion_enabled = "";
 		} else {
@@ -281,6 +281,9 @@ if ($total_kills > 0)
 
 <?php include (PAGE_PATH . '/voicecomm_serverlist.php'); ?>
 
+<?php 
+if (count($servers) != 1) { 
+?>
 <script>
 	$(document).ready(function(){
 		$(".handle").click(function(){
@@ -292,4 +295,7 @@ if ($total_kills > 0)
 		});
 	});
 </script>
+<?php 
+}
+?>
 <!-- end game.php -->
