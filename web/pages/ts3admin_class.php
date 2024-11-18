@@ -4441,7 +4441,8 @@ class ts3admin {
   */
  	public function convertSecondsToStrTime($seconds) {
 		$conv_time = $this->convertSecondsToArrayTime($seconds);
-    	return $conv_time['days'].'d '.$conv_time['hours'].'h '.$conv_time['minutes'].'m '.$conv_time['seconds'].'s';
+    //return $conv_time['days'].'d '.$conv_time['hours'].'h '.$conv_time['minutes'].'m '.$conv_time['seconds'].'s';
+    return $conv_time['days'].'d '.$conv_time['hours'].'h '.$conv_time['minutes'].'m';
 	}
 
 /**
