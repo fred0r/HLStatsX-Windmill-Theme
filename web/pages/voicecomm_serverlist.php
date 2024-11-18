@@ -173,6 +173,7 @@
 
 		foreach($ts3_servers as $ts3_server)
 		{	
+					$ts3_id = $ts3_server['serverId'];
 					$ts3_ip = $ts3_server['addr'];
 					$ts3_queryport = $ts3_server['queryPort'];
 					$ts3_user = 'serveradmin';
@@ -193,6 +194,7 @@
 
 							$ts3q_server_id = $server['virtualserver_id'];
 							$ts3q_server_name = htmlspecialchars($server['virtualserver_name']);
+							$ts3q_server_page = "/hlstats.php?mode=teamspeak&tsId=" . $ts3_id ;
 							$ts3q_server_port = $server['virtualserver_port'];
 							if(isset($server['virtualserver_clientsonline'])) {
 								$ts3q_server_clients = $server['virtualserver_clientsonline'] . '/' . $server['virtualserver_maxclients'];
@@ -226,7 +228,9 @@
 			<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
 				<td class="flex items-center">
 					<img src="<?php echo IMAGE_PATH; ?>/teamspeak3/ts3.png" alt="tsicon">&nbsp;
+					<a href="<?php echo $ts3q_server_page; ?>">
 					<?php echo $ts3q_server_name ."\n"; ?>
+				</a>
 				</td>
 				<td><?php echo $ts3q_server_status ?></td>
 				<td><?php echo $ts3q_server_link ?></td>
