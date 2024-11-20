@@ -1,4 +1,4 @@
-name: Create release zips
+name: test
 
 on:
   release:
