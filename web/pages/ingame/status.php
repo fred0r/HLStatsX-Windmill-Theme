@@ -119,8 +119,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 ?>
 
 	<table class="data-table">
-		<tr class="data-table-head">
-			<td style="width:37%;" class="fSmall">&nbsp;Server</td>
+		<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+			<td colspan="4" style="width:37%;" class="fSmall">&nbsp;Server</td>
 			<td style="width:23%;" class="fSmall">&nbsp;Address</td>
 			<td style="width:6%;text-align:center;" class="fSmall">&nbsp;Map</td>
 			<td style="width:6%;text-align:center;" class="fSmall">&nbsp;Played</td>
@@ -129,8 +129,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 			<td style="width:6%;text-align:center;" class="fSmall">&nbsp;Headshots</td>
 			<td style="width:6%;text-align:center;" class="fSmall">&nbsp;Hpk</td>
 		</tr>
-		<tr class="bg1" valign="middle">
-			<td class="fSmall"><?php
+		<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800" valign="middle">
+			<td colspan="4" class="fSmall"><?php
 				echo '<strong>'.$rowdata['name'].'</strong>';
 			?></td>
 			<td class="fSmall"><?php
@@ -162,10 +162,12 @@ For support and installation notes visit http://www.hlxcommunity.com
 				  echo sprintf('%.4f', 0);
 			?></td>
 		</tr>
-	</table>        
+      
 
 <?php
+
 	printserverstats($server_id);
+	echo "</table>";
 
 	}  // for servers
 ?>		

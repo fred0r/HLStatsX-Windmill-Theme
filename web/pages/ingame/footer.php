@@ -40,6 +40,16 @@ For support and installation notes visit http://www.hlxcommunity.com
         die('Do not access this file directly.');
     }
 
+
+    if (!isset($_GET['hide'])) {    
+
+        if (isset($_GET['game'])){
+            echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=bans\">Bans</a>"; 
+            echo "&nbsp;";
+        }
+    
+    echo "<a href=\"ingame.php?mode=help\">Help</a>"; 
+}
 ?>
 </body>
 </html>

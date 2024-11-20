@@ -49,29 +49,33 @@ For support and installation notes visit http://www.hlxcommunity.com
 Header ('Cache-Control: no-cache');
 $lastpage = isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:"";
 
+// Only allow windmill css files to be applied
+if (substr($g_options['style'], 0, 8) == 'windmill') {
+	$windmill_style = $g_options['style'];
+}
+ else {
+	$windmill_style = 'windmill-purple.css';
+}
+
 // include custom windmill functions 
 include 'includes/inc_windmill_functions.php';
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
+<!-- start ingame/header.php -->
+<!DOCTYPE html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- 
-	<link rel="stylesheet" type="text/css" href="hlstats.css">
-	<link rel="stylesheet" type="text/css" href="styles/<?php echo $g_options['style']; ?>">
--->
 	<link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/tailwind.output.css">
-	<title>HLstatsX</title>
-</head>
+	  <link rel="stylesheet" href="./assets/css/tailwind.output.css">
+	  <link rel="stylesheet" type="text/css" href="./assets/css/windmill.css">
+	  <link rel="stylesheet" type="text/css" href="./styles/<?php echo $windmill_style; ?>">
+	  <title>HLstatsX</title>
+	</head>
 <body> 
     
 <div>
-
 <?php
 	global $mode;
 	if ($g_options['bannerdisplay'] != 0 && ($mode == 'contents' || $g_options['bannerdisplay']==1)) {
@@ -82,10 +86,7 @@ include 'includes/inc_windmill_functions.php';
 <?php
 	}
 
-?> 
-
-	<?php 
-	if ($lastpage) {
+	if ($lastpage && !isset($_GET['hide'])) {
 		?>
 		<div style="position: absolute; bottom:45%; right:0; color #FFFFFF;">
 			<a href="<?php echo $lastpage; ?>">&laquo;&nbsp;&nbsp;Go Back</a>
@@ -93,7 +94,4 @@ include 'includes/inc_windmill_functions.php';
 		<?php 
 	} ?>
 </div>
-
-
-
-
+<!-- end ingame/header.php -->
