@@ -378,7 +378,7 @@ HTML;
 						if($matches[1] == 'c')
 						{
 							/* Channel name should be centered */
-							$name = "<center>" . $this->toHTML($spacer[1]) . "</center>";
+							$name = $this->toHTML($spacer[1]);
 						}
 						elseif($matches[1] == '*' || (strlen($spacer[1]) == 3 && $checkSpacer == $spacer[1]))
 						{
@@ -392,7 +392,7 @@ HTML;
 								$addSpacer .= $spacer[1];
 							}
 
-							$name = "<center>" . $this->toHTML($addSpacer) . "</center>";
+							$name = $this->toHTML($addSpacer);
 						}
 						else
 						{
