@@ -2,10 +2,8 @@ name: Create release zips
 
 on:
   release:
-    types: 
-      - edited
-      - published
-
+    types: [edited,published]
+    
 jobs:
   build:
     runs-on: ubuntu-latest
