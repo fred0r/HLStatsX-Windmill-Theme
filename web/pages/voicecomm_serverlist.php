@@ -160,8 +160,8 @@
 		}
 		if (isset($ts3_servers))
 		{
-			require_once(PAGE_PATH . '/ts3admin_class.php');
-			require_once('includes/inc_ts3admin_query_password.php');
+			require_once(INCLUDE_PATH . '/teamspeak3/ts3admin_class.php');
+			require_once(INCLUDE_PATH . '/teamspeak3/inc_ts3_settings.php');
 
 		/**
 			*
@@ -176,8 +176,8 @@
 					$ts3_id = $ts3_server['serverId'];
 					$ts3_ip = $ts3_server['addr'];
 					$ts3_queryport = $ts3_server['queryPort'];
-					$ts3_user = 'serveradmin';
-					$ts3_pass = $ts3q_server_query_password;
+					$ts3_user = $ts3_server_query_username;
+					$ts3_pass = $ts3_server_query_password;
 					
 					#build a new ts3admin object
 					$tsAdmin = new ts3admin($ts3_ip, $ts3_queryport);
