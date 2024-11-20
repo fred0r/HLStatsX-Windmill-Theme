@@ -2,9 +2,7 @@ name: test
 
 on:
   release:
-    types:
-      - created
-      - edited
+    types: [edited]
 jobs:
   build:
     runs-on: ubuntu-latest
