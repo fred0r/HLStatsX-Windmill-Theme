@@ -12,6 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: test
-
+      - name: Zip Folder
+        run: zip -r default-hlstatsx-files-${{github.ref_name}}.zip default
     
