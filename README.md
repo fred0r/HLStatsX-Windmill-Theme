@@ -147,6 +147,7 @@ Don't forget to give the project a star! Thanks again!
 * [scheissegalo](https://github.com/scheissegalo/PHP-TS3ServerViewer) for the TeamSpeak3 server browser code
 * [Mizu](https://www.myteamspeak.com/addons/author/Mizu) & [Gox11](https://www.myteamspeak.com/addons/author/Gox11) for their TeamSpeak3 icon packs
 * [Shoelace](https://shoelace.style/) for the tree view component used in the TeamSpeak3 server browser
+* [Lemehost](https://lemehost.com/i/4tqeRx) (aff. link) for the free TeamSpeak3 server for testing
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
