@@ -1,7 +1,6 @@
 name: Create release zips
 
 on:
-  workflow_dispatch:
   release:
     types: [edited]
 
