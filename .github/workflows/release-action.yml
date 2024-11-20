@@ -3,6 +3,7 @@ name: Create release zips
 on:
   release:
     types: [edited,published]
+    branches: [main]
     
 jobs:
   build:
