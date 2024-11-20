@@ -34,10 +34,10 @@ Some default HLStatsx:CE features have been removed to simplify the interface an
 Features enabled
 * Dark and light theme switcher
 * Responsive design for small and large screens
-* Custom CSS colours use the defaults or create your own
+* Custom CSS colours are set site wide using the admin page, use the defaults or create your own
 * Links menu
-* TeamSpeak3 server status using serverquery [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/TeamSpeak3-Support">details</a> ]
-* Top of page Banners
+* TeamSpeak3 server status and browser using serverquery [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/TeamSpeak3-Support">details</a> ]
+* Top of page banners
 
 Features not/still to be Enabled
 * TeamSpeak1 & Ventrillo server status
@@ -45,7 +45,7 @@ Features not/still to be Enabled
 * Forum signatures
 * Most server load graphs
 * Player page tabs
-* Style selector (use admin page to force colour change)
+* Style selector (use the admin page to force colour change)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -75,9 +75,9 @@ See the [open issues](https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/issues
 
 ### Installation
 
-1. Download the [latest release](https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/releases) - (soon)
+1. Download the [latest release](https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/releases) - Not recommended until first beta release as files may contain bugs and codebase/file structure may change regularly.
    
-or Download all files from repository (Code -> Download zip) - Not recommended until first beta release as files will contain bugs and code base/file structure may change regularly.
+or Download all files from repository (Code -> Download zip) - 
 
 3. (soon)
 4. (soon)
@@ -93,7 +93,7 @@ Download, unzip and overwrite all files from that .zip into the root of your web
 
 ## Return to default theme
 
-Each release includes a copy, called default-hlstatsx-files-(release-number).zip, of all the uneditted default HLStatsX files used in this theme. 
+Each release includes an archive, called default-hlstatsx-files-(release-number).zip, of all the uneditted default HLStatsX files used in this theme.
 
 To return to using the default HLStatsx theme copy these files to your web server overwiting the custom ones.    
 
@@ -143,8 +143,10 @@ Don't forget to give the project a star! Thanks again!
 * [Estevanmaito's Windmill Dashboard](https://github.com/estevanmaito/windmill-dashboard) for the underlying css design code
 * [StartersClan HLStatsX:CE](https://github.com/startersclan/hlstatsx-community-edition) for the base page code
 * [Eska](https://forums.alliedmods.net/showpost.php?p=1854304&postcount=4) for inital TeamSpeak3 work (and @stive101 for letting me know)
-* [ts3admin.class](https://github.com/Speckmops/ts3admin.class) for the TeamSPeak 3 server query I used
-
+* [ts3admin.class](https://github.com/Speckmops/ts3admin.class) for the TeamSpeak3 server query
+* [scheissegalo](https://github.com/scheissegalo/PHP-TS3ServerViewer) for the TeamSpeak3 server browser code
+* [Mizu](https://www.myteamspeak.com/addons/author/Mizu) & [Gox11](https://www.myteamspeak.com/addons/author/Gox11) for their TeamSpeak3 icon packs
+* [Shoelace](https://shoelace.style/) for the tree view component used in the TeamSpeak3 server browser
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
