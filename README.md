@@ -59,8 +59,8 @@ Features not/still to be Enabled
 
 ### Prerequisites
 
-* Working HLStatsX:CE by (StarterClan v1.11.3)[https://github.com/startersclan/hlstatsx-community-edition]. May work with others. Please let me know and I'll update the docs.
-* FTP or cpanel access to upload files to the web server running Sourcebans++
+* Working HLStatsX:CE by [StarterClan v1.11.3](https://github.com/startersclan/hlstatsx-community-edition). May work with others. Please let me know and I'll update the docs.
+* FTP or cpanel access to upload files to the web server.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
