@@ -104,9 +104,8 @@ if (substr($g_options['style'], 0, 8) == 'windmill') {
 	$windmill_style = 'windmill-purple.css';
 }
 
-
 // include custom windmill functions 
-include 'includes/inc_windmill_functions.php';
+include INCLUDE_PATH . '/inc_windmill_functions.php';
 ?>
 <!-- start header.php -->
 <!DOCTYPE html>
@@ -126,6 +125,11 @@ include 'includes/inc_windmill_functions.php';
 	</script>
   	<script src="./assets/js/fontawesome-all.min.js"></script>
 	<script src="./assets/js/init-alpine.js"></script>
+
+	<!-- Used by TeamSpeak Channel viewer -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/themes/light.css" />
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/components/tree/tree.js"></script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/components/tree-item/tree-item.js"></script>
 
 	<!-- JQuery used for server list accordion --> 
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
