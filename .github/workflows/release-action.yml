@@ -4,6 +4,9 @@ on:
   release:
     types:
       - created
+      - prereleased
+      - published
+      - edited
 
 jobs:
   build:
