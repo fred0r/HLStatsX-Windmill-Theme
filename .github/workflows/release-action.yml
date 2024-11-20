@@ -3,10 +3,7 @@ name: Create release zips
 on:
   release:
     types:
-      - created
-      - prereleased
       - published
-      - edited
 
 jobs:
   build:
