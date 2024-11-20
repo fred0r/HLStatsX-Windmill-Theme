@@ -2,7 +2,7 @@ name: Create release zips
 
 on:
   release:
-    types: [published, edited]
+    types: [edited]
 
 jobs:
   build:
