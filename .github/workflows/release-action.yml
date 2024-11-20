@@ -1,22 +1,16 @@
 name: Create release zips
-
 on:
   release:
     types: [edited]
-    
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
       - name: Zip Folder
         run: zip -r default-hlstatsx-files-${{github.ref_name}}.zip default
-
       - name: Zip Folder2
         run: zip -r hlstatsx-windmill-theme-${{github.ref_name}}.zip web
-
       - name: Release
         uses: softprops/action-gh-release@v2.1.0
         if: startsWith(github.ref, 'refs/tags/')
