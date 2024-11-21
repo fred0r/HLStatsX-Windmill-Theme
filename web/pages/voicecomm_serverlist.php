@@ -241,7 +241,8 @@
 			</tr>
 <?php			
 		}
-}
+	$tsAdmin->ts3quit();
+	}
 ?>
 			</tbody>
 		</table>
