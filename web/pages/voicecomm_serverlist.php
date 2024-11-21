@@ -26,7 +26,13 @@
 
 <!-- start voicecomm_serverlist.php -->
 <br>
-<?php echo display_page_subtitle("Voice Servers"); ?>
+<?php
+	if ($_GET['mode'] == 'teamspeak'){
+		display_page_title('Voice Servers');
+	}else{
+		echo display_page_subtitle("Voice Servers"); 
+	}
+?>
 <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
 	<div class="w-full overflow-x-auto">
 		<table class="w-full whitespace-no-wrap">
