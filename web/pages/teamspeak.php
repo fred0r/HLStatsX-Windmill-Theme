@@ -19,9 +19,9 @@
   include("includes/teamspeak3/ts3ssv.php");
   $ts3ssv = new ts3ssv($uip, $tPort);
   $ts3ssv->useServerPort($port);
-  $ts3ssv->imagePath = "/hlstatsimg/teamspeak3/";
+  $ts3ssv->imagePath = IMAGE_PATH . "/teamspeak3/";
   $ts3ssv->iconPack = $ts3_icon_pack;
-  $ts3ssv->flagPath = "/hlstatsimg/flags/";
+  $ts3ssv->flagPath = IMAGE_PATH . "/flags/";
   $ts3ssv->timeout = 2;
   $ts3ssv->setLoginPassword($ts3_server_query_username, $ts3_server_query_password);
   $ts3ssv->setCache($ts3_cache_timeout, INCLUDE_PATH . "/teamspeak3/ts3ssv.php.cache");
