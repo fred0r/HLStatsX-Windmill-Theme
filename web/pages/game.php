@@ -193,8 +193,10 @@ if ($total_kills > 0)
 	</div>
 </div>
 <!-- end Card Section -->
-<div class="w-full overflow-hidden rounded-lg shadow-xs">
 <?php echo display_page_subtitle("Game Servers"); ?>
+
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+
 	<div class="w-full overflow-x-auto">
 
 	<?php
