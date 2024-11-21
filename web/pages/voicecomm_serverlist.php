@@ -5,6 +5,7 @@
 	define('TS', 0);
 	define('VENT', 1);
 	define('TS3', 2);
+	define('DISCORD', 3);
 	
 	$result = $db->query("
 		SELECT
@@ -43,6 +44,7 @@
 		$i = 0;
 		$j = 0;
 		$t = 0;
+		$d = 0;
 		while ($row = $db->fetch_array()) {
 			if ($row['serverType'] == TS) {
 				$ts_servers[$i]['serverId'] = $row['serverId'];
@@ -70,8 +72,17 @@
 				$ts3_servers[$t]['queryPort'] = $row['queryPort'];
 				$ts3_servers[$t]['UDPPort'] = $row['UDPPort'];
 				$t++;
+			} else if ($row['serverType'] == DISCORD) {
+				$discord_servers[$t]['serverId'] = $row['serverId'];
+				$discord_servers[$t]['name'] = $row['name'];
+				$discord_servers[$t]['addr'] = $row['addr'];
+				$discord_servers[$t]['password'] = $row['password'];
+				$discord_servers[$t]['descr'] = $row['descr'];
+				$discord_servers[$t]['queryPort'] = $row['queryPort'];
+				$discord_servers[$t]['UDPPort'] = $row['UDPPort'];
+				$d++;
 			}
-		}
+	}
 		if (isset($ts_servers))
 		{
 			require_once(PAGE_PATH . '/teamspeak_class.php');
@@ -243,6 +254,51 @@
 		}
 	$tsAdmin->ts3quit();
 	}
+	if (isset($discord_servers))
+	{
+
+		require_once(INCLUDE_PATH . '/discord/inc_discord_settings.php');
+
+		foreach($discord_servers as $discord_server)
+		{
+			/* Credit: https://stackoverflow.com/questions/47454876/get-total-number-of-members-in-discord-using-php/74583912#74583912 */
+			/* Build Discord invite links */
+			$discord_invite_code = $discord_server['addr'];
+			$discord_invite_short_url = "discord.gg/" . $discord_invite_code;
+			$discord_invite_full_url = "https://discord.gg/" . $discord_invite_code;
+
+			$discord_api_url = "https://discord.com/api/v9/invites/".$discord_invite_code ."?with_counts=true&with_expiration=true";
+			$discord_api_jsonIn = file_get_contents($discord_api_url);
+			
+			/* Check if API gave back a response which also verifies link is valid */
+			if ($discord_api_jsonIn) {
+				$discord_api_json_obj = json_decode($discord_api_jsonIn, $assoc = false);
+				$discord_voice_presence_total = ($discord_api_json_obj ->approximate_presence_count - $discord_number_of_bots) . " (" . $discord_number_of_bots . " bots)";
+				$discord_invite_link = "<a href=\"" . $discord_invite_full_url . "\">" . $discord_invite_short_url . " (Join)</a>";
+				$discord_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span";
+			}else{
+				$discord_voice_presence_total = "-";
+				$discord_invite_link = "-";
+				$discord_server_status = '<span class="px-2 leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">invalid</span>';
+			}
+
+?>
+		<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
+		<td class="flex items-center">
+			<img src="<?php echo IMAGE_PATH; ?>/discord/discord.png" alt="Discord">&nbsp;
+			<a href="<?php echo $discord_invite_full_url ?>"><?php echo $discord_server['name']; ?></a>
+		</td>
+		<td><?php echo $discord_server_status ?></td>
+		<td><?php echo $discord_invite_link ?></td>
+		<td><?php echo $discord_server['password']; ?></td>
+		<td><?php echo $discord_voice_presence_total ?></td>
+		<td>-</td>
+		<td><?php echo $discord_server['descr']; ?></td>
+	</tr>
+<?php
+		}
+	}
+
 ?>
 			</tbody>
 		</table>

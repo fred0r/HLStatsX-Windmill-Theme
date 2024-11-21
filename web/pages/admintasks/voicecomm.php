@@ -41,12 +41,12 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	$edlist = new EditList('serverId', 'hlstats_Servers_VoiceComm', '');
 	$edlist->columns[] = new EditListColumn('name', 'Server Name', 45, true, 'text', '', 64);
-	$edlist->columns[] = new EditListColumn('addr', 'Server IP or Hostname', 20, true, 'text', '', 64);
+	$edlist->columns[] = new EditListColumn('addr', 'TS3: Server IP or Hostname,<br> Discord: Invite Code', 20, true, 'text', '', 64);
 	$edlist->columns[] = new EditListColumn('password', 'Password', 20, false, 'text', '', 64);
-	$edlist->columns[] = new EditListColumn('UDPPort', 'UDP Port (TS only or TS3 Server-ID)', 6, false, 'text', '8767', 64);
-	$edlist->columns[] = new EditListColumn('queryPort', 'Query Port (TS/TS3)/Connect Port (Vent)', 6, true, 'text', '51234/10011', 64);
-	$edlist->columns[] = new EditListColumn('descr', 'Notes', 40, false, 'text', '', 64);
-	$edlist->columns[] = new EditListColumn('serverType', 'Server Type', 20, true, 'select', '0/Teamspeak;1/Ventrilo;2/Teamspeak3');
+	$edlist->columns[] = new EditListColumn('UDPPort', 'TS: UDP Port<br> Otherwise: 1', 6, false, 'text', '1', 64);
+	$edlist->columns[] = new EditListColumn('queryPort', 'TS3: Query Port<br> Otherwise: 1', 6, true, 'text', '1', 64);
+	$edlist->columns[] = new EditListColumn('descr', 'Public Notes', 40, false, 'text', '', 64);
+	$edlist->columns[] = new EditListColumn('serverType', 'Server Type', 20, true, 'select', '0/Teamspeak;1/Ventrilo;2/Teamspeak3;3/Discord');
 	
 	if ($_POST)
 	{
