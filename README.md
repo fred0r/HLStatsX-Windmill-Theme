@@ -37,6 +37,8 @@ Features enabled
 * Custom CSS colours are set site wide using the admin page, use the defaults or create your own
 * Links menu
 * TeamSpeak3 server status and browser using serverquery [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/TeamSpeak3-Support">details</a> ]
+* TeaSpeak basic support added
+* Discord Voice Channel Support [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/Discord-Support">details</a> ]
 * Top of page banners
 
 Features not/still to be Enabled
@@ -45,7 +47,7 @@ Features not/still to be Enabled
 * Forum signatures
 * Most server load graphs
 * Player page tabs
-* Style selector (use the admin page to force colour change)
+* Style selector (admins set the colour of their site, not visitors)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -148,6 +150,7 @@ Don't forget to give the project a star! Thanks again!
 * [Mizu](https://www.myteamspeak.com/addons/author/Mizu) & [Gox11](https://www.myteamspeak.com/addons/author/Gox11) for their TeamSpeak3 icon packs
 * [Shoelace](https://shoelace.style/) for the tree view component used in the TeamSpeak3 server browser
 * [Lemehost](https://lemehost.com/i/4tqeRx) (aff. link) for the free TeamSpeak3 server for testing
+* [Monochromatic](https://stackoverflow.com/questions/47454876/get-total-number-of-members-in-discord-using-php/74583912#74583912) for the easy Discord Voice Channel staus tip
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -156,7 +159,6 @@ Don't forget to give the project a star! Thanks again!
 ## Links
 
 * HLStatsX:CE forum on AlliedMods https://forums.alliedmods.net/forumdisplay.php?f=156
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
