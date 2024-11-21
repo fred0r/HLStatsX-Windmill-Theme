@@ -70,12 +70,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 		
 		pageHeader(array('Contents'), array('Contents' => ''));
 		display_page_title($g_options['sitename'] . ' Player Stats');
-	?>
+?>
 <!-- start contents.php -->
-<div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
-	<div class="w-full overflow-x-auto">
+<?php echo display_page_subtitle("Game Servers"); ?>
 
-	<?php echo display_page_subtitle("Game Servers"); ?>
+<div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+
+	<div class="w-full overflow-x-auto">
 
 		<table class="w-full whitespace-no-wrap">
 			<thead>
