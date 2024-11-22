@@ -16,7 +16,7 @@
     $tPort = $s['queryPort'];
     $port = $s['UDPPort'];
 
-  include("includes/teamspeak3/ts3ssv.php");
+  include(INCLUDE_PATH ."/teamspeak3/ts3ssv.php");
   $ts3ssv = new ts3ssv($uip, $tPort);
   $ts3ssv->useServerPort($port);
   $ts3ssv->imagePath = IMAGE_PATH . "/teamspeak3/";
