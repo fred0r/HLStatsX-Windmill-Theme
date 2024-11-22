@@ -211,7 +211,7 @@
 
 							$ts3q_server_id = $server['virtualserver_id'];
 							$ts3q_server_name = htmlspecialchars($server['virtualserver_name']);
-							$ts3q_server_page = "/hlstats.php?mode=teamspeak&tsId=" . $ts3_id ;
+							$ts3q_server_page = $ts3q_server_name . "&nbsp;<a href=\"/hlstats.php?mode=teamspeak&tsId=" . $ts3_id . "\">(View)</a>";
 							$ts3q_server_port = $server['virtualserver_port'];
 							if(isset($server['virtualserver_clientsonline'])) {
 								$ts3q_server_clients = $server['virtualserver_clientsonline'] . '/' . $server['virtualserver_maxclients'];
@@ -233,7 +233,7 @@
 						}
 					}else{
 						$ts3q_server_id = '0';
-						$ts3q_server_name = $ts3_server['name'];
+						$ts3q_server_page = $ts3_server['name'];
 						$ts3q_server_port = '-';
 						$ts3q_server_clients = '-';
 						$ts3q_server_status = '<span class="px-2 leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">offline</span>';
@@ -245,9 +245,7 @@
 			<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
 				<td class="flex items-center">
 					<img src="<?php echo IMAGE_PATH; ?>/teamspeak3/ts3.png" alt="tsicon">&nbsp;
-					<a href="<?php echo $ts3q_server_page; ?>">
-					<?php echo $ts3q_server_name ."\n"; ?>
-				</a>
+					<?php echo $ts3q_server_page; ?>
 				</td>
 				<td><?php echo $ts3q_server_status ?></td>
 				<td><?php echo $ts3q_server_link ?></td>
@@ -276,12 +274,12 @@
 			$discord_api_url = "https://discord.com/api/v9/invites/".$discord_invite_code ."?with_counts=true&with_expiration=true";
 			$discord_api_jsonIn = file_get_contents($discord_api_url);
 			
-			/* Check if API gave back a response which also verifies link is valid */
+			/* Check if API gave a response, which also verifies the link is valid */
 			if ($discord_api_jsonIn) {
 				$discord_api_json_obj = json_decode($discord_api_jsonIn, $assoc = false);
 				/* Force count to never be less than zero */
 				$discord_voice_presence_total = max(($discord_api_json_obj ->approximate_presence_count - $discord_number_of_bots),0) . " (" . $discord_number_of_bots . " bots)";
-				$discord_invite_link = "<a href=\"" . $discord_invite_full_url . "\">" . $discord_invite_short_url . " (Join)</a>";
+				$discord_invite_link = $discord_invite_short_url . "&nbsp;<a href=\"" . $discord_invite_full_url . "\">(Join)</a>";
 				$discord_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span";
 			}else{
 				$discord_voice_presence_total = "-";
@@ -293,7 +291,7 @@
 		<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
 		<td class="flex items-center">
 			<img src="<?php echo IMAGE_PATH; ?>/discord/discord.png" alt="Discord">&nbsp;
-			<a href="<?php echo $discord_invite_full_url ?>"><?php echo $discord_server['name']; ?></a>
+			<?php echo $discord_server['name']; ?>
 		</td>
 		<td><?php echo $discord_server_status ?></td>
 		<td><?php echo $discord_invite_link ?></td>
