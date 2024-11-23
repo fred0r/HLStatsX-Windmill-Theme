@@ -221,7 +221,7 @@
 
 							$ts3q_server_id = $server['virtualserver_id'];
 							$ts3q_server_name = htmlspecialchars($server['virtualserver_name']);
-							$ts3q_server_page = $ts3q_server_name . "&nbsp;<a href=\"/hlstats.php?mode=teamspeak&tsId=" . $ts3_id . "\">(View)</a>";
+							$ts3q_server_page = $ts3q_server_name . "&nbsp;<a href=\"" .$g_options['scripturl'] . "?mode=teamspeak&tsId=" . $ts3_id . "\">(View)</a>";
 							$ts3q_server_port = $server['virtualserver_port'];
 							if(isset($server['virtualserver_clientsonline'])) {
 								$ts3q_server_clients = $server['virtualserver_clientsonline'] . '/' . $server['virtualserver_maxclients'];
