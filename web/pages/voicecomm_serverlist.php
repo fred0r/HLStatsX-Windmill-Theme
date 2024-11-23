@@ -288,7 +288,7 @@
 			if ($discord_api_jsonIn) {
 				$discord_api_json_obj = json_decode($discord_api_jsonIn, $assoc = false);
 				/* Force count to never be less than zero */
-				$discord_voice_presence_total = max(($discord_api_json_obj ->approximate_presence_count - $discord_number_of_bots),0) . " (" . $discord_number_of_bots . " bots)";
+				$discord_voice_presence_total = max(($discord_api_json_obj ->approximate_presence_count - $discord_number_of_bots),0) . "/" . $discord_api_json_obj ->approximate_member_count . " (" . $discord_number_of_bots . " bots)";
 				$discord_invite_link = $discord_invite_short_url . "&nbsp;<a href=\"" . $discord_invite_full_url . "\">(Join)</a>";
 				$discord_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span";
 			}else{
