@@ -6,6 +6,7 @@
 	define('VENT', 1);
 	define('TS3', 2);
 	define('DISCORD', 3);
+	define('MUMBLE', 4);
 	
 	$result = $db->query("
 		SELECT
@@ -87,8 +88,17 @@
 				$discord_servers[$t]['queryPort'] = $row['queryPort'];
 				$discord_servers[$t]['UDPPort'] = $row['UDPPort'];
 				$d++;
+			} else if ($row['serverType'] == MUMBLE) {
+				$mumble_servers[$t]['serverId'] = $row['serverId'];
+				$mumble_servers[$t]['name'] = $row['name'];
+				$mumble_servers[$t]['addr'] = $row['addr'];
+				$mumble_servers[$t]['password'] = $row['password'];
+				$mumble_servers[$t]['descr'] = $row['descr'];
+				$mumble_servers[$t]['queryPort'] = $row['queryPort'];
+				$mumble_servers[$t]['UDPPort'] = $row['UDPPort'];
+				$m++;
 			}
-	}
+}
 		if (isset($ts_servers))
 		{
 			require_once(PAGE_PATH . '/teamspeak_class.php');
@@ -297,8 +307,69 @@
 		<td><?php echo $discord_invite_link ?></td>
 		<td><?php echo $discord_server['password']; ?></td>
 		<td><?php echo $discord_voice_presence_total ?></td>
-		<td>-</td>
+		<td>&#8734;</td>
 		<td><?php echo $discord_server['descr']; ?></td>
+	</tr>
+<?php
+		}
+	}
+	if (isset($mumble_servers))
+	{
+
+		require_once(INCLUDE_PATH . '/mumble/inc_mumble_functions.php');
+
+		foreach($mumble_servers as $mumble_server)
+		{
+			$mumble_cvp_url = $mumble_server['addr'];
+			$mumble_cvp_jsonIn = file_get_contents($mumble_cvp_url);
+			
+			/* Check if JSON returns nothing */
+			/* Likely link to CSP file is wrong */
+			if ($mumble_cvp_jsonIn) {
+				$mumble_api_json_obj = json_decode($mumble_cvp_jsonIn, $assoc = false);
+
+				/* Check if JSON returns data but has error */
+				/* Likely server is offline */
+				if (!$mumble_api_json_obj ->error){
+
+					$mumble_server_name = $mumble_api_json_obj ->name;
+					$mumble_server_link = $mumble_api_json_obj ->x_connecturl;
+					$mumble_server_uptime = secondsToTime($mumble_api_json_obj ->uptime);
+					/* First get users in root */
+					$mumble_users_root = count($mumble_api_json_obj ->root->users);
+					/* Then get users in other channels */
+					foreach ($mumble_api_json_obj ->root->channels as $item){
+						$mumble_users_rest =  ($mumble_users_rest + count($item->users));
+					  }
+					$mumble_users_total = ($mumble_users_root + $mumble_users_rest);
+					$mumble_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span";
+					$mumble_server_join_link = "Mumble Server <a href=\"" . $mumble_server_link . "\">(Join)</a>";
+				}else{
+					$mumble_server_name = $mumble_server['name'];
+					$mumble_users_total = "-";
+					$mumble_server_uptime = '-';
+					$mumble_server_status = '<span class="px-2 leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">offline</span>';
+				}
+
+			}else{
+				$mumble_server_name = $mumble_server['name'];
+				$mumble_users_total = "-";
+				$mumble_server_uptime = '-';
+				$mumble_server_status = '<span class="px-2 leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">invalid</span>';
+			}
+
+?>
+		<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
+		<td class="flex items-center">
+			<img src="<?php echo IMAGE_PATH; ?>/mumble/mumble.png" alt="Mumble">&nbsp;
+			<?php echo $mumble_server_name ?>
+		</td>
+		<td><?php echo $mumble_server_status ?></td>
+		<td><?php echo $mumble_server_join_link ?></td>
+		<td><?php echo $mumble_server['password']; ?></td>
+		<td><?php echo $mumble_users_total ?></td>
+		<td><?php echo $mumble_server_uptime ?></td>
+		<td><?php echo $mumble_server['descr']; ?></td>
 	</tr>
 <?php
 		}
