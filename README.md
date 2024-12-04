@@ -6,6 +6,12 @@
 <!-- PROJECT LOGO -->
 <div align="center">
     <img src="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/blob/main/assets/hlstatsxce-windmill-dashboard-logo.png" alt="Sourcebans++ Windmill Dashboard Theme Logo" width="390" height="149">
+  <br>
+  <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/releases"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/DNA-styx/HLSTATSX-Windmill-Theme?include_prereleases"></a>
+  <img src="https://img.shields.io/github/downloads/DNA-styx/HLSTATSX-Windmill-Theme/total">
+  <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/issues"><img src="https://img.shields.io/github/issues/DNA-styx/HLSTATSX-Windmill-Theme"></a>
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/DNA-styx/HLSTATSX-Windmill-Theme">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/DNA-styx/HLSTATSX-Windmill-Theme">
 
 <h3 align="center">HLStatsx:CE Windmill Dashboard Theme</h3>
 
