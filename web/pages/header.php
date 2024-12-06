@@ -120,16 +120,15 @@ include INCLUDE_PATH . '/inc_windmill_functions.php';
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/tailwind.output.css">
-    <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer>
-	</script>
+
+	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" integrity="sha384-qIUj+yp0nYG+FiRSyz0hFI7OAjgQfjCIxMKboilWruQkwLsv9YqKZ+oQlBjjN1wy" crossorigin="anonymous"></script>
   	<script src="./assets/js/fontawesome-all.min.js"></script>
 	<script src="./assets/js/init-alpine.js"></script>
 
 	<!-- Used by TeamSpeak Channel viewer -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/themes/light.css" />
-	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/components/tree/tree.js"></script>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/components/tree-item/tree-item.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/themes/light.css" integrity="sha384-VNjXcWTFgkXi1VXtuRlXBLNB44AvISAfti9WbOPCBCiNPnUpJ6dHx1Y3XmTii9pB" crossorigin="anonymous">
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/components/tree/tree.js" integrity="sha384-JIwkkGwePk3SK+b3aarqNrVOfYyJoOtV7HbRRvguVCMVI3siUbex6bjwJZM7ArWo" crossorigin="anonymous"></script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/components/tree-item/tree-item.js" integrity="sha384-2IgN/uS/tHYfnw9Jy+Dmd8hizrIRFj0jDx1LrQ+ulriotjQBAWrC9NHxTcFR3CO+" crossorigin="anonymous"></script>
 
 	<!-- JQuery used for server list accordion --> 
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
