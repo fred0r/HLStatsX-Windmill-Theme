@@ -67,35 +67,31 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 <?php display_page_title('Help'); ?>
 
-<!-- <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"> -->
-
 <?php echo display_page_subtitle('Questions'); ?>
 
 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <p>
-		<ol>
-			<li class="px-4 py-3 text-gray-600 dark:text-gray-400">
-				<i class="fas fa-search-location"></i>
-				<a href="#players">How are players tracked? Or, why is my name listed more than once?</a><br>
-			</li>
-			<li class="px-4 py-3 text-gray-600 dark:text-gray-400">
-				<i class="fas fa-calculator"></i>
-				<a href="#points">How is the "points" rating calculated?</a><br>
-			</li>
-			<li class="px-4 py-3 text-gray-600 dark:text-gray-400">
-				<i class="fas fa-drafting-compass"></i>
-				<a href="#weaponmods">What are all the weapon points modifiers?</a><br>
-			</li>
-			<li class="px-4 py-3 text-gray-600 dark:text-gray-400">
-				<i class="fas fa-pencil-alt"></i>
-				<a href="#set">How can I set my real name, e-mail address, and homepage?</a><br>
-			</li>
-			<li class="px-4 py-3 text-gray-600 dark:text-gray-400">
-				<i class="fas fa-user-slash"></i>
-				<a href="#hideranking">My rank is embarrassing. How can I opt out?</a>
-			</li>
-		</ol>
-	</p>
+	<ol>
+		<li class="px-4 py-3 text-gray-600 dark:text-gray-400">
+			<i class="fas fa-search-location"></i>
+			<a href="#players">How are players tracked? Or, why is my name listed more than once?</a>
+		</li>
+		<li class="px-4 py-3 text-gray-600 dark:text-gray-400">
+			<i class="fas fa-calculator"></i>
+			<a href="#points">How is the "points" rating calculated?</a>
+		</li>
+		<li class="px-4 py-3 text-gray-600 dark:text-gray-400">
+			<i class="fas fa-drafting-compass"></i>
+			<a href="#weaponmods">What are all the weapon points modifiers?</a>
+		</li>
+		<li class="px-4 py-3 text-gray-600 dark:text-gray-400">
+			<i class="fas fa-pencil-alt"></i>
+			<a href="#set">How can I set my real name, e-mail address, and homepage?</a>
+		</li>
+		<li class="px-4 py-3 text-gray-600 dark:text-gray-400">
+			<i class="fas fa-user-slash"></i>
+			<a href="#hideranking">My rank is embarrassing. How can I opt out?</a>
+		</li>
+	</ol>
 </div>
 
 <?php echo display_page_subtitle('Answers'); ?>
@@ -137,9 +133,14 @@ For support and installation notes visit http://www.hlxcommunity.com
 					}
 			?>
 			<span class="text-gray-700 dark:text-gray-400">
-				A player may have more than one name. On the Player Rankings pages, players are shown with the most recent name they used in the game. If you click on a player's name, the Player Details page will show you a list of all other names that this player uses, if any, under the Aliases section (if the player has not used any other names, the Aliases section will not be displayed).<br><br>
-				Your name may be listed more than once if somebody else (with a different <?php echo $uniqueid; ?>) uses the same name.<br><br>
-				You can use the <a href="<?php echo $g_options['scripturl']; ?>?mode=search">Search</a> function to find a player by name or <?php echo $uniqueid; ?>.<br><br>
+				A player may have more than one name. On the Player Rankings pages, players are shown with the most 
+				recent name they used in the game. If you click on a player's name, the Player Details page will 
+				show you a list of all other names that this player uses, if any, under the Aliases section (if the 
+				player has not used any other names, the Aliases section will not be displayed).<br><br>
+				Your name may be listed more than once if somebody else (with a different <?php echo $uniqueid; ?>) 
+				uses the same name.<br><br>
+				You can use the <a href="<?php echo $g_options['scripturl']; ?>?mode=search">Search</a> function 
+				to find a player by name or <?php echo $uniqueid; ?>.<br><br>
 				</span>
 			<?php
 				}
@@ -148,19 +149,35 @@ For support and installation notes visit http://www.hlxcommunity.com
 </div>
 
 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-	<p>
-		<h1 class="text-gray-700 dark:text-gray-400"><a name="points"><i class="fas fa-calculator"></i> How is the "points" rating calculated?</a></h1><br>
-			<span class="text-gray-700 dark:text-gray-400">
-			A new player has 1000 points. Every time you make a kill, you gain a certain amount of points depending on a) the victim's points rating, and b) the weapon you used. If you kill someone with a higher points rating than you, then you gain more points than if you kill someone with a lower points rating than you. Therefore, killing newbies will not get you as far as killing the #1 player. And if you kill someone with your knife, you gain more points than if you kill them with a rifle, for example.<br><br>
-			When you are killed, you lose a certain amount of points, which again depends on the points rating of your killer and the weapon they used (you don't lose as many points for being killed by the #1 player with a rifle than you do for being killed by a low ranked player with a knife). This makes moving up the rankings easier, but makes staying in the top spots harder.<br><br>
+	<p class="text-sm text-gray-600 dark:text-gray-400">
+		<h1 class="text-gray-700 dark:text-gray-400">
+			<a name="points"><i class="fas fa-calculator"></i> How is the "points" rating calculated?</a>
+		</h1>
+		<br>
+		<span class="text-gray-700 dark:text-gray-400">
+			A new player has 1000 points. Every time you make a kill, you gain a certain amount of points depending on
+			a) the victim's points rating, and b) the weapon you used. If you kill someone with a higher points rating
+			than you, then you gain more points than if you kill someone with a lower points rating than you.
+			Therefore, killing newbies will not get you as far as killing the #1 player. And if you kill someone
+				with your knife, you gain more points than if you kill them with a rifle, for example.<br><br>
+			When you are killed, you lose a certain amount of points, which again depends on the points rating
+			of your killer and the weapon they used (you don't lose as many points for being killed by the #1 
+			player with a rifle than you do for being killed by a low ranked player with a knife). This makes 
+			moving up the rankings easier, but makes staying in the top spots harder.<br><br>
 			Specifically, the equations are:<br><br>
-			<pre> Killer Points = Killer Points + (Victim Points / Killer Points)
-				 &times; Weapon Modifier &times; 5
-
- Victim Points = Victim Points - (Victim Points / Killer Points)
-				 &times; Weapon Modifier &times; 5</pre><br><br>
-			Plus, the following point bonuses are available for completing objectives in some games:<br><br>
-			<a name="actions">
+			<pxre> Killer Points = Killer Points + (Victim Points / Killer Points)
+				&times; Weapon Modifier &times; 5
+				<br><br>
+			Victim Points = Victim Points - (Victim Points / Killer Points)
+				&times; Weapon Modifier &times; 5</pxre><br><br>
+			Plus, the following point bonuses are available for completing objectives in some games.<br><br>
+			<strong>Note:</strong> The player who triggers an action may receive both the player reward and the team reward.
+		</span>
+	</p>
+</div>
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+	<div class="w-full overflow-x-auto">	
+		<a name="actions">
 			<?php
 				$tblActions = new Table
 				(
@@ -258,19 +275,26 @@ For support and installation notes visit http://www.hlxcommunity.com
 				$numitems = $db->num_rows($result);
 				$tblActions->draw($result, $numitems, 90, 'center');
 			?>
-			<strong>Note:</strong> The player who triggers an action may receive both the player reward and the team reward.
-			</span>
-		</p>
+	</div>
 </div>
-
 
 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 	<p>
-
-			<h1 class="text-gray-700 dark:text-gray-400"><a name="weaponmods"><i class="fas fa-drafting-compass"></i> What are all the weapon points modifiers?</a></h1><br>
-			<span class="text-gray-700 dark:text-gray-400">
-			Weapon points modifiers are used to determine how many points you should gain or lose when you make a kill or are killed by another player. Higher modifiers indicate that more points will be gained when killing with that weapon (and similarly, more points will be lost when being killed <em>by</em> that weapon). Modifiers generally range from 0.00 to 2.00.<br><br>
-			<a name="weapons"></a>
+		<h1 class="text-gray-700 dark:text-gray-400">
+			<a name="weaponmods"><i class="fas fa-drafting-compass"></i> What are all the weapon points modifiers?</a>
+		</h1>
+		<br>
+		<span class="text-gray-700 dark:text-gray-400">
+			Weapon points modifiers are used to determine how many points you should gain or lose when you make a 
+			kill or are killed by another player. Higher modifiers indicate that more points will be gained when 
+			killing with that weapon (and similarly, more points will be lost when being killed <em>by</em> that 
+			weapon). Modifiers generally range from 0.00 to 2.00.<br><br>
+		</span>
+	</p>
+</div>
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+	<div class="w-full overflow-x-auto">
+		<a name="weapons"></a>
 			<?php
 				$tblWeapons = new Table
 				(
@@ -334,15 +358,18 @@ For support and installation notes visit http://www.hlxcommunity.com
 				$numitems = $db->num_rows($result);
 				$tblWeapons->draw($result, $numitems, 90, "center");
 			?>
-		</span>
-	</p>
+	</div>
 </div>
 
 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 	<p>
-		<h1 class="text-gray-700 dark:text-gray-400"><a name="set"><i class="fas fa-pencil-alt"></i> How can I set my real name, e-mail address, and homepage?</a></h1><br>
+		<h1 class="text-gray-700 dark:text-gray-400">
+			<a name="set"><i class="fas fa-pencil-alt"></i> How can I set my real name, e-mail address, and homepage?</a>
+		</h1>
 		<span class="text-gray-700 dark:text-gray-400">
-			Player profile options can be configured by saying the appropriate <strong>HLX_SET</strong> command while you are playing on a participating game server. To say commands, push your chat key and type the command text.<br><br>
+			Player profile options can be configured by saying the appropriate <strong>HLX_SET</strong> command 
+			while you are playing on a participating game server. To say commands, push your chat key and 
+			type the command text.<br><br>
 			Syntax: say <strong>/hlx_set option value</strong>.<br><br>
 			Acceptable "options" are:
 			<ul>
@@ -361,17 +388,24 @@ For support and installation notes visit http://www.hlxcommunity.com
 					Example: &nbsp; <strong>/hlx_set homepage http://www.joebloggs.com/</strong><br><br>
 				</li>
 			</ul>
-			<strong>Note:</strong> These are not standard Half-Life console commands. If you type them in the console, Half-Life will give you an error.<br><br>For a full list of supported ingame commands, type the word help into ingame chat.<br><br>
+			<strong>Note:</strong> These are not standard Half-Life console commands. If you type them
+			 in the console, Half-Life will give you an error.<br><br>For a full list of supported ingame
+			  commands, type the word help into ingame chat.<br><br>
 		</span>
 	</p>
 </div>
 
 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 	<p>
-		<h1 class="text-gray-700 dark:text-gray-400"><a name="hideranking"><i class="fas fa-user-slash"></i> My rank is embarrassing. How can I opt out?</a></h1><br>
+		<h1 class="text-gray-700 dark:text-gray-400">
+			<a name="hideranking"><i class="fas fa-user-slash"></i> My rank is embarrassing. How can I opt out?</a>
+		</h1>
+		<br>
 		<span class="text-gray-700 dark:text-gray-400">
-			Say <b>/hlx_hideranking</b> while playing on a participating game server. This will toggle you between being visible on the Player Rankings and being invisible.<br><br>
-			<strong>Note:</strong> You will still be tracked and you can still view your Player Details page. Use the <a href="<?php echo $g_options['scripturl']; ?>?mode=search">Search</a> page to find yourself.
+			Say <b>/hlx_hideranking</b> while playing on a participating game server. This will toggle you 
+			between being visible on the Player Rankings and being invisible.<br><br>
+			<strong>Note:</strong> You will still be tracked and you can still view your Player Details 
+			page. Use the <a href="<?php echo $g_options['scripturl']; ?>?mode=search">Search</a> page to find yourself.
 		</span>
 	</p>
 </div>
