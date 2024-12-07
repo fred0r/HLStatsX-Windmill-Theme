@@ -156,7 +156,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
             <td class="fSmall">Name:</td>
-            <td colspan="2" class="flex items-center"><?php
+            <td class="flex items-center"><?php
                 if ($g_options['countrydata'] == 1)
 					echo '<img src="'.getFlag($playerdata['flag']).'" alt="'.strtolower($playerdata['country']).'" title="'.strtolower($playerdata['country']).'">&nbsp;';   
 				echo '<strong>' . htmlspecialchars($playerdata['lastName'], ENT_COMPAT) . '</strong>';
@@ -164,7 +164,7 @@ For support and installation notes visit http://www.hlxcommunity.com
         </tr>
         <tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="">Member of Clan:</td>
-			<td colspan="2" class="fSmall"><?php
+			<td class="fSmall"><?php
 				if ($playerdata['clan']) {
 					echo '&nbsp;<a href="' . $g_options['scripturl']
 					. '?mode=claninfo&amp;clan=' . $playerdata['clan']
@@ -176,7 +176,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</tr>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td style="width:45%;" class="fSmall">Rank:</td>
-			<td colspan="2" style="width:55%;" class="fSmall"><?php
+			<td style="width:55%;" class="fSmall"><?php
 				if ($playerdata['activity'] > 0) {            
 					$rank = get_player_rank($playerdata);
 				} else {
@@ -191,23 +191,22 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</tr>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Points:</td>
-			<td colspan="2" class="fSmall"><?php
+			<td class="fSmall"><?php
 				echo '<strong>' . number_format($playerdata['skill']) . '</strong>';
 			?></td>
 		</tr>
         <tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td style="width:45%;" class="fSmall">Activity:*</td>
-			<td style="width:45%;" class="fSmall">
+			<td style="width:55%;" class="fSmall">
 				<meter min="0" max="100" low="25" high="50" optimum="75"
 				value="<?php echo $playerdata['activity'] ?>"></meter>
-			</td>
-			<td style="width:10%;" class="fSmall"><?php
+			<?php
 				echo $playerdata['activity'].'%';
 			?></td>
 		</tr>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td style="width:45%;" class="fSmall">Kills:</td>
-			<td colspan="2" style="width:55%;" class="fSmall"><?php
+			<td style="width:55%;" class="fSmall"><?php
 				echo number_format($playerdata['kills']);
 				$db->query("
 					SELECT
@@ -225,19 +224,19 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</tr>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Deaths:</td>
-			<td colspan="2" class="fSmall"><?php
+			<td class="fSmall"><?php
 				echo number_format($playerdata['deaths']);
 			?></td>
 		</tr>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Suicides:</td>
-			<td colspan="2" class="fSmall"><?php
+			<td class="fSmall"><?php
 				echo number_format($playerdata['suicides']);
 			?></td>
 		</tr>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Kills per Death:</td>
-			<td colspan="2" class="fSmall"><?php
+			<td class="fSmall"><?php
 				$db->query("
 						SELECT
 							IFNULL(SUM(killerId='$player')/SUM(victimId='$player'), '-') AS kpd
@@ -256,7 +255,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</tr>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Headshots:</td>
-			<td colspan="2" class="fSmall"><?php
+			<td class="fSmall"><?php
 				$db->query("
 					SELECT
 						COUNT(*)
@@ -278,7 +277,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</tr>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Headshots per Kill:</td>
-			<td colspan="2" class="fSmall"><?php
+			<td class="fSmall"><?php
    				$db->query("
 						SELECT
 							IFNULL(SUM(headshot=1)/COUNT(*), '-') AS hpk
@@ -296,7 +295,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</tr>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Weapon Accuracy:</td>
-			<td colspan="2" class="fSmall"><?php
+			<td class="fSmall"><?php
 				$db->query("
 					SELECT
 						IFNULL(ROUND((SUM(hlstats_Events_Statsme.hits) / SUM(hlstats_Events_Statsme.shots) * 100), 1), 0.0) AS accuracy,
@@ -316,7 +315,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</tr>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td style="width:45%;" class="fSmall">Teammate Kills:</td>
-			<td colspan="2" style="width:55%;" class="fSmall"><?php
+			<td style="width:55%;" class="fSmall"><?php
 				echo number_format($playerdata['teamkills']);
 				$db->query("
 					SELECT
@@ -334,17 +333,17 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</tr>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Longest Kill Streak:</td>
-			<td colspan="2" class="fSmall"><?php
+			<td class="fSmall"><?php
 				echo number_format($playerdata['kill_streak']);
 			?></td>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Longest Death Streak:</td>
-			<td colspan="2" class="fSmall"><?php
+			<td class="fSmall"><?php
 				echo number_format($playerdata['death_streak']);
 			?></td>
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Total Connection Time:</td>
-			<td colspan="2" class="fSmall"><?php
+			<td class="fSmall"><?php
 				echo timestamp_to_str($playerdata['connection_time']);
 			?></td>
 		</tr>
