@@ -141,18 +141,29 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 ?>
 <?php display_page_title('Player Statistics Summary'); ?>
+<?php display_ingame_menu(); ?>
 
-<table class="data-table">
-        <tr class="bg1">
+
+
+<table class="data-table w-full whitespace-no-wrap">
+
+	<thead>
+		<tr class="data-table-head text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+			<td colspan="3"></td>
+		</tr>
+	</thead>
+
+	<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
             <td class="fSmall">Name:</td>
-            <td colspan="2" class="flex px-4 py-3 items-center"><?php
+            <td colspan="2" class="flex items-center"><?php
                 if ($g_options['countrydata'] == 1)
 					echo '<img src="'.getFlag($playerdata['flag']).'" alt="'.strtolower($playerdata['country']).'" title="'.strtolower($playerdata['country']).'">&nbsp;';   
 				echo '<strong>' . htmlspecialchars($playerdata['lastName'], ENT_COMPAT) . '</strong>';
             ?></td>
         </tr>
-        <tr class="bg2">
-			<td class="fSmall">Member of Clan:</td>
+        <tr class="text-xs text-gray-700 dark:text-gray-400">
+			<td class="">Member of Clan:</td>
 			<td colspan="2" class="fSmall"><?php
 				if ($playerdata['clan']) {
 					echo '&nbsp;<a href="' . $g_options['scripturl']
@@ -163,7 +174,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 					echo '(None)';
 			?></td>
 		</tr>
-		<tr class="bg1">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td style="width:45%;" class="fSmall">Rank:</td>
 			<td colspan="2" style="width:55%;" class="fSmall"><?php
 				if ($playerdata['activity'] > 0) {            
@@ -178,13 +189,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 					echo "<strong>$rank</strong>";
 			?></td>
 		</tr>
-		<tr class="bg2">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Points:</td>
 			<td colspan="2" class="fSmall"><?php
 				echo '<strong>' . number_format($playerdata['skill']) . '</strong>';
 			?></td>
 		</tr>
-        <tr class="bg1">
+        <tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td style="width:45%;" class="fSmall">Activity:*</td>
 			<td style="width:45%;" class="fSmall">
 				<meter min="0" max="100" low="25" high="50" optimum="75"
@@ -194,7 +205,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				echo $playerdata['activity'].'%';
 			?></td>
 		</tr>
-		<tr class="bg2">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td style="width:45%;" class="fSmall">Kills:</td>
 			<td colspan="2" style="width:55%;" class="fSmall"><?php
 				echo number_format($playerdata['kills']);
@@ -212,19 +223,19 @@ For support and installation notes visit http://www.hlxcommunity.com
 				echo ' ('.number_format($realkills).')';
 			?></td>
 		</tr>
-		<tr class="bg1">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Deaths:</td>
 			<td colspan="2" class="fSmall"><?php
 				echo number_format($playerdata['deaths']);
 			?></td>
 		</tr>
-		<tr class="bg2">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Suicides:</td>
 			<td colspan="2" class="fSmall"><?php
 				echo number_format($playerdata['suicides']);
 			?></td>
 		</tr>
-		<tr class="bg1">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Kills per Death:</td>
 			<td colspan="2" class="fSmall"><?php
 				$db->query("
@@ -243,7 +254,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				echo " ($realkpd)";
 			?></td>
 		</tr>
-		<tr class="bg2">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Headshots:</td>
 			<td colspan="2" class="fSmall"><?php
 				$db->query("
@@ -265,7 +276,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				echo ' ('.number_format($realheadshots).')';
 			?></td>
 		</tr>
-		<tr class="bg1">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Headshots per Kill:</td>
 			<td colspan="2" class="fSmall"><?php
    				$db->query("
@@ -283,7 +294,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				echo " ($realhpk)";
 			?></td>
 		</tr>
-		<tr class="bg2">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Weapon Accuracy:</td>
 			<td colspan="2" class="fSmall"><?php
 				$db->query("
@@ -303,7 +314,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				echo ' ('.$playerdata['accuracy'] . '%)';
 			?></td>
 		</tr>
-		<tr class="bg1">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td style="width:45%;" class="fSmall">Teammate Kills:</td>
 			<td colspan="2" style="width:55%;" class="fSmall"><?php
 				echo number_format($playerdata['teamkills']);
@@ -321,21 +332,22 @@ For support and installation notes visit http://www.hlxcommunity.com
 				echo ' ('.number_format($realteamkills).')';
 			?></td>
 		</tr>
-		<tr class="bg2">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Longest Kill Streak:</td>
 			<td colspan="2" class="fSmall"><?php
 				echo number_format($playerdata['kill_streak']);
 			?></td>
-		<tr class="bg1">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Longest Death Streak:</td>
 			<td colspan="2" class="fSmall"><?php
 				echo number_format($playerdata['death_streak']);
 			?></td>
-		<tr class="bg2">
+		<tr class="text-xs text-gray-700 dark:text-gray-400">
 			<td class="fSmall">Total Connection Time:</td>
 			<td colspan="2" class="fSmall"><?php
 				echo timestamp_to_str($playerdata['connection_time']);
 			?></td>
 		</tr>
-	</table>
+	</tbody>
+</table>
 <br>

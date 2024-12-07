@@ -63,8 +63,9 @@ include 'includes/inc_windmill_functions.php';
 ?>
 <!-- start ingame/header.php -->
 <!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta charset="UTF-8">
 	<link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet">

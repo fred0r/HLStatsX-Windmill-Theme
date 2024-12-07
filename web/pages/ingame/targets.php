@@ -219,6 +219,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 if ($db->num_rows($result) != 0)
 {
 	display_page_title('Your Kill Statistics');
+	display_ingame_menu();
 	$tblWeaponstats2->draw($result, $db->num_rows($result), 100);
 }        
 	?>

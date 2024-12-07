@@ -45,7 +45,10 @@ For support and installation notes visit http://www.hlxcommunity.com
 		$server_id = valid_request($_GET['server_id'], true);
 	}
 ?>
-<?php display_page_title('Participating Servers'); ?>
+<?php 
+	display_page_title('Participating Servers'); 
+	display_ingame_menu();
+?>
 
 	<table class="data-table">
 		<tr class="data-table-head">

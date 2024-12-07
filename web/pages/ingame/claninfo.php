@@ -264,6 +264,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 	
 	list($numitems) = $db->fetch_row($resultCount);
-
+	
+	display_page_title('CLan Info');
+	display_ingame_menu();
 	$tblMembers->draw($result, $numitems, 100);
 ?>

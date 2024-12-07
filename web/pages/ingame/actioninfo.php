@@ -176,6 +176,6 @@ For support and installation notes visit http://www.hlxcommunity.com
     
   }    
   	display_page_title('Your Action Statistics');
-
+	display_ingame_menu();
 	$table->draw($result, $numitems, 100, 'center');
 ?>

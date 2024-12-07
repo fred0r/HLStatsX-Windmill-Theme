@@ -225,5 +225,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 
 	display_page_title('Your Weapon Statistics');	
+	display_ingame_menu();
 	$tblWeapons->draw($result, $db->num_rows($result), 100);
 ?>

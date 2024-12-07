@@ -46,6 +46,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 
 	display_page_title('Help');
+	display_ingame_menu();
 
 ?>
 	<table style="width:100%;border:0;padding:1px;border-spacing:0;">

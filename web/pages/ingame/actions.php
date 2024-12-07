@@ -109,6 +109,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 
 	display_page_title('Your Action Statistics');
-
+	display_ingame_menu();
 	$tblPlayerActions->draw($result, $db->num_rows($result), 100);
 ?>

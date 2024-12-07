@@ -52,6 +52,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	//
     if (!isset($_GET['hide'])) { 
 		display_page_title($g_options['sitename'] . ' Statistics');
+		display_ingame_menu();
 	}
 	//
 	// General

@@ -300,6 +300,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	if ($numitems > 0)
 	{
 		display_page_title('Your Kill Statistics');
+		display_ingame_menu();
 		$tblPlayerKillStats->draw($result, $numitems, 100);
 	}
 ?>

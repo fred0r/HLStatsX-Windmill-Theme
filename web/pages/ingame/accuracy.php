@@ -201,6 +201,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 if ($db->num_rows($result) != 0)
 {
 	display_page_title('Your Weapon Accuracy');
+	display_ingame_menu();
 	$tblWeaponstats->draw($result, $db->num_rows($result), 100);
 }
 

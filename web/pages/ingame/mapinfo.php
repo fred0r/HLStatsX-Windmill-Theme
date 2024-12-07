@@ -123,6 +123,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 	list($numitems, $totalkills) = $db->fetch_row($resultCount);
 
 	display_page_title('Your Map Statistics');
-
+	display_ingame_menu();
 	$table->draw($result, $numitems, 100, 'center');
 ?>

@@ -124,6 +124,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$table->sort2 $table->sortorder
 		LIMIT $table->startitem,$table->numperpage
 	");
-
+	display_page_title('Weapon Info');
+	display_ingame_menu();
   $table->draw($result, 25, 100);
 ?>

@@ -175,6 +175,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 	
 	display_page_title('Clan Statistics');
-
+	display_ingame_menu();
 	$table->draw($result, $db->num_rows($resultCount), 100);
 ?>
