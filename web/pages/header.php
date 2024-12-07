@@ -109,7 +109,7 @@ include INCLUDE_PATH . '/inc_windmill_functions.php';
 ?>
 <!-- start header.php -->
 <!DOCTYPE html>
-<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+<html :class="{ 'dark': dark }" x-data="data()" lang="en">
 <head>
 
 	<meta charset="UTF-8">
