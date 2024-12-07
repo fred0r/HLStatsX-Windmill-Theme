@@ -137,7 +137,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 			new TableColumn(
 				'name',
 				'Victim',
-				'width=32&flag=1&link=' . urlencode('mode=statsme&player=%k')
+				'width=32&flag=1)'
+				// Remove player link for now as it breaks the 'Your Stats' menu 
+				//'width=32&flag=1&link=' . urlencode('mode=statsme&player=%k')
 			),
 			new TableColumn(
 				'kills',
@@ -297,6 +299,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		
 	if ($numitems > 0)
 	{
+		display_page_title('Your Kill Statistics');
 		$tblPlayerKillStats->draw($result, $numitems, 100);
 	}
 ?>

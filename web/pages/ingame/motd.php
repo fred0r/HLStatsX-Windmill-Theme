@@ -50,7 +50,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 	//
 	// Message of the day
 	//
-  
+    if (!isset($_GET['hide'])) { 
+		display_page_title($g_options['sitename'] . ' Statistics');
+	}
 	//
 	// General
 	//
@@ -90,7 +92,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 				new TableColumn(
 					'lastName',
 					'Playername',
-					'width=50&flag=1&link=' . urlencode('mode=statsme&amp;player=%k')
+					'width=50&flag=1'
+					// Remove player link for now as it breaks the 'Your Stats' menu 
+					//'width=50&flag=1&link=' . urlencode('mode=statsme&amp;player=%k')
 				),
 				new TableColumn(
 					'skill',

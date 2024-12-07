@@ -118,7 +118,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			new TableColumn(
 				'map',
 				'Map Name',
-				'width=18&align=left&link=' . urlencode("mode=mapinfo&map=%k&game=$game")
+				'width=18&align=left&link=' . urlencode("mode=mapinfo&map=%k&game=$game&player=$player")
 			),
 			new TableColumn(
 				'kills',
@@ -226,6 +226,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$tblMaps->sort $tblMaps->sortorder,
 			$tblMaps->sort2 $tblMaps->sortorder
 	");
+
+	display_page_title('Maps Played');
 
 	$tblMaps->draw($result, $db->num_rows($result), 100);
 ?>

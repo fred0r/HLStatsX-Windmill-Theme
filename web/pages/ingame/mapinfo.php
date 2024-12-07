@@ -56,11 +56,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 			new TableColumn(
 				'killerName',
 				'Player',
-				'width=60&align=left&flag=1&link=' . urlencode('mode=statsme&amp;player=%k') 
+				'width=60&align=left&flag=1' 
+				// Remove player link for now as it breaks the 'Your Stats' menu 
+				//'width=60&align=left&flag=1&link=' . urlencode('mode=statsme&amp;player=%k&game=' . $game) 
 			),
 			new TableColumn(
 				'frags',
-				'Kills on $map',
+				'Kills on ' . $map,
 				'width=15&align=right'
 			),
 			new TableColumn(
@@ -119,9 +121,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 	
 	list($numitems, $totalkills) = $db->fetch_row($resultCount);
-?>
 
+	display_page_title('Your Map Statistics');
 
-<?php
 	$table->draw($result, $numitems, 100, 'center');
 ?>

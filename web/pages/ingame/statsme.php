@@ -140,13 +140,12 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 
 ?>
-	<table class="data-table">
-		<tr class="data-table-head">
-			<td colspan="3" class="fSmall">Statistics Summary</td>
-        </tr>
+<?php display_page_title('Player Statistics Summary'); ?>
+
+<table class="data-table">
         <tr class="bg1">
             <td class="fSmall">Name:</td>
-            <td colspan="2" class="fSmall"><?php
+            <td colspan="2" class="flex px-4 py-3 items-center"><?php
                 if ($g_options['countrydata'] == 1)
 					echo '<img src="'.getFlag($playerdata['flag']).'" alt="'.strtolower($playerdata['country']).'" title="'.strtolower($playerdata['country']).'">&nbsp;';   
 				echo '<strong>' . htmlspecialchars($playerdata['lastName'], ENT_COMPAT) . '</strong>';
@@ -339,3 +338,4 @@ For support and installation notes visit http://www.hlxcommunity.com
 			?></td>
 		</tr>
 	</table>
+<br>

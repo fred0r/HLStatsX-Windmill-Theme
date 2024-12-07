@@ -43,7 +43,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	// Action Statistics
 
 	$player = valid_request(intval($_GET['player']), true);
-	$uniqueid  = valid_request(strval($_GET['uniqueid']), false);
+	// $uniqueid  = valid_request(strval($_GET['uniqueid']), false);
 
 	$db->query("SELECT name FROM hlstats_Games WHERE code='$game'");
 	if ($db->num_rows() < 1) error("No such game '$game'.");
@@ -56,7 +56,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			new TableColumn(
 				'description',
 				'Action',
-				'width=45&link=' . urlencode("mode=actioninfo&amp;action=%k&amp;game=$game")
+				'width=45&link=' . urlencode("mode=actioninfo&amp;action=%k&amp;game=$game&player=$player")
 			),
 			new TableColumn(
 				'obj_count',
@@ -107,8 +107,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$tblPlayerActions->sort $tblPlayerActions->sortorder,
 			$tblPlayerActions->sort2 $tblPlayerActions->sortorder
 	");
-?>
 
-<?php
+	display_page_title('Your Action Statistics');
+
 	$tblPlayerActions->draw($result, $db->num_rows($result), 100);
 ?>

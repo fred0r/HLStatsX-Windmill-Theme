@@ -242,6 +242,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 	
 	list($numitems) = $db->fetch_row($resultCount);
-	
+
+	display_page_title('Player Statistics');
+
 	$table->draw($result, 25, 100);
 ?>

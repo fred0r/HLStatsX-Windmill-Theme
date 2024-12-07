@@ -174,5 +174,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			COUNT(hlstats_Players.playerId) >= $minmembers
 	");
 	
+	display_page_title('Clan Statistics');
+
 	$table->draw($result, $db->num_rows($resultCount), 100);
 ?>

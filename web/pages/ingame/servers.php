@@ -45,9 +45,11 @@ For support and installation notes visit http://www.hlxcommunity.com
 		$server_id = valid_request($_GET['server_id'], true);
 	}
 ?>
+<?php display_page_title('Participating Servers'); ?>
+
 	<table class="data-table">
 		<tr class="data-table-head">
-			<td style="width:55%;" class="fSmall">&nbsp;Participating Servers</td>
+			<td style="width:55%;" class="fSmall">&nbsp;Server Name</td>
 			<td style="width:23%;" class="fSmall">&nbsp;Address</td>
 			<td style="width:6%;text-align:center;" class="fSmall">&nbsp;Map</td>
 			<td style="width:6%;text-align:center;" class="fSmall">&nbsp;Played</td>
@@ -124,3 +126,4 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</tr>
 <?php } ?>
 	</table>
+<br>
