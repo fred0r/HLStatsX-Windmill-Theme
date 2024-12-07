@@ -205,42 +205,38 @@ if (!isset($_GET['hide'])) {
     }
 
     if (isset($_GET['game']) && isset($_GET['player'])){
-        echo "<b>Your Stats:</b> ";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=statsme&player=" . $player . "\">StatsMe</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=maps&player=" . $player . "\">Maps</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=kills&player=" . $player . "\">Kills</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=accuracy&player=" . $player . "\">Accuracy</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=weapons&player=" . $player . "\">Weapons</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=targets&player=" . $player . "\">Targets</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=actions&player=" . $player . "\">Actions</a>"; 
-        echo "&nbsp;";
-
+		echo "        <div";
+		echo "    class=\"flex items-center justify-between p-4 mb-4 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800 text-gray-600 dark:text-gray-400\">";
+		echo "    <div class=\"flex items-center\">";
+		echo "        <span>";
+		echo "			<b>Your Stats: </b>";
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=statsme&player=" . $player . "\">StatsMe</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=maps&player=" . $player . "\">Maps</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=kills&player=" . $player . "\">Kills</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=accuracy&player=" . $player . "\">Accuracy</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=weapons&player=" . $player . "\">Weapons</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=targets&player=" . $player . "\">Targets</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=actions&player=" . $player . "\">Actions</a>"; 
+		echo "        </span>";
+		echo "    </div>";
     }
 
-    echo "<br>";
 
     if (isset($_GET['game'])){
-        echo "<b>Server Stats:</b> ";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=motd&player=" . $player . "\">MOTD</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=servers&player=" . $player . "\">Servers</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=players&player=" . $player . "\">Players</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=clans&player=" . $player . "\">Clans</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=actions&player=" . $player . "\">Actions</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=bans&player=" . $player . "\">Bans</a>"; 
-        echo "&nbsp;";
-        echo "<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=help&player=" . $player . "\">Help</a>";
-    }
+		echo "		<div class=\"flex items-center\">";
+		echo "        <span align=\"right\">";
+		echo "			<b>Server Stats:</b>";
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=motd&player=" . $player . "\">MOTD</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=servers&player=" . $player . "\">Servers</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=players&player=" . $player . "\">Players</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=clans&player=" . $player . "\">Clans</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=actions&player=" . $player . "\">Actions</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=bans&player=" . $player . "\">Bans</a> |"; 
+        echo "			<a href=\"ingame.php?game=" . $_GET['game'] . "&mode=help&player=" . $player . "\">Help</a>";
+		echo "		</span>";
+		echo "		</div>";
+		echo "	</div>";
+	}
 
 }
 

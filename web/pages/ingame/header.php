@@ -86,13 +86,6 @@ include 'includes/inc_windmill_functions.php';
 	</div>
 <?php
 	}
-
-	if ($lastpage && !isset($_GET['hide'])) {
-		?>
-		<div style="position: absolute; bottom:45%; right:0; color #FFFFFF;">
-			<a href="<?php echo $lastpage; ?>">&laquo;&nbsp;&nbsp;Go Back</a>
-		</div>
-		<?php 
-	} ?>
+?>
 </div>
 <!-- end ingame/header.php -->
