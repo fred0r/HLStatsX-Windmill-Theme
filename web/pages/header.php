@@ -121,7 +121,7 @@ include INCLUDE_PATH . '/inc_windmill_functions.php';
       rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/tailwind.output.css">
 
-	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" integrity="sha384-qIUj+yp0nYG+FiRSyz0hFI7OAjgQfjCIxMKboilWruQkwLsv9YqKZ+oQlBjjN1wy" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
   	<script src="./assets/js/fontawesome-all.min.js"></script>
 	<script src="./assets/js/init-alpine.js"></script>
 
