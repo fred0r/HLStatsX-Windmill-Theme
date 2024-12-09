@@ -7,6 +7,7 @@
 	define('TS3', 2);
 	define('DISCORD', 3);
 	define('MUMBLE', 4);
+	define('STEAM', 5);
 	
 	$result = $db->query("
 		SELECT
@@ -96,6 +97,15 @@
 				$mumble_servers[$t]['descr'] = $row['descr'];
 				$mumble_servers[$t]['queryPort'] = $row['queryPort'];
 				$mumble_servers[$t]['UDPPort'] = $row['UDPPort'];
+				$m++;
+			} else if ($row['serverType'] == STEAM) {
+				$steam_groups[$t]['serverId'] = $row['serverId'];
+				$steam_groups[$t]['name'] = $row['name'];
+				$steam_groups[$t]['addr'] = $row['addr'];
+				$steam_groups[$t]['password'] = $row['password'];
+				$steam_groups[$t]['descr'] = $row['descr'];
+				$steam_groups[$t]['queryPort'] = $row['queryPort'];
+				$steam_groups[$t]['UDPPort'] = $row['UDPPort'];
 				$m++;
 			}
 }
@@ -370,6 +380,28 @@
 		<td><?php echo $mumble_users_total ?></td>
 		<td><?php echo $mumble_server_uptime ?></td>
 		<td><?php echo $mumble_server['descr']; ?></td>
+	</tr>
+<?php
+		}
+	}	if (isset($steam_groups))
+	{
+		foreach($steam_groups as $steam_group)
+		{
+			$steam_group_link_group_ID64 = $steam_group['addr'];
+			$steam_group_name = $steam_group['name'];
+			require_once(INCLUDE_PATH . '/steamgroup/inc_steamgroup_class.php');
+?>
+		<tr class="text-sm font-semibold text-gray-700 dark:text-gray-400">
+		<td class="flex items-center">
+			<img src="<?php echo IMAGE_PATH; ?>/steamgroup/steamgroup.png" alt="Steam Group">&nbsp;
+			<?php echo $steam_group_name; ?>
+		</td>
+		<td><?php echo $steam_group_server_status; ?></td>
+		<td><?php echo $steam_group_xml_error; ?><?php echo $steam_group_server_address; ?></td>
+		<td></td>
+		<td><?php echo $steam_group_chat_total; ?></td>
+		<td>&#8734;</td>
+		<td><?php echo $steam_group['descr']; ?></td>
 	</tr>
 <?php
 		}

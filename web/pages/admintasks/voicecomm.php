@@ -41,12 +41,12 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	$edlist = new EditList('serverId', 'hlstats_Servers_VoiceComm', '');
 	$edlist->columns[] = new EditListColumn('name', 'Server Name', 45, true, 'text', '', 64);
-	$edlist->columns[] = new EditListColumn('addr', 'TS3: Server IP or Hostname,<br>Discord: Invite Code,<br>Mumble: Link to JSON CVP', 20, true, 'text', '', 64);
+	$edlist->columns[] = new EditListColumn('addr', 'TS3: Server IP or Hostname,<br>Discord: Invite Code,<br>Mumble: Link to JSON CVP,<br>Steam Group: Group\'s groupID64', 20, true, 'text', '', 64);
 	$edlist->columns[] = new EditListColumn('password', 'Password', 20, false, 'text', '', 64);
 	$edlist->columns[] = new EditListColumn('UDPPort', 'TS3: TCP Port<br>Otherwise: 1', 6, false, 'text', '1', 64);
 	$edlist->columns[] = new EditListColumn('queryPort', 'TS3: Query Port<br>Otherwise: 1', 6, true, 'text', '1', 64);
 	$edlist->columns[] = new EditListColumn('descr', 'Public Notes', 40, false, 'text', '', 64);
-	$edlist->columns[] = new EditListColumn('serverType', 'Server Type', 20, true, 'select', '0/Teamspeak;1/Ventrilo;2/Teamspeak3;3/Discord;4/Mumble');
+	$edlist->columns[] = new EditListColumn('serverType', 'Server Type', 20, true, 'select', '0/Teamspeak;1/Ventrilo;2/Teamspeak3;3/Discord;4/Mumble;5/Steam Group');
 	
 	if ($_POST)
 	{
