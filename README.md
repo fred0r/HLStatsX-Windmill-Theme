@@ -45,7 +45,9 @@ Features enabled
 * TeamSpeak3 server status and browser using serverquery [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/TeamSpeak3-Support">details</a> ]
 * TeaSpeak basic support added
 * Discord Voice Channel Support [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/Discord-Support">details</a> ]
+* Steam Group Chat Support [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/Steam-Group-Chat-Support">details</a> ]  
 * Top of page banners
+* InGame Pages
 
 Features not/still to be Enabled
 * TeamSpeak1 & Ventrillo server status
