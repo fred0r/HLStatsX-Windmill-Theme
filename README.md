@@ -43,7 +43,7 @@ Features enabled
 * Custom CSS colours are set site wide using the admin page, use the defaults or create your own
 * Links menu
 * TeamSpeak3 server status and browser using serverquery [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/TeamSpeak3-Support">details</a> ]
-* TeaSpeak basic support added
+* TeaSpeak & Mumble basic support added
 * Discord Voice Channel Support [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/Discord-Support">details</a> ]
 * Steam Group Chat Support [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/Steam-Group-Chat-Support">details</a> ]  
 * Top of page banners
