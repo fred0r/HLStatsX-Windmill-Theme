@@ -31,7 +31,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Theme
 
-![image](https://github.com/user-attachments/assets/64f28a29-bde3-4cf6-9b81-50c2bde87e6a)
+![image](https://github.com/user-attachments/assets/c08984e9-fe68-4c20-84d4-04c353b9822f)
 
 HLStatsx:CE Theme built using StarterClan v1.11.3 fork with [Windmill Dashboard CSS](https://github.com/estevanmaito/windmill-dashboard) applied on top. 
 
@@ -58,7 +58,6 @@ Features not/still to be Enabled
 * Style selector (admins set the colour of their site, not visitors)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- Screen shots -->
 ## Screenshots
