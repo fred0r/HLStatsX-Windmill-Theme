@@ -49,9 +49,11 @@ For support and installation notes visit http://www.hlxcommunity.com
 	display_ingame_menu();
 
 ?>
+<div class="p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
+
 	<table style="width:100%;border:0;padding:1px;border-spacing:0;">
 		<tr class="data-table-head">
-			<td class="fSmall data-table" colspan="3">&nbsp;Commands display the results ingame</td>
+			<td class="fSmall data-table" colspan="3"><?php display_page_subtitle('Commands display the results ingame'); ?></td>
 		</tr>
 		<tr class="bg1">
 			<td class="fNormal">rank [skill, points, place (to all)]</td>
@@ -74,7 +76,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			<td class="fNormal">Players ahead in the ranking.</td>
 		</tr>
 		<tr class="data-table-head">
-			<td class="fSmall data-table" colspan="3">&nbsp;Commands display the results in window</td>
+			<td class="fSmall data-table" colspan="3"><?php display_page_subtitle('Commands display the results in window'); ?></td>
 		</tr>
 		<tr class="bg1">
 			<td class="fNormal">load</td>
@@ -142,7 +144,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			<td class="fNormal">Help screen</td>
 		</tr>
 		<tr class="data-table-head">
-			<td class="fSmall data-table" colspan="3">&nbsp;Commands to set your user options</td>
+			<td class="fSmall data-table" colspan="3"><?php display_page_subtitle('Commands to set your user options'); ?></td>
 		</tr>
 		<tr class="bg1">
 			<td class="fNormal">hlx_auto clear|start|end|kill command</td>
@@ -170,83 +172,5 @@ For support and installation notes visit http://www.hlxcommunity.com
 			<td class="fNormal">(Type in chat, not console) Makes you invisible on player rankings, unranked.</td>
 		</tr>
     </table>
-	<br><br>
-	<table class="data-table">
-		<tr class="data-table-head">
-			<td style="width:55%;" class="fSmall">&nbsp;Participating Servers</td>
-			<td style="width:23%;" class="fSmall">&nbsp;Address</td>
-			<td style="width:6%;text-align:center" class="fSmall">&nbsp;Map</td>
-			<td style="width:6%;text-align:center" class="fSmall">&nbsp;Played</td>
-			<td style="width:10%;text-align:center" class="fSmall">&nbsp;Players</td>
-		</tr>
-        
-<?php
-	$query= "
-		SELECT
-			serverId,
-			name,
-			IF(publicaddress != '',
-				publicaddress,
-				concat(address, ':', port)
-			) AS addr,
-			kills,
-			headshots,              
-			act_players,                                
-			max_players,
-			act_map,
-			map_started,
-			map_ct_wins,
-			map_ts_wins                 
-		FROM
-			hlstats_Servers
-		WHERE
-			game='$game'
-		ORDER BY
-			serverId
-	";
-	$db->query($query);
-	$this_server = array();
-	$servers = array();
-	while ($rowdata = $db->fetch_array()) {
-		$servers[] = $rowdata;
-		if ($rowdata['serverId'] == $server_id)
-			$this_server = $rowdata;
-	}
-          
-	$i=0;
-	for ($i=0; $i<count($servers); $i++)
-	{
-		$rowdata = $servers[$i]; 
-		$server_id = $rowdata['serverId'];    
-		$c = ($i % 2) + 1;
-		$addr = $rowdata["addr"];
-		$kills     = $rowdata['kills'];
-		$headshots = $rowdata['headshots'];
-		$player_string = $rowdata['act_players']."/".$rowdata['max_players'];
-		$map_ct_wins = $rowdata['map_ct_wins'];
-		$map_ts_wins = $rowdata['map_ts_wins'];
-?>
-		<tr class="bg<?php echo $c; ?>">
-			<td class="fSmall"><?php
-				echo '<strong>'.$rowdata['name'].'</strong>';
-			?></td>
-			<td class="fSmall"><?php
-				echo $addr;
-			?></td>
-			<td style="text-align:center;" class="fSmall"><?php 
-				echo $rowdata['act_map'];
-			?></td>
-			<td style="text-align:center;" class="fSmall"><?php
-				$stamp = time()-$rowdata['map_started'];
-				$hours = sprintf('%02d', floor($stamp / 3600));
-				$min   = sprintf('%02d', floor(($stamp % 3600) / 60));
-				$sec   = sprintf('%02d', floor($stamp % 60)); 
-				echo "$hours:$min:$sec";
-			?></td>
-			<td style="text-align:center;" class="fSmall"><?php
-				echo $player_string;
-			?></td>
-		</tr>
-<?php } ?>
-    </table>
+</div>
 <br>
