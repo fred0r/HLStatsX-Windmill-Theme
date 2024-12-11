@@ -366,7 +366,7 @@ HTML;
 					$childs = $this->renderChannels($channel["cid"]);
 
 					$cid = $channel["cid"];
-					$image = "<img src=\"{$imagePath}{$icon}\" alt\"{$icon}\">";
+					$image = "<img src=\"{$imagePath}{$icon}\" alt=\"{$icon}\">";
 
 					if(preg_match( '/\[(.*)spacer([\d\p{L}\w]+)?\]/', $channel["channel_name"], $matches) && $channel["channel_flag_permanent"] && !$channel["pid"])
 					{
@@ -446,7 +446,7 @@ HTML;
 			$version = $this->toHTML($this->_serverDatas["virtualserver_version"]);
 
 			$content = <<<HTML
-			<img src="$hostbanner_gfx_url"><br>
+			<img src="$hostbanner_gfx_url" alt="$name"><br>
 			Server Name: $name&nbsp;&nbsp;Slots Used: $clients_online/$max_clients<br><br>
 			"$welcome_message"<br><br>
 			Platform: $platform (v$version)<br>*-1@9-*
