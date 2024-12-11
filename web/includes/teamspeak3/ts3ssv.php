@@ -323,7 +323,7 @@ class ts3ssv
 					}
 
 					if ($user["client_country"]){
-						$flags = $this->renderFlags($flags).'&nbsp;<img src="' . $this->flagPath .''.substr(strtolower($user["client_country"]), 0, 2).'.gif">';
+						$flags = $this->renderFlags($flags).'&nbsp;<img src="' . $this->flagPath .''.substr(strtolower($user["client_country"]), 0, 2).'.gif" alt="' .substr(strtolower($user["client_country"]), 0, 2). '">';
 					}else{
 						$flags = $this->renderFlags($flags);
 					}
@@ -366,7 +366,7 @@ HTML;
 					$childs = $this->renderChannels($channel["cid"]);
 
 					$cid = $channel["cid"];
-					$image = "<img src=\"{$imagePath}{$icon}\">";
+					$image = "<img src=\"{$imagePath}{$icon}\" alt\"{$icon}\">";
 
 					if(preg_match( '/\[(.*)spacer([\d\p{L}\w]+)?\]/', $channel["channel_name"], $matches) && $channel["channel_flag_permanent"] && !$channel["pid"])
 					{
