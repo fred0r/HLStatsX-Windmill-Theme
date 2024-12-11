@@ -275,7 +275,7 @@ class ts3ssv
 	private function renderFlags($flags)
 	{
 		$content = "";
-		foreach ($flags as $flag) $content .= '<img src="' . $this->imagePath . $flag . '" />';
+		foreach ($flags as $flag) $content .= '<img src="' . $this->imagePath . $flag . '">';
 		return $content;
 	}
 
@@ -366,7 +366,7 @@ HTML;
 					$childs = $this->renderChannels($channel["cid"]);
 
 					$cid = $channel["cid"];
-					$image = "<img src='{$imagePath}{$icon}' />";
+					$image = "<img src=\"{$imagePath}{$icon}\">";
 
 					if(preg_match( '/\[(.*)spacer([\d\p{L}\w]+)?\]/', $channel["channel_name"], $matches) && $channel["channel_flag_permanent"] && !$channel["pid"])
 					{
