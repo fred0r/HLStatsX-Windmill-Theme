@@ -343,11 +343,11 @@ class Table
 						$image = getImage("/games/$realgame/weapons/" . $colval_lower);
 						if ($image)
 						{
-							$cellbody .= '<img src="' . $image['url'] . '" ' . $image['size'] . ' alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '">';
+							$cellbody .= '<center><img src="' . $image['url'] . '" ' . $image['size'] . ' alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '"></center>';
 						}
 						elseif ($image = getImage("/games/$realgame/weapons/" . $colval_lower))
 						{
-							$cellbody .= '<img src="' . $image['url'] . '" ' . $image['size'] . ' alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '">';
+							$cellbody .= '<center><img src="' . $image['url'] . '" ' . $image['size'] . ' alt="' . $col->fname[$colval_lower] . '" title="' . $col->fname[$colval_lower] . '"></center>';
 						}
 						else
 						{
