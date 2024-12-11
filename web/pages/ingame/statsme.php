@@ -149,7 +149,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	<thead>
 		<tr class="data-table-head text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-			<td colspan="3"></td>
+			<td colspan="2"></td>
 		</tr>
 	</thead>
 
