@@ -62,7 +62,7 @@ if (empty($steam_group_xml_error)) {
     if (isset($xml->groupDetails->membersInChat)) {
         $steam_group_chat_total = htmlspecialchars($xml->groupDetails->membersInChat) . '/' . htmlspecialchars($xml->memberCount);
         $steam_group_url = htmlspecialchars($xml->groupDetails->groupURL);
-        $steam_group_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span";
+        $steam_group_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span>";
         $steam_group_server_address = "Steam Group Chat (<a href=\"https://steamcommunity.com/groups/" . $steam_group_url . "\">Join)</a>";
         $steam_group_name = htmlspecialchars($xml->groupDetails->groupName);
     } else {

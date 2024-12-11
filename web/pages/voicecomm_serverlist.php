@@ -238,7 +238,7 @@
 							}else{
 								$ts3q_server_clients = '-';
 							}
-							$ts3q_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">" . $server['virtualserver_status'] . "</span";
+							$ts3q_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">" . $server['virtualserver_status'] . "</span>";
 							if(isset($server['virtualserver_uptime'])) {
 								$ts3q_server_uptime = $tsAdmin->convertSecondsToStrTime(($server['virtualserver_uptime']));
 							}else{
@@ -300,7 +300,7 @@
 				/* Force count to never be less than zero */
 				$discord_voice_presence_total = max(($discord_api_json_obj ->approximate_presence_count - $discord_number_of_bots),0) . "/" . $discord_api_json_obj ->approximate_member_count . " (" . $discord_number_of_bots . " bots)";
 				$discord_invite_link = $discord_invite_short_url . "&nbsp;<a href=\"" . $discord_invite_full_url . "\">(Join)</a>";
-				$discord_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span";
+				$discord_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span>";
 			}else{
 				$discord_voice_presence_total = "-";
 				$discord_invite_link = "-";
@@ -352,7 +352,7 @@
 						$mumble_users_rest =  ($mumble_users_rest + count($item->users));
 					  }
 					$mumble_users_total = ($mumble_users_root + $mumble_users_rest);
-					$mumble_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span";
+					$mumble_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span>";
 					$mumble_server_join_link = "Mumble Server <a href=\"" . $mumble_server_link . "\">(Join)</a>";
 				}else{
 					$mumble_server_name = $mumble_server['name'];
