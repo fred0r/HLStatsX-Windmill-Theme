@@ -13,6 +13,6 @@ $ts3_icon_pack = "purple";
 /* Cache Server Query results for X seconds. Set to 0 to disable        */
 /* Make sure web server has write permissions (777) to ts3ssv.php.cache */
 
-$ts3_cache_timeout = "1";
+$ts3_cache_timeout = "60";
 
 ?>
