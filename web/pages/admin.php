@@ -1018,21 +1018,16 @@ $selGame = valid_request($_GET['game'], false);
 
 if ($selTask || $admintasks[$selTask])
 {
-	$how_many_cols = "1"; 
-	$div1 = "";
-	$div2 = "px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800";
+	$admin_div1 = "";
+	$admin_div2 = "px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800";
 } else {
-	$how_many_cols = "2"; 
-	$div1 = "grid gap-6 mb-8 md:grid-cols-2";
-	$div2 = "min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800";
+	$admin_div1 = "grid gap-6 mb-8 md:grid-cols-2";
+	$admin_div2 = "min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800";
 }
 
 ?>
-
-$how_many_cols = <?php echo $how_many_cols; ?>
-
-<div class="<?php echo $div1; ?>"> 
-	<div class="<?php echo $div2; ?>">		
+<div class="<?php echo $admin_div1; ?>"> 
+	<div class="<?php echo $admin_div2; ?>">		
 		<p class ="text-sm text-gray-600 dark:text-gray-400">
 <?php
 
