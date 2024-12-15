@@ -241,7 +241,7 @@ if ($total_kills > 0)
 ?>
 			<tr style="cursor: pointer;" class="handle text-sm font-semibold text-gray-700 dark:text-gray-400">
 			<td colspan="5">&nbsp;&nbsp;<?php
-			echo $rowdata['name'] . " (<a href=\"steam://connect/$addr\">Join</a>)";
+			echo $rowdata['name'] . " <span class=\"windmill-text-link\"><a href=\"steam://connect/$addr\">(Join)</a></span>";
 ?></td>
             <td style="text-align:center;"><?php
 			echo $rowdata['act_map'];

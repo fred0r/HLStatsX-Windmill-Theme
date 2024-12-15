@@ -150,7 +150,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 				else
 					echo IMAGE_PATH . '/game.gif';
 				echo "\" alt=\"$game\">\n				";
-				echo htmlspecialchars($rowdata['name']) . "<a href=\"steam://connect/$addr\">(Join)</a>\n";
+				echo htmlspecialchars($rowdata['name']) . "<span class=\"windmill-text-link\"><a href=\"steam://connect/$addr\">(Join)</a></span>\n";
 								?>
 					</td>
 					<td class="px-4 py-3" style="text-align:center;"><?php echo $rowdata['act_map']; ?></td>

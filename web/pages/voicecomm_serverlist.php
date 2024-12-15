@@ -231,7 +231,7 @@
 
 							$ts3q_server_id = $server['virtualserver_id'];
 							$ts3q_server_name = htmlspecialchars($server['virtualserver_name']);
-							$ts3q_server_page = $ts3q_server_name . "&nbsp;<a href=\"" .$g_options['scripturl'] . "?mode=teamspeak&tsId=" . $ts3_id . "\">(View)</a>";
+							$ts3q_server_page = $ts3q_server_name . "&nbsp;<a href=\"" .$g_options['scripturl'] . "?mode=teamspeak&tsId=" . $ts3_id . "\"><span class=\"windmill-text-link\">(View)</span></a>";
 							$ts3q_server_port = $server['virtualserver_port'];
 							if(isset($server['virtualserver_clientsonline'])) {
 								$ts3q_server_clients = $server['virtualserver_clientsonline'] . '/' . $server['virtualserver_maxclients'];
@@ -245,11 +245,11 @@
 								$ts3q_server_uptime = '-';
 							}
 							$ts3q_server_link = $ts3_server['addr'] .":" . $ts3q_server_port . 
-												"&nbsp;<a href=\"ts3server://" . $ts3_server['addr']. "?" .
+												"&nbsp;<span class=\"windmill-text-link\"><a href=\"ts3server://" . $ts3_server['addr']. "?" .
 												"port=" . $ts3q_server_port .
 												"&password=" . $ts3_server['password'] .
 												"&addbookmark=" . $ts3q_server_name .
-												"\">(Join)</a>";
+												"\">(Join)</a></span>";
 						}
 					}else{
 						$ts3q_server_id = '0';
@@ -299,7 +299,7 @@
 				$discord_api_json_obj = json_decode($discord_api_jsonIn, $assoc = false);
 				/* Force count to never be less than zero */
 				$discord_voice_presence_total = max(($discord_api_json_obj ->approximate_presence_count - $discord_number_of_bots),0) . "/" . $discord_api_json_obj ->approximate_member_count . " (" . $discord_number_of_bots . " bots)";
-				$discord_invite_link = $discord_invite_short_url . "&nbsp;<a href=\"" . $discord_invite_full_url . "\">(Join)</a>";
+				$discord_invite_link = $discord_invite_short_url . "&nbsp;<span class=\"windmill-text-link\"><a href=\"" . $discord_invite_full_url . "\">(Join)</a></span>";
 				$discord_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span>";
 			}else{
 				$discord_voice_presence_total = "-";
@@ -353,7 +353,7 @@
 					  }
 					$mumble_users_total = ($mumble_users_root + $mumble_users_rest);
 					$mumble_server_status = "<span class=\"px-2 leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100\">online</span>";
-					$mumble_server_join_link = "Mumble Server <a href=\"" . $mumble_server_link . "\">(Join)</a>";
+					$mumble_server_join_link = "Mumble Server <span class=\"windmill-text-link\"><a href=\"" . $mumble_server_link . "\">(Join)</a></span>";
 				}else{
 					$mumble_server_name = $mumble_server['name'];
 					$mumble_users_total = "-";
