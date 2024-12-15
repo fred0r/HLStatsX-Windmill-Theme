@@ -57,11 +57,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 	
 ?>
-
-Here you can define the patterns used to determine what clan a player is in. These patterns are applied to players' names when they connect or change name.<p>
-
-Special characters in the pattern:<p>
-
+<div class="ml-6 mb-6">
+<p class="text-sm text-gray-600 dark:text-gray-400">
+Here you can define the patterns used to determine what clan a player is in. These patterns 
+are applied to players' names when they connect or change name.<br>
+<br>
+Special characters in the pattern:<br>
+<br>
 <table border=0 cellspacing=0 cellpadding=4>
 
 <tr class="head">
@@ -119,11 +121,14 @@ Example patterns:<p>
 	<td class="fNormal"><tt>REX>>Tyranno</tt></td>
 </tr>
 
-</table><p>
-
-Avoid adding patterns to the database that are too generic. Always ensure you have at least one literal (non-special) character in the pattern -- for example if you were to add the pattern "AXXA", it would match any player with 2 or more letters in their name!<p>
-
-The Match Position field sets which end of the player's name the clan tag is allowed to appear.<p>
+</table>
+<br>
+Avoid adding patterns to the database that are too generic. Always ensure you have at least 
+one literal (non-special) character in the pattern -- for example if you were to add the pattern 
+"AXXA", it would match any player with 2 or more letters in their name!<br>
+<br>
+The Match Position field sets which end of the player's name the clan tag is allowed to appear.<br>
+<br>
 
 <?php
 	
@@ -140,10 +145,7 @@ The Match Position field sets which end of the player's name the clan tag is all
 	
 	$edlist->draw($result);
 ?>
+	</p>
+	</div>
 
-<table width="75%" border=0 cellspacing=0 cellpadding=0>
-<tr>
-	<td align="center"><input type="submit" value="  Apply  " class="submit"></td>
-</tr>
-</table>
-
+	<input type="submit" value="  Apply  " class="<?php echo windmill_button_class(); ?>">

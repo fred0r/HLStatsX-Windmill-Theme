@@ -57,13 +57,22 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 	
 ?>
-Host Groups allow you to group, for example, all players from "...adsl.someisp.net" as "SomeISP ADSL", in the Host Statistics admin tool.<p>
-
-The Host Pattern should look like the <b>end</b> of the hostname. For example a pattern ".adsl.someisp.net" will match "1234.ny.adsl.someisp.net". You can use asterisks "*" in the pattern, e.g. ".ny.*.someisp.net". The asterisk matches zero or more of any character except a dot ".".<p>
-
-The patterns are sorted below in the order they will be applied. A more specific pattern should match before a less specific pattern.<p>
-
-<b>Note</b> Run <b>hlstats-resolve.pl --regroup</b> to apply grouping changes to existing data.<p>
+<div class="ml-6 mb-6">
+	<p class="text-sm text-gray-600 dark:text-gray-400">
+		Host Groups allow you to group, for example, all players from "...adsl.someisp.net" as 
+		"SomeISP ADSL", in the Host Statistics admin tool.<br>
+		<br>
+		The Host Pattern should look like the <b>end</b> of the hostname. For example a pattern 
+		".adsl.someisp.net" will match "1234.ny.adsl.someisp.net". You can use asterisks "*" in the 
+		pattern, e.g. ".ny.*.someisp.net". The asterisk matches zero or more of any character except a dot ".".<br>
+		<br>
+		The patterns are sorted below in the order they will be applied. A more specific pattern 
+		should match before a less specific pattern.<br>
+		<br>
+		<b>Note:</b> Run <b>hlstats-resolve.pl --regroup</b> to apply grouping changes to existing data.<br>
+		<br>
+	</p>
+</div>
 <?php $result = $db->query("
 		SELECT
 			id,
@@ -80,9 +89,4 @@ The patterns are sorted below in the order they will be applied. A more specific
 	$edlist->draw($result);
 ?>
 
-<table width="75%" border=0 cellspacing=0 cellpadding=0>
-<tr>
-	<td align="center"><input type="submit" value="  Apply  " class="submit"></td>
-</tr>
-</table>
-
+<input type="submit" value="  Apply  " class="<?php echo windmill_button_class(); ?>">

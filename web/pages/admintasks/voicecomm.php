@@ -58,6 +58,13 @@ For support and installation notes visit http://www.hlxcommunity.com
 	
 ?>
 
+<div class="ml-6 mb-6">
+<p class="text-sm text-gray-600 dark:text-gray-400">
+
+</p>
+</div>
+
+
 <?php
 	
 	$result = $db->query("
@@ -80,9 +87,5 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$edlist->draw($result);
 ?>
 
-<table width="75%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-	<td align="center"><input type="submit" value="  Apply  " class="submit"></td>
-</tr>
-</table>
+<input type="submit" value="  Apply  " class="<?php echo windmill_button_class(); ?>">
 

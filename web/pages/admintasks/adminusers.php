@@ -58,35 +58,38 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 	
 ?>
+<div class="ml-6 mb-6">
+	<p class="text-sm text-gray-600 dark:text-gray-400">
+		Usernames and passwords can be set up for access to this HLstats Admin area. For most 
+		sites you will only want one admin user - yourself. Some sites may however need to give 
+		administration access to several people.<br>
+		<br>
+		<b>Note</b> Passwords are encrypted in the database and so cannot be viewed. However, 
+		you can change a user's password by entering a new plain text value in the Password field.<br>
+		<br>
+		<b>Access Levels</b><br>
+		<br>
+		&#149; <i>Restricted</i> users only have access to the Host Groups, Clan Tag Patterns, 
+		Weapons, Teams, Awards and Actions configuration areas. This means these users cannot 
+		set Options or add new Games, Servers or Admin Users to HLstats, or use any of the admin Tools.<br>
+		&#149; <i>Administrator</i> users have full, unrestricted access.<br>
 
-Usernames and passwords can be set up for access to this HLstats Admin area. For most sites you will only want one admin user - yourself. Some sites may however need to give administration access to several people.<p>
+		<?php
+			
+			$result = $db->query("
+				SELECT
+					username,
+					IF(password='','','(encrypted)') AS password,
+					acclevel
+				FROM
+					hlstats_Users
+				ORDER BY
+					username
+			");
+			
+			$edlist->draw($result);
+		?>
 
-<b>Note</b> Passwords are encrypted in the database and so cannot be viewed. However, you can change a user's password by entering a new plain text value in the Password field.<p>
-
-<b>Access Levels</b><br>
-
-&#149; <i>Restricted</i> users only have access to the Host Groups, Clan Tag Patterns, Weapons, Teams, Awards and Actions configuration areas. This means these users cannot set Options or add new Games, Servers or Admin Users to HLstats, or use any of the admin Tools.<br>
-&#149; <i>Administrator</i> users have full, unrestricted access.<p>
-
-<?php
-	
-	$result = $db->query("
-		SELECT
-			username,
-			IF(password='','','(encrypted)') AS password,
-			acclevel
-		FROM
-			hlstats_Users
-		ORDER BY
-			username
-	");
-	
-	$edlist->draw($result);
-?>
-
-<table width="75%" border=0 cellspacing=0 cellpadding=0>
-<tr>
-	<td align="center"><input type="submit" value="  Apply  " class="submit"></td>
-</tr>
-</table>
-
+		<input type="submit" value="  Apply  " class="<?php echo windmill_button_class(); ?>">
+	</p>
+<div>

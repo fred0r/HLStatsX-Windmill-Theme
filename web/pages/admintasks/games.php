@@ -176,13 +176,22 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 	
 ?>
-
-Enter the codes and full names for all the games you want to collect statistics for. (Game codes should be the same as the mod folder name, e.g. "valve".)<br /><br />
-
-After creating a game, you will be able to configure servers, awards, etc. for that game under Game Settings.<br /><br />
-
-<strong>NOTE</strong>: Be cautious of deleting a game. Deleting a game will remove all related settings, including servers, players, and events for that game (and may take a while). You will have to manually remove any images yourself. IF YOU DELETE THE LAST GAME OF A TYPE, THERE IS NO EASY WAY TO MAKE A NEW GAME OF THAT TYPE. If you want to delete and that is the case, you are probably better off deleting all servers for that game and then just hiding the game.<br /><br />
-
+<div class="ml-6 mb-6">
+	<p class="text-sm text-gray-600 dark:text-gray-400">
+		Enter the codes and full names for all the games you want to collect statistics for. 
+		(Game codes should be the same as the mod folder name, e.g. "valve".)<br>
+		<br >
+		After creating a game, you will be able to configure servers, awards, etc. for that 
+		game under Game Settings.<br>
+		<br>
+		<strong>NOTE</strong>: Be cautious of deleting a game. Deleting a game will remove all related settings
+		, including servers, players, and events for that game (and may take a while). You will have to manually
+		remove any images yourself. IF YOU DELETE THE LAST GAME OF A TYPE, THERE IS NO EASY WAY TO MAKE A NEW
+		GAME OF THAT TYPE. If you want to delete and that is the case, you are probably better off
+		deleting all servers for that game and then just hiding the game.<br>
+		<br>
+	</p>
+</div>
 <?php
 	
 	$result = $db->query("
@@ -200,9 +209,4 @@ After creating a game, you will be able to configure servers, awards, etc. for t
 	$edlist->draw($result, false);
 ?>
 
-<table style="width:75%;border:0;" cellspacing="0" cellpadding="0">
-<tr>
-	<td align="center"><input type="submit" value="  Apply  " class="submit"></td>
-</tr>
-</table>
-
+<input type="submit" value="  Apply  " class="<?php echo windmill_button_class(); ?>">

@@ -1011,11 +1011,30 @@ $selGame = valid_request($_GET['game'], false);
 <?php display_page_title('Admin Panel'); ?>
 
 <!-- Admin Card Start -->
-<div class="grid gap-6 mb-8 md:grid-cols-2"> 
-		
-<div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">		
-	<p class ="text-sm text-gray-600 dark:text-gray-400">
-	<?php
+
+<?php 
+
+// Display one card if editting, otherwise display two cards 
+
+if ($selTask || $admintasks[$selTask])
+{
+	$how_many_cols = "1"; 
+	$div1 = "";
+	$div2 = "px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800";
+} else {
+	$how_many_cols = "2"; 
+	$div1 = "grid gap-6 mb-8 md:grid-cols-2";
+	$div2 = "min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800";
+}
+
+?>
+
+$how_many_cols = <?php echo $how_many_cols; ?>
+
+<div class="<?php echo $div1; ?>"> 
+	<div class="<?php echo $div2; ?>">		
+		<p class ="text-sm text-gray-600 dark:text-gray-400">
+<?php
 
 $updateDbHtml = "<div>
 					Current Version: <span style=\"font-weight:bold\">{$g_options['version']}</span><br>
@@ -1108,7 +1127,9 @@ else
 
 ?>
 	<div class="ml-6 mb-6">
-		<?php echo display_admin_page_subtitle_expanded("General Settings") . "\n"; ?>
+		<a href="<?php echo $g_options['scripturl']; ?>?mode=admin" name="<?php echo $code; ?>">
+			<?php echo display_admin_page_subtitle_expanded("General Settings") . "\n"; ?>
+		</a>
 	</div>
 <?php
 	foreach ($admintasks as $code => $task)
@@ -1119,19 +1140,16 @@ else
 			{
 ?>
 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-	<p class="text-sm text-gray-600 dark:text-gray-400">
-		&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-down"></i><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin" name="<?php echo $code; ?>"><?php echo $task->title; ?></a></b><br><br>
-		<form method="post" action="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=<?php echo $code; ?>#<?php echo $code; ?>">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td width="2%">&nbsp;</td>
-					<td width="98%"><?php include (PAGE_PATH . "/admintasks/$code.php");?></td>
-				</tr>
-			</table>
-		</form>
-		<br>
-		<br>
-	</p>
+	<div class="ml-6 mb-6">
+		<div class="ml-6">
+			<a href="<?php echo $g_options['scripturl']; ?>?mode=admin" name="<?php echo $code; ?>">
+				<?php echo display_admin_page_subtitle_expanded($task->title); ?>
+			</a>
+			<form method="post" action="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=<?php echo $code; ?>#<?php echo $code; ?>">
+				<?php include (PAGE_PATH . "/admintasks/$code.php");?>
+			</form>
+		</div>
+	</div>
 </div>
 <?php
 			}
@@ -1139,11 +1157,11 @@ else
 			{
 ?>
 		<div class="ml-6 mb-6">
-		<div class="ml-6">
-		<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=<?php echo $code; ?>#<?php echo $code; ?>">
-			<?php echo display_admin_page_subtitle_collapsed($task->title) . "\n"; ?>
-		</a>
-		</div>
+			<div class="ml-6">
+				<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=<?php echo $code; ?>#<?php echo $code; ?>">
+					<?php echo display_admin_page_subtitle_collapsed($task->title) . "\n"; ?>
+				</a>
+			</div>
 		</div> <?php
 				echo "\n";
 			}

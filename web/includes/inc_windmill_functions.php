@@ -63,6 +63,10 @@ function display_admin_page_game_subtitle_expanded($game_name,$game_code){
 
 }
 
+function windmill_button_class(){
+
+		echo "windmill-button block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none";
+}
 
 function display_table_filter($page){
 
