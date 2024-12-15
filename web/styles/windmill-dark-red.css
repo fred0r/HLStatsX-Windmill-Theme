@@ -7,6 +7,7 @@
 .windmill-button {
     color: #EDE9FE; 
     background-color: #4c1a1a;
+    border-color: #4c1a1a; 
     transition: background-color 0.5s; 
 }
 .windmill-button:hover {
@@ -16,4 +17,7 @@
     color: #EDE9FE; 
     background-color: #4c1a1a;
     transition: background-color 0.5s; 
+}
+.windmill-text-link {
+    color: #4c1a1a; 
 }
