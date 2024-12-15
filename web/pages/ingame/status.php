@@ -118,7 +118,11 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$map_teamb_wins = $rowdata['map_ts_wins'];
 ?>
 
-	<table class="data-table">
+<?php display_page_title('Live Server Statistics'); ?>
+<?php display_ingame_menu(); ?>
+
+
+	<table class="data-table mb-6">
 		<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 			<td colspan="4" style="width:37%;" class="fSmall">&nbsp;Server</td>
 			<td style="width:23%;" class="fSmall">&nbsp;Address</td>
