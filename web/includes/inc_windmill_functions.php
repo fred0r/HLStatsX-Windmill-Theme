@@ -39,6 +39,31 @@ function display_page_subtitle($title){
 
 }
 
+function display_admin_page_subtitle_collapsed($title){
+
+	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-right\"></i>&nbsp;" . $title . "</span>";
+
+}
+
+function display_admin_page_subtitle_expanded($title){
+
+	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-down\"></i>&nbsp;" . $title . "</span>";
+
+}
+
+function display_admin_page_game_subtitle_collapsed($game_name,$game_code){
+
+	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-right\"></i>&nbsp;" . $game_name . " (". $game_code . ")</span>";
+
+}
+
+function display_admin_page_game_subtitle_expanded($game_name,$game_code){
+
+	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-down\"></i>&nbsp;" . $game_name . " (". $game_code . ")</span>";
+
+}
+
+
 function display_table_filter($page){
 
 	switch ($page) {

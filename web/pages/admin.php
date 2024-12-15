@@ -611,7 +611,7 @@ class EditList
 		</table></td>
 </tr>
 
-</table><br /><br />
+</table><br><br>
 <?php
 	}
 
@@ -796,7 +796,7 @@ class EditList
 	{
 		if (is_array($this->errors))
 		{
-			return implode("<br /><br />\n\n", $this->errors);
+			return implode("<br><br>\n\n", $this->errors);
 		}
 		else
 		{
@@ -900,7 +900,7 @@ class PropertyPage_Group
 	{
 		global $g_options;
 ?>
-<b><?php echo $this->title; ?></b><br />
+<b><?php echo $this->title; ?></b><br>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
 <tr valign="top">
@@ -914,7 +914,7 @@ class PropertyPage_Group
 		</table></td>
 </tr>
 
-</table><br /><br />
+</table><br><br>
 <?php
 	}
 }
@@ -990,7 +990,7 @@ function message($icon, $msg)
 ?></td>
 		</tr>
 
-		</table><br /><br />
+		</table><br><br>
 <?php
 }
 
@@ -1007,25 +1007,32 @@ $selTask = valid_request($_GET['task'], false);
 $selGame = valid_request($_GET['game'], false);
 ?>
 
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+<!-- Admin Panel start -->
+<?php display_page_title('Admin Panel'); ?>
 
-<tr valign="top">
-	<td><?php
+<!-- Admin Card Start -->
+<div class="grid gap-6 mb-8 md:grid-cols-2"> 
+		
+<div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">		
+	<p class ="text-sm text-gray-600 dark:text-gray-400">
+	<?php
 
 $updateDbHtml = "<div>
-					Current Version: <span style=\"color: #C40000;font-weight:bold\">{$g_options['version']}</span><br />
-					Current DB version: <span style=\"color: #C40000;font-weight:bold\">{$g_options['dbversion']}</span><br />";
+					Current Version: <span style=\"font-weight:bold\">{$g_options['version']}</span><br>
+					Current DB version: <span style=\"font-weight:bold\">{$g_options['dbversion']}</span><br>";
 if (file_exists('./updater') && $mode != 'updater') {
 	if (file_exists("./updater/" . ($g_options['dbversion'] + 1) . ".php")) {
 		$updateDbHtml .= "
-					<div class=\"block\">
-					<div class=\"warning\">
-						<span class=\"fHeading\"><img src=\"" . IMAGE_PATH . "/warning.gif\" alt=\"Warning\"> Warning:</span> Your database needs an upgrade. To perform a Database Update, please go to the Updater page.
-							<div style=\"text-align: center;\"><strong><a class=\"fMediumLarge\" href=\"{$g_options['scripturl']}?mode=updater&task=tools_updater\"><span>HLX:CE Database Updater</span></a></strong></div>
-						</span>
-					</div>";
+						<span class=\"text-lg text-red-600 dark:text-red-400\">
+							Warning: Your database needs an upgrade. 
+							To perform a Database Update, please 
+							<a class =\"font-bold\" href=\"{$g_options['scripturl']}?mode=updater&task=tools_updater\">
+								>click here< 
+							</a>
+							to go to the Updater page.
+						</span>";
 	} else {
-		$updateDbHtml .= "Great. Your database is the latest version.";
+		$updateDbHtml .= "<span class=\"text-xs text-green-600 dark:text-green-400\">Great. Your database is the latest version.</span>";
 	}
 }
 $updateDbHtml .= "</div>";
@@ -1082,20 +1089,27 @@ if (!empty($admintasks[$selTask]) && ($admintasks[$selTask]->type == 'tool' || $
 
 	$code = $selTask;
 ?>
-<!-- &nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin">Tools</a></b><br /> -->
-<?php display_page_title('Admin Tools'); ?>
-<img src="<?php echo IMAGE_PATH; ?>/spacer.gif" width="1" height="8" border="0" alt="" /><br />
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+<p class="text-sm text-gray-600 dark:text-gray-400">
+
+&nbsp;<i class="fas fa-angle-down"></i><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin">Tools</a></b><br>
+<img src="<?php echo IMAGE_PATH; ?>/spacer.gif" width="1" height="8" border="0" alt="" /><br>
 
 <?php
 	include (PAGE_PATH . "/admintasks/$code.php");
+?>
+</p>
+</div>
+<?php
 }
 else
 {
 	// General Settings
 
 ?>
-<!-- &nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;General Settings</b><br /><br /> -->
-<?php display_page_title('General Settings'); ?>
+	<div class="ml-6 mb-6">
+		<?php echo display_admin_page_subtitle_expanded("General Settings") . "\n"; ?>
+	</div>
 <?php
 	foreach ($admintasks as $code => $task)
 	{
@@ -1104,34 +1118,41 @@ else
 			if ($selTask == $code)
 			{
 ?>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin" name="<?php echo $code; ?>"><?php echo $task->title; ?></a></b><br /><br />
-
-<form method="post" action="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=<?php echo $code; ?>#<?php echo $code; ?>">
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-<tr>
-	<td width="2%">&nbsp;</td>
-	<td width="98%"><?php
-				include (PAGE_PATH . "/admintasks/$code.php");
-?></td>
-</tr>
-
-</table><br /><br />
-</form>
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+	<p class="text-sm text-gray-600 dark:text-gray-400">
+		&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-down"></i><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin" name="<?php echo $code; ?>"><?php echo $task->title; ?></a></b><br><br>
+		<form method="post" action="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=<?php echo $code; ?>#<?php echo $code; ?>">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="2%">&nbsp;</td>
+					<td width="98%"><?php include (PAGE_PATH . "/admintasks/$code.php");?></td>
+				</tr>
+			</table>
+		</form>
+		<br>
+		<br>
+	</p>
+</div>
 <?php
 			}
 			else
 			{
 ?>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/rightarrow.gif" width="6" height="9" alt="" /><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=<?php echo $code; ?>#<?php echo $code;
-?>"><?php echo $task->title; ?></a></b><br /><br /> <?php
+		<div class="ml-6 mb-6">
+		<div class="ml-6">
+		<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=<?php echo $code; ?>#<?php echo $code; ?>">
+			<?php echo display_admin_page_subtitle_collapsed($task->title) . "\n"; ?>
+		</a>
+		</div>
+		</div> <?php
+				echo "\n";
 			}
 		}
 	}
 ?>
-	
-&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;Game Settings</b><br /><br />
+	<div class="ml-6 mb-6">
+		<?php echo display_admin_page_subtitle_expanded("Game Settings"); ?>
+	</div>
 <?php
 	$gamesresult = $db->query("
 			SELECT
@@ -1154,7 +1175,14 @@ else
 		if ($gamecode == $selGame)
 		{
 ?>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin" name="game_<?php echo $gamecode; ?>"><?php echo $gamename; ?></a></b> (<?php echo $gamecode; ?>)<br /><br /> <?php
+	<div class="ml-6 mb-6">
+		<div class="ml-6">
+			<a href="<?php echo $g_options['scripturl']; ?>?mode=admin" name="game_<?php echo $gamecode; ?>">
+				<?php echo display_admin_page_game_subtitle_expanded($gamename,$gamecode); ?>..
+			</a>
+		</div>
+	</div>
+<?php
 			foreach ($admintasks as $code => $task)
 			{
 				if ($auth->userdata['acclevel'] >= $task->acclevel && $task->type == 'game')
@@ -1162,27 +1190,36 @@ else
 					if ($selTask == $code)
 					{
 ?>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;game=<?php echo $gamecode; ?>" name="<?php echo $code; ?>"><?php echo $task->title; ?></a></b><br /><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;game=<?php echo $gamecode; ?>" name="<?php echo $code; ?>">
+	<?php echo display_admin_page_subtitle_expanded($task->title); ?>
+</a>
+<br><br>
 
 <form method="post" name="<?php echo $code; ?>form" action="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;game=<?php echo $gamecode; ?>&task=<?php echo $code; ?>#<?php echo $code; ?>">
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-<tr>
-	<td width="10%">&nbsp;</td>
-	<td width="90%"><?php
-						include (PAGE_PATH . "/admintasks/$code.php");
-?></td>
-</tr>
-
-</table><br /><br />
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td width="10%">&nbsp;</td>
+			<td width="90%"><?php include (PAGE_PATH . "/admintasks/$code.php"); ?></td>
+		</tr>
+	</table>
+	<br><br>
 </form>
 <?php
 					}
 					elseif ($code != 'serversettings')
 					{
-	?>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/rightarrow.gif" width="6" height="9" alt="" /><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;game=<?php echo $gamecode; ?>&task=<?php echo $code; ?>#<?php echo $code; ?>"><?php echo $task->title; ?></a></b><br /><br /> <?php
+?>
+	<div class="ml-6 mb-6">
+		<div class="ml-6">
+			<div class="ml-6">
+				<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;game=<?php echo $gamecode; ?>&task=<?php echo $code; ?>#<?php echo $code; ?>">
+					<?php echo display_admin_page_subtitle_collapsed($task->title); ?>.
+				</a>
+			</div>
+		</div>
+	</div>
+ <?php
 					}
 				}
 			}
@@ -1190,42 +1227,65 @@ else
 		else
 		{
 ?>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/rightarrow.gif" width="6" height="9" alt="" /><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;game=<?php echo $gamecode; ?>#game_<?php echo $gamecode; ?>"><?php echo $gamename; ?></a></b> (<?php echo $gamecode; ?>)<br /><br /> <?php
+		<div class="ml-6 mb-6">
+			<div class="ml-6">
+				<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;game=<?php echo $gamecode; ?>#game_<?php echo $gamecode; ?>">
+					<?php echo display_admin_page_game_subtitle_collapsed($gamename,$gamecode); ?>
+				</a>
+			</div>
+		</div> <?php
 		}
 	}
 }
-echo "</td>\n";
+
+// end left card p and div
+echo "</p></div>\n";
 
 if (!$selTask || !$admintasks[$selTask])
 {
-	echo '<td width="50%">';
+
 ?>
-<!-- &nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" alt="" /><b>&nbsp;Tools</b> -->
-
-<?php display_page_title('Tools'); ?>
-
-<ul>
+<!-- start right card div -->
+<div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+	<!-- start right card p -->
+	<p class="text-sm text-gray-600 dark:text-gray-400">
+		<div class="ml-6 mb-6">
+			<?php echo display_admin_page_subtitle_expanded("Tools") . "\n"; ?>
+		</div>
+	<ul>
 <?php
 	foreach ($admintasks as $code => $task)
 	{
 		if ($auth->userdata['acclevel'] >= $task->acclevel && $task->type == 'tool')
 		{
-?>	<li><b><a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=<?php echo $code; ?>"><?php echo $task->title; ?></a></b><br />
-		<?php echo $task->description; ?><br /><br />
-	</li>
+?>		<li>
+			<div class="ml-6">
+				<div class="ml-6 mb-6">
+					<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=<?php echo $code; ?>">
+						<?php echo display_admin_page_subtitle_collapsed($task->title); ?>
+					</a>
+					<div class="ml-6">
+						<span class="text-xs text-gray-600 dark:text-gray-400">
+							<?php echo $task->description; ?>
+						</span>
+					</div>
+				</div>
+			</div>
+		</li>
 <?php
 		}
 	}
 ?>
 </ul>
+
 <?php
-	echo '</td>';
+	echo '</p>'; // end right box P
+	echo '</div>'; // end right box div
 }
 ?>
-</tr>
 
-</table>
 
+</div> <!-- end cards div -->
 <?php
 if (isset($footerscript))
 {
