@@ -35,48 +35,57 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 For support and installation notes visit http://www.hlxcommunity.com
 */
-
-	if (!defined('IN_HLSTATS')) {
-		die('Do not access this file directly.');
-	}
+	
+    if (!defined('IN_HLSTATS')) {
+        die('Do not access this file directly.');
+    }
 
 	// Action Details
 
 	// Addon created by Rufus (rufus@nonstuff.de)
 	
-	$action = valid_request($_GET['action'], true) or error('No action ID specified.');
+	$action = valid_request($_GET['action'], false) or error('No action ID specified.');
+
+	$action_escaped=$db->escape($action);
+	$game_escaped=$db->escape($game);
 	
 	$db->query("
 		SELECT
-			description
+			for_PlayerActions,for_PlayerPlayerActions, description
 		FROM
 			hlstats_Actions
 		WHERE
-			id='$action_id'
-			AND game='$game'
+			code='{$action_escaped}'
+			AND game='{$game_escaped}'
 	");
 	
-	if ($db->num_rows() != 1) {
+	if ($db->num_rows() != 1)
+	{
 		$act_name = ucfirst($action);
-	} else {
+		$actiondata['for_PlayerActions']=1; // dummy these out, this should never happen?
+		$actiondata['for_PlayerPlayerActions']=0;
+	}
+	else
+	{
 		$actiondata = $db->fetch_array();
 		$db->free_result();
 		$act_name = $actiondata['description'];
 	}
 	
-	$db->query("SELECT name FROM hlstats_Games WHERE code='$game'");
-	if ($db->num_rows() != 1) {
+	$db->query("SELECT name FROM hlstats_Games WHERE code='{$game_escaped}'");
+	if ($db->num_rows() != 1)
 		error('Invalid or no game specified.');
-	} else {
+	else
 		list($gamename) = $db->fetch_row();
-	}
+		
+ 
 
 	$table = new Table(
 		array(
 			new TableColumn(
 				'playerName',
 				'Player',
-				'width=45&align=left&flag=1&link=' . urlencode("mode=statsme&amp;player=%k") 
+				'width=45&align=left&flag=1&link=' . urlencode('mode=statsme&amp;player=%k') 
 			),
 			new TableColumn(
 				'obj_count',
@@ -93,89 +102,212 @@ For support and installation notes visit http://www.hlxcommunity.com
 		'obj_count',
 		'playerName',
 		true,
-		50
+		40
 	);
+
+	if ($actiondata['for_PlayerActions']==1)
+	{	
+		$result = $db->query("
+			SELECT
+				hlstats_Events_PlayerActions.playerId,
+				hlstats_Players.lastName AS playerName,
+				hlstats_Players.flag as flag,
+				COUNT(hlstats_Events_PlayerActions.id) AS obj_count,
+				COUNT(hlstats_Events_PlayerActions.id) * hlstats_Actions.reward_player AS obj_bonus
+			FROM
+				hlstats_Events_PlayerActions, hlstats_Players, hlstats_Actions
+			WHERE
+				hlstats_Actions.code = '{$action_escaped}' AND
+				hlstats_Players.game = '{$game_escaped}' AND
+				hlstats_Players.playerId = hlstats_Events_PlayerActions.playerId AND
+				hlstats_Events_PlayerActions.actionId = hlstats_Actions.id AND
+				hlstats_Players.hideranking = '0'
+			GROUP BY
+				hlstats_Events_PlayerActions.playerId,
+				hlstats_Actions.reward_player
+			ORDER BY
+				$table->sort $table->sortorder,
+				$table->sort2 $table->sortorder
+			LIMIT $table->startitem,$table->numperpage
+		");
+		
+		$resultCount = $db->query("
+			SELECT
+				COUNT(DISTINCT hlstats_Events_PlayerActions.playerId),
+				COUNT(hlstats_Events_PlayerActions.Id)
+			FROM
+				hlstats_Events_PlayerActions, hlstats_Players, hlstats_Actions
+			WHERE
+				hlstats_Actions.code = '{$action_escaped}' AND
+				hlstats_Players.game = '{$game_escaped}' AND
+				hlstats_Players.playerId = hlstats_Events_PlayerActions.playerId AND
+				hlstats_Events_PlayerActions.actionId = hlstats_Actions.id AND
+				hlstats_Players.hideranking = '0'
+		");
+	}
+	if($actiondata['for_PlayerPlayerActions']==1)
+	{
+		$result = $db->query("
+			SELECT
+				hlstats_Events_PlayerPlayerActions.playerId,
+				hlstats_Players.lastName AS playerName,
+				hlstats_Players.flag as flag,
+				COUNT(hlstats_Events_PlayerPlayerActions.id) AS obj_count,
+				COUNT(hlstats_Events_PlayerPlayerActions.id) * hlstats_Actions.reward_player AS obj_bonus
+			FROM
+				hlstats_Events_PlayerPlayerActions, hlstats_Players, hlstats_Actions
+			WHERE
+				hlstats_Actions.code = '{$action_escaped}' AND
+				hlstats_Players.game = '{$game_escaped}' AND
+				hlstats_Players.playerId = hlstats_Events_PlayerPlayerActions.playerId AND
+				hlstats_Events_PlayerPlayerActions.actionId = hlstats_Actions.id AND
+				hlstats_Players.hideranking = '0'
+			GROUP BY
+				hlstats_Events_PlayerPlayerActions.playerId,
+				hlstats_Actions.reward_player
+			ORDER BY
+				$table->sort $table->sortorder,
+				$table->sort2 $table->sortorder
+			LIMIT $table->startitem,$table->numperpage
+		");
 	
-	$result = $db->query("
-		SELECT
-			hlstats_Events_PlayerActions.playerId,
-			hlstats_Players.lastName AS playerName,
-			hlstats_Players.flag as flag,
-			COUNT(hlstats_Events_PlayerActions.id) AS obj_count,
-			COUNT(hlstats_Events_PlayerActions.id) * hlstats_Actions.reward_player AS obj_bonus
-		FROM
-			hlstats_Events_PlayerActions, hlstats_Players, hlstats_Actions
-		WHERE
-			hlstats_Actions.code = '$action' AND
-			hlstats_Players.game = '$game' AND
-			hlstats_Players.playerId = hlstats_Events_PlayerActions.playerId AND
-			hlstats_Events_PlayerActions.actionId = hlstats_Actions.id AND
-			hlstats_Players.hideranking<>'1'
-		GROUP BY
-			hlstats_Events_PlayerActions.playerId,
-			hlstats_Actions.reward_player
-		ORDER BY
-			$table->sort $table->sortorder,
-			$table->sort2 $table->sortorder
-		LIMIT $table->startitem,$table->numperpage
-	");
-	
-	$resultCount = $db->query("
-		SELECT
-			COUNT(DISTINCT hlstats_Events_PlayerActions.playerId),
-			COUNT(hlstats_Events_PlayerActions.Id)
-		FROM
-			hlstats_Events_PlayerActions, hlstats_Players, hlstats_Actions
-		WHERE
-			hlstats_Actions.code = '$action' AND
-			hlstats_Players.game = '$game' AND
-			hlstats_Players.playerId = hlstats_Events_PlayerActions.playerId AND
-			hlstats_Events_PlayerActions.actionId = hlstats_Actions.id
-	");
-	
+		$resultCount = $db->query("
+			SELECT
+				COUNT(DISTINCT hlstats_Events_PlayerPlayerActions.playerId),
+				COUNT(hlstats_Events_PlayerPlayerActions.Id)
+			FROM
+				hlstats_Events_PlayerPlayerActions, hlstats_Players, hlstats_Actions
+			WHERE
+				hlstats_Actions.code = '{$action_escaped}' AND
+				hlstats_Players.game = '{$game_escaped}' AND
+				hlstats_Players.playerId = hlstats_Events_PlayerPlayerActions.playerId AND
+				hlstats_Events_PlayerPlayerActions.actionId = hlstats_Actions.id AND
+				hlstats_Players.hideranking = '0'
+		");
+	}	
+		
 	list($numitems, $totalact) = $db->fetch_row($resultCount);
   
-  if ($totalact == 0)  {
-    $result = $db->query("
-        SELECT
-            hlstats_Events_TeamBonuses.playerId,
-            hlstats_Players.lastName AS playerName,
-            hlstats_Players.flag as flag,
-            COUNT(hlstats_Events_TeamBonuses.id) AS obj_count,
-            COUNT(hlstats_Events_TeamBonuses.id) * hlstats_Actions.reward_player AS obj_bonus
-        FROM
-            hlstats_Events_TeamBonuses, hlstats_Players, hlstats_Actions
-        WHERE
-            hlstats_Actions.code = '$action' AND
-            hlstats_Players.game = '$game' AND
-            hlstats_Players.playerId = hlstats_Events_TeamBonuses.playerId AND
-            hlstats_Events_TeamBonuses.actionId = hlstats_Actions.id AND
-            hlstats_Players.hideranking<>'1'
-        GROUP BY
-            hlstats_Events_TeamBonuses.playerId,
-			hlstats_Actions.reward_player
-        ORDER BY
-            $table->sort $table->sortorder,
-            $table->sort2 $table->sortorder
-        LIMIT $table->startitem,$table->numperpage
-    ");
+	if ($totalact == 0)
+	{
+		$result = $db->query("
+			SELECT
+				hlstats_Events_TeamBonuses.playerId,
+				hlstats_Players.lastName AS playerName,
+				hlstats_Players.flag as flag,
+				COUNT(hlstats_Events_TeamBonuses.id) AS obj_count,
+				COUNT(hlstats_Events_TeamBonuses.id) * hlstats_Actions.reward_player AS obj_bonus
+			FROM
+				hlstats_Events_TeamBonuses, hlstats_Players, hlstats_Actions
+			WHERE
+				hlstats_Actions.code = '{$action_escaped}' AND
+				hlstats_Players.game = '{$game_escaped}' AND
+				hlstats_Players.playerId = hlstats_Events_TeamBonuses.playerId AND
+				hlstats_Events_TeamBonuses.actionId = hlstats_Actions.id AND
+				hlstats_Players.hideranking = '0'
+			GROUP BY
+				hlstats_Events_TeamBonuses.playerId,
+				hlstats_Actions.reward_player
+			ORDER BY
+				$table->sort $table->sortorder,
+				$table->sort2 $table->sortorder
+			LIMIT $table->startitem,$table->numperpage
+		");
     
-    $resultCount = $db->query("
-        SELECT
-            COUNT(DISTINCT hlstats_Events_TeamBonuses.playerId),
-            COUNT(hlstats_Events_TeamBonuses.Id)
-        FROM
-            hlstats_Events_TeamBonuses, hlstats_Players, hlstats_Actions
-        WHERE
-            hlstats_Actions.code = '$action' AND
-            hlstats_Players.game = '$game' AND
-            hlstats_Players.playerId = hlstats_Events_TeamBonuses.playerId AND
-            hlstats_Events_TeamBonuses.actionId = hlstats_Actions.id
-    ");
-    list($numitems, $totalact) = $db->fetch_row($resultCount);
-    
-  }    
-  	display_page_title('Your Action Statistics');
-	display_ingame_menu();
-	$table->draw($result, $numitems, 100, 'center');
+		$resultCount = $db->query("
+			SELECT
+				COUNT(DISTINCT hlstats_Events_TeamBonuses.playerId),
+				COUNT(hlstats_Events_TeamBonuses.Id)
+			FROM
+				hlstats_Events_TeamBonuses, hlstats_Players, hlstats_Actions
+			WHERE
+				hlstats_Actions.code = '{$action_escaped}' AND
+				hlstats_Players.game = '{$game_escaped}' AND
+				hlstats_Players.playerId = hlstats_Events_TeamBonuses.playerId AND
+				hlstats_Events_TeamBonuses.actionId = hlstats_Actions.id AND
+				hlstats_Players.hideranking = '0'
+		");
+		list($numitems, $totalact) = $db->fetch_row($resultCount);    
+	}
 ?>
+<!-- start actioninfo.php -->
+
+<?php echo display_page_title('Action: ' . $act_name); ?>
+<?php display_ingame_menu(); ?>
+<?php echo $table->draw($result, $numitems, 95, 'center'); ?>
+
+<?php
+	if ($actiondata['for_PlayerPlayerActions'] == 1)
+	{
+		$table = new Table(
+		array(
+			new TableColumn(
+				'playerName',
+				'Player',
+				'width=45&align=left&flag=1&link=' . urlencode('mode=playerinfo&amp;player=%k') 
+			),
+			new TableColumn(
+				'obj_count',
+				'Times Victimized',
+				'width=25&align=right'
+			),
+			new TableColumn(
+				'obj_bonus',
+				'Skill Bonus Total',
+				'width=25&align=right&sort=no'
+			)
+		),
+		'victimId',
+		'obj_count',
+		'playerName',
+		true,
+		40,
+		'vpage'
+		);
+	
+		$result = $db->query("
+			SELECT
+				hlstats_Events_PlayerPlayerActions.victimId,
+				hlstats_Players.lastName AS playerName,
+				hlstats_Players.flag as flag,
+				COUNT(hlstats_Events_PlayerPlayerActions.id) AS obj_count,
+				COUNT(hlstats_Events_PlayerPlayerActions.id) * hlstats_Actions.reward_player * -1 AS obj_bonus
+			FROM
+				hlstats_Events_PlayerPlayerActions, hlstats_Players, hlstats_Actions
+			WHERE
+				hlstats_Actions.code = '{$action_escaped}' AND
+				hlstats_Players.game = '{$game_escaped}' AND
+				hlstats_Players.playerId = hlstats_Events_PlayerPlayerActions.victimId AND
+				hlstats_Events_PlayerPlayerActions.actionId = hlstats_Actions.id AND
+				hlstats_Players.hideranking = '0'
+			GROUP BY
+				hlstats_Events_PlayerPlayerActions.victimId,
+				hlstats_Actions.reward_player
+			ORDER BY
+				$table->sort $table->sortorder,
+				$table->sort2 $table->sortorder
+			LIMIT $table->startitem,$table->numperpage
+		");
+	
+		$resultCount = $db->query("
+			SELECT
+				COUNT(DISTINCT hlstats_Events_PlayerPlayerActions.victimId),
+				COUNT(hlstats_Events_PlayerPlayerActions.Id)
+			FROM
+				hlstats_Events_PlayerPlayerActions, hlstats_Players, hlstats_Actions
+			WHERE
+				hlstats_Actions.code = '{$action_escaped}' AND
+				hlstats_Players.game = '{$game_escaped}' AND
+				hlstats_Players.playerId = hlstats_Events_PlayerPlayerActions.victimId AND
+				hlstats_Events_PlayerPlayerActions.actionId = hlstats_Actions.id AND
+				hlstats_Players.hideranking = '0'
+		");
+	
+		list($numitems, $totalact) = $db->fetch_row($resultCount);
+?>
+<?php echo display_page_title('Action Victims: ' . $act_name); ?>
+<?php $table->draw($result, $numitems, 95, 'center'); ?>
+<?php 
+	}
+?>
+<!-- end actioninfo.php -->
