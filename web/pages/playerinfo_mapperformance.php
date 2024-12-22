@@ -151,6 +151,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 		ORDER BY
 			$tblMaps->sort $tblMaps->sortorder,
 			$tblMaps->sort2 $tblMaps->sortorder
+		LIMIT
+			25 -- Hack to limit maps returned - DNA.styx
 	");
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0)
