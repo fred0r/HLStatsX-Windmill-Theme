@@ -206,13 +206,13 @@ if ($game != '') {
 
 	if (isset($_SESSION['loggedin'])) {
 
-		display_menu_item("Admin Panel", "?mode=admin","cog");
+		display_menu_item("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
 
-		display_menu_item("Logout", "?hlstats.php?logout=1","sign-out-alt");
+		display_menu_item("Logout", "hlstats.php?logout=1","sign-out-alt");
 
 	} else {
 
-		display_menu_item("Admin Login", "?mode=admin","sign-in-alt");
+		display_menu_item("Admin Login", $g_options['scripturl'] . "?mode=admin","sign-in-alt");
 
 	}
 
@@ -295,13 +295,13 @@ if ($game != '') {
 
 	if (isset($_SESSION['loggedin'])) {
 
-		display_menu_item("Admin Panel", "?mode=admin","cog");
+		display_menu_item("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
 
-		display_menu_item("Logout", "?hlstats.php?logout=1","sign-out-alt");
+		display_menu_item("Logout", "hlstats.php?logout=1","sign-out-alt");
 
 	} else {
 
-		display_menu_item("Admin Login", "?mode=admin","sign-in-alt");
+		display_menu_item("Admin Login", $g_options['scripturl'] . "?mode=admin","sign-in-alt");
 
 	}
 
@@ -440,7 +440,7 @@ if ($db->num_rows() < 1) {
 						display_links("Help", $g_options['scripturl'] . "?mode=help","question-circle");
 						if (isset($_SESSION['loggedin'])) {
 							display_links("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
-							display_links("Admin Logout", $g_options['scripturl'] . "?hlstats.php?logout=1","sign-out-alt");
+							display_links("Admin Logout", "hlstats.php?logout=1","sign-out-alt");
 						} else {
 							display_links("Admin Login", $g_options['scripturl'] . "?mode=admin","sign-in-alt");
 						}
