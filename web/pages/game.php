@@ -195,6 +195,14 @@ if ($total_kills > 0)
 <!-- end Card Section -->
 <?php echo display_page_subtitle("Game Servers"); ?>
 
+<?php
+	if ($g_options["show_google_map"] == 1) {
+		echo " <!-- start Demo Map -->\n";
+			display_amcharts_map($game,"active");
+		echo " <!-- End Top Players -->\n";
+	}
+?>
+
 <div class="w-full overflow-hidden rounded-lg shadow-xs">
 
 	<div class="w-full overflow-x-auto">

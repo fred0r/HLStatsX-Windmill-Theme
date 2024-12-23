@@ -148,7 +148,14 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</form>
 	</div>
 </div>
+<?php
 
+if ($g_options["show_google_map"] == 1) {
+	echo " <!-- start Demo Map -->\n";
+		display_amcharts_map($game,"top");
+	echo " <!-- End Top Players -->\n";
+}
+?>
 <!-- Start Table -->
 <?php
 		if ($g_options['rankingtype']!='kills')
