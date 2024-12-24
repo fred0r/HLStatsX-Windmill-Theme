@@ -271,7 +271,27 @@ function display_ingame_menu() {
 
 function display_amcharts_map($mapgame, $maptype) {
 
-	echo "<div class=\"hidden md:block\">\r\n";
+	switch ($maptype) {
+		case "top":
+			$title = "Top 50 Players";
+			break;
+	
+		case "active":
+			$title = "Active Players";
+			break;
+		
+		case "recent":
+			$title = "Recent Players";
+			break;
+	
+		case "random":
+		default:
+			$title = "Players";
+			break;
+		}
+	
+	echo display_page_subtitle($title);
+	echo "<div class=\"mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 hidden md:block\">\r\n";
 	echo "	<iframe src=\"" . INCLUDE_PATH . "/amcharts/display_map.php?mapgame=" . $mapgame . "&maptype=" . $maptype . "\" height=\"400\" width=\"100%\"></iframe>\r\n";
 	echo "</div>\r\n";
 
