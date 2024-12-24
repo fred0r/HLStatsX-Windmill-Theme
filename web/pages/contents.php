@@ -54,6 +54,21 @@ For support and installation notes visit http://www.hlxcommunity.com
 			realgame, name ASC
 	");
 	
+	// SQL errors if I don't create a new
+	// query after moving the cards
+	// to the top of the page 
+	$resultGamesCards = $db->query("
+		SELECT
+			code,
+			name
+		FROM
+			hlstats_Games
+		WHERE
+			hidden='0'
+		ORDER BY
+			realgame, name ASC
+	");
+
 	$num_games = $db->num_rows($resultGames);
 	$redirect_to_game = 0;  
 	$game = (!empty($_GET['game'])) ? valid_request($_GET['game'], false) : null;
@@ -72,6 +87,138 @@ For support and installation notes visit http://www.hlxcommunity.com
 		display_page_title($g_options['sitename'] . ' Player Stats');
 ?>
 <!-- start contents.php -->
+
+<?php
+
+$nonhiddengamestring = "(";
+while ($gamedata = $db->fetch_row($resultGamesCards))
+{
+	$nonhiddengamestring .= "'$gamedata[0]',";
+}
+
+$nonhiddengamestring = preg_replace('/,$/', ')', $nonhiddengamestring);
+		
+$result = $db->query("SELECT COUNT(playerId) FROM hlstats_Players WHERE game IN $nonhiddengamestring");
+list($num_players) = $db->fetch_row($result);
+$num_players = number_format($num_players);
+
+$result = $db->query("SELECT COUNT(clanId) FROM hlstats_Clans WHERE game IN $nonhiddengamestring");
+list($num_clans) = $db->fetch_row($result);
+$num_clans = number_format($num_clans);
+
+$result = $db->query("SELECT COUNT(serverId) FROM hlstats_Servers WHERE game IN $nonhiddengamestring");
+list($num_servers) = $db->fetch_row($result);
+$num_servers = number_format($num_servers);
+
+$result = $db->query("SELECT SUM(kills) FROM hlstats_Servers WHERE game IN $nonhiddengamestring");
+list($num_kills) = $db->fetch_row($result);
+$num_kills = number_format($num_kills);
+
+$result = $db->query("
+	SELECT 
+		eventTime
+	FROM
+		hlstats_Events_Frags
+	ORDER BY
+		id DESC
+	LIMIT 1
+");
+list($lastevent) = $db->fetch_row($result);
+
+?>
+
+<!-- Start Card Section -->
+			<?php echo display_page_subtitle("General Statistics"); ?>
+			<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+				<!-- Card -->
+				<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+					<div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+						&nbsp;<i class="fas fa-user"></i>&nbsp;
+					</div>
+					<div>
+						<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Players</p>
+						<p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_players ?></p>
+					</div>
+				</div>
+				<!-- Card -->
+				<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+					<div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+						&nbsp;<i class="fas fa-users"></i>&nbsp;
+					</div>
+					<div>
+						<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Clans</p>
+						<p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_clans ?></p>
+					</div>
+				</div>
+				<!-- Card -->
+				<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+					<div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+						&nbsp;<i class="fas fa-book"></i>&nbsp;
+					</div>
+					<div>
+						<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Games</p>
+						<p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_games ?></p>
+					</div>
+				</div>
+				<!-- Card -->
+				<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+					<div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
+						&nbsp;<i class="fas fa-server"></i>&nbsp;                
+					</div>
+					<div>
+						<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Servers</p>
+						<p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_servers ?></p>
+					</div>
+				</div>
+				<!-- Card -->
+				<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+					<div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+						&nbsp;<i class="fas fa-skull-crossbones"></i>&nbsp;
+					</div>
+					<div>
+						<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Kills</p>
+						<p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_kills ?></p>
+					</div>
+				</div>
+				<!-- Card -->
+				<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+					<div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
+						&nbsp;<i class="fas fa-history"></i>&nbsp;
+					</div>
+					<div>
+						<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Player Data Expires</p>
+						<p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $g_options['DeleteDays']; ?> Days</p>
+					</div>
+				</div>
+<?php
+		if ($lastevent)	{
+?>
+				<!-- Card -->
+				<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+					<div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+						&nbsp;&nbsp;<i class="fas fa-bolt"></i>&nbsp;
+					</div>
+					<div>
+						<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Last Kill Logged</p>
+						<p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo date('H:i, D. d M.', strtotime($lastevent)) ?></p>
+					</div>
+				</div>
+<?php
+			}
+?>
+				<!-- Card -->
+				<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+					<div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+						&nbsp;<i class="fas fa-stopwatch"></i>&nbsp;
+					</div>
+					<div>
+						<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Real Time Stats</p>
+						<p class="text-lg font-semibold text-gray-700 dark:text-gray-200">Enabled</p>
+					</div>
+				</div>
+			</div>
+<!-- end Card Section -->
+
 <?php echo display_page_subtitle("Game Servers"); ?>
 
 <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
@@ -88,11 +235,11 @@ For support and installation notes visit http://www.hlxcommunity.com
 				</tr>
 			</thead>
 			<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-<?php
-        $nonhiddengamestring = "(";
+<?php 
+		// $nonhiddengamestring = "(";
 		while ($gamedata = $db->fetch_row($resultGames))
 		{
-			$nonhiddengamestring .= "'$gamedata[0]',";
+			//$nonhiddengamestring .= "'$gamedata[0]',";
 			$result = $db->query("
 				SELECT
 					playerId,
@@ -235,132 +382,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 		echo "</div>\n";
 
 		include(PAGE_PATH . '/voicecomm_serverlist.php');
-
-		// vars for cards
-		$nonhiddengamestring = preg_replace('/,$/', ')', $nonhiddengamestring);
-		
-		$result = $db->query("SELECT COUNT(playerId) FROM hlstats_Players WHERE game IN $nonhiddengamestring");
-		list($num_players) = $db->fetch_row($result);
-		$num_players = number_format($num_players);
-
-		$result = $db->query("SELECT COUNT(clanId) FROM hlstats_Clans WHERE game IN $nonhiddengamestring");
-		list($num_clans) = $db->fetch_row($result);
-		$num_clans = number_format($num_clans);
-
-		$result = $db->query("SELECT COUNT(serverId) FROM hlstats_Servers WHERE game IN $nonhiddengamestring");
-		list($num_servers) = $db->fetch_row($result);
-		$num_servers = number_format($num_servers);
-		
-		$result = $db->query("SELECT SUM(kills) FROM hlstats_Servers WHERE game IN $nonhiddengamestring");
-		list($num_kills) = $db->fetch_row($result);
-		$num_kills = number_format($num_kills);
-
-		$result = $db->query("
-			SELECT 
-				eventTime
-			FROM
-				hlstats_Events_Frags
-			ORDER BY
-				id DESC
-			LIMIT 1
-		");
-		list($lastevent) = $db->fetch_row($result);
-?>
-            <!-- Start Card Section -->
-            <?php echo display_page_subtitle("General Statistics"); ?>
-            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-              <!-- Card -->
-              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-				&nbsp;<i class="fas fa-user"></i>&nbsp;
-                </div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Players</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_players ?></p>
-                </div>
-              </div>
-              <!-- Card -->
-              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
-					&nbsp;<i class="fas fa-users"></i>&nbsp;
-                </div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Clans</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_clans ?></p>
-                </div>
-              </div>
-              <!-- Card -->
-              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
-					&nbsp;<i class="fas fa-book"></i>&nbsp;
-				</div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Games</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_games ?></p>
-                </div>
-              </div>
-              <!-- Card -->
-              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
-					&nbsp;<i class="fas fa-server"></i>&nbsp;                
-				</div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Servers</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_servers ?></p>
-                </div>
-              </div>
-
-              <!-- Card -->
-              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
-					&nbsp;<i class="fas fa-skull-crossbones"></i>&nbsp;
-                </div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Total Kills</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $num_kills ?></p>
-                </div>
-              </div>
-
-              <!-- Card -->
-              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
-					&nbsp;<i class="fas fa-history"></i>&nbsp;
-				</div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Player Data Expires</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo $g_options['DeleteDays']; ?> Days</p>
-                </div>
-              </div>
-<?php
-		if ($lastevent)
-		{
-?>
-              <!-- Card -->
-              <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-					&nbsp;&nbsp;<i class="fas fa-bolt"></i>&nbsp;
-				</div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Last Kill Logged</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><?php echo date('H:i, D. d M.', strtotime($lastevent)) ?></p>
-                </div>
-              </div>
-<?php
-			}
-?>
-             <!-- Card -->
-			<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
-					&nbsp;<i class="fas fa-stopwatch"></i>&nbsp;
-				</div>
-                <div>
-                  <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Real Time Stats</p>
-                  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">Enabled</p>
-                </div>
-            </div>
-			</div>
-			<!-- end Card Section -->
-<?php
 	}
 ?>
 <!-- end contents.php -->
