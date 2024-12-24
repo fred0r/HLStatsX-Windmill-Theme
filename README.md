@@ -42,6 +42,7 @@ Features enabled
 * Responsive design for small and large screens
 * Custom CSS colours are set site wide using the admin page, use the defaults or create your own
 * Links menu
+* Player world maps
 * TeamSpeak3 server status and browser using serverquery [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/TeamSpeak3-Support">details</a> ]
 * TeaSpeak & Mumble basic support added
 * Discord Voice Channel Support [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/Discord-Support">details</a> ]
