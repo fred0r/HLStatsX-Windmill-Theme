@@ -35,31 +35,31 @@ function display_page_title($title){
 
 function display_page_subtitle($title){
 
-	echo "<h4 class=\"mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300\">" . $title . "</h4>";
+	echo "<h4 class=\"mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300\">" . $title . "</h4>\r\n";
 
 }
 
 function display_admin_page_subtitle_collapsed($title){
 
-	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-right\"></i>&nbsp;" . $title . "</span>";
+	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-right\"></i>&nbsp;" . $title . "</span>\r\n";
 
 }
 
 function display_admin_page_subtitle_expanded($title){
 
-	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-down\"></i>&nbsp;" . $title . "</span>";
+	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-down\"></i>&nbsp;" . $title . "</span>\r\n";
 
 }
 
 function display_admin_page_game_subtitle_collapsed($game_name,$game_code){
 
-	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-right\"></i>&nbsp;" . $game_name . " (". $game_code . ")</span>";
+	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-right\"></i>&nbsp;" . $game_name . " (". $game_code . ")</span>\r\n";
 
 }
 
 function display_admin_page_game_subtitle_expanded($game_name,$game_code){
 
-	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-down\"></i>&nbsp;" . $game_name . " (". $game_code . ")</span>";
+	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-down\"></i>&nbsp;" . $game_name . " (". $game_code . ")</span>\r\n";
 
 }
 
@@ -271,9 +271,9 @@ function display_ingame_menu() {
 
 function display_amcharts_map($mapgame, $maptype) {
 
-	echo "<div class=\"hidden md:block\">\n";
-	echo "	<iframe src=\"" . INCLUDE_PATH . "/amcharts/display_map.php?mapgame=" . $mapgame . "&maptype=" . $maptype . "\" height=\"400\" width=\"1500\"></iframe>\n";
-	echo "</div>\n";
+	echo "<div class=\"hidden md:block\">\r\n";
+	echo "	<iframe src=\"" . INCLUDE_PATH . "/amcharts/display_map.php?mapgame=" . $mapgame . "&maptype=" . $maptype . "\" height=\"400\" width=\"1500\"></iframe>\r\n";
+	echo "</div>\r\n";
 
 }
 
