@@ -45,7 +45,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 ?>
 
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width=9 height=6 class="imageformat"><b>&nbsp;<?php echo $task->title; ?></b> (Last <?php echo $g_options["DeleteDays"]; ?> Days)<p>
+<?php echo display_admin_page_subtitle_expanded($task->title) . "(Last " . $g_options["DeleteDays"] . " Days)"; ?>
 
 <?php
 	$table = new Table(

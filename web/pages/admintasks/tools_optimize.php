@@ -44,9 +44,7 @@ For support and installation notes visit http://www.hlxcommunity.com
         die ("Access denied!");
 	}
 ?>
-
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" class="imageformat"><b>&nbsp;<?php echo $task->title; ?></b><p>
-
+<?php echo display_admin_page_subtitle_expanded($task->title); ?>
 
 <span style="padding-left:35px;">Optimizing tables...</span></td>
 </tr>

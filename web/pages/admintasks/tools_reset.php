@@ -44,8 +44,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		die ('Access denied!');
 	}
 ?>
-
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width="9" height="6" class="imageformat" alt="" /><strong>&nbsp;<?php echo $task->title; ?></strong><br /><br />
+<?php echo display_admin_page_subtitle_expanded($task->title); ?>
 
 <?php
 

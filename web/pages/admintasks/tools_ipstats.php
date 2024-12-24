@@ -45,6 +45,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 ?>
 
+
+
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width=9 height=6 class="imageformat"><b>&nbsp;<?php
 	if (isset($_GET['hostgroup'])) {
         $hostgroup = $_GET['hostgroup'];
@@ -60,8 +62,11 @@ For support and installation notes visit http://www.hlxcommunity.com
     if (isset($_GET['hostgroup']))
 	{
 ?><br>
+
 <img src="<?php echo IMAGE_PATH; ?>/spacer.gif" width=1 height=8 border=0><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width=9 height=6 class="imageformat"><b>&nbsp;<?php echo $hostgroup; ?></b><p>
+
+<?php echo display_admin_page_subtitle_expanded($hostgroup); ?>
+
 <?php
 	}
 	else

@@ -1123,7 +1123,7 @@ else
 ?>
 	<div class="ml-6 mb-6">
 		<a href="<?php echo $g_options['scripturl']; ?>?mode=admin" name="<?php echo $code; ?>">
-			<?php echo display_admin_page_subtitle_expanded("General Settings") . "\n"; ?>
+			<?php echo display_admin_page_subtitle_expanded("General Settings"); ?>
 		</a>
 	</div>
 <?php
@@ -1154,7 +1154,7 @@ else
 		<div class="ml-6 mb-6">
 			<div class="ml-6">
 				<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;task=<?php echo $code; ?>#<?php echo $code; ?>">
-					<?php echo display_admin_page_subtitle_collapsed($task->title) . "\n"; ?>
+					<?php echo display_admin_page_subtitle_collapsed($task->title); ?>
 				</a>
 			</div>
 		</div> <?php
@@ -1263,7 +1263,7 @@ if (!$selTask || !$admintasks[$selTask])
 	<!-- start right card p -->
 	<p class="text-sm text-gray-600 dark:text-gray-400">
 		<div class="ml-6 mb-6">
-			<?php echo display_admin_page_subtitle_expanded("Tools") . "\n"; ?>
+			<?php echo display_admin_page_subtitle_expanded("Tools"); ?>
 		</div>
 	<ul>
 <?php

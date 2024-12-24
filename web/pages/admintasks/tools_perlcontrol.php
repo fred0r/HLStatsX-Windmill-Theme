@@ -44,8 +44,7 @@ For support and installation notes visit http://www.hlxcommunity.com
         die ("Access denied!");
 	}
 ?>
-
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" ><strong>&nbsp;<?php echo $task->title; ?></strong>
+<?php echo display_admin_page_subtitle_expanded($task->title); ?>
 
 <?php
 
@@ -128,8 +127,14 @@ For support and installation notes visit http://www.hlxcommunity.com
 		{
         
 ?>        
-
-<p>After every configuration change made in the Administration Center, you should reload the daemon configuration.  To do so, enter the hostname or IP address of your HLXCE daemon and choose the reload option.  You can also shut down your daemon from this panel.  <strong>NOTE: The daemon can not be restarted through the web interface!</strong></p>
+<div class="ml-6 mb-6">
+	<p class="text-sm text-gray-600 dark:text-gray-400">
+		After every configuration change made in the Administration Center, you should reload the daemon configuration.  
+		To do so, enter the hostname or IP address of your HLXCE daemon and choose the reload option.  
+		You can also shut down your daemon from this panel.  <strong>NOTE: The daemon can not be 
+		restarted through the web interface!</strong>
+	</p>
+</div>
 
 <form method="POST">
 

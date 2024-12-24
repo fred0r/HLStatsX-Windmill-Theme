@@ -45,15 +45,19 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
     
 ?>
+<?php echo display_admin_page_subtitle_expanded($task->title); ?>
 
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width=9 height=6 class="imageformat"><b>&nbsp;<?php echo $task->title; ?></b><p>
+<div class="ml-6 mb-6">
+	<p class="text-sm text-gray-600 dark:text-gray-400">
+		<span style="padding-left:35px;">You can enter a player or clan ID number directly, or you can search for a player or clan.</span>
+	</p>
+</div>
 
-<span style="padding-left:35px;">You can enter a player or clan ID number directly, or you can search for a player or clan.</span><p>
 
 <table border="0" width="95%" align="center" border=0 cellspacing=0 cellpadding=0>
 
 <tr valign="top">
-	<td width="100%" class="fNormal">&nbsp;<img src="<?php echo IMAGE_PATH; ?>/downarrow.gif" width=9 height=6 class="imageformat"><b>&nbsp;Jump Direct</b><p>
+	<td width="100%" class="fNormal"><?php echo display_admin_page_subtitle_expanded("Direct Jump"); ?>
 	
 		<form method="GET" action="<?php echo $g_options["scripturl"]; ?>">
 		<input type="hidden" name="mode" value="admin">
