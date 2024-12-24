@@ -193,7 +193,6 @@ if ($total_kills > 0)
 	</div>
 </div>
 <!-- end Card Section -->
-<?php echo display_page_subtitle("Game Servers"); ?>
 
 <?php
 	if ($g_options["show_google_map"] == 1) {
@@ -202,6 +201,8 @@ if ($total_kills > 0)
 		echo " <!-- start Active Players Map -->\n";
 	}
 ?>
+
+<?php echo display_page_subtitle("Game Servers"); ?>
 
 <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
 
