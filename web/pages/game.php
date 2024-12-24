@@ -203,7 +203,7 @@ if ($total_kills > 0)
 	}
 ?>
 
-<div class="w-full overflow-hidden rounded-lg shadow-xs">
+<div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
 
 	<div class="w-full overflow-x-auto">
 
