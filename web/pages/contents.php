@@ -228,10 +228,10 @@ list($lastevent) = $db->fetch_row($result);
 		<table class="w-full whitespace-no-wrap">
 			<thead>
 				<tr class="text-l font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-					<td width="60%" style="text-align:left;">&nbsp;</td>
-					<td width="10%" style="text-align:center;">&nbsp;Current Players</td>
-					<td width="20%" style="text-align:center;">&nbsp;Top Player</td>
-					<td width="10%" style="text-align:center;">&nbsp;Top Clan</td>
+					<td style="text-align:left;">&nbsp;</td>
+					<td style="text-align:center;">&nbsp;Current Players</td>
+					<td style="text-align:center;">&nbsp;Top Player</td>
+					<td style="text-align:center;">&nbsp;Top Clan</td>
 				</tr>
 			</thead>
 			<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
