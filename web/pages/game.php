@@ -197,9 +197,9 @@ if ($total_kills > 0)
 
 <?php
 	if ($g_options["show_google_map"] == 1) {
-		echo " <!-- start Demo Map -->\n";
+		echo " <!-- start Active Players Map -->\n";
 			display_amcharts_map($game,"active");
-		echo " <!-- End Top Players -->\n";
+		echo " <!-- start Active Players Map -->\n";
 	}
 ?>
 
