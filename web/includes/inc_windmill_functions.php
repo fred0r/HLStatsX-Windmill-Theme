@@ -272,7 +272,7 @@ function display_ingame_menu() {
 function display_amcharts_map($mapgame, $maptype) {
 
 	echo "<div class=\"hidden md:block\">\r\n";
-	echo "	<iframe src=\"" . INCLUDE_PATH . "/amcharts/display_map.php?mapgame=" . $mapgame . "&maptype=" . $maptype . "\" height=\"400\" width=\"1500\"></iframe>\r\n";
+	echo "	<iframe src=\"" . INCLUDE_PATH . "/amcharts/display_map.php?mapgame=" . $mapgame . "&maptype=" . $maptype . "\" height=\"400\" width=\"100%\"></iframe>\r\n";
 	echo "</div>\r\n";
 
 }
