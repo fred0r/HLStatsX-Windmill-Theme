@@ -228,6 +228,14 @@ function printserverstats($server_id)
 			$bordercolor = 'background:'.$thisteam['playerlist_bgcolor'].';color:'.$thisteam['playerlist_color'].';border-top:1px '.$thisteam['playerlist_color'].' solid';
             $team_display_name = empty($thisteam['name']) ? "Unknown team" : htmlspecialchars($thisteam['name']);
 
+?>
+
+<tr style="<?php echo $teamcolor ?>">
+	<td colspan="11" class="text-center" style="<?php echo $teamcolor ?>" >
+		<?php echo "<strong>$team_display_name</strong>\n"; ?>
+	</td>
+<?php
+
 			while (isset($playerdata[$curteam][$j]))
 			{
 				$thisplayer = $playerdata[$curteam][$j];
@@ -395,7 +403,7 @@ function printserverstats($server_id)
     ?>
 	<tr style="<?php echo $teamcolor ?>">
 		<td style="text-align:left;<?php echo $bordercolor ?>" ><?php
-				echo "<strong>$team_display_name</strong>";
+				echo "<strong>Team Total</strong>";
 				if (($map_teama_wins > 0) || ($map_teamb_wins > 0))
 				{
 					echo '&nbsp;('.$map_teama_wins.' wins)';
@@ -517,7 +525,6 @@ function printserverstats($server_id)
 				}
 ?>		</td>
 	</tr>
-
 <?php
 			}
 			$curteam++;
@@ -528,13 +535,13 @@ function printserverstats($server_id)
 			<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td colspan="11" style="text-align:center;">No Players</td>
 			</tr>
-			
+
 <?php
 		}
 			  	
 	}  // for servers
 ?>
-	<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+			<tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 				<td colspan="11">&nbsp;</td>
 			</tr>
 <?php
