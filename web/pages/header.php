@@ -159,10 +159,14 @@ include INCLUDE_PATH . '/inc_windmill_functions.php';
           <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="/"><?php echo $g_options['sitename']; ?></a>
 
 <?php		  
+
+echo "		<ul class=\"mt-6\">\r\n";
+
+// Are we viewing the content page?
 if ($game != '') { 
 	
-	echo "		<ul class=\"mt-6\">\r\n";
-	
+
+	// Display Server related links
 	display_menu_item("Servers", "?game=$game", "server");
 	
 	if ($g_options['nav_globalchat']==1) {
@@ -204,20 +208,38 @@ if ($game != '') {
 		
 	} 
 
-	if (isset($_SESSION['loggedin'])) {
 
-		display_menu_item("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
+} else {
 
-		display_menu_item("Logout", "hlstats.php?logout=1","sign-out-alt");
+	// display_menu_item("Games", $g_options['scripturl'],"caret-down");
 
-	} else {
+}
 
-		display_menu_item("Admin Login", $g_options['scripturl'] . "?mode=admin","sign-in-alt");
+if ($g_options['contact']){
+	display_menu_item("Rules", $g_options['contact'],"gavel");
+}
 
-	}
+display_menu_item("Games", $g_options['scripturl'],"caret-down");
+$linkFormat= 'sidemenu'; include PAGE_PATH .'/gameslist.php';
 
-	echo "		</ul>\r\n";
-} ?>
+// Always display log in/log out
+
+if (isset($_SESSION['loggedin'])) {
+
+	display_menu_item("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
+
+	display_menu_item("Logout", "hlstats.php?logout=1","sign-out-alt");
+
+} else {
+
+	display_menu_item("Admin Login", $g_options['scripturl'] . "?mode=admin","sign-in-alt");
+
+}
+
+echo "		</ul>\r\n";
+
+
+?>
         </div>
       </aside>
       <!-- Mobile sidebar -->
@@ -399,7 +421,7 @@ if ($db->num_rows() < 1) {
                     class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
                     aria-label="submenu"
                   >
-<?php @include(PAGE_PATH .'/gameslist.php'); ?>
+<?php $linkFormat= 'dropdown'; include PAGE_PATH .'/gameslist.php'; ?>
 			</ul>
 			</template>
 			</li>
@@ -430,6 +452,11 @@ if ($db->num_rows() < 1) {
                     aria-label="submenu"
                   >
 <?php
+
+						if ($g_options['contact']){
+							display_links("Rules", $g_options['contact'],"gavel");
+						}
+						display_links("Help", $g_options['scripturl'] . "?mode=help","question-circle");
 						display_links("Search", $g_options['scripturl'] . "?mode=search","search");
 						if ($g_options['sourcebans_address']) {
 							display_links("SourceBans", $g_options['sourcebans_address'],"ban");
@@ -437,7 +464,6 @@ if ($db->num_rows() < 1) {
 						if ($g_options['forum_address']) {
 							display_links("Forum",$g_options['forum_address'],"comments");
 						}
-						display_links("Help", $g_options['scripturl'] . "?mode=help","question-circle");
 						if (isset($_SESSION['loggedin'])) {
 							display_links("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
 							display_links("Admin Logout", "hlstats.php?logout=1","sign-out-alt");
