@@ -56,24 +56,40 @@ global $game;
 
 	?>
 <?php        
-		// Iterate over array of game names and codes
-		while ($gamedata = $db->fetch_row($resultGames))
-		{
-			$image = getImage("/games/$gamedata[0]/game");
-			if ($image) {
-				if ($game == $gamedata[0]) {
-					$img_id = 'id="gameslist-active-game"';
-				} else {
-					$img_id = '';
-				}
+
+$linkFormat = valid_request(strval($linkFormat), false);
+
+// Iterate over array of game names and codes
+while ($gamedata = $db->fetch_row($resultGames))
+{
+	$image = getImage("/games/$gamedata[0]/game");
+	if ($image) {
+		if ($game == $gamedata[0]) {
+			$img_id = 'id="gameslist-active-game"';
+		} else {
+			$img_id = '';
+		}
+
+		switch ($linkFormat) {
+			case "dropdown":
 				echo "				<li class=\"flex\">\n";
 				echo "					<a\n";
 				echo "						class=\"inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200\"\n";
 				echo "						href=\"" . $g_options['scripturl'] . "?game=$gamedata[0]\">\n";
-				echo "							<img class=\"w-6 h-6 mr-3\" src=\"" .$image['url'] ."\" alt=\"" . strtoupper($gamedata[0]) ."\" title=\"" . $gamedata[1] ."\">\n";
+				echo "							<img class=\"w-6 h-6 mr-3\" src=\"" .$image['url'] ."\" alt=\"" . strtoupper($gamedata[0]) ."\" title=\"" . $gamedata[1] ."\" width=\"24\" height=\"24\">\n";
 				echo "							<span>" . $gamedata[1] . "</span>\n";
 				echo "					</a>\n";
-			  	echo "				</li>\n";
-			}
+				echo "				</li>\n";
+				break;
+
+			case "sidemenu":
+				// display_menu_item_games($gamedata[1], $g_options['scripturl'] . "?game=$gamedata[0]" , $image['url']);
+				display_menu_item($gamedata[1], $g_options['scripturl'] . "?game=$gamedata[0]" , 'caret-right');
+				break;
+
+			default:
+				break;
 		}
+	}
+}
 ?>
