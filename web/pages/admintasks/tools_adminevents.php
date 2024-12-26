@@ -45,7 +45,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 ?>
 
-<?php echo display_admin_page_subtitle_expanded($task->title) . "(Last " . $g_options["DeleteDays"] . " Days)"; ?>
+<?php echo display_admin_page_subtitle_second_level_expanded($task->title) . "(Last " . $g_options["DeleteDays"] . " Days)"; ?>
 
 <?php
 	$table = new Table(

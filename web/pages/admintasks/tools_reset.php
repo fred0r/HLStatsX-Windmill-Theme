@@ -44,7 +44,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		die ('Access denied!');
 	}
 ?>
-<?php echo display_admin_page_subtitle_expanded($task->title); ?>
+<?php echo display_admin_page_subtitle_second_level_expanded($task->title); ?>
 
 <?php
 
