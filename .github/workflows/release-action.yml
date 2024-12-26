@@ -24,3 +24,23 @@ jobs:
           files: default-hlstatsx-files-${{github.ref_name}}.zip,hlstatsx-windmill-theme-${{github.ref_name}}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
+
+      - name: Get changed files in the .github folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v45
+        with:
+          files: web/**
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files-specific.outputs.all_changed_files }}
+      
+      - name: Upload
+        uses: djn24/add-comment-to-release@v1
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          comment: |-
+            <details>
+              <summary>Changed files since last release</summary>
+              <p>
+                ${{ steps.changed-files-specific.outputs.all_changed_files }}
+              </p>
+            </details>
