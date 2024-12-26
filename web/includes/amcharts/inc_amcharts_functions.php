@@ -113,7 +113,7 @@ try {
         $result[] = [
             'id' => $row['lastName'],
             'title' => '<center>' . $row['lastName'] . '<br><small>' . $amcharts_rank_display . 'Points: ' . $row['skill'] . '<br>(Click me!)</small></center>',
-            'url' => '/hlstats.php?mode=playerinfo&player=' . $row['playerId'] , 
+            'url' => '../../hlstats.php?mode=playerinfo&player=' . $row['playerId'] , 
             'geometry' => [
                 'type' => 'Point',
                 'coordinates' => [

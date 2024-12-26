@@ -2,7 +2,7 @@
 // This allows us to access native files directly
 define('IN_HLSTATS', true);
 // Allows access to native database connection variables 
-require($_SERVER['DOCUMENT_ROOT'].'/config.php');
+require('../../config.php');
 // Allow access to native functions
 require_once('../functions.php');
 
