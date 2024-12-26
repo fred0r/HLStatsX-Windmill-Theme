@@ -17,4 +17,4 @@ jobs:
         username: ${{ secrets.ftpdevusername }}
         password: ${{ secrets.ftpdevpassword }}
         server-dir: httpdocs/
-        local-dir: web/
+        local-dir: ./web/
