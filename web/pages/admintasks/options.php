@@ -208,7 +208,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$optiongroups[0] = new OptionGroup('Site Settings');
 	$optiongroups[0]->options[] = new Option('sitename', 'Site Name', 'text');
 	$optiongroups[0]->options[] = new Option('siteurl', 'Site URL', 'text');
-	$optiongroups[0]->options[] = new Option('contact', 'Contact URL', 'text');
+	$optiongroups[0]->options[] = new Option('contact', 'Contact/Rules URL (no query strings)', 'text');
 	$optiongroups[0]->options[] = new Option('bannerdisplay', 'Show Banner', 'select');
 	$optiongroups[0]->options[] = new Option('bannerfile', 'Banner file name (in hlstatsimg/) or full banner URL', 'text');
 	$optiongroups[0]->options[] = new Option('playerinfo_tabs', 'Use tabs in playerinfo to show/hide sections current page or just show all at once', 'select');
@@ -227,7 +227,7 @@ RewriteRule sig-(.*)-(.*).png$ sig.php?player_id=$1&background=$2 [L]</textarea>
 	
 	$optiongroups[1] = new OptionGroup('GeoIP data & Google Map settings');
 	$optiongroups[1]->options[] = new Option('countrydata', 'Show features requiring GeoIP data', 'select');
-	$optiongroups[1]->options[] = new Option('show_google_map', 'Show Google worldmap', 'select');
+	$optiongroups[1]->options[] = new Option('show_google_map', 'Show Player Maps', 'select');
 	$optiongroups[1]->options[] = new Option('google_map_region', 'Google Maps Region', 'select');
 	$optiongroups[1]->options[] = new Option('google_map_type', 'Google Maps Type', 'select');
 	$optiongroups[1]->options[] = new Option('UseGeoIPBinary', '*Choose whether to use GeoCityLite data loaded into mysql database or from binary file. (If binary, GeoLiteCity.dat goes in perl/GeoLiteCity and Geo::IP::PurePerl module is required', 'select');
