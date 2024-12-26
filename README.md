@@ -64,6 +64,10 @@ Features not/still to be Enabled
 ## Screenshots
 <a href="https://stats.dnagames.site/hlstats.php?mode=players&game=dods">View Live Demo</a>
 
+DEV Sites: 
+- <a href="https://dnagames.helioho.st/">Root Folder</a>
+- <a href="https://dnagames.helioho.st/hlstatsx">Non-Root Folder</a>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
