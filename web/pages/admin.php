@@ -1031,8 +1031,7 @@ if ($selTask || $admintasks[$selTask])
 		<p class ="text-sm text-gray-600 dark:text-gray-400">
 <?php
 
-$updateDbHtml = "<div>
-					Current Version: <span style=\"font-weight:bold\">{$g_options['version']}</span><br>
+$updateDbHtml = "	Current Version: <span style=\"font-weight:bold\">{$g_options['version']}</span><br>
 					Current DB version: <span style=\"font-weight:bold\">{$g_options['dbversion']}</span><br>";
 if (file_exists('./updater') && $mode != 'updater') {
 	if (file_exists("./updater/" . ($g_options['dbversion'] + 1) . ".php")) {
@@ -1049,7 +1048,6 @@ if (file_exists('./updater') && $mode != 'updater') {
 		$updateDbHtml .= "<span class=\"text-xs text-green-600 dark:text-green-400\">Great. Your database is the latest version.</span>";
 	}
 }
-$updateDbHtml .= "</div>";
 
 // General Settings
 $admintasks['options'] = new AdminTask('HLstatsX:CE Settings', 80);
@@ -1104,15 +1102,12 @@ if (!empty($admintasks[$selTask]) && ($admintasks[$selTask]->type == 'tool' || $
 	$code = $selTask;
 ?>
 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-<p class="text-sm text-gray-600 dark:text-gray-400">
-
-&nbsp;<i class="fas fa-angle-down"></i><b>&nbsp;<a href="<?php echo $g_options['scripturl']; ?>?mode=admin">Tools</a></b><br>
-<img src="<?php echo IMAGE_PATH; ?>/spacer.gif" width="1" height="8" border="0" alt="" /><br>
-
-<?php
-	include (PAGE_PATH . "/admintasks/$code.php");
-?>
-</p>
+	<p class="text-sm text-gray-600 dark:text-gray-400">
+	<a href="<?php echo $g_options['scripturl']; ?>?mode=admin" name="<?php echo $code; ?>">
+		<?php echo display_admin_page_subtitle_expanded("Admin Panel - Tools"); ?>
+	</a>
+	<?php include (PAGE_PATH . "/admintasks/$code.php"); ?>
+	</p>
 </div>
 <?php
 }
@@ -1121,11 +1116,9 @@ else
 	// General Settings
 
 ?>
-	<div class="ml-6 mb-6">
 		<a href="<?php echo $g_options['scripturl']; ?>?mode=admin" name="<?php echo $code; ?>">
 			<?php echo display_admin_page_subtitle_expanded("General Settings"); ?>
 		</a>
-	</div>
 <?php
 	foreach ($admintasks as $code => $task)
 	{
@@ -1262,9 +1255,7 @@ if (!$selTask || !$admintasks[$selTask])
 <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
 	<!-- start right card p -->
 	<p class="text-sm text-gray-600 dark:text-gray-400">
-		<div class="ml-6 mb-6">
 			<?php echo display_admin_page_subtitle_expanded("Tools"); ?>
-		</div>
 	<ul>
 <?php
 	foreach ($admintasks as $code => $task)
