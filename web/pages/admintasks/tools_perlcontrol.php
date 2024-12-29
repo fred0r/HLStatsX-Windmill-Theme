@@ -44,7 +44,8 @@ For support and installation notes visit http://www.hlxcommunity.com
         die ("Access denied!");
 	}
 ?>
-<?php echo display_admin_page_subtitle_expanded($task->title); ?>
+
+<?php echo display_admin_page_subtitle_second_level_expanded($task->title); ?>
 
 <?php
 
@@ -128,28 +129,49 @@ For support and installation notes visit http://www.hlxcommunity.com
         
 ?>        
 <div class="ml-6 mb-6">
-	<p class="text-sm text-gray-600 dark:text-gray-400">
-		After every configuration change made in the Administration Center, you should reload the daemon configuration.  
-		To do so, enter the hostname or IP address of your HLXCE daemon and choose the reload option.  
-		You can also shut down your daemon from this panel.  <strong>NOTE: The daemon can not be 
-		restarted through the web interface!</strong>
-	</p>
-</div>
+	<div class="ml-6">
+		<p class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+			After most configuration changes made in the HLstatsX:CE Settings page, you should reload the daemon configuration.  
+			To do so, enter the hostname or IP address of your HLXCE daemon and choose the reload option.  
+			You can also shut down your daemon from this panel.  <strong>NOTE: The daemon can not be 
+			restarted through the web interface!</strong>
+		</p>
 
 <form method="POST">
 
 	<table class="data-table">
 		<tr class="bg1">
-			<td width="40%"><label for="masterserver">Daemon IP or Hostname:</label><p>Hostname or IP address of your HLX:CE Daemon<br />Normally the IP or Hostname listed in the "logaddress_add" line on your game server.<br />example: daemon1.hlxce.com <em>or</em> 1.2.3.4</p></td>
-			<td><input type="text" name="masterserver" value="localhost"></td>
+			<td width="40%">
+				<label for="masterserver" class="font-bold text-gray-700 dark:text-gray-400">Daemon IP or Hostname:</label>
+				<p class="mb-4 ml-4 text-sm text-gray-600 dark:text-gray-400">Hostname or IP address of your HLstatsX:CE Daemon<br>
+				Normally the IP or Hostname listed in the "logaddress_add" line on your game server. 
+				example: daemon1.hlxce.com <em>or</em> 1.2.3.4
+				</p>
+			</td>
+			<td>
+				<input type="text" name="masterserver" value="localhost" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+			</td>
 		</tr>
 		<tr class="bg2">
-			<td><label for="port">Daemon Port:</label><p>Port number the daemon (or proxy_daemon) is listening on.<br />Normally the port listed in the "logaddress_add" line on your game server configuration.<br />example: 27500</p></td>
-			<td><input type="text" name="port" value="27500" size="6"></td>
+			<td>
+				<label for="port" class="font-bold text-gray-700 dark:text-gray-400">Daemon Port:</label>
+				<p class="mb-4 ml-4 text-sm text-gray-600 dark:text-gray-400">Port number the daemon (or proxy_daemon) is listening on.<br>
+				Normally the port listed in the "logaddress_add" line on your game server configuration. example: 27500
+				</p>
+			</td>
+			<td>
+				<input type="text" name="port" value="27500" size="6" class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+			</td>
 		</tr>
 		<tr class="bg1">
-			<td><label for="command">Command:</label><p>Select the operation to perform on the daemon<br /><strong>* Note: If you shut the daemond down through this page it can not be restarted through this interface!</strong></p></td>
-			<td><SELECT NAME="command"><?php
+			<td>
+				<label for="command" class="font-bold text-gray-700 dark:text-gray-400">Command:</label>
+					<p class="mb-4 ml-4 text-sm text-gray-600 dark:text-gray-400">Select the operation to perform on the daemon<br>
+					<strong>* Note: If you shut the daemon down through this page it can not be restarted through this interface!</strong>
+					</p>
+				</td>
+			<td>
+				<SELECT NAME="command" class="mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"><?php
   $i = 0;
   foreach ($commands as $cmd) {
    echo "<OPTION VALUE=\"$i\">".$cmd["name"];
@@ -161,10 +183,11 @@ For support and installation notes visit http://www.hlxcommunity.com
 	
 	<input type="hidden" name="confirm" value="1">
 	<div style="text-align: center; margin-top: 20px;">
-		<input type="submit" value="  EXECUTE  ">
+		<input type="submit" value="  EXECUTE  " class="windmill-button px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none">
 	</div>
 </form>
-
+</div>
+</div>
 <?php
     }
 ?>    

@@ -51,21 +51,46 @@ function display_page_subtitle($title){
 
 }
 
-function display_admin_page_subtitle_collapsed($title){
+// Admin Tools Pages
 
-	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-right\"></i>&nbsp;" . $title . "</span>\r\n";
+function display_admin_page_subtitle_collapsed($title){
+	echo "<div class=\"ml-6\">";
+	echo "		<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-right\"></i>&nbsp;" . $title . "</span>\r\n";
+	echo "</div>";
 
 }
 
 function display_admin_page_subtitle_expanded($title){
 
-	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-down\"></i>&nbsp;" . $title . "</span>\r\n";
-
+	echo "<div class=\"ml-6 mb-6\">\r\n";
+	echo "	<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\">\r\n";
+	echo "		<i class=\"fas fa-angle-down\"></i>&nbsp;" . $title . "\r\n";
+	echo "	</span>\r\n";
+	echo "</div>\r\n";
 }
+
+function display_admin_page_subtitle_second_level_expanded($title){
+
+	echo "<div class=\"ml-6 mb-6\">\r\n";
+	echo" 	<div class=\"ml-6\">\r\n";
+	echo "	<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\">\r\n";
+	echo "		<i class=\"fas fa-angle-down\"></i>&nbsp;" . $title . "\r\n";
+	echo "	</span>\r\n";
+	echo "	</div>\r\n";
+	echo "</div>\r\n";
+}
+
+// Admin Games Pages
 
 function display_admin_page_game_subtitle_collapsed($game_name,$game_code){
 
-	echo "<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\"><i class=\"fas fa-angle-right\"></i>&nbsp;" . $game_name . " (". $game_code . ")</span>\r\n";
+	echo "<div class=\"ml-6 mb-6\">";
+	echo" 	<div class=\"ml-6\">\r\n";
+	echo "	<span class=\"mb-4 font-semibold text-gray-600 dark:text-gray-300\">";
+	echo "		<i class=\"fas fa-angle-right\"></i>&nbsp;" . $game_name . " (". $game_code . ")";
+	echo "	</span>\r\n";
+	echo "	</div>\r\n";
+	echo "</div>";
 
 }
 

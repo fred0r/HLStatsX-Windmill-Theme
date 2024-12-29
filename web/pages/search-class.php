@@ -77,7 +77,14 @@ For support and installation notes visit http://www.hlxcommunity.com
 			}
 ?>
 
-<?php echo display_page_title('Find a Player or Clan'); ?>
+<?php 
+	// Display short title on admin edit details page
+	if ($_GET["mode"] == 'admin'){
+		echo display_admin_page_subtitle_second_level_expanded('Find a Player or Clan'); 
+	} else {
+		echo display_page_title('Find a Player or Clan'); 
+	}
+?>
 
 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
     <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">

@@ -45,92 +45,73 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
     
 ?>
-<?php echo display_admin_page_subtitle_expanded($task->title); ?>
+<?php echo display_admin_page_subtitle_second_level_expanded($task->title); ?>
 
 <div class="ml-6 mb-6">
-	<p class="text-sm text-gray-600 dark:text-gray-400">
-		<span style="padding-left:35px;">You can enter a player or clan ID number directly, or you can search for a player or clan.</span>
-	</p>
-</div>
-
-
-<table border="0" width="95%" align="center" border=0 cellspacing=0 cellpadding=0>
-
-<tr valign="top">
-	<td width="100%" class="fNormal"><?php echo display_admin_page_subtitle_expanded("Direct Jump"); ?>
-	
-		<form method="GET" action="<?php echo $g_options["scripturl"]; ?>">
-		<input type="hidden" name="mode" value="admin">
-		<table width="100%" border=0 cellspacing=0 cellpadding=0>
-		
-		<tr>
-			<td width="5%">&nbsp;</td>
-			<td width="95%">
-				<table width="40%" border=0 cellspacing=0 cellpadding=0 class="border">
-				
-				<tr valign="top" >
-					<td>
-						<table width="100%" border=0 cellspacing=1 cellpadding=4>
-						<tr valign="middle" class="bg1">
-							<td nowrap width="45%" class="fNormal">Type:</td>
-							<td width="55%">
-								<?php
-									echo getSelect("task",
-										array(
-											"tools_editdetails_player"=>"Player",
-											"tools_editdetails_clan"=>"Clan"
-										)
-									);
-								?></td>
+	<div class="ml-6">
+		<p class="mb-4 ml-4 text-sm text-gray-600 dark:text-gray-400">
+			You can enter a player or clan ID number directly, or you can search for a player or clan.
+		</p>
+	<?php echo display_admin_page_subtitle_second_level_expanded("Direct Jump"); ?>
+		<div class="ml-6 mb-6">
+			<div class="ml-6">
+				<form method="GET" action="<?php echo $g_options["scripturl"]; ?>">
+				<input type="hidden" name="mode" value="admin">
+					<table class="w-full whitespace-no-wrap">
+						<tr class="text-l font-semibold tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+							<td>Type:&nbsp;</td>
+							<td>
+							<?php
+								echo getWindmillSelect("task",
+									array(
+										"tools_editdetails_player"=>"Player",
+										"tools_editdetails_clan"=>"Clan"
+									)
+								);
+							?>
+							</td>
 						</tr>
-						
-						<tr valign="middle" class="bg1">
-							<td nowrap width="45%" class="fNormal">ID Number:</td>
-							<td width="55%"><input type="text" name="id" size=15 maxlength=12 class="textbox"></td>
+						<tr class="text-l font-semibold tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+							<td>ID Number:&nbsp;</td>
+							<td>
+							<input type="text" name="id" size=15 maxlength=12 class="mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+							</td>
 						</tr>
-						
-						</table></td>
-					<td align="right">
-						<table border=0 cellspacing=0 cellpadding=10>
 						<tr>
-							<td><input type="submit" value=" Edit &gt;&gt; " class="submit"></td>
+							<td colspan="2">
+							<input type="submit" value=" Edit &gt;&gt; " class="windmill-button px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none">
+							</td> 
 						</tr>
-						</table></td>
-				</tr>
-				
-				</table></td>
-		</tr>
-		
-		</table>
-		
-		</form></td>
-</tr>
+					</table>
+				</form>
+			</div>
+		</div>
 
-</table><p>
+		<?php
+			require(PAGE_PATH . "/search-class.php");
+			
+			$sr_query = $_GET["q"];
+			$search_pattern  = array("/script/i", "/;/", "/%/");
+			$replace_pattern = array("", "", "");
+			$sr_query = preg_replace($search_pattern, $replace_pattern, $sr_query);
 
-<?php
-	require(PAGE_PATH . "/search-class.php");
-	
-	$sr_query = $_GET["q"];
-    $search_pattern  = array("/script/i", "/;/", "/%/");
-    $replace_pattern = array("", "", "");
-    $sr_query = preg_replace($search_pattern, $replace_pattern, $sr_query);
-
-	$sr_type = valid_request($_GET["st"], false) or "player";
-	$sr_game = valid_request($_GET["game"], false);
-	
-	$search = new Search($sr_query, $sr_type, $sr_game);
-	
-	$search->drawForm(array(
-		"mode"=>"admin",
-		"task"=>$selTask
-	));
-	
-	if ($sr_query)
-	{
-		$search->drawResults(
-			"mode=admin&task=tools_editdetails_player&id=%k",
-			"mode=admin&task=tools_editdetails_clan&id=%k"
-		);
-	}
-?>
+			$sr_type = valid_request($_GET["st"], false) or "player";
+			$sr_game = valid_request($_GET["game"], false);
+			
+			$search = new Search($sr_query, $sr_type, $sr_game);
+			
+			$search->drawForm(array(
+				"mode"=>"admin",
+				"task"=>$selTask
+			));
+			
+			if ($sr_query)
+			{
+				$search->drawResults(
+					"mode=admin&task=tools_editdetails_player&id=%k",
+					"mode=admin&task=tools_editdetails_clan&id=%k"
+				);
+			}
+		?>
+	</div>
+</div>
