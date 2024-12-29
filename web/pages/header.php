@@ -168,7 +168,11 @@ if ($game != '') {
 
 	// Display Server related links
 	display_menu_item("Servers", "?game=$game", "server");
-	
+
+	if ($g_options['contact']){
+		display_menu_item("Rules", $g_options['contact'],"gavel");
+	}
+
 	if ($g_options['nav_globalchat']==1) {
 		display_menu_item("Chat", "?mode=chat&amp;game=$game","comments");
 	}
@@ -213,10 +217,6 @@ if ($game != '') {
 
 	// display_menu_item("Games", $g_options['scripturl'],"caret-down");
 
-}
-
-if ($g_options['contact']){
-	display_menu_item("Rules", $g_options['contact'],"gavel");
 }
 
 display_menu_item("Games", $g_options['scripturl'],"caret-down");
