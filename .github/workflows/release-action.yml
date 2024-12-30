@@ -30,6 +30,7 @@ jobs:
         uses: tj-actions/changed-files@v45
         with:
           files: web/**
+          files_separator: '<br />'
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files-specific.outputs.all_changed_files }}
       
