@@ -399,7 +399,18 @@ if ($db->num_rows() < 1) {
 		
 		list($num_games) = $db->fetch_row($resultGames);
 		
-		if ($num_games > 1 && $g_options['display_gamelist'] == 1) {
+		// Display the games list
+		if ($num_games > 1) {
+		
+		// Only display icons if set in admin 
+		if ($g_options['display_gamelist'] == 1) {
+
+//		echo "<ul>";
+		$linkFormat= 'iconsonly'; include PAGE_PATH .'/gameslist.php';
+//		echo "</ul>";
+
+		// otherwise display full drop down
+		} else {
 ?>
               <!-- Start Games menu -->
               <li class="relative">
@@ -427,7 +438,8 @@ if ($db->num_rows() < 1) {
 			</template>
 			</li>
 <?php	
-		}
+	}	
+	}
 ?>
             <!-- End Games menu -->
 
