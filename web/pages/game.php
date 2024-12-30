@@ -290,6 +290,113 @@ if ($total_kills > 0)
 	</div>
 </div>
 
+
+<?php
+	if ($g_options['gamehome_show_awards'] == 1) {
+		$resultAwards = $db->query("
+			SELECT
+				hlstats_Awards.awardId,
+				hlstats_Awards.name,
+				hlstats_Awards.verb,
+				hlstats_Awards.d_winner_id,
+				hlstats_Awards.d_winner_count,
+				hlstats_Players.lastName AS d_winner_name,
+				hlstats_Players.flag AS flag,
+				hlstats_Players.country AS country
+			FROM
+				hlstats_Awards
+			LEFT JOIN hlstats_Players ON
+				hlstats_Players.playerId = hlstats_Awards.d_winner_id
+			WHERE
+				hlstats_Awards.game='$game'
+			ORDER BY
+				hlstats_Awards.name
+		");
+
+		$result = $db->query("
+			SELECT
+				IFNULL(value, 1)
+			FROM
+				hlstats_Options
+			WHERE
+				keyname='awards_numdays'
+		");
+
+		if ($db->num_rows($result) == 1)
+			list($awards_numdays) = $db->fetch_row($result);
+		else
+			$awards_numdays = 1;
+
+		$result = $db->query("
+			SELECT
+				DATE_FORMAT(value, '%W %e %b'),
+				DATE_FORMAT( DATE_SUB( value, INTERVAL $awards_numdays DAY ) , '%W %e %b' )
+			FROM
+				hlstats_Options
+			WHERE
+				keyname='awards_d_date'
+		");
+		list($awards_d_date, $awards_s_date) = $db->fetch_row($result);
+
+		if ($db->num_rows($resultAwards) > 0 && $awards_d_date) {
+?>
+<!-- Start Awards Table -->
+<?php echo display_page_subtitle((($awards_numdays == 1) ? 'Daily' : "$awards_numdays Day")." Awards ($awards_d_date)"); ?>
+
+<div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+	<div class="w-full overflow-x-auto">
+		<table class="w-full whitespace-no-wrap">
+			<tr class="rounded-b-lg border-b dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+				<td>Award</td>
+				<td>Winner</td>
+			</tr>
+<?php
+			$c = 0;
+			while ($awarddata = $db->fetch_array($resultAwards))
+			{
+				$colour = ($c % 2) + 1;
+				$c++;
+?>
+
+			<tr class="text-xs tracking-wide text-left text-gray-500 border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+				<td style="width:40%;"><?php
+				echo '<a href="'.$g_options['scripturl'].'?mode=dailyawardinfo&amp;award='.$awarddata['awardId']."&amp;game=$game\">".htmlspecialchars($awarddata['name']).'</a>';
+?></td>
+				<td style="width:60%;" class="flex items-center"><?php
+
+				if ($awarddata['d_winner_id']) {
+					if ($g_options['countrydata'] == 1) {
+						$flag = '0.gif';
+						$alt = 'Unknown Country';
+						if ($awarddata['flag'] != '') {
+							$alt = ucfirst(strtolower($awarddata['country']));
+						}
+						echo "<img src=\"" . getFlag($awarddata['flag']) . "\" hspace=\"4\" alt=\"$alt\" title=\"$alt\" /><a href=\"{$g_options['scripturl']}?mode=playerinfo&amp;player={$awarddata['d_winner_id']}\"><b>" . htmlspecialchars($awarddata['d_winner_name'], ENT_COMPAT) . "</b></a> ({$awarddata['d_winner_count']} " . htmlspecialchars($awarddata['verb']) . ")";
+					} else {
+						echo "<img src=\"" . IMAGE_PATH . "/player.gif\" hspace=\"4\" alt=\"Player\" /><a href=\"{$g_options['scripturl']}?mode=playerinfo&amp;player={$awarddata['d_winner_id']}\"><b>" . htmlspecialchars($awarddata['d_winner_name'], ENT_COMPAT) . "</b></a> ({$awarddata['d_winner_count']} ". htmlspecialchars($awarddata['verb']) . ")";
+					}
+				}
+				else
+				{
+					echo '&nbsp;&nbsp; <em>No Award Winner</em>';
+				}
+?></td>
+			</tr>
+<?php
+			}
+?>
+			<tr class="rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+				<td colspan="2">&nbsp;</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<!-- end Awards Table -->
+ <?php
+		}
+	}
+?>
+
 <?php include (PAGE_PATH . '/voicecomm_serverlist.php'); ?>
 
 <?php 
