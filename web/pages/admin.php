@@ -1184,7 +1184,7 @@ else
 	<div class="ml-6 mb-6">
 		<div class="ml-6">
 			<a href="<?php echo $g_options['scripturl']; ?>?mode=admin" name="game_<?php echo $gamecode; ?>">
-				<?php echo display_admin_page_game_subtitle_expanded($gamename,$gamecode); ?>..
+				<?php echo display_admin_page_game_subtitle_expanded($gamename,$gamecode); ?>
 			</a>
 		</div>
 	</div>
@@ -1220,7 +1220,7 @@ else
 		<div class="ml-6">
 			<div class="ml-6">
 				<a href="<?php echo $g_options['scripturl']; ?>?mode=admin&amp;game=<?php echo $gamecode; ?>&task=<?php echo $code; ?>#<?php echo $code; ?>">
-					<?php echo display_admin_page_subtitle_collapsed($task->title); ?>.
+					<?php echo display_admin_page_subtitle_collapsed($task->title); ?>
 				</a>
 			</div>
 		</div>
