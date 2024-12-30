@@ -211,6 +211,19 @@ if ($game != '') {
 		
 	} 
 
+// Always display log in/log out
+if (isset($_SESSION['loggedin'])) {
+
+	display_menu_item("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
+
+	display_menu_item("Logout", "hlstats.php?logout=1","sign-out-alt");
+
+} else {
+
+	display_menu_item("Admin Login", $g_options['scripturl'] . "?mode=admin","sign-in-alt");
+
+}
+
 
 } else {
 
@@ -223,20 +236,6 @@ if ($game != '') {
 // display_menu_item("Games", $g_options['scripturl'],"caret-down");
 // $linkFormat= 'sidemenu'; include PAGE_PATH .'/gameslist.php';
 
-// Always display log in/log out
-/* 
-if (isset($_SESSION['loggedin'])) {
-
-	display_menu_item("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
-
-	display_menu_item("Logout", "hlstats.php?logout=1","sign-out-alt");
-
-} else {
-
-	display_menu_item("Admin Login", $g_options['scripturl'] . "?mode=admin","sign-in-alt");
-
-}
-*/
 echo "		</ul>\r\n";
 
 
