@@ -164,7 +164,6 @@ echo "		<ul class=\"mt-6\">\r\n";
 
 // Are we viewing the content page?
 if ($game != '') { 
-	
 
 	// Display Server related links
 	display_menu_item("Servers", "?game=$game", "server");
@@ -219,11 +218,13 @@ if ($game != '') {
 
 }
 
-display_menu_item("Games", $g_options['scripturl'],"caret-down");
-$linkFormat= 'sidemenu'; include PAGE_PATH .'/gameslist.php';
+/* Removing the Games side menu for now */ 
+
+// display_menu_item("Games", $g_options['scripturl'],"caret-down");
+// $linkFormat= 'sidemenu'; include PAGE_PATH .'/gameslist.php';
 
 // Always display log in/log out
-
+/* 
 if (isset($_SESSION['loggedin'])) {
 
 	display_menu_item("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
@@ -235,7 +236,7 @@ if (isset($_SESSION['loggedin'])) {
 	display_menu_item("Admin Login", $g_options['scripturl'] . "?mode=admin","sign-in-alt");
 
 }
-
+*/
 echo "		</ul>\r\n";
 
 
