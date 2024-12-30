@@ -1,4 +1,4 @@
-name: Increment value test
+name: Increment theme version value
 on:
   workflow_dispatch:
   push:
@@ -12,7 +12,7 @@ on:
       - '.gitignore'
 jobs:
   test:
-    name: Increment value test
+    name: Increment theme version value
     runs-on: ubuntu-latest
     steps:
       - name: Check out source code
