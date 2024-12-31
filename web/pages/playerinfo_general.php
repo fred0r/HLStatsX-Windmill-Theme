@@ -607,8 +607,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 					</td>
 				</tr>
 			</table>
-			<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Player Trend</h4>
-			<?php echo "<img src=\"trend_graph.php?bgcolor=".$g_options['graphbg_trend'].'&amp;color='.$g_options['graphtxt_trend']."&amp;player=$player\" alt=\"Player Trend Graph\">"; ?>			
 		</p>
 	</div>
 <!-- end right card -->
@@ -717,26 +715,19 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">	
 
-		<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+		<div class="flex items-start p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
 			<div class="p-3 mr-4 rounded-full">
+			<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Player Rank</h4>
 			<?php echo '<img src="'.$rankimage['url']."\" alt=\"$rankName\" title=\"$rankName\">"; ?>
-			</div>
-			<div>
 				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-					Current rank: <b><?php echo htmlspecialchars($rankName, ENT_COMPAT); ?></b>
-				</p>
-				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-					<span class="flex items-center">
-						<meter min="0" max="100" low="25" high="50" optimum="75" value="<?php echo $rankPercent ?>"></meter>
-					</span>
-				</p>
-				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+					Current rank: <b><?php echo htmlspecialchars($rankName, ENT_COMPAT); ?></b><br>
+					<meter min="0" max="100" low="25" high="50" optimum="75" value="<?php echo $rankPercent ?>"></meter><br>
 					Next rank: <?php echo "$rankKillsNeeded kills (".number_format($rankPercent, 0, '.', '');?>%)
 				</p>
 			</div>
 		</div>
 
-		<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+		<div class="flex items-start p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
 			<div class="p-3 mr-4 rounded-full">
 				<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Player History</h4>
 				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -757,7 +748,90 @@ For support and installation notes visit http://www.hlxcommunity.com
 				</p>
 			</div>
 		</div>
-	
+
+		<div class="flex items-start p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+			<div class="p-3 mr-4 rounded-full">
+				<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Player Trend</h4>
+				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+					<?php echo "<img src=\"trend_graph.php?bgcolor=".$g_options['graphbg_trend'].'&amp;color='.$g_options['graphtxt_trend']."&amp;player=$player\" alt=\"Player Trend Graph\">"; ?>
+				</p>
+			</div>
+		</div>
+
+<?php
+if ($g_options['sigbackground']){		
+?>
+		<div class="flex items-start p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+			<div class="p-3 mr-4 rounded-full">
+				<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Forum Signature</h4>
+				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+
+				<?php
+					if ($g_options['modrewrite'] == 0)
+					{
+						$imglink = $siteurlneo.'sig.php?player_id='.$player.'&amp;background='.$g_options['sigbackground'];
+						$jimglink = $siteurlneo.'sig.php?player_id='.$player.'&background='.$g_options['sigbackground'];
+					}
+					else
+					{
+						$imglink = $siteurlneo.'sig-'.$player.'-'.$g_options['sigbackground'].'.png';
+						$jimglink = $imglink;
+					}
+					
+					echo "<a href=\"$imglink\">";					
+					echo "	<img src=\"$imglink\" title=\"Copy &amp; Paste the whole URL below in your forum signature\" alt=\"forum sig image\"/>";
+					echo "</a>";
+
+					$script_path = (isset($_SERVER['SSL']) || (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on")) ? 'https://' : 'http://';
+					$script_path .= $_SERVER['HTTP_HOST'];
+					$script_path .= str_replace('\\','/',dirname($_SERVER['PHP_SELF']));
+					$script_path = preg_replace('/\/$/','',$script_path);
+				?>
+				<br />
+				<script type="text/javascript">
+					/* <![CDATA[ */
+					function setForumText(val)
+					{
+						var txtArea = document.getElementById('siglink');
+						switch(val)
+						{
+							case 0:
+								<?php echo "txtArea.value = '$jimglink'\n"; ?>
+								break;	
+							case 1:
+								<?php echo "txtArea.value = '[url=$script_path/hlstats.php?mode=playerinfo&player=$player"."][img]$jimglink"."[/img][/url]'\n"; ?>
+								break;
+							case 2:
+								<?php echo "txtArea.value = '[url=\"$script_path/hlstats.php?mode=playerinfo&player=$player\"][img]$jimglink"."[/img][/url]'\n"; ?>
+								break;
+							case 3:
+								<?php echo "txtArea.value = '[![". htmlspecialchars($playerdata['lastName'], ENT_COMPAT) . "`s Stats]($jimglink"." \"". htmlspecialchars($playerdata['lastName'], ENT_COMPAT) . "`s Stats\")]($script_path/hlstats.php?mode=playerinfo&player=$player)'\n"; ?>
+							
+							
+							
+							
+							
+								break;
+						}
+					}
+					/* ]]> */
+				</script>
+				<span class="text-xs text-gray-600 dark:text-gray-400">
+				<a href="" onclick="setForumText(1);return false">
+					bbCode 1 (phpBB, SMF)</a>&nbsp;|&nbsp;<a href="" onclick="setForumText(2);return false">bbCode 2 (IPB)</a>&nbsp;|&nbsp;<a href="" onclick="setForumText(0);return false">Direct Image</a>&nbsp;|&nbsp;<a href="" onclick="setForumText(3);return false">Markdown</a>
+				
+				</span>
+				<?php echo '<textarea class="block w-full mt-1 text-xs dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" style="width: 95%; height: 100px;" rows="2" cols="70" id="siglink" readonly="readonly" onclick="document.getElementById(\'siglink\').select();">[url='."$script_path/hlstats.php?mode=playerinfo&amp;player=$player"."][img]$imglink".'[/img][/url]</textarea>'; ?>
+
+			</p>
+			</div>
+		</div>
+
+<?php
+}
+?>
+
+
 	</div>
 
 

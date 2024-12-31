@@ -220,7 +220,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$optiongroups[0]->options[] = new Option('show_weapon_target_flash', 'Show hitbox flash animation instead of plain html table for games with accuracy tracking (on supported games)', 'select');
 	$optiongroups[0]->options[] = new Option('show_server_load_image', 'Show load summaries from all monitored servers', 'select');
 	$optiongroups[0]->options[] = new Option('showqueries', 'Show "Executed X queries, generated this page in Y Seconds." message in footer?', 'select');
-	$optiongroups[0]->options[] = new Option('sigbackground', 'Default background for forum signature(Numbers 1-11 or random)<br />Look in sig folder to see background choices', 'text');
+	$optiongroups[0]->options[] = new Option('sigbackground', 'Default background for forum signature (Numbers 1-11 or random)<br>Look in hlstatsimg->sig folder to see background choices.<br>Remove all text to disable this feature', 'text');
 	$optiongroups[0]->options[] = new Option('modrewrite', 'Use modrewrite to make forum signature image compatible with more forum types. (To utilize this, you <strong>must</strong> have modrewrite enabled on your webserver and add the following text to a .htaccess file in the directory of hlstats.php)<br /><br /><textarea rows="3" cols="72" style="overflow:hidden;">
 RewriteEngine On
 RewriteRule sig-(.*)-(.*).png$ sig.php?player_id=$1&background=$2 [L]</textarea>', 'select');
@@ -254,7 +254,7 @@ RewriteRule sig-(.*)-(.*).png$ sig.php?player_id=$1&background=$2 [L]</textarea>
 	$optiongroups[30]->options[] = new Option('graphtxt_trend', 'Player Trend graph: text color hex# (RRGGBB)', 'text');
 	$optiongroups[30]->options[] = new Option('style', 'Stylesheet filename to use', 'styles');
 	$optiongroups[30]->options[] = new Option('display_style_selector', 'Display Style Selector?<br />Allow end users to change the style they are using.', 'select');
-	$optiongroups[30]->options[] = new Option('display_gamelist', 'Display games as icons on top menu?', 'select');
+	$optiongroups[30]->options[] = new Option('display_gamelist', 'Display games as icons on top menu', 'select');
 
 	
 	$optiongroups[35] = new OptionGroup('Ranking settings');
