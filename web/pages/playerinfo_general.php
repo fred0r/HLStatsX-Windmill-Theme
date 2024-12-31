@@ -753,7 +753,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 			<div class="p-3 mr-4 rounded-full">
 				<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Player Trend</h4>
 				<p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-					<?php echo "<img src=\"trend_graph.php?bgcolor=".$g_options['graphbg_trend'].'&amp;color='.$g_options['graphtxt_trend']."&amp;player=$player\" alt=\"Player Trend Graph\">"; ?>
+				<?php echo "<a href=\"trend_graph.php?bgcolor=".$g_options['graphbg_trend'].'&amp;color='.$g_options['graphtxt_trend']."&amp;player=$player\" alt=\"Player Trend Graph\">"; ?>
+				<?php echo "	<img src=\"trend_graph.php?bgcolor=".$g_options['graphbg_trend'].'&amp;color='.$g_options['graphtxt_trend']."&amp;player=$player\" alt=\"Player Trend Graph\">"; ?>
+				<?php echo "</a>"; ?>
 				</p>
 			</div>
 		</div>
