@@ -269,7 +269,7 @@ function display_ingame_menu() {
 			$player = valid_request(intval($_GET['player']), true);
 		}
 
-		echo "<div class=\"flex items-center justify-between p-4 mb-4 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800 text-gray-600 dark:text-gray-400\">\n";
+		echo "<div class=\"flex items-center justify-between p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800 text-gray-600 dark:text-gray-400\">\n";
 		echo "    <div class=\"flex items-center\">\n";
 		echo "        <span>\n";
 

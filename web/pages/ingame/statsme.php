@@ -143,15 +143,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 <?php display_page_title('Player Statistics Summary'); ?>
 <?php display_ingame_menu(); ?>
 
-
+<div class="flex items-center justify-between p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800 text-gray-600 dark:text-gray-400">
 
 <table class="data-table w-full whitespace-no-wrap">
-
-	<thead>
-		<tr class="data-table-head text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-			<td colspan="2"></td>
-		</tr>
-	</thead>
 
 	<tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
 		<tr class="text-xs text-gray-700 dark:text-gray-400">
@@ -349,4 +343,4 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</tr>
 	</tbody>
 </table>
-<br>
+</div>

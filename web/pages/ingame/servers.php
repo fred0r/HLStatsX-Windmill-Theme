@@ -49,9 +49,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 	display_page_title('Participating Servers'); 
 	display_ingame_menu();
 ?>
-
-	<table class="data-table">
-		<tr class="data-table-head">
+	<div class="p-4 mb-8 text-sm px-4 py-3 bg-white rounded-lg shadow-md dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+		<table class="data-table-head text-xs tracking-wide text-left text-gray-500 border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+			<tr class="text-xs font-semibold uppercase text-gray-700 dark:text-gray-400">
 			<td style="width:55%;" class="fSmall">&nbsp;Server Name</td>
 			<td style="width:23%;" class="fSmall">&nbsp;Address</td>
 			<td style="width:6%;text-align:center;" class="fSmall">&nbsp;Map</td>
@@ -129,4 +129,4 @@ For support and installation notes visit http://www.hlxcommunity.com
 		</tr>
 <?php } ?>
 	</table>
-<br>
+</div>
