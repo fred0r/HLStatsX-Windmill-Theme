@@ -210,14 +210,14 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$optiongroups[0]->options[] = new Option('siteurl', 'Site URL', 'text');
 	$optiongroups[0]->options[] = new Option('contact', 'Contact/Rules URL (no query strings)', 'text');
 	$optiongroups[0]->options[] = new Option('bannerdisplay', 'Show Banner', 'select');
-	$optiongroups[0]->options[] = new Option('bannerfile', 'Banner file name (in hlstatsimg/) or full banner URL', 'text');
-	$optiongroups[0]->options[] = new Option('playerinfo_tabs', 'Use tabs in playerinfo to show/hide sections current page or just show all at once', 'select');
-	$optiongroups[0]->options[] = new Option('slider', 'Enable AJAX gliding server list (accordion effect) on homepage of each game (only affects games with more than one server)', 'select');
-	$optiongroups[0]->options[] = new Option('nav_globalchat', 'Show Chat nav-link', 'select');
-	$optiongroups[0]->options[] = new Option('nav_cheaters', 'Show Banned Players nav-link', 'select');
+	$optiongroups[0]->options[] = new Option('bannerfile', 'Banner file name (save in hlstatsimg/) or full banner URL', 'text');
+	$optiongroups[0]->options[] = new Option('playerinfo_tabs', 'Use tabs in playerinfo to show/hide sections current page or just show all at once ** Not used', 'select');
+	$optiongroups[0]->options[] = new Option('slider', 'Enable AJAX gliding server list (accordion effect) on homepage of each game (only affects games with more than one server) ** Not used', 'select');
+	$optiongroups[0]->options[] = new Option('nav_globalchat', 'Show Chat link in left menu', 'select');
+	$optiongroups[0]->options[] = new Option('nav_cheaters', 'Show Banned Players in left menu', 'select');
 	$optiongroups[0]->options[] = new Option('sourcebans_address', 'SourceBans URL<br />Enter the relative or full path to your SourceBans web site, if you have one. Ex: http://www.yoursite.com/sourcebans/ or /sourcebans/', 'text');
-	$optiongroups[0]->options[] = new Option('forum_address', 'Forum URL<br />Enter the relative or full path to your forum/message board, if you have one. Ex: http://www.yoursite.com/forum/ or /forum/', 'text');
-	$optiongroups[0]->options[] = new Option('show_weapon_target_flash', 'Show hitbox flash animation instead of plain html table for games with accuracy tracking (on supported games)', 'select');
+	$optiongroups[0]->options[] = new Option('forum_address', 'Forum/Discord URL<br />Enter the relative or full path to your forum/message board, if you have one. Ex: http://www.yoursite.com/forum/ or /forum/', 'text');
+	$optiongroups[0]->options[] = new Option('show_weapon_target_flash', 'Show hitbox flash animation instead of plain html table for games with accuracy tracking (on supported games) ** Not used', 'select');
 	$optiongroups[0]->options[] = new Option('show_server_load_image', 'Show load summaries from all monitored servers', 'select');
 	$optiongroups[0]->options[] = new Option('showqueries', 'Show "Executed X queries, generated this page in Y Seconds." message in footer?', 'select');
 	$optiongroups[0]->options[] = new Option('sigbackground', 'Default background for forum signature (Numbers 1-11 or random)<br>Look in hlstatsimg->sig folder to see background choices.<br>Remove all text to disable this feature', 'text');
@@ -229,7 +229,7 @@ RewriteRule sig-(.*)-(.*).png$ sig.php?player_id=$1&background=$2 [L]</textarea>
 	$optiongroups[1]->options[] = new Option('countrydata', 'Show features requiring GeoIP data', 'select');
 	$optiongroups[1]->options[] = new Option('show_google_map', 'Show Player Maps', 'select');
 	$optiongroups[1]->options[] = new Option('google_map_region', 'Google Maps Region', 'select');
-	$optiongroups[1]->options[] = new Option('google_map_type', 'Google Maps Type', 'select');
+	$optiongroups[1]->options[] = new Option('google_map_type', 'Google Maps Type ** Not used', 'select');
 	$optiongroups[1]->options[] = new Option('UseGeoIPBinary', '*Choose whether to use GeoCityLite data loaded into mysql database or from binary file. (If binary, GeoLiteCity.dat goes in perl/GeoLiteCity and Geo::IP::PurePerl module is required', 'select');
 
 	$optiongroups[2] = new OptionGroup('Awards settings');
@@ -240,9 +240,9 @@ RewriteRule sig-(.*)-(.*).png$ sig.php?player_id=$1&background=$2 [L]</textarea>
 	$optiongroups[2]->options[] = new Option('awardribbonscols', 'Ribbons: columns count', 'text');
 
 	$optiongroups[3] = new OptionGroup('Hit counter settings');
-	$optiongroups[3]->options[] = new Option('counter_visit_timeout', 'Visit cookie timeout in minutes', 'text');
-	$optiongroups[3]->options[] = new Option('counter_visits', 'Current Visits', 'text');
-	$optiongroups[3]->options[] = new Option('counter_hits', 'Current Page Hits', 'text');
+	$optiongroups[3]->options[] = new Option('counter_visit_timeout', 'Visit cookie timeout in minutes ** Not used', 'text');
+	$optiongroups[3]->options[] = new Option('counter_visits', 'Current Visits ** Not used', 'text');
+	$optiongroups[3]->options[] = new Option('counter_hits', 'Current Page Hits ** Not used', 'text');
 	
 	$optiongroups[20] = new OptionGroup('Paths');
 	$optiongroups[20]->options[] = new Option('map_dlurl', 'Map Download URL<br /><span class="fSmall">(%MAP% = map, %GAME% = gamecode)</span>. Leave blank to suppress download link.', 'text');
@@ -253,8 +253,8 @@ RewriteRule sig-(.*)-(.*).png$ sig.php?player_id=$1&background=$2 [L]</textarea>
 	$optiongroups[30]->options[] = new Option('graphbg_trend', 'Player Trend graph: background color hex# (RRGGBB)', 'text');
 	$optiongroups[30]->options[] = new Option('graphtxt_trend', 'Player Trend graph: text color hex# (RRGGBB)', 'text');
 	$optiongroups[30]->options[] = new Option('style', 'Stylesheet filename to use', 'styles');
-	$optiongroups[30]->options[] = new Option('display_style_selector', 'Display Style Selector?<br />Allow end users to change the style they are using.', 'select');
-	$optiongroups[30]->options[] = new Option('display_gamelist', 'Display games as icons on top menu', 'select');
+	$optiongroups[30]->options[] = new Option('display_style_selector', 'Display Style Selector?<br />Allow end users to change the style they are using. ** Not used', 'select');
+	$optiongroups[30]->options[] = new Option('display_gamelist', 'Display games as icons on top menu (only affects site with more than one game)', 'select');
 
 	
 	$optiongroups[35] = new OptionGroup('Ranking settings');
@@ -265,7 +265,7 @@ RewriteRule sig-(.*)-(.*).png$ sig.php?player_id=$1&background=$2 [L]</textarea>
 	$optiongroups[40]->options[] = new Option('Mode', '*Sets the player-tracking mode.<br><ul><LI><b>Steam ID</b>     - Recommended for public Internet server use. Players will be tracked by Steam ID.<LI><b>Player Name</b>  - Useful for shared-PC environments, such as Internet cafes, etc. Players will be tracked by nickname. <LI><b>IP Address</b>        - Useful for LAN servers where players do not have a real Steam ID. Players will be tracked by IP Address. </UL>', 'select');
 	$optiongroups[40]->options[] = new Option('AllowOnlyConfigServers', '*Allow only servers set up in admin panel to be tracked. Other servers will NOT automatically added and tracked! This is a big security thing', 'select');
 	$optiongroups[40]->options[] = new Option('DeleteDays', '*HLstatsX will automatically delete history events from the events tables when they are over this many days old. This is important for performance reasons. Set lower if you are logging a large number of game servers or find the load on the MySQL server is too high', 'text');
-	$optiongroups[40]->options[] = new Option('DNSResolveIP', '*Resolve player IP addresses to hostnames. Requires a working DNS setup (on the box running hlstats.pl)', 'select');
+	$optiongroups[40]->options[] = new Option('DNSResolveIP', '*Resolve player IP addresses to hostnames. Requires a working DNS setup (on the server running hlstats.pl)', 'select');
 	$optiongroups[40]->options[] = new Option('DNSTimeout', '*Time, in seconds, to wait for DNS queries to complete before cancelling DNS resolves. You may need to increase this if on a slow connection or if you find a lot of IPs are not being resolved; however, hlstats.pl cannot be parsing log data while waiting for an IP to resolve', 'text');
 	$optiongroups[40]->options[] = new Option('MailTo', '*E-mail address to mail database errors to', 'text');
 	$optiongroups[40]->options[] = new Option('MailPath', '*Path to the mail program -- usually /usr/sbin/sendmail on webhosts', 'text');
