@@ -341,7 +341,7 @@ if ($total_kills > 0)
 		if ($db->num_rows($resultAwards) > 0 && $awards_d_date) {
 ?>
 <!-- Start Awards Table -->
-<?php echo display_page_subtitle((($awards_numdays == 1) ? 'Daily' : "$awards_numdays Day")." Awards ($awards_d_date)"); ?>
+<?php echo display_page_subtitle((($awards_numdays == 1) ? '' : "$awards_numdays Day")." Award Winners for $awards_d_date"); ?>
 
 <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
 	<div class="w-full overflow-x-auto">
@@ -354,31 +354,25 @@ if ($total_kills > 0)
 			$c = 0;
 			while ($awarddata = $db->fetch_array($resultAwards))
 			{
-				$colour = ($c % 2) + 1;
-				$c++;
-?>
-
-			<tr class="text-xs tracking-wide text-left text-gray-500 border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-				<td style="width:40%;"><?php
-				echo '<a href="'.$g_options['scripturl'].'?mode=dailyawardinfo&amp;award='.$awarddata['awardId']."&amp;game=$game\">".htmlspecialchars($awarddata['name']).'</a>';
-?></td>
-				<td style="width:60%;" class="flex items-center"><?php
-
 				if ($awarddata['d_winner_id']) {
-					if ($g_options['countrydata'] == 1) {
-						$flag = '0.gif';
-						$alt = 'Unknown Country';
-						if ($awarddata['flag'] != '') {
-							$alt = ucfirst(strtolower($awarddata['country']));
+					$colour = ($c % 2) + 1;
+					$c++;
+?>
+				<tr class="text-xs tracking-wide text-left text-gray-500 border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+					<td style="width:40%;"><?php
+					echo '<a href="'.$g_options['scripturl'].'?mode=dailyawardinfo&amp;award='.$awarddata['awardId']."&amp;game=$game\">".htmlspecialchars($awarddata['name']).'</a>';
+?></td>
+					<td style="width:60%;" class="flex items-center"><?php
+						if ($g_options['countrydata'] == 1) {
+							$flag = '0.gif';
+							$alt = 'Unknown Country';
+							if ($awarddata['flag'] != '') {
+								$alt = ucfirst(strtolower($awarddata['country']));
+							}
+							echo "<img src=\"" . getFlag($awarddata['flag']) . "\" hspace=\"4\" alt=\"$alt\" title=\"$alt\" /><a href=\"{$g_options['scripturl']}?mode=playerinfo&amp;player={$awarddata['d_winner_id']}\"><b>" . htmlspecialchars($awarddata['d_winner_name'], ENT_COMPAT) . "</b></a> ({$awarddata['d_winner_count']} " . htmlspecialchars($awarddata['verb']) . ")";
+						} else {
+							echo "<img src=\"" . IMAGE_PATH . "/player.gif\" hspace=\"4\" alt=\"Player\" /><a href=\"{$g_options['scripturl']}?mode=playerinfo&amp;player={$awarddata['d_winner_id']}\"><b>" . htmlspecialchars($awarddata['d_winner_name'], ENT_COMPAT) . "</b></a> ({$awarddata['d_winner_count']} ". htmlspecialchars($awarddata['verb']) . ")";
 						}
-						echo "<img src=\"" . getFlag($awarddata['flag']) . "\" hspace=\"4\" alt=\"$alt\" title=\"$alt\" /><a href=\"{$g_options['scripturl']}?mode=playerinfo&amp;player={$awarddata['d_winner_id']}\"><b>" . htmlspecialchars($awarddata['d_winner_name'], ENT_COMPAT) . "</b></a> ({$awarddata['d_winner_count']} " . htmlspecialchars($awarddata['verb']) . ")";
-					} else {
-						echo "<img src=\"" . IMAGE_PATH . "/player.gif\" hspace=\"4\" alt=\"Player\" /><a href=\"{$g_options['scripturl']}?mode=playerinfo&amp;player={$awarddata['d_winner_id']}\"><b>" . htmlspecialchars($awarddata['d_winner_name'], ENT_COMPAT) . "</b></a> ({$awarddata['d_winner_count']} ". htmlspecialchars($awarddata['verb']) . ")";
-					}
-				}
-				else
-				{
-					echo '&nbsp;&nbsp; <em>No Award Winner</em>';
 				}
 ?></td>
 			</tr>
