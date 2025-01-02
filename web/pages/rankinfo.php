@@ -155,19 +155,12 @@ For support and installation notes visit http://www.hlxcommunity.com
 ?>
 
 <div class="block">
-    <?php printSectionTitle('Rank Details'); ?>
-	<div class="subblock">
-		<div style="float:right;">
-			Back to <a href="<?php echo $g_options['scripturl'] . "?mode=awards&amp;game=$game&tab=ranks"; ?>">Ranks</a>
-		</div>
-		<div style="clear:both;"></div>
-	</div>
-	<br /><br />
+    <?php display_page_title('Rank Details: ' . $rankrow['rankName']); ?>
 <?php
-	$image = getImage('/ranks/'.$rankrow['image']);
-	if ($image)
-		echo '<img src="'.$image['url'].'" alt="" />';
-	echo '<b>'.$rankrow['rankName'].'</b>';
+	// $image = getImage('/ranks/'.$rankrow['image']);
+	// if ($image)
+	// 	echo '<img src="'.$image['url'].'" alt="' .$rankrow['rankName']. '">';
+	// echo '<b>'.$rankrow['rankName'].'</b>';
 	$table->draw($result, $numitems, 95, 'center');
 ?>
 </div>
