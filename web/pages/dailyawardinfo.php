@@ -141,7 +141,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 ?>
 
-<?php display_page_title("Daily Award Details"); ?>
+<?php display_page_title("Daily Award History"); ?>
 
 <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
 
