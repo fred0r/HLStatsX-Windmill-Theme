@@ -161,23 +161,21 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	<!-- Card -->
 	<div class="items-center min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-			<?php echo "<img src=\"$mapimg\" alt=\"$map\" width=\"220\">"; ?>
-			<br>
-			<p class="text-gray-600 dark:text-gray-400">
+			<?php echo "<img style=\"border-radius: 6px;\" src=\"$mapimg\" alt=\"$map\" width=\"220\">"; ?>
 <?php		
 			if ($g_options['map_dlurl'])
 			{
+				echo "			<p class=\"text-gray-600 dark:text-gray-400\">";
 				$map_dlurl = str_replace("%MAP%", $map, $g_options['map_dlurl']);
 				$map_dlurl = str_replace("%GAME%", $game, $map_dlurl);
 				$mapdlheader = @get_headers($map_dlurl);
 				if (preg_match("|200|", $mapdlheader[0])) {
-					echo "<a href=\"$map_dlurl\">Download this map...</a>";
+					echo "<a href=\"$map_dlurl\">Download this map...</a></p>";
 				}
 			}else{
-				echo "&nbsp;";
+				echo "&nbsp;</p>";
 			}
 ?>
-			</p>
 	</div>
 
 <?php
