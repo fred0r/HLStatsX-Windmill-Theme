@@ -131,10 +131,78 @@ For support and installation notes visit http://www.hlxcommunity.com
 	");
 	
 	list($numitems, $totalkills) = $db->fetch_row($resultCount);
+
+
+	// figure out URL and absolute path of image
+	if ($mapimg = getImage("/games/$game/maps/$map"))
+	{
+		$mapimg = $mapimg['url'];
+	}
+	elseif ($mapimg = getImage("/games/$realgame/maps/$map"))
+	{
+		$mapimg = $mapimg['url'];
+	}
+	else
+	{
+		$mapimg = IMAGE_PATH."/nomap.png";
+	}
+
+
+
+	$heatmap = getImage("/games/$game/heatmaps/$map-kill");
+	$heatmapthumb = getImage("/games/$game/heatmaps/$map-kill-thumb");
+
+
 ?>
 <!-- start mapinfo.php -->
 <?php echo display_page_title('Map: ' . $map); ?>
 
+<div class="grid gap-6 mb-8 md:grid-cols-2">
+
+	<!-- Card -->
+	<div class="items-center min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+			<?php echo "<img src=\"$mapimg\" alt=\"$map\" width=\"220\">"; ?>
+			<br>
+			<p class="text-gray-600 dark:text-gray-400">
+<?php		
+			if ($g_options['map_dlurl'])
+			{
+				$map_dlurl = str_replace("%MAP%", $map, $g_options['map_dlurl']);
+				$map_dlurl = str_replace("%GAME%", $game, $map_dlurl);
+				$mapdlheader = @get_headers($map_dlurl);
+				if (preg_match("|200|", $mapdlheader[0])) {
+					echo "<a href=\"$map_dlurl\">Download this map...</a>";
+				}
+			}else{
+				echo "&nbsp;";
+			}
+?>
+			</p>
+	</div>
+
+<?php
+	if ($heatmap)
+	{
+?>
+	<!-- Card -->
+	<div class="flex items-center min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+		<p class="text-gray-600 dark:text-gray-400">
+<?php
+	echo "<a href=\"" . $heatmap['url'] . "\" rel=\"boxed\" title=\"Heatmap: $map\"><br><img src=\"" . $heatmapthumb['url'] . "\" alt=\"$map\"></a>";
+?>
+		</p>
+	</div>
+<?php
+}
+?>
+
+</div>
+
+<?php $table->draw($result, $numitems, 95, 'center'); ?>
+
+<?php 
+/*
+?>
 <div class="block">
 <?php // figure out URL and absolute path of image
 	if ($mapimg = getImage("/games/$game/maps/$map"))
@@ -193,3 +261,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 ?>
 
 </div>
+<?php
+*/
+?>
