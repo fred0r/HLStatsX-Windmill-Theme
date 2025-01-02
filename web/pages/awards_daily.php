@@ -90,13 +90,14 @@ For support and installation notes visit http://www.hlxcommunity.com
 	list($awards_d_date, $awards_s_date) = $db->fetch_row($result);
 
 ?>
-<?php display_page_title((($awards_numdays == 1) ? 'Daily' : $awards_numdays.'Day')." Awards ($awards_d_date)"); ?>
+<?php display_page_title((($awards_numdays == 1) ? 'Daily' : $awards_numdays.'Day')." Award Winners for $awards_d_date"); ?>
 
 <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
 
 <?php
 while ($r = $db->fetch_array($resultAwards))
 	{
+		if ($r['d_winner_id'] > 0) {
 
 		if ($image = getImage("/games/$game/dawards/".strtolower($r['awardType'].'_'.$r['code'])))
 		{
@@ -111,7 +112,6 @@ while ($r = $db->fetch_array($resultAwards))
 			$img = IMAGE_PATH.'/award.png';
 		}
 		$weapon = "<a href=\"hlstats.php?mode=dailyawardinfo&amp;award=" . $r['awardId'] . "&amp;game=$game\">\n				<img src=\"$img\" alt=\"" . $r['code'] . "\">\n			</a>";
-		if ($r['d_winner_id'] > 0) {
 			if ($g_options['countrydata'] == 1)	{
 				$imagestring = '<img src="'.getFlag($r['flag']).'" alt="'.$r['flag'].'">&nbsp;&nbsp;';
 			} else {
@@ -120,10 +120,7 @@ while ($r = $db->fetch_array($resultAwards))
 			$winnerstring = '<strong>'.htmlspecialchars($r['d_winner_name'], ENT_COMPAT).'</strong>';
 			$achvd = "{$imagestring} \n		<a href=\"hlstats.php?mode=playerinfo&amp;player={$r['d_winner_id']}&amp;game={$game}\">{$winnerstring}\n</a>";
 			$wincount = $r['d_winner_count'];
-		} else {
-			$achvd = "<em>No Award Winner</em>";
-			$wincount= "0";
-		}
+
 ?>
 	<!-- Card -->
 	<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
@@ -146,6 +143,11 @@ while ($r = $db->fetch_array($resultAwards))
 	</div>
 
 <?php
+} 
+
+
+
+
 	}
 
 ?>
