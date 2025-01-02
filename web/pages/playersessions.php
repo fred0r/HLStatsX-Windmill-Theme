@@ -239,7 +239,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 <!-- start playersessions.php -->
 
 <?php
-	display_page_title($lastName .' Event History (Last '.$g_options['DeleteDays'].' Days)');
+	display_page_title($lastName .' Session History (Last '.$g_options['DeleteDays'].' Days)');
 	if ($numitems > 0)
 	{
 		$table->draw($result, $numitems, 95);
