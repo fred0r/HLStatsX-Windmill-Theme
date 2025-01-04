@@ -61,7 +61,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			(
 				'lastuse',
 				'Last Use',
-				'width=15'
+				'width=15&align=right'
 			),
 			new TableColumn
 			(
