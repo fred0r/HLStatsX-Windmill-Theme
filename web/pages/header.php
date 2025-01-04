@@ -96,6 +96,32 @@ For support and installation notes visit http://www.hlxcommunity.com
 			$iconpath = $iconpath . "/" . $style;
 	}
 	
+	// Control what pages are indexed by search engines to clean up search results and reduce load 
+	// on the web server. Let's just allow servers, maps & playerinfo pages to be indexed. DNA.styx  
+
+	if ($mode == 'contents') {
+		//allow the contents and game pages
+		$robot_meta_tag = "index, follow";
+	}else if ($mode == 'players'){
+		// No index but follow the player page to get to the playerinfo pages
+		$robot_meta_tag = "noindex, follow";
+	}else if ($mode == 'playerinfo'){
+		// Index the playerinfo pages but do not follow any deeper 
+		$robot_meta_tag = "index, nofollow";
+	}else if ($mode == 'servers'){
+		// index and but don't follow links from the servers page
+		$robot_meta_tag = "index, nofollow";
+	}else if ($mode == 'maps'){
+		// index and but don't follow the map page (so map makers can track servers using their maps)
+		$robot_meta_tag = "noindex, follow";
+	}else if ($mode == 'mapinfo'){
+		// index and but don't follow the map page (so map makers can track servers using their maps)
+		$robot_meta_tag = "index, nofollow";
+	}else{
+		// Otherwise don't don't index or follow this page
+		$robot_meta_tag = "noindex, nofollow";
+	}
+
 // Only allow windmill css files to be applied
 if (substr($g_options['style'], 0, 8) == 'windmill') {
 	$windmill_style = $g_options['style'];
@@ -106,6 +132,7 @@ if (substr($g_options['style'], 0, 8) == 'windmill') {
 
 // include custom windmill functions 
 include INCLUDE_PATH . '/inc_windmill_functions.php';
+
 ?>
 <!-- start header.php -->
 <!DOCTYPE html>
@@ -114,6 +141,8 @@ include INCLUDE_PATH . '/inc_windmill_functions.php';
 
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta name="robots" content="<?php echo $robot_meta_tag ?>">
 
 	<link rel="SHORTCUT ICON" href="favicon.ico">
 	<link
