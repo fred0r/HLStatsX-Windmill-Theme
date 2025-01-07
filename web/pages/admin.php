@@ -573,7 +573,7 @@ class EditList
 			{
 				global $gamecode;
 ?>
-			<td align="center" class="bg2 fSmall"><?php
+			<td align="center" class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"><?php
 				echo "<a href='" . $g_options["scripturl"] . "?mode=admin&amp;game=$gamecode&amp;task=" . $this->DetailsLink . "&amp;key=" . $rowdata[$this->keycol] . "'><b>CONFIGURE</b></a>";
 ?></td>
 <?php
