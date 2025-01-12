@@ -516,7 +516,7 @@ class EditList
 		if ($this->showid)
 		{
 ?>
-			<td align="right" class="fSmall"><?php
+			<td align="right" class="text-sm text-gray-600 dark:text-gray-400"><?php
 			echo 'ID';
 ?></td>
 <?php
@@ -528,13 +528,13 @@ class EditList
 			{
 				continue;
 			}
-			echo '<td class="fSmall">' . $col->title . "</td>\n";
+			echo '<td class="text-gray-700 dark:text-gray-400">' . $col->title . "</td>\n";
 		}
 
 		if ($this->drawDetailsLink)
 		{
 ?>
-			<td align="right" class="fSmall"><?php
+			<td align="right" class="text-gray-700 dark:text-gray-400"><?php
 			echo '';
 ?></td>
 <?php
@@ -542,7 +542,7 @@ class EditList
 
 
 ?>
-			<td align="center" class="fSmall"><?php
+			<td align="center" class="text-gray-700 dark:text-gray-400"><?php
 		echo 'Delete';
 ?></td>
 		</tr>
@@ -564,7 +564,7 @@ class EditList
 			
 			if ($this->showid)
 			{
-				echo '<td align="right" class="bg2 fSmall">' . $rowdata[$this->keycol] . "</td>\n";
+				echo '<td align="right" class="text-gray-700 dark:text-gray-400">' . $rowdata[$this->keycol] . "</td>\n";
 			}
 
 			$this->drawfields($rowdata, false, false);
@@ -580,7 +580,7 @@ class EditList
 			}
 
 ?>
-<td align="center" class="bg2"><input type="checkbox" name="<?php echo $rowdata[$this->keycol]; ?>_delete" value="1" /></td>
+<td align="center" class="bg2"><input type="checkbox" class="<?php echo windmill_class_checkbox(); ?>" name="<?php echo $rowdata[$this->keycol]; ?>_delete" value="1" /></td>
 <?php echo "</tr>\n\n";
 		}
 ?>
@@ -589,10 +589,10 @@ class EditList
 <?php
 		if ( $draw_new )
 		{
-			echo "<td class=\"bg1 fSmall\" align=\"center\">" . "new</td>\n";
+			echo "<td class=\"text-sm text-gray-600 dark:text-gray-400\" align=\"center\">" . "new</td>\n";
 
 			if ($this->showid)
-				echo "<td class=\"bg2 fSmall\" align=\"right\">" . "&nbsp;</td>\n";
+				echo "<td class=\"text-gray-700 dark:text-gray-400\" align=\"right\">" . "&nbsp;</td>\n";
 	
 			if ($this->newerror)
 			{
@@ -639,7 +639,7 @@ class EditList
 
 			if ($col->type != 'hidden')
 			{
-				echo '<td class="bg1">';
+				echo '<td class="text-gray-700 dark:text-gray-400">';
 			}
 
 			if ($i == 0 && !$new)
@@ -697,7 +697,7 @@ class EditList
 						$width = '';
 					}
 
-					echo "<select name=\"" . $keyval . "_$col->name\"$width>\n";
+					echo "<select class=\"" . windmill_class_dropdown() . "\" name=\"" . $keyval . "_$col->name\"$width>\n";
 
 					if (!$col->required)
 					{
@@ -742,7 +742,7 @@ class EditList
 						$selected = '';
 					}
 
-					echo '<center><input type="checkbox" name="' . $keyval . "_$col->name\" value=\"$selectedval\"$selected /></center>";
+					echo '<center><input type="checkbox" class="' . windmill_class_checkbox() . '" name="' . $keyval . "_$col->name\" value=\"$selectedval\"$selected /></center>";
 					break;
 					
 				case 'hidden':
@@ -779,7 +779,7 @@ class EditList
 
 					$input_value = (!empty($value)) ? htmlentities(html_entity_decode($value), ENT_COMPAT, 'UTF-8') : "";
 
-					echo "<input $onClick type=\"text\" name=\"" . $keyval . "_$col->name\" size=$col->width " . "value=\"" . $input_value . "\" class=\"textbox\"" . " maxlength=\"$col->maxlength\"$onclick />";
+					echo "<input $onClick type=\"text\" name=\"" . $keyval . "_$col->name\" size=$col->width " . "value=\"" . $input_value . "\" class=\"" . windmill_class_text() . "\"" . " maxlength=\"$col->maxlength\"$onclick />";
 // doing htmlentities on something that we just decoded is because we need to encode them when we fill out a form, but we don't want to double encode them (some items like rcon are not encoded at all - but server names are)
 			}
 
