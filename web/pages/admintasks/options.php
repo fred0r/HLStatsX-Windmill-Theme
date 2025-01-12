@@ -263,7 +263,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	$optiongroups[15] = new OptionGroup('Player Signatures');
 	$optiongroups[15]->options[] = new Option('sigbackground', 'Background Used: Enter numbers 1-11, random or leave blank)</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">Look in hlstatsimg->sig folder to see background choices', 'text');
-	$optiongroups[15]->options[] = new Option('modrewrite', 'Use modrewrite?</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">To make forum signature image compatible with more forum types. To utilize this, you <strong>must</strong> have modrewrite enabled on your webserver and add the following text to a .htaccess file in the directory of hlstats.php<br /><br /><textarea rows="3" cols="72" style="overflow:hidden;">
+	$optiongroups[15]->options[] = new Option('modrewrite', 'Use modrewrite?</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">To make forum signature image compatible with more forum types. To utilize this, you <strong>must</strong> have modrewrite enabled on your webserver and add the following text to a .htaccess file in the directory of hlstats.php<br /><br /><textarea class="windmill-textarea block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" rows="3" cols="72" style="overflow:hidden;" disabled>
 RewriteEngine On
 RewriteRule sig-(.*)-(.*).png$ sig.php?player_id=$1&background=$2 [L]</textarea>', 'select');
 
