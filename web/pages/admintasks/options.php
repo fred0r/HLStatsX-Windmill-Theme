@@ -244,7 +244,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$optiongroups[4] = new OptionGroup('GeoIP data & Map Settings');
 	$optiongroups[4]->options[] = new Option('countrydata', 'Show features requiring GeoIP data', 'select');
 	$optiongroups[4]->options[] = new Option('show_google_map', 'Show Player Maps', 'select');
-	// $optiongroups[4]->options[] = new Option('google_map_region', 'Maps Region ** Not used', 'select-disabled');
+	$optiongroups[4]->options[] = new Option('google_map_region', 'Maps Region ** Not used', 'select-disabled');
 	// $optiongroups[4]->options[] = new Option('google_map_type', '<s>Google Maps Type</s> ** Not used', 'select-disabled');
 	$optiongroups[4]->options[] = new Option('UseGeoIPBinary', '*Choose whether to use GeoCityLite data loaded into mysql database or from binary file. (If binary, GeoLiteCity.dat goes in perl/GeoLiteCity and Geo::IP::PurePerl module is required', 'select');
 
