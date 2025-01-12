@@ -187,7 +187,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 <div class="grid gap-6 mb-8 md:grid-cols-2">
 	<div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-		<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">24hrs</h4>
+		<h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">24 Hours</h4>
 		<a href="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=1">
 			<img src="show_graph.php?type=0&amp;game=<?php echo $game; ?>&amp;width=870&amp;height=200&amp;server_id=<?php echo $server_id ?>&amp;bgcolor=<?php echo $g_options['graphbg_load']; ?>&amp;color=<?php echo $g_options['graphtxt_load']; ?>&amp;range=1" alt="24h View">
 		</a>
