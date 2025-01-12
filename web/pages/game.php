@@ -246,15 +246,15 @@ if ($total_kills > 0)
 			$map_teama_wins = $rowdata['map_ct_wins'];
 			$map_teamb_wins = $rowdata['map_ts_wins'];
 
-
 ?>
 			<tr style="cursor: pointer;" class="handle text-sm font-semibold text-gray-700 dark:text-gray-400">
 			<td colspan="5">&nbsp;&nbsp;<?php
-			echo $rowdata['name'] . " <span class=\"windmill-text-link\"><a href=\"steam://connect/$addr\">(Join)</a></span>";
+			echo $rowdata['name'] . "\n";
+			echo " <span class=\"windmill-text-link\"><a href=\"hlstats.php?game=$game&mode=servers&server_id=$server_id\">(Details)</a></span>\n";
+			echo " <span class=\"windmill-text-link\"><a href=\"steam://connect/$addr\">(Join)</a></span>\n";
+
 ?></td>
-            <td style="text-align:center;"><?php
-			echo $rowdata['act_map'];
-?></td>
+            <td style="text-align:center;"><?php echo $rowdata['act_map']; ?></td>
             <td style="text-align:center;"><?php
 			$stamp = $rowdata['map_started']==0?0:time() - $rowdata['map_started'];
 			$hours = sprintf("%02d", floor($stamp / 3600));
@@ -262,15 +262,9 @@ if ($total_kills > 0)
 			$sec = sprintf("%02d", floor($stamp % 60));
 			echo $hours . ":" . $min . ":" . $sec;
 ?></td>
-            <td style="text-align:center;"><?php
-			echo $player_string;
-?></td>
-            <td style="text-align:center;"><?php
-			echo number_format($kills);
-?></td>
-            <td style="text-align:center;"><?php
-			echo number_format($headshots);
-?></td>
+            <td style="text-align:center;"><?php echo $player_string; ?></td>
+            <td style="text-align:center;"><?php echo number_format($kills); ?></td>
+            <td style="text-align:center;"><?php echo number_format($headshots); ?></td>
             <td style="text-align:center;"><?php
 			if ($kills > 0)
 				echo sprintf("%.2f", ($headshots / $kills));
