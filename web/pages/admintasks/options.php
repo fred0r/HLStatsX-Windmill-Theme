@@ -223,10 +223,10 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$optiongroups[0]->options[] = new Option('siteurl', 'Site URL', 'text');
 	$optiongroups[0]->options[] = new Option('contact', 'Contact/Rules URL</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">No mail address or URLs with query-strings', 'text');
 	$optiongroups[0]->options[] = new Option('bannerdisplay', 'Show Banner', 'select');
-	$optiongroups[0]->options[] = new Option('bannerfile', 'Banner file name</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">Save file in in hlstatsimg/ or full URL to file', 'text');
+	$optiongroups[0]->options[] = new Option('bannerfile', 'Banner file name</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">Save file in in hlstatsimg folder or use full URL to file', 'text');
 	// $optiongroups[0]->options[] = new Option('playerinfo_tabs', '<s>Use tabs in playerinfo to show/hide sections current page or just show all at once</s> ** Not used', 'select-disabled');
 	// $optiongroups[0]->options[] = new Option('slider', '<s>Enable AJAX gliding server list (accordion effect) on homepage of each game (only affects games with more than one server)</s> ** Not used', 'select-disabled');
-	$optiongroups[0]->options[] = new Option('display_gamelist', 'Display games as icons</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">Only affects sites with more than one game', 'select');
+	$optiongroups[0]->options[] = new Option('display_gamelist', 'Display games as icons?</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">Only affects sites with more than one game', 'select');
 
 	$optiongroups[1] = new OptionGroup('Footer Settings');
 	$optiongroups[1]->options[] = new Option('showqueries', 'Show Database Stats?</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">"Executed X queries, generated this page in Y Seconds."?', 'select');
@@ -332,7 +332,7 @@ RewriteRule sig-(.*)-(.*).png$ sig.php?player_id=$1&background=$2 [L]</textarea>
 	}
 ?>
 	<tr style="height:50px;">
-		<td style="text-align:center;" colspan="2"><input type="submit" value="  Apply  " class="windmill-button px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none"></td>
+		<td style="text-align:center;" colspan="2"><input type="submit" value="  Apply  " class="<?php echo windmill_button_class(); ?>"></td>
 	</tr>
 </table>
 
