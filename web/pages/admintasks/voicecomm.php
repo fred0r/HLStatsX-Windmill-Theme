@@ -41,7 +41,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	$edlist = new EditList('serverId', 'hlstats_Servers_VoiceComm', '');
 	$edlist->columns[] = new EditListColumn('name', 'Server Name', 45, true, 'text', '', 64);
-	$edlist->columns[] = new EditListColumn('addr', 'TS3: Server IP or Hostname,<br>Discord: Invite Code,<br>Mumble: Link to JSON CVP,<br>Steam Group: Group\'s groupID64', 20, true, 'text', '', 64);
+	$edlist->columns[] = new EditListColumn('addr', 'Address (see above)', 20, true, 'text', '', 64);
 	$edlist->columns[] = new EditListColumn('password', 'Password', 20, false, 'text', '', 64);
 	$edlist->columns[] = new EditListColumn('UDPPort', 'TS3: TCP Port<br>Otherwise: 1', 6, false, 'text', '1', 64);
 	$edlist->columns[] = new EditListColumn('queryPort', 'TS3: Query Port<br>Otherwise: 1', 6, true, 'text', '1', 64);
@@ -57,14 +57,14 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 	
 ?>
-
+<!-- start voice comms page -->
 <div class="ml-6 mb-6">
-<p class="text-sm text-gray-600 dark:text-gray-400">
-
+<p class="text-l text-gray-600 dark:text-gray-400">
+Address:<br><b>TS3</b>: Server IP or Hostname<br><b>Discord</b>: Invite Code<br><b>Mumble</b>: Link to JSON CVP<br><b>Steam Group</b>: Group's groupID64<br>
+<br>
+<a href="https://github.com/DNA-styx/HLStatsX-Windmill-Theme/wiki">See Wiki for further details</a>
 </p>
 </div>
-
-
 <?php
 	
 	$result = $db->query("
@@ -88,4 +88,4 @@ For support and installation notes visit http://www.hlxcommunity.com
 ?>
 
 <input type="submit" value="  Apply  " class="<?php echo windmill_button_class(); ?>">
-
+<!-- end voice comms page -->
