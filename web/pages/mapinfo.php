@@ -161,7 +161,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	<!-- Card -->
 	<div class="items-center min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-			<?php echo "<img style=\"border-radius: 6px;\" src=\"$mapimg\" alt=\"$map\" width=\"220\">"; ?>
+			<?php echo "<a href=\"$mapimg\"><img style=\"border-radius: 6px;\" src=\"$mapimg\" alt=\"$map\" width=\"300\"></a>"; ?>
 <?php		
 			if ($g_options['map_dlurl'])
 			{
