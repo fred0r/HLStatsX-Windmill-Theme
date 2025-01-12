@@ -145,13 +145,11 @@ For support and installation notes visit http://www.hlxcommunity.com
 	else
 	{
 		$mapimg = IMAGE_PATH."/nomap.png";
+		$mapimg_missing_message = 1;
 	}
-
-
 
 	$heatmap = getImage("/games/$game/heatmaps/$map-kill");
 	$heatmapthumb = getImage("/games/$game/heatmaps/$map-kill-thumb");
-
 
 ?>
 <!-- start mapinfo.php -->
@@ -163,18 +161,23 @@ For support and installation notes visit http://www.hlxcommunity.com
 	<div class="items-center min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
 			<?php echo "<a href=\"$mapimg\"><img style=\"border-radius: 6px;\" src=\"$mapimg\" alt=\"$map\" width=\"300\"></a>"; ?>
 <?php		
-			if ($g_options['map_dlurl'])
-			{
-				echo "			<p class=\"text-gray-600 dark:text-gray-400\">";
-				$map_dlurl = str_replace("%MAP%", $map, $g_options['map_dlurl']);
-				$map_dlurl = str_replace("%GAME%", $game, $map_dlurl);
-				$mapdlheader = @get_headers($map_dlurl);
-				if (preg_match("|200|", $mapdlheader[0])) {
-					echo "<a href=\"$map_dlurl\">Download this map...</a></p>";
-				}
-			}else{
-				echo "&nbsp;</p>";
+
+	if (isset($_SESSION['loggedin']) && $mapimg_missing_message ) {
+		echo "<span class=\"text-xs text-red-600 dark:text-red-400\">Upload missing images to " . IMAGE_PATH . "/games/$game/maps</span>";
+		}
+
+	if ($g_options['map_dlurl'])
+		{
+			echo "			<p class=\"text-gray-600 dark:text-gray-400\">";
+			$map_dlurl = str_replace("%MAP%", $map, $g_options['map_dlurl']);
+			$map_dlurl = str_replace("%GAME%", $game, $map_dlurl);
+			$mapdlheader = @get_headers($map_dlurl);
+			if (preg_match("|200|", $mapdlheader[0])) {
+				echo "<a href=\"$map_dlurl\">Download this map...</a></p>";
 			}
+		}else{
+			echo "&nbsp;</p>";
+		}
 ?>
 	</div>
 
