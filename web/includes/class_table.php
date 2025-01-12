@@ -191,7 +191,7 @@ class Table
 		if ($this->showranking)
 		{
 			$totalwidth += 5;
-			echo "					<td style=\"text-align:right;\">Rank</td>\n";
+			echo "					<td style=\"text-align:center;\">Rank</td>\n";
 		}
 
 		foreach ($this->columns as $col)
