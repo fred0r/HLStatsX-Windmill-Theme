@@ -67,69 +67,70 @@ Special characters in the pattern:<br>
 <table border=0 cellspacing=0 cellpadding=4>
 
 <tr class="head">
-	<td class="fSmall">Character</td>
-	<td class="fSmall">Description</td>
+	<td class="text-gray-700 dark:text-gray-400">Character</td>
+	<td class="text-gray-700 dark:text-gray-400">Description</td>
 </tr>
 
 <tr>
-	<td class="fNormal"><tt>A</tt></td>
-	<td class="fNormal">Matches one character  (i.e. a character is required)</td>
+	<td class="text-gray-700 dark:text-gray-400"><tt>A</tt></td>
+	<td class="text-gray-700 dark:text-gray-400">Matches one character  (i.e. a character is required)</td>
 </tr>
 
 <tr>
-	<td class="fNormal"><tt>X</tt></td>
-	<td class="fNormal">Matches zero or one characters  (i.e. a character is optional)</td>
+	<td class="text-gray-700 dark:text-gray-400"><tt>X</tt></td>
+	<td class="text-gray-700 dark:text-gray-400">Matches zero or one characters  (i.e. a character is optional)</td>
 </tr>
 
 <tr>
-	<td class="fNormal"><tt>a</tt></td>
-	<td class="fNormal">Matches literal A or a</td>
+	<td class="text-gray-700 dark:text-gray-400"><tt>a</tt></td>
+	<td class="text-gray-700 dark:text-gray-400">Matches literal A or a</td>
 </tr>
 
 <tr>
-	<td class="fNormal"><tt>x</tt></td>
-	<td class="fNormal">Matches literal X or x</td>
-</tr>
-
-</table><p>
-
-Example patterns:<p>
-
-<table border=0 cellspacing=0 cellpadding=4>
-
-<tr class="head">
-	<td class="fSmall">Pattern</td>
-	<td class="fSmall">Description</td>
-	<td class="fSmall">Example</td>
-</tr>
-
-<tr>
-	<td class="fNormal"><tt>[AXXXXX]</tt></td>
-	<td class="fNormal">Matches 1 to 6 characters inside square braces</td>
-	<td class="fNormal"><tt>[ZOOM]Player</tt></td>
-</tr>
-
-<tr>
-	<td class="fNormal"><tt>{AAXX}</tt></td>
-	<td class="fNormal">Matches 2 to 4 characters inside curly braces</td>
-	<td class="fNormal"><tt>{S3G}Player</tt></td>
-</tr>
-
-<tr>
-	<td class="fNormal"><tt>rex>></tt></td>
-	<td class="fNormal">Matches the string "rex>>", "REX>>", etc.</td>
-	<td class="fNormal"><tt>REX>>Tyranno</tt></td>
+	<td class="text-gray-700 dark:text-gray-400"><tt>x</tt></td>
+	<td class="text-gray-700 dark:text-gray-400">Matches literal X or x</td>
 </tr>
 
 </table>
 <br>
+<p class="text-gray-700 dark:text-gray-400">Example patterns:<p>
+
+<table border=0 cellspacing=0 cellpadding=4>
+
+<tr class="head">
+	<td class="text-gray-700 dark:text-gray-400">Pattern</td>
+	<td class="text-gray-700 dark:text-gray-400">Description</td>
+	<td class="text-gray-700 dark:text-gray-400">Example</td>
+</tr>
+
+<tr>
+	<td class="text-gray-700 dark:text-gray-400"><tt>[AXXXXX]</tt></td>
+	<td class="text-gray-700 dark:text-gray-400">Matches 1 to 6 characters inside square braces</td>
+	<td class="text-gray-700 dark:text-gray-400"><tt>[ZOOM]Player</tt></td>
+</tr>
+
+<tr>
+	<td class="text-gray-700 dark:text-gray-400"><tt>{AAXX}</tt></td>
+	<td class="text-gray-700 dark:text-gray-400">Matches 2 to 4 characters inside curly braces</td>
+	<td class="text-gray-700 dark:text-gray-400"><tt>{S3G}Player</tt></td>
+</tr>
+
+<tr>
+	<td class="text-gray-700 dark:text-gray-400"><tt>rex>></tt></td>
+	<td class="text-gray-700 dark:text-gray-400">Matches the string "rex>>", "REX>>", etc.</td>
+	<td class="text-gray-700 dark:text-gray-400"><tt>REX>>Tyranno</tt></td>
+</tr>
+
+</table>
+<br>
+<p class="text-gray-700 dark:text-gray-400">
 Avoid adding patterns to the database that are too generic. Always ensure you have at least 
 one literal (non-special) character in the pattern -- for example if you were to add the pattern 
 "AXXA", it would match any player with 2 or more letters in their name!<br>
 <br>
 The Match Position field sets which end of the player's name the clan tag is allowed to appear.<br>
 <br>
-
+</p>
 <?php
 	
 	$result = $db->query("
