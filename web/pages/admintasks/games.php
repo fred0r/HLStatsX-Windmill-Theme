@@ -170,11 +170,10 @@ For support and installation notes visit http://www.hlxcommunity.com
 	if ($_POST)
 	{
 		if ($edlist->update())
-			message("success", "Operation successful.");
+			message("success", "<span class=\"text-l text-green-600 dark:text-green-400\">Operation successful.</span>");
 		else
-			message("warning", $edlist->error());
+			message("warning", "<span class=\"text-l text-red-600 dark:text-red-400\">" . $edlist->error() . "</span>");
 	}
-	
 ?>
 <div class="ml-6 mb-6">
 	<p class="text-sm text-gray-600 dark:text-gray-400">
