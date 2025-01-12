@@ -105,6 +105,22 @@ function windmill_button_class(){
 		echo "windmill-button block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none";
 }
 
+function windmill_class_text(){
+
+	return "windmill-text block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input";
+}
+
+function windmill_class_dropdown(){
+
+	return "windmill-dropdown block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray";
+}
+
+function windmill_class_checkbox(){
+
+	return "windmill-checkbox text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray";
+}
+
+
 function display_table_filter($page){
 
 	switch ($page) {
