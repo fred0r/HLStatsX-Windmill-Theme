@@ -90,7 +90,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		ON
 			hlstats_Events_PlayerActions.actionId = hlstats_Actions.id
 		WHERE
-			hlstats_Events_PlayerActions.playerId = $player
+			hlstats_Events_PlayerActions.playerId = " . valid_request($player, false). "
 		GROUP BY
 			hlstats_Actions.id
 		)
@@ -108,7 +108,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		ON
 			hlstats_Events_PlayerPlayerActions.actionId = hlstats_Actions.id
 		WHERE
-			hlstats_Events_PlayerPlayerActions.playerId = $player
+			hlstats_Events_PlayerPlayerActions.playerId = " . valid_request($player, false). "
 		GROUP BY
 			hlstats_Actions.id
 		)
@@ -172,7 +172,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		ON
 			hlstats_Events_PlayerPlayerActions.actionId = hlstats_Actions.id
 		WHERE
-			hlstats_Events_PlayerPlayerActions.victimId = $player
+			hlstats_Events_PlayerPlayerActions.victimId = " . valid_request($player, false). "
 		GROUP BY
 			hlstats_Actions.id
 		ORDER BY
