@@ -224,7 +224,7 @@ if ($game != '') {
 	display_menu_item("Awards", "?mode=awards&amp;game=$game","trophy");
 
 	// look for actions
-	$db->query("SELECT game FROM hlstats_Actions WHERE game='".$game."' LIMIT 1");
+	$db->query("SELECT game FROM hlstats_Actions WHERE game='" . valid_request($game, false) . "' LIMIT 1");
 	if ($db->num_rows()>0) {
 
 		display_menu_item("Actions", "?mode=actions&amp;game=$game","bolt");
@@ -235,7 +235,7 @@ if ($game != '') {
 
 	display_menu_item("Maps", "?mode=maps&amp;game=$game","route");
 
-	$result = $db->query("SELECT game from hlstats_Roles WHERE game='$game' AND hidden = '0'");
+	$result = $db->query("SELECT game from hlstats_Roles WHERE game='" . valid_request($game, false) . "' AND hidden = '0'");
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0) {
 
@@ -328,7 +328,7 @@ if ($game != '') {
 	display_menu_item("Awards", "?mode=awards&amp;game=$game","trophy");
 
 	// look for actions
-	$db->query("SELECT game FROM hlstats_Actions WHERE game='".$game."' LIMIT 1");
+	$db->query("SELECT game FROM hlstats_Actions WHERE game='".valid_request($game, false)."' LIMIT 1");
 	if ($db->num_rows()>0) {
 
 		display_menu_item("Actions", "?mode=actions&amp;game=$game","bolt");
@@ -339,7 +339,7 @@ if ($game != '') {
 
 	display_menu_item("Maps", "?mode=maps&amp;game=$game","route");
 
-	$result = $db->query("SELECT game from hlstats_Roles WHERE game='$game' AND hidden = '0'");
+	$result = $db->query("SELECT game from hlstats_Roles WHERE game='".valid_request($game, false)."' AND hidden = '0'");
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0) {
 
@@ -404,7 +404,7 @@ SELECT
 FROM
 	hlstats_Games
 WHERE
-	hlstats_Games.code = '$game'
+	hlstats_Games.code = '". valid_request($game, false) ."'
 ");
 
 if ($db->num_rows() < 1) {
