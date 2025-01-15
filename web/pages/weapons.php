@@ -48,7 +48,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_Games
 		WHERE
-			hlstats_Games.code = '$game'
+			hlstats_Games.code = '" . valid_request($game, false) . "'
 	");
 	if ($db->num_rows() < 1) error("No such game '$game'.");
 	list($gamename) = $db->fetch_row();
@@ -66,7 +66,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_Weapons
 		WHERE
-			hlstats_Weapons.game = '$game'
+			hlstats_Weapons.game = '" . valid_request($game, false) . "'
 	");
 	while ($rowdata = $db->fetch_row($result))
 	{ 
@@ -151,7 +151,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_Weapons
 		WHERE
-			hlstats_Weapons.game = '$game'
+			hlstats_Weapons.game = '" . valid_request($game, false) . "'
 	");
 	list($realkills, $realheadshots) = $db->fetch_row();
 	$result = $db->query
@@ -167,7 +167,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_Weapons
 		WHERE
-			hlstats_Weapons.game = '$game'
+			hlstats_Weapons.game = '" . valid_request($game, false) . "'
 			AND hlstats_Weapons.kills > 0 
 		GROUP BY
 			hlstats_Weapons.weaponId
