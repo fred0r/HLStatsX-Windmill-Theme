@@ -6,7 +6,7 @@
   include_once (PAGE_PATH . '/voicecomm_serverlist.php');
   include_once (INCLUDE_PATH . 'teamspeak3/inc_ts3_settings.php');
 
-  $tsId = valid_request($_GET['tsId'],1);
+  $tsId = valid_request(intval($_GET['tsId']),true);
 
 
     $db->query("SELECT addr, queryPort, UDPPort, serverType FROM hlstats_Servers_VoiceComm WHERE serverId=$tsId");
