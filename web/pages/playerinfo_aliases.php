@@ -135,7 +135,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_PlayerNames
 		WHERE
-			hlstats_PlayerNames.playerId = $player
+			hlstats_PlayerNames.playerId = " . valid_request($player, false) . "
 		ORDER BY
 			$tblAliases->sort $tblAliases->sortorder
 		LIMIT
@@ -149,7 +149,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_PlayerNames
 		WHERE
-			hlstats_PlayerNames.playerId = $player
+			hlstats_PlayerNames.playerId = " . valid_request($player, false) . "
 	");
 	list($numitems) = $db->fetch_row($resultCount);
 	if ($numitems > 1)
