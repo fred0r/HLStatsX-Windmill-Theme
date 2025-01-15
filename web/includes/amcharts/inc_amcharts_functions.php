@@ -109,11 +109,18 @@ try {
             $amcharts_rank_display = "Rank: #" . $amcharts__rank_count . '<br>';
         }
       
-        
+        if (array_key_exists('skill',$row) && array_key_exists('playerId',$row)) {
+            $player_skill = $row['skill'];
+            $player_id = $row['playerId'];
+        }else{
+            $player_skill = 0;
+            $player_id = 1;
+        }
+
         $result[] = [
             'id' => $row['lastName'],
-            'title' => '<center>' . $row['lastName'] . '<br><small>' . $amcharts_rank_display . 'Points: ' . $row['skill'] . '<br>(Click me!)</small></center>',
-            'url' => '../../hlstats.php?mode=playerinfo&player=' . $row['playerId'] , 
+            'title' => '<center>' . $row['lastName'] . '<br><small>' . $amcharts_rank_display . 'Points: ' . $player_skill . '<br>(Click me!)</small></center>',
+            'url' => '../../hlstats.php?mode=playerinfo&player=' . $player_id , 
             'geometry' => [
                 'type' => 'Point',
                 'coordinates' => [
