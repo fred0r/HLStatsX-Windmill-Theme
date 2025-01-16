@@ -48,7 +48,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_Games
 		WHERE
-			hlstats_Games.code = '$game'
+			hlstats_Games.code = '" . valid_request($game, false) . "'
 	");
 
     if ($db->num_rows() < 1) {
@@ -150,7 +150,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_Players
 		WHERE
-			hlstats_Players.game = '$game'
+			hlstats_Players.game = '" . valid_request($game, false) . "'
 			AND hlstats_Players.hideranking = 2
 			AND hlstats_Players.kills >= $minkills
 	");
@@ -175,7 +175,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_Players
 		WHERE
-			hlstats_Players.game = '$game'
+			hlstats_Players.game = '" . valid_request($game, false) . "'
 			AND hlstats_Players.hideranking = 2
 			AND hlstats_Players.kills >= $minkills
 		ORDER BY

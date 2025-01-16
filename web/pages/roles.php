@@ -48,7 +48,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_Games
 		WHERE
-			hlstats_Games.code = '$game'
+			hlstats_Games.code = '" . valid_request($game, false) . "'
 	");
 	if ($db->num_rows() < 1) error("No such game '$game'.");
 	list($gamename) = $db->fetch_row();
@@ -66,7 +66,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_Roles
 		WHERE
-			hlstats_Roles.game='$game'
+			hlstats_Roles.game='" . valid_request($game, false) . "'
 	");
 	while ($rowdata = $db->fetch_row($result))
 	{ 
@@ -163,7 +163,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_Roles
 		WHERE
-			hlstats_Roles.game = '$game'
+			hlstats_Roles.game = '" . valid_request($game, false) . "'
 			AND hlstats_Roles.hidden = '0'
 	");
 	list($realkills, $realdeaths, $realpicked) = $db->fetch_row();
@@ -182,7 +182,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 		FROM
 			hlstats_Roles
 		WHERE
-			hlstats_Roles.game = '$game' 
+			hlstats_Roles.game = '" . valid_request($game, false) . "' 
 			AND hlstats_Roles.kills > 0 
 			AND hlstats_Roles.hidden = '0'
 		GROUP BY

@@ -62,7 +62,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$awardtype = $awarddata['awardType'];
 	$awardcode = $awarddata['code'];
 	
-	$db->query("SELECT name FROM hlstats_Games WHERE code='$game'");
+	$db->query("SELECT name FROM hlstats_Games WHERE code='" . valid_request($game, false) . "'");
 	if ($db->num_rows() < 1) {
 		error("No such game '$game'.");
 	}

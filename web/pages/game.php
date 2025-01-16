@@ -41,7 +41,7 @@ For support and installation notes visit http://www.hlxcommunity.com
     }
 
 	require (PAGE_PATH . '/livestats.php');
-	$db->query("SELECT name FROM hlstats_Games WHERE code='$game'");
+	$db->query("SELECT name FROM hlstats_Games WHERE code='" . valid_request($game, false) . "'");
 	if ($db->num_rows() < 1) {
 		error("No such game '$game'.");
 	}
@@ -57,7 +57,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			FROM
 				hlstats_Players
 			WHERE 
-				game='$game'
+				game='" . valid_request($game, false) . "'
 	";
 	$result = $db->query($query);
 	list($total_players) = $db->fetch_row($result);
@@ -88,7 +88,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			FROM
 				hlstats_Servers
 			WHERE 
-				game='$game'
+				game='" . valid_request($game, false) . "'
 	";
 	$result = $db->query($query);
 	list($total_kills, $total_headshots, $total_servers) = $db->fetch_row($result);
@@ -99,7 +99,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 			FROM 
 				hlstats_Trend 
 			WHERE       
-				game='$game'
+				game='" . valid_request($game, false) . "'
 				AND timestamp<=" . (time() - 86400) . "
 			ORDER BY 
 				timestamp DESC LIMIT 0,1
@@ -132,7 +132,7 @@ For support and installation notes visit http://www.hlxcommunity.com
             FROM
                 hlstats_Servers
             WHERE
-                game='$game'
+                game='" . valid_request($game, false) . "'
             ORDER BY
                 sortorder, name, serverId
 	";
@@ -302,7 +302,7 @@ if ($total_kills > 0)
 			LEFT JOIN hlstats_Players ON
 				hlstats_Players.playerId = hlstats_Awards.d_winner_id
 			WHERE
-				hlstats_Awards.game='$game'
+				hlstats_Awards.game='" . valid_request($game, false) . "'
 			ORDER BY
 				hlstats_Awards.name
 		");
