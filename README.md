@@ -49,12 +49,12 @@ Features enabled
 * Steam Group Chat Support [ <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/wiki/Steam-Group-Chat-Support">details</a> ]  
 * Top of page banners
 * InGame Pages
+* Forum signatures (including Markdown)
+* Most server load graphs
 
 Features not/still to be Enabled
 * TeamSpeak1 & Ventrillo server status
 * Hitbox graphs
-* Forum signatures
-* Most server load graphs
 * Player page tabs
 * Style selector (admins set the colour of their site, not visitors)
 
