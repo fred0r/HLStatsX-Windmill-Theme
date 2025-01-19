@@ -237,6 +237,8 @@ function getWindmillSortArrow($sort, $sortorder, $name, $longname, $var_sort = '
 		$arrowstring .= '&nbsp;<i class="' . $sortimg . '"></i>&nbsp;';
 	}
 
+	// Disable table sorting
+	$arrowstring = $longname;
 
 	return $arrowstring;
 }
