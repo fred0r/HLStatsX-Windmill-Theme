@@ -19,7 +19,7 @@
     Responsive HLStatsx:CE Theme
     <br />
     <br />
-    <a href="https://stats.dnagames.site/hlstats.php?mode=players&game=dods">View Live Demo</a>
+    <a href="https://hlstatsx.dnagames.site/hlstats.php?mode=players&game=dods">View Live Demo</a>
     ·
     <a href="https://github.com/DNA-styx/HLSTATSX-Windmill-Theme/issues/new">Report a Bug</a>
     ·
@@ -62,7 +62,7 @@ Features not/still to be Enabled
 
 <!-- Screen shots -->
 ## Screenshots
-<a href="https://stats.dnagames.site/hlstats.php?mode=players&game=dods">View Live Demo</a>
+<a href="https://hlstatsx.dnagames.site/hlstats.php?mode=players&game=dods">View Live Demo</a>
 
 DEV Sites: 
 - <a href="https://dnagames.helioho.st/">Root Folder</a>
