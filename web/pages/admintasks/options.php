@@ -225,7 +225,6 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$optiongroups[0]->options[] = new Option('contact', 'Contact/Rules URL</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">No mail address or URLs with query-strings', 'text');
 	$optiongroups[0]->options[] = new Option('bannerdisplay', 'Show Banner', 'select');
 	$optiongroups[0]->options[] = new Option('bannerfile', 'Banner file name</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">Save file in in hlstatsimg folder or use full URL to file', 'text');
-	// $optiongroups[0]->options[] = new Option('playerinfo_tabs', '<s>Use tabs in playerinfo to show/hide sections current page or just show all at once</s> ** Not used', 'select-disabled');
 	// $optiongroups[0]->options[] = new Option('slider', '<s>Enable AJAX gliding server list (accordion effect) on homepage of each game (only affects games with more than one server)</s> ** Not used', 'select-disabled');
 	$optiongroups[0]->options[] = new Option('display_gamelist', 'Display games as icons?</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">Only affects sites with more than one game', 'select');
 
@@ -277,7 +276,8 @@ RewriteRule sig-(.*)-(.*).png$ sig.php?player_id=$1&background=$2 [L]</textarea>
 	$optiongroups[30]->options[] = new Option('graphtxt_trend', 'Player Trend graph: text color hex# (RRGGBB)', 'text');
 	$optiongroups[30]->options[] = new Option('style', 'Stylesheet filename to use', 'styles');
 	// $optiongroups[30]->options[] = new Option('display_style_selector', '<s>Display Style Selector?</s> ** Not used', 'select-disabled');
-
+	$optiongroups[30]->options[] = new Option('playerinfo_tabs', 'Use tabs in playerinfo to show/hide sections current page or just show all at once', 'select');
+	
 	
 	$optiongroups[35] = new OptionGroup('Ranking');
 	$optiongroups[35]->options[] = new Option('rankingtype', '<span class="text-red-600 dark:text-red-400">*</span> Ranking type', 'select');
