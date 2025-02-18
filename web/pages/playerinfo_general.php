@@ -39,10 +39,14 @@ For support and installation notes visit http://www.hlxcommunity.com
     if (!defined('IN_HLSTATS')) {
         die('Do not access this file directly.');
     }
+
+	if ($g_options['playerinfo_tabs'] == '1') { 
+		// include custom windmill functions 
+		include_once INCLUDE_PATH . '/inc_windmill_functions.php';
+	}
+
 ?>
 <!-- start playerinfo_general.php -->
-<?php display_page_title('Player Information for ' . htmlspecialchars($playerdata['lastName'], ENT_COMPAT)); ?>
-	
 <!-- Start large cards -->
 <div class="grid gap-6 mb-8 md:grid-cols-2">
 <!-- Start left card -->

@@ -41,6 +41,9 @@ For support and installation notes visit http://www.hlxcommunity.com
 
 	flush();
 
+	// include custom windmill functions 
+	include_once INCLUDE_PATH . '/inc_windmill_functions.php';
+
 	$realgame = getRealGame($game);
 	$result = $db->query("
 		SELECT

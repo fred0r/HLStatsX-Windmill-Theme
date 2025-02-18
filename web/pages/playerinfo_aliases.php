@@ -41,6 +41,11 @@ For support and installation notes visit http://www.hlxcommunity.com
     }
 
 	flush();
+
+	if ($g_options['playerinfo_tabs'] == '1') { 
+		// include custom windmill functions 
+		include_once INCLUDE_PATH . '/inc_windmill_functions.php';
+	}
 	$tblAliases = new Table
 	(
 		array

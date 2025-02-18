@@ -237,18 +237,85 @@ $db->query("
 	);
 ?>
 <!-- start playerinfo.php -->
+<?php display_page_title('Player Information for ' . htmlspecialchars($playerdata['lastName'], ENT_COMPAT)); ?>
+<?php
+if ($g_options['playerinfo_tabs'] == '1') { 
+?>
+
+ <style>
+        #loading {
+            display: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            var cache = {};
+
+            // Load default page
+            $('#loading').fadeIn();
+            $('#content').hide().load('<?php echo $g_options['scripturl'] ?>?mode=playerinfo&type=ajax&game=<?php echo $game ?>&tab=tab_general_aliases&player=<?php echo $player ?>', function(response, status, xhr) {
+                if (status == "success") {
+                    cache['<?php echo $g_options['scripturl'] ?>?mode=playerinfo&type=ajax&game=<?php echo $game ?>&tab=tab_general_aliases&player=<?php echo $player ?>'] = response;
+                 }
+                $('#loading').fadeOut(function() {
+                    $('#content').fadeIn();
+                });
+            });
+
+            // Load specific page when button is clicked
+            $('.load-button').click(function(){
+                var page = $(this).data('page');
+
+                if (cache[page]) {
+                    $('#loading').fadeOut();
+                    $('#content').html(cache[page]).fadeIn();
+                } else {
+                    $('#content').hide();
+                    $('#loading').fadeIn();
+                    $('#content').load(page, function(response, status, xhr) {
+                        if (status == "success") {
+                            cache[page] = response;
+                        }
+                        $('#loading').fadeOut(function() {
+                            $('#content').fadeIn();
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+
+	<div class="flexbox content-center mb-6">
+		<center>
+			<button class="windmill-button load-button px-3 py-1 text-sm font-medium leading-5 transition-colors duration-150 border border-transparent rounded-md focus:outline-none" data-page="<?php echo $g_options['scripturl'] ?>?mode=playerinfo&type=ajax&game=<?php echo $game ?>&tab=tab_general_aliases&player=<?php echo $player ?>">General</button>&nbsp;
+			<button class="windmill-button load-button px-3 py-1 text-sm font-medium leading-5 transition-colors duration-150 border border-transparent rounded-md focus:outline-none" data-page="<?php echo $g_options['scripturl'] ?>?mode=playerinfo&type=ajax&game=<?php echo $game ?>&tab=tab_playeractions_teams&player=<?php echo $player ?>">Player Actions & Teams</button>&nbsp; 
+			<button class="windmill-button load-button px-3 py-1 text-sm font-medium leading-5 transition-colors duration-150 border border-transparent rounded-md focus:outline-none" data-page="<?php echo $g_options['scripturl'] ?>?mode=playerinfo&type=ajax&game=<?php echo $game ?>&tab=tab_weapons&player=<?php echo $player ?>">Weapons</button>&nbsp; 
+			<button class="windmill-button load-button px-3 py-1 text-sm font-medium leading-5 transition-colors duration-150 border border-transparent rounded-md focus:outline-none" data-page="<?php echo $g_options['scripturl'] ?>?mode=playerinfo&type=ajax&game=<?php echo $game ?>&tab=tab_mapperformance_servers&player=<?php echo $player ?>">Map Performance & Servers</button>&nbsp;
+			<button class="windmill-button load-button px-3 py-1 text-sm font-medium leading-5 transition-colors duration-150 border border-transparent rounded-md focus:outline-none" data-page="<?php echo $g_options['scripturl'] ?>?mode=playerinfo&type=ajax&game=<?php echo $game ?>&tab=tab_killstats&player=<?php echo $player ?>">Kill Stats</button>
+		</center>
+	</div>
+<div id="loading" class="mb-6">
+	<center>
+		<img src="hlstatsimg\ajax.gif">
+	</center>
+	</div>
+    <div id="content" class="mb-6"></div>
 <?php	
+} else {
 
-			require_once PAGE_PATH.'/playerinfo_general.php';
-			require_once PAGE_PATH.'/playerinfo_aliases.php';
-			require_once PAGE_PATH.'/playerinfo_playeractions.php';
-			require_once PAGE_PATH.'/playerinfo_teams.php';
-			require_once PAGE_PATH.'/playerinfo_weapons.php';
-			require_once PAGE_PATH.'/playerinfo_mapperformance.php';
-			require_once PAGE_PATH.'/playerinfo_servers.php';
-			require_once PAGE_PATH.'/playerinfo_killstats.php';
+	require_once PAGE_PATH.'/playerinfo_general.php';
+	require_once PAGE_PATH.'/playerinfo_aliases.php';
+	require_once PAGE_PATH.'/playerinfo_playeractions.php';
+	require_once PAGE_PATH.'/playerinfo_teams.php';
+	require_once PAGE_PATH.'/playerinfo_weapons.php';
+	require_once PAGE_PATH.'/playerinfo_mapperformance.php';
+	require_once PAGE_PATH.'/playerinfo_servers.php';
+	require_once PAGE_PATH.'/playerinfo_killstats.php';
+}
 
-			if (isset($_SESSION['loggedin']))
+if (isset($_SESSION['loggedin']))
 			{
 				echo '<div class="text-xs text-red-600 dark:text-red-400">';
 				echo 'Admin Options: <a href="'.$g_options['scripturl']."?mode=admin&amp;task=tools_editdetails_player&amp;id=$player\">Edit Player Details</a>";
