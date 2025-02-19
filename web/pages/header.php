@@ -141,9 +141,7 @@ include_once INCLUDE_PATH . '/inc_windmill_functions.php';
 
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 	<meta name="robots" content="<?php echo $robot_meta_tag ?>">
-
 	<link rel="SHORTCUT ICON" href="favicon.ico">
 <!--
 	<link
@@ -151,11 +149,12 @@ include_once INCLUDE_PATH . '/inc_windmill_functions.php';
       rel="stylesheet">
 -->
 
+	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
-
+	<!-- Default tailwind css -->
 	<link rel="stylesheet" href="./assets/css/tailwind.output.css">
 
 	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
@@ -214,7 +213,6 @@ if ($game != '') {
 	}
 
 	display_menu_item("Players", "?mode=players&amp;game=$game","user");
-
 	display_menu_item("Clans", "?mode=clans&amp;game=$game","users");
 
 	if ($g_options["countrydata"]==1) {
@@ -226,46 +224,32 @@ if ($game != '') {
 	// look for actions
 	$db->query("SELECT game FROM hlstats_Actions WHERE game='" . valid_request($game, false) . "' LIMIT 1");
 	if ($db->num_rows()>0) {
-
 		display_menu_item("Actions", "?mode=actions&amp;game=$game","bolt");
-
 	}
 
 	display_menu_item("Weapons", "?mode=weapons&amp;game=$game","crosshairs");
-
 	display_menu_item("Maps", "?mode=maps&amp;game=$game","route");
 
 	$result = $db->query("SELECT game from hlstats_Roles WHERE game='" . valid_request($game, false) . "' AND hidden = '0'");
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0) {
-
 		display_menu_item("Roles", "?mode=roles&amp;game=$game","user-tag");
 	}
 
 	if ($g_options['nav_cheaters'] == 1) {
-
 		display_menu_item("Bans", "?mode=bans&amp;game=$game","ban");
-		
-	} 
+			} 
 
 // Always display log in/log out
 if (isset($_SESSION['loggedin'])) {
-
 	display_menu_item("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
-
 	display_menu_item("Logout", "hlstats.php?logout=1","sign-out-alt");
-
 } else {
-
 	display_menu_item("Admin Login", $g_options['scripturl'] . "?mode=admin","sign-in-alt");
-
 }
 
-
 } else {
-
 	// display_menu_item("Games", $g_options['scripturl'],"caret-down");
-
 }
 
 /* Removing the Games side menu for now */ 
@@ -274,7 +258,6 @@ if (isset($_SESSION['loggedin'])) {
 // $linkFormat= 'sidemenu'; include PAGE_PATH .'/gameslist.php';
 
 echo "		</ul>\r\n";
-
 
 ?>
         </div>
@@ -318,7 +301,6 @@ if ($game != '') {
 	}
 
 	display_menu_item("Players", "?mode=players&amp;game=$game","user");
-
 	display_menu_item("Clans", "?mode=clans&amp;game=$game","users");
 
 	if ($g_options["countrydata"]==1) {
@@ -336,32 +318,23 @@ if ($game != '') {
 	}
 
 	display_menu_item("Weapons", "?mode=weapons&amp;game=$game","crosshairs");
-
 	display_menu_item("Maps", "?mode=maps&amp;game=$game","route");
 
 	$result = $db->query("SELECT game from hlstats_Roles WHERE game='".valid_request($game, false)."' AND hidden = '0'");
 	$numitems = $db->num_rows($result);
 	if ($numitems > 0) {
-
 		display_menu_item("Roles", "?mode=roles&amp;game=$game","user-tag");
 	}
 
 	if ($g_options['nav_cheaters'] == 1) {
-
 		display_menu_item("Bans", "?mode=bans&amp;game=$game","ban");
-		
 	} 
 
 	if (isset($_SESSION['loggedin'])) {
-
 		display_menu_item("Admin Panel", $g_options['scripturl'] . "?mode=admin","cog");
-
 		display_menu_item("Logout", "hlstats.php?logout=1","sign-out-alt");
-
 	} else {
-
 		display_menu_item("Admin Login", $g_options['scripturl'] . "?mode=admin","sign-in-alt");
-
 	}
 
 	echo "		</ul>\r\n";
@@ -440,13 +413,9 @@ if ($db->num_rows() < 1) {
 		
 		// Only display icons if set in admin 
 		if ($g_options['display_gamelist'] == 1) {
-
-//		echo "<ul>";
-		$linkFormat= 'iconsonly'; include PAGE_PATH .'/gameslist.php';
-//		echo "</ul>";
-
-		// otherwise display full drop down
+			$linkFormat= 'iconsonly'; include PAGE_PATH .'/gameslist.php';
 		} else {
+		// otherwise display full drop down
 ?>
               <!-- Start Games menu -->
               <li class="relative">
@@ -474,8 +443,8 @@ if ($db->num_rows() < 1) {
 			</template>
 			</li>
 <?php	
-	}	
-	}
+			}
+		}
 ?>
             <!-- End Games menu -->
 
