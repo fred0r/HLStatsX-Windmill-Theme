@@ -2,7 +2,8 @@
 body {
     scrollbar-color: #4b5563 #1f2937;
   }
-/* Stop content moving when there is scrollbar */
+
+  /* Stop content moving when there is scrollbar */
 main {
     scrollbar-gutter: stable;
 }
@@ -10,6 +11,13 @@ main {
 /* Server page accordion */
 table#servers tbody tr:not(.handle) td{
     display:none
+}
+
+/* Player info tabs loading div */
+#loading {
+	display: none;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 
