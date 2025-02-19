@@ -352,11 +352,11 @@ if ($total_kills > 0)
 					$colour = ($c % 2) + 1;
 					$c++;
 ?>
-				<tr class="text-xs tracking-wide text-left text-gray-500 border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-					<td style="width:40%;"><?php
+			<tr class="text-xs tracking-wide text-left text-gray-500 border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+				<td style="width:40%;"><?php
 					echo '<a href="'.$g_options['scripturl'].'?mode=dailyawardinfo&amp;award='.$awarddata['awardId']."&amp;game=$game\">".htmlspecialchars($awarddata['name']).'</a>';
 ?></td>
-					<td style="width:60%;" class="flex items-center"><?php
+				<td style="width:60%;" class="flex items-center"><?php
 						if ($g_options['countrydata'] == 1) {
 							$flag = '0.gif';
 							$alt = 'Unknown Country';
@@ -367,10 +367,11 @@ if ($total_kills > 0)
 						} else {
 							echo "<img src=\"" . IMAGE_PATH . "/player.gif\" hspace=\"4\" alt=\"Player\" /><a href=\"{$g_options['scripturl']}?mode=playerinfo&amp;player={$awarddata['d_winner_id']}\"><b>" . htmlspecialchars($awarddata['d_winner_name'], ENT_COMPAT) . "</b></a> ({$awarddata['d_winner_count']} ". htmlspecialchars($awarddata['verb']) . ")";
 						}
-				}
 ?></td>
 			</tr>
 <?php
+			
+					}
 			}
 ?>
 			<tr class="rounded-b-lg border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
