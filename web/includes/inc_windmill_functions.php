@@ -355,9 +355,11 @@ function display_amcharts_map($mapgame, $maptype) {
 			break;
 		}
 	
+	echo "<div class=\"hidden md:block\">\r\n";
 	echo display_page_subtitle($title);
-	echo "<div class=\"mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 hidden md:block\">\r\n";
-	echo "	<iframe src=\"" . INCLUDE_PATH . "/amcharts/display_map.php?mapgame=" . $mapgame . "&maptype=" . $maptype . "\" height=\"400\" width=\"100%\"></iframe>\r\n";
+	echo "	<div class=\"mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800\">\r\n";
+	echo "		<iframe src=\"" . INCLUDE_PATH . "/amcharts/display_map.php?mapgame=" . $mapgame . "&maptype=" . $maptype . "\" height=\"400\" width=\"100%\"></iframe>\r\n";
+	echo "	</div>\r\n";
 	echo "</div>\r\n";
 
 }
