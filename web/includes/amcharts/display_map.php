@@ -62,63 +62,19 @@ root.setThemes([
 // Create the map chart
 // https://www.amcharts.com/docs/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
-  panX: "translateX",
+  panX: "rotateX",
   panY: "translateY",
-  projection: am5map.geoMercator()
+  projection: am5map.geoMercator(),
+  minZoomLevel: 5,
+  maxZoomLevel: 50
 }));
 
-// Remove the in-chart title and place it in HTML instead
-// var title = chart.children.unshift(am5.Label.new(root, {
-//   text: "World Map",
-//   fontSize: 25,
-//   fontWeight: "bold",
-//   textAlign: "center",
-//   x: am5.p50,
-//   centerX: am5.p50,
-//   y: 20
-// }));
 
 var cont = chart.children.push(am5.Container.new(root, {
   layout: root.horizontalLayout,
   x: 20,
   y: 40
 }));
-
-// Turn off map/globe switch
-// can't get it to work with
-// theme switcher
-//
-// Add labels and controls
-// cont.children.push(am5.Label.new(root, {
-//   centerY: am5.p50,
-//   text: "Map"
-// }));
-
-// var switchButton = cont.children.push(am5.Button.new(root, {
-//   themeTags: ["switch"],
-//   centerY: am5.p50,
-//   icon: am5.Circle.new(root, {
-//     themeTags: ["icon"]
-//   })
-// }));
-
-// switchButton.on("active", function() {
-//   if (!switchButton.get("active")) {
-//     chart.set("projection", am5map.geoMercator());
-//     chart.set("panX", "translateX");
-//     chart.set("panY", "translateY");
-//   }
-//   else {
-//     chart.set("projection", am5map.geoOrthographic());
-//     chart.set("panX", "rotateX");
-//     chart.set("panY", "rotateY");
-//   }
-// });
-
-// cont.children.push(am5.Label.new(root, {
-//   centerY: am5.p50,
-//   text: "Globe"
-// }));
 
 // Create main polygon series for countries
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
@@ -134,11 +90,11 @@ graticuleSeries.mapLines.template.setAll({
 
 // Create line series for trajectory lines
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
-var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
-lineSeries.mapLines.template.setAll({
-  stroke: root.interfaceColors.get("alternativeBackground"),
-  strokeOpacity: 0.6
-});
+// var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+// lineSeries.mapLines.template.setAll({
+//   stroke: root.interfaceColors.get("alternativeBackground"),
+//   strokeOpacity: 0.6
+// });
 
 // destination series
 var citySeries = chart.series.push(
@@ -189,16 +145,16 @@ arrowSeries.bullets.push(function() {
   });
 });
 
-var cities = <?php echo $ten_player_details; ?>;
+var cities = <?php echo $json_player_details; ?>;
 
 citySeries.data.setAll(cities);
 
-// prepare line series data
-var destinations = <?php echo $ten_player_names; ?>;
+// prepare player point data
+var destinations = <?php echo $json_player_names; ?>;
 
 // Server coordinates
-var originLongitude = <?php echo $server_lng ?>;
-var originLatitude = <?php echo $server_lat ?>;
+// var originLatitude = <?php echo $server_lat ?>;
+// var originLongitude = <?php echo $server_lng ?>;
 
 // Remove the lines back to the server
 // am5.array.each(destinations, function (did) {
@@ -214,7 +170,7 @@ var originLatitude = <?php echo $server_lat ?>;
 // });
 
 polygonSeries.events.on("datavalidated", function () {
-  chart.zoomToGeoPoint({ longitude: <?php echo $server_lng ?>, latitude: <?php echo $server_lat ?> }, 3);
+  chart.zoomToGeoPoint({ longitude: <?php echo $server_lng ?>, latitude: <?php echo $server_lat ?> }, <?php echo $server_zoom ?>);
 });
 
 // Make stuff animate on load
