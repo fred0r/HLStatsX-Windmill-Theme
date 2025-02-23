@@ -364,4 +364,18 @@ function display_amcharts_map($mapgame, $maptype) {
 
 }
 
+
+function display_killsperdeath_icon($player_kpd) {
+
+	if ($player_kpd > 2) {
+		return "&nbsp;<span class=\"text-green-600\"><i class=\"fas fa-arrow-up\"></i></span>&nbsp;";
+	} else if ($player_kpd < 1) {
+		return "&nbsp;<span class=\"text-red-600\"><i class=\"fas fa-arrow-down\"></i></span>&nbsp;&nbsp;";
+	} else {
+		return "&nbsp;<i class=\"fas fa-circle\"></i>&nbsp;";
+	}
+
+}
+
+
 ?>

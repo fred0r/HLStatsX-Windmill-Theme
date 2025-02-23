@@ -470,7 +470,8 @@ For support and installation notes visit http://www.hlxcommunity.com
 							list($realkpd) = $db->fetch_row();
 							echo $playerdata['kpd'];
 							echo " ($realkpd*)";
-						?>
+							echo display_killsperdeath_icon($playerdata['kpd']);
+?>
 					</td>
 				</tr>
 				<tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
