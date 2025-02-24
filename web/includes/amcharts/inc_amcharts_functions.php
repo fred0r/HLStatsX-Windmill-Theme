@@ -13,31 +13,20 @@ $amcharts__rank_count = 0;
 
 // Which map are we displaying?
 
-switch ($amcharts_maptype) {
-    case "top":
-        $amcharts_player_query = "SELECT playerId,skill,lastName,lat,lng FROM `hlstats_Players` WHERE (lat IS NOT NULL && game = '$amcharts_mapgame' && !hideranking) ORDER BY skill DESC LIMIT 50";
-        $amcharts_title = "Top Players";
-        $amcharts_rank_get = 1;
-        break;
+$name_map = [
+    "top" => ["query" => "SELECT playerId,skill,lastName,lat,lng FROM `hlstats_Players` WHERE (lat IS NOT NULL && game = '$amcharts_mapgame' && !hideranking) ORDER BY skill DESC LIMIT 50", "title" => "Top Players", "rank_get" => 1],
+    "active" => ["query" => "SELECT player_Id AS playerId,skill,`Name` AS lastName,cli_lat AS lat,cli_lng AS lng FROM `hlstats_Livestats` WHERE (cli_lng IS NOT NULL)", "title" => "Active Players"],
+    "recent" => ["query" => "SELECT playerId,skill,lastName,lat,lng FROM `hlstats_Players` WHERE (lat IS NOT NULL && game = '$amcharts_mapgame' && !hideranking) ORDER BY last_event DESC LIMIT 20", "title" => "Recent Players"],
+    "random" => ["query" => "SELECT lastName,lat,lng FROM `hlstats_Players` WHERE lat IS NOT NULL ORDER BY RAND() LIMIT 20", "title" => "Ten Random Players"]
+];
 
-    case "active":
-        $amcharts_player_query = "SELECT player_Id AS playerId,skill,`Name` AS lastName,cli_lat AS lat,cli_lng AS lng FROM `hlstats_Livestats` WHERE (cli_lng IS NOT NULL)";
-        $amcharts_title = "Active Players";
-        break;
-    
-    case "recent":
-        $amcharts_player_query = "SELECT playerId,skill,lastName,lat,lng FROM `hlstats_Players` WHERE (lat IS NOT NULL && game = '$amcharts_mapgame' && !hideranking) ORDER BY last_event DESC LIMIT 20";
-        $amcharts_title = "Recent Players";
-        break;
+$amcharts_maptype = $amcharts_maptype ?? "random";
 
-    case "random":
-    default:
-        $amcharts_player_query = "SELECT lastName,lat,lng FROM `hlstats_Players` WHERE lat IS NOT NULL ORDER BY RAND() LIMIT 20";
-        $amcharts_title = "Ten Random Players";
-        break;
-    }
+$amcharts_player_query = $name_map[$amcharts_maptype]["query"];
+$amcharts_title = $name_map[$amcharts_maptype]["title"];
+$amcharts_rank_get = $name_map[$amcharts_maptype]["rank_get"] ?? null;
 
-    $amcharts_region_query = "SELECT `value` FROM `hlstats_Options` WHERE `keyname` = 'google_map_region'";
+$amcharts_region_query = "SELECT `value` FROM `hlstats_Options` WHERE `keyname` = 'google_map_region'";
 
 try {
     // Create a new PDO instance
@@ -48,7 +37,7 @@ try {
     $result = [];
     $item1List = [];
 
-        // Query to fetch map region from admin details
+        // Query to fetch map region from admin options
         $singleRowSql = $amcharts_region_query;
         $singleRowStmt = $pdo->query($singleRowSql);
         $singleRow = $singleRowStmt->fetch(PDO::FETCH_ASSOC);
@@ -110,215 +99,43 @@ try {
 
 
 function region_to_lat_lon($region) {
+    $regions = [
+        'ARGENTINA' => ['lat' => -38.4161, 'lng' => -63.6167, 'zoom' => 8],
+        'ASIA' => ['lat' => 34.0479, 'lng' => 100.6197, 'zoom' => 8],
+        'AUSTRALIA' => ['lat' => -25.2744, 'lng' => 133.7751, 'zoom' => 8],
+        'AUSTRIA' => ['lat' => 47.5162, 'lng' => 14.5501, 'zoom' => 8],
+        'BELGIUM' => ['lat' => 50.8503, 'lng' => 4.3517, 'zoom' => 8],
+        'BRAZIL' => ['lat' => -14.2350, 'lng' => -51.9253, 'zoom' => 8],
+        'CHINA' => ['lat' => 35.8617, 'lng' => 104.1954, 'zoom' => 8],
+        'DENMARK' => ['lat' => 56.2639, 'lng' => 9.5018, 'zoom' => 8],
+        'EAST EUROPE' => ['lat' => 55.3781, 'lng' => 37.6173, 'zoom' => 8],
+        'EUROPE' => ['lat' => 54.5260, 'lng' => 15.2551, 'zoom' => 8],
+        'FINLAND' => ['lat' => 61.9241, 'lng' => 25.7482, 'zoom' => 8],
+        'FRANCE' => ['lat' => 46.6034, 'lng' => 1.8883, 'zoom' => 8],
+        'GERMANY' => ['lat' => 51.1657, 'lng' => 10.4515, 'zoom' => 8],
+        'ITALY' => ['lat' => 41.8719, 'lng' => 12.5674, 'zoom' => 8],
+        'JAPAN' => ['lat' => 36.2048, 'lng' => 138.2529, 'zoom' => 8],
+        'NETHERLANDS' => ['lat' => 52.1326, 'lng' => 5.2913, 'zoom' => 8],
+        'NORTH AFRICA' => ['lat' => 26.8206, 'lng' => 30.8025, 'zoom' => 8],
+        'NORTH AMERICA' => ['lat' => 54.5260, 'lng' => -105.2551, 'zoom' => 8],
+        'NORTH EUROPE' => ['lat' => 60.4720, 'lng' => 8.4689, 'zoom' => 8],
+        'NORWAY' => ['lat' => 60.4720, 'lng' => 8.4689, 'zoom' => 8],
+        'POLAND' => ['lat' => 51.9194, 'lng' => 19.1451, 'zoom' => 8],
+        'ROMANIA' => ['lat' => 45.9432, 'lng' => 24.9668, 'zoom' => 8],
+        'RUSSIA' => ['lat' => 61.5240, 'lng' => 105.3188, 'zoom' => 8],
+        'SOUTH AFRICA' => ['lat' => -30.5595, 'lng' => 22.9375, 'zoom' => 8],
+        'SOUTH AMERICA' => ['lat' => -14.2350, 'lng' => -51.9253, 'zoom' => 8],
+        'SOUTH KOREA' => ['lat' => 35.9078, 'lng' => 127.7669, 'zoom' => 8],
+        'SPAIN' => ['lat' => 40.4637, 'lng' => -3.7492, 'zoom' => 8],
+        'SUISSE' => ['lat' => 46.8182, 'lng' => 8.2275, 'zoom' => 8],
+        'SWEDEN' => ['lat' => 60.1282, 'lng' => 18.6435, 'zoom' => 8],
+        'TAIWAN' => ['lat' => 23.6978, 'lng' => 120.9605, 'zoom' => 8],
+        'TURKEY' => ['lat' => 38.9637, 'lng' => 35.2433, 'zoom' => 8],
+        'UNITED KINGDOM' => ['lat' => 55.3781, 'lng' => -3.4360, 'zoom' => 8],
+        'WORLD' => ['lat' => 0, 'lng' => 0, 'zoom' => 8],
+    ];
 
-    switch ($region) {
-        case 'ARGENTINA':
-            $array['lat'] = -38.4161;
-            $array['lng'] = -63.6167;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'ASIA':
-            $array['lat'] = 34.0479;
-            $array['lng'] = 100.6197;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'AUSTRALIA':
-            $array['lat'] = -25.2744;
-            $array['lng'] = 133.7751;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'AUSTRIA':
-            $array['lat'] = 47.5162;
-            $array['lng'] = 14.5501;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'BELGIUM':
-            $array['lat'] = 50.8503;
-            $array['lng'] = 4.3517;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'BRAZIL':
-            $array['lat'] = -14.2350;
-            $array['lng'] = -51.9253;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'CHINA':
-            $array['lat'] = 35.8617;
-            $array['lng'] = 104.1954;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'DENMARK':
-            $array['lat'] = 56.2639;
-            $array['lng'] = 9.5018;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'EAST EUROPE':
-            $array['lat'] = 55.3781;
-            $array['lng'] = 37.6173;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'EUROPE':
-            $array['lat'] = 54.5260;
-            $array['lng'] = 15.2551;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'FINLAND':
-            $array['lat'] = 61.9241;
-            $array['lng'] = 25.7482;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'FRANCE':
-            $array['lat'] = 46.6034;
-            $array['lng'] = 1.8883;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'GERMANY':
-            $array['lat'] = 51.1657;
-            $array['lng'] = 10.4515;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'ITALY':
-            $array['lat'] = 41.8719;
-            $array['lng'] = 12.5674;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'JAPAN':
-            $array['lat'] = 36.2048;
-            $array['lng'] = 138.2529;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'NETHERLANDS':
-            $array['lat'] = 52.1326;
-            $array['lng'] = 5.2913;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'NORTH AFRICA':
-            $array['lat'] = 26.8206;
-            $array['lng'] = 30.8025;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'NORTH AMERICA':
-            $array['lat'] = 54.5260;
-            $array['lng'] = -105.2551;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'NORTH EUROPE':
-            $array['lat'] = 60.4720;
-            $array['lng'] = 8.4689;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'NORWAY':
-            $array['lat'] = 60.4720;
-            $array['lng'] = 8.4689;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'POLAND':
-            $array['lat'] = 51.9194;
-            $array['lng'] = 19.1451;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'ROMANIA':
-            $array['lat'] = 45.9432;
-            $array['lng'] = 24.9668;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'RUSSIA':
-            $array['lat'] = 61.5240;
-            $array['lng'] = 105.3188;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'SOUTH AFRICA':
-            $array['lat'] = -30.5595;
-            $array['lng'] = 22.9375;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'SOUTH AMERICA':
-            $array['lat'] = -14.2350;
-            $array['lng'] = -51.9253;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'SOUTH KOREA':
-            $array['lat'] = 35.9078;
-            $array['lng'] = 127.7669;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'SPAIN':
-            $array['lat'] = 40.4637;
-            $array['lng'] = -3.7492;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'SUISSE':
-            $array['lat'] = 46.8182;
-            $array['lng'] = 8.2275;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'SWEDEN':
-            $array['lat'] = 60.1282;
-            $array['lng'] = 18.6435;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'TAIWAN':
-            $array['lat'] = 23.6978;
-            $array['lng'] = 120.9605;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'TURKEY':
-            $array['lat'] = 38.9637;
-            $array['lng'] = 35.2433;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'UNITED KINGDOM':
-            $array['lat'] = 55.3781;
-            $array['lng'] = -3.4360;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        case 'WORLD':
-            $array['lat'] = 0;
-            $array['lng'] = 0;
-            $array['zoom'] = 8;
-            return $array;
-            break;
-        default:
-            // Handle case where region does not match any case
-            $array['lat'] = null;
-            $array['lng'] = null;
-            $array['zoom'] = null;
-            return $array;
-            break;
-    }
-    
+    return $regions[$region] ?? ['lat' => null, 'lng' => null, 'zoom' => null];
 }
 
 ?>
