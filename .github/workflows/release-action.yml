@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4.2.2
 
       - name: Zip Folder
         run: zip -r default-hlstatsx-files-${{github.ref_name}}.zip default
@@ -18,7 +18,7 @@ jobs:
         run: zip -r hlstatsx-windmill-theme-${{github.ref_name}}.zip web
 
       - name: Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v2.2.2
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: default-hlstatsx-files-${{github.ref_name}}.zip,hlstatsx-windmill-theme-${{github.ref_name}}.zip
@@ -27,7 +27,7 @@ jobs:
 
       - name: Get changed files in the .github folder
         id: changed-files-specific
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@v46.0.5
         with:
           files: web/**
           files_separator: '\n'
