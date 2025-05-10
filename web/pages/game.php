@@ -284,6 +284,8 @@ if ($total_kills > 0)
 	</div>
 </div>
 
+<?php include (PAGE_PATH . '/voicecomm_serverlist.php'); ?>
+
 
 <?php
 	if ($g_options['gamehome_show_awards'] == 1) {
@@ -386,7 +388,6 @@ if ($total_kills > 0)
 	}
 ?>
 
-<?php include (PAGE_PATH . '/voicecomm_serverlist.php'); ?>
 
 <?php 
 if (count($servers) != 1) { 
