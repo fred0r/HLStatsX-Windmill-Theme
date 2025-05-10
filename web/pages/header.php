@@ -477,7 +477,7 @@ if ($db->num_rows() < 1) {
 						display_links("Help", $g_options['scripturl'] . "?mode=help","question-circle");
 						display_links("Search", $g_options['scripturl'] . "?mode=search","search");
 						if ($g_options['sourcebans_address']) {
-							display_links("SourceBans", $g_options['sourcebans_address'],"ban");
+							display_links("Bans", $g_options['sourcebans_address'],"ban");
 						}
 						if ($g_options['forum_address']) {
 							display_links("Forum",$g_options['forum_address'],"comments");

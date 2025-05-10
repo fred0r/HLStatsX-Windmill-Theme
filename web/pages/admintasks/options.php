@@ -236,7 +236,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	$optiongroups[2]->options[] = new Option('nav_cheaters', 'Banned Players Link', 'select');
 
 	$optiongroups[3] = new OptionGroup('Links Drop Down');
-	$optiongroups[3]->options[] = new Option('sourcebans_address', 'SourceBans URL</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">Enter the relative or full path to your SourceBans web site, if you have one. Ex: http://www.yoursite.com/sourcebans/ or /sourcebans/', 'text');
+	$optiongroups[3]->options[] = new Option('sourcebans_address', 'Ban Website URL</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">Enter the relative or full path to your Bans web site, if you have one. Ex: http://www.yoursite.com/bans/ or /bans/', 'text');
 	$optiongroups[3]->options[] = new Option('forum_address', 'Forum/Discord URL</span><br /><span class="text-xs text-gray-600 dark:text-gray-400">Enter the relative or full path to your forum/message board, if you have one. Ex: http://www.yoursite.com/forum/ or /forum/', 'text');
 	// $optiongroups[3]->options[] = new Option('show_weapon_target_flash', '<s>Show hitbox flash animation instead of plain html table for games with accuracy tracking (on supported games)</s> ** Not used', 'select-disabled');
 	$optiongroups[3]->options[] = new Option('show_server_load_image', 'Load summaries from all monitored servers **Not used?', 'select');
