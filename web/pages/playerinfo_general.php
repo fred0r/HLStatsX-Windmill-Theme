@@ -209,6 +209,31 @@ For support and installation notes visit http://www.hlxcommunity.com
 										?></td>
 				</tr>
 				<tr  class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+					<td>First Connect:*</td>
+                        		<td>
+                                    	<?php
+                                			$db->query
+                                        		("
+					  			SELECT
+                                                         	DATE_FORMAT(eventTime, '%a. %b. %D, %Y @ %T')
+                                                		FROM
+                                                         	hlstats_Events_Connects
+							  	WHERE
+                                                			hlstats_Events_Connects.playerId = '$player'
+                                        			ORDER BY
+                                                         	id asc
+                                                        	LIMIT
+                                                         	1
+							  ");
+								list($lastevent) = $db->fetch_row();
+                                                		if ($lastevent)
+                                                        		echo $lastevent;
+                                                        else
+                                					echo '(Unknown)';
+                                                ?>
+                                        </td>
+                                </tr>
+                                <tr class="text-sm tracking-wide text-left text-gray-500 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
 					<td>Last Connect:*</td>
 					<td>
 						<?php
