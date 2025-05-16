@@ -33,7 +33,7 @@
 
 ![image](https://github.com/user-attachments/assets/c08984e9-fe68-4c20-84d4-04c353b9822f)
 
-HLStatsx:CE Theme built using StarterClan v1.11.3 fork with [Windmill Dashboard CSS](https://github.com/estevanmaito/windmill-dashboard) applied on top. 
+HLStatsx:CE Theme built using StarterClan v1.11.7 fork with [Windmill Dashboard CSS](https://github.com/estevanmaito/windmill-dashboard) applied on top. 
 
 Some default HLStatsx:CE features have been removed to simplify the interface and make it small screen friendly.
 
