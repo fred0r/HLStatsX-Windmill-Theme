@@ -132,7 +132,7 @@ function region_to_lat_lon($region) {
         'TAIWAN' => ['lat' => 23.6978, 'lng' => 120.9605, 'zoom' => 8],
         'TURKEY' => ['lat' => 38.9637, 'lng' => 35.2433, 'zoom' => 8],
         'UNITED KINGDOM' => ['lat' => 55.3781, 'lng' => -3.4360, 'zoom' => 8],
-        'WORLD' => ['lat' => 0, 'lng' => 0, 'zoom' => 8],
+        'WORLD' => ['lat' => 24.2155, 'lng' => 12.8858, 'zoom' => 3],
     ];
 
     return $regions[$region] ?? ['lat' => null, 'lng' => null, 'zoom' => null];

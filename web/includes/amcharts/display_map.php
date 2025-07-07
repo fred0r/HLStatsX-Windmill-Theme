@@ -56,7 +56,7 @@ am5.ready(function() {
     panX: "rotateX",
     panY: "translateY",
     projection: am5map.geoMercator(),
-    minZoomLevel: 5,
+    minZoomLevel: 3,
     maxZoomLevel: 50
   }));
 
