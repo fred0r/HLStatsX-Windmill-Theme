@@ -291,7 +291,7 @@
 			$discord_invite_full_url = "https://discord.gg/" . $discord_invite_code;
 
 			$discord_api_url = "https://discord.com/api/v9/invites/".$discord_invite_code ."?with_counts=true&with_expiration=true";
-			$discord_api_jsonIn = file_get_contents($discord_api_url);
+			$discord_api_jsonIn = url_get_contents($discord_api_url);
 			
 			/* Check if API gave a response, which also verifies the link is valid */
 			if ($discord_api_jsonIn) {

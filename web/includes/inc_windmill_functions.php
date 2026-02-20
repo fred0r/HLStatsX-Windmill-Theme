@@ -377,5 +377,18 @@ function display_killsperdeath_icon($player_kpd) {
 
 }
 
+/* https://stackoverflow.com/questions/27613432/file-get-contents-not-working#:~:text=https%3A//stackoverflow.com/a/59751342 */
+function url_get_contents ($Url) {
+    if (!function_exists('curl_init')){ 
+        die('CURL is not installed!');
+    }
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $Url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $output = curl_exec($ch);
+    curl_close($ch);
+    return $output;
+}
+
 
 ?>
